@@ -1,35 +1,44 @@
 extends Control
 class_name Card
 
-@export var card_cost : int = 0
-@export var card_name : String = "Card"
-@export var card_description : String = "This is a card description"
+signal selection_change
 
-var label_name : Label
-var label_description : Label
+var card_cost : int = 0
+var card_name : String = "Card name": 
+	set(value):
+		card_name = value
+		label_name.text = card_name
+	get:
+		return card_name
+var card_description : String = "This is a new card description":
+	set(value):
+		card_description = value
+		label_description.text = card_description
+	get:
+		return card_description
+
+@onready var label_name : Label = $Card/Container/Name
+@onready var label_description : Label = $Card/Container/Description
 
 var is_selected : bool
 var is_hover : bool
 
-func _init(cost: int, name: String, description: String):
-	card_cost = cost
-	card_name = name
-	card_description = description
-
 func _ready() -> void:
-	label_name = get_child(0).get_child(0).get_child(0)
-	label_description = get_child(0).get_child(0).get_child(1)
-	
-	label_name.text = card_name
-	label_description.text = card_description
+	card_name = card_name
+	card_description = card_description
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and is_hover and event.is_pressed():
-		is_selected = !is_selected
-		if is_selected:
-			label_name.text = card_name + " (Selected)"
-		else:
-			label_name.text = card_name
+		selected()
+
+func selected():
+	is_selected = !is_selected
+	if is_selected:
+		label_name.text = card_name + " (Selected)"
+	else:
+		label_name.text = card_name
+	emit_signal("selection_change")
 	
 func _on_card_mouse_entered() -> void:
 	is_hover = true

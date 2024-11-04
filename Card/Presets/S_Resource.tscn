@@ -1,19 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://q8iej2pu3w0m"]
 
-[ext_resource type="Script" path="res://Card/GD_WorkerCard.gd" id="1_h7m4g"]
+[ext_resource type="Script" path="res://Card/GD_ResourceCard.gd" id="1_2lajr"]
 
-[node name="ResourceCard" type="Control" node_paths=PackedStringArray("label_name", "label_description")]
+[node name="ResourceCard" type="Control"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 3
 anchor_right = 0.156
 anchor_bottom = 0.333
 offset_right = 0.47998
 offset_bottom = 0.359985
-script = ExtResource("1_h7m4g")
-card_name = "Wheat"
-card_description = "Score 10 point"
-label_name = NodePath("Card/Container/Name")
-label_description = NodePath("Card/Container/Description")
+script = ExtResource("1_2lajr")
 
 [node name="Card" type="PanelContainer" parent="."]
 layout_mode = 0

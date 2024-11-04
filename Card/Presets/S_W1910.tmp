@@ -1,15 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0k7l318sse8m"]
+[gd_scene load_steps=2 format=3 uid="uid://685504p7642x"]
 
-[ext_resource type="Script" path="res://Card/GD_BusinessCard.gd" id="1_b6kww"]
+[ext_resource type="Script" path="res://Card/GD_WorkerCard.gd" id="1_xhlpt"]
 
-[node name="BusinessCard" type="Control"]
+[node name="WorkerCard" type="Control"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 3
 anchor_right = 0.156
 anchor_bottom = 0.333
 offset_right = 0.47998
 offset_bottom = 0.359985
-script = ExtResource("1_b6kww")
+script = ExtResource("1_xhlpt")
+card_name = "Worker"
+card_description = "This is description"
 
 [node name="Card" type="PanelContainer" parent="."]
 layout_mode = 0
