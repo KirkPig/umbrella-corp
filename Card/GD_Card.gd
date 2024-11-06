@@ -3,6 +3,9 @@ class_name Card
 
 signal selection_change
 
+@onready var label_name : Label = $Card/Container/Name
+@onready var label_description : Label = $Card/Container/Description
+
 var card_cost : int = 0
 var card_name : String = "Card name": 
 	set(value):
@@ -17,10 +20,17 @@ var card_description : String = "This is a new card description":
 	get:
 		return card_description
 
-@onready var label_name : Label = $Card/Container/Name
-@onready var label_description : Label = $Card/Container/Description
+var in_shop : bool = false
 
-var is_selected : bool
+var is_selected : bool:
+	set(value):
+		is_selected = value
+		if is_selected:
+			label_name.text = card_name + " (Selected)"
+		else:
+			label_name.text = card_name
+	get:
+		return is_selected
 var is_hover : bool
 
 func _ready() -> void:
@@ -34,10 +44,6 @@ func _input(event: InputEvent) -> void:
 
 func selected():
 	is_selected = !is_selected
-	if is_selected:
-		label_name.text = card_name + " (Selected)"
-	else:
-		label_name.text = card_name
 	emit_signal("selection_change")
 	
 func _on_card_mouse_entered() -> void:
