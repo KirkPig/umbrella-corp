@@ -98,6 +98,10 @@ func fill_hand():
 		if hand_cards.size() >= max_hand : break
 		if !draw(): break
 
+func reset_hand():
+	for card in hand.get_children():
+		discard(card)
+
 func get_selected_card() -> Array[Card]:
 	var selected_card : Array[Card]
 	for card in hand.get_children():
@@ -181,6 +185,7 @@ func action_research():
 	pass
 
 func end_turn():
+	reset_hand()
 	if turn >= contract_turn:
 		check_win_condition()
 	else:
