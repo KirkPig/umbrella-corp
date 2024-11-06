@@ -1,7 +1,7 @@
 extends Control
 class_name GameManager
 
-@export var start_energy : int = 1
+@export var start_energy : int = 3
 @export var max_hand : int = 5
 @export var contract_turn : int = 3
 @export var target_score : int = 500
@@ -142,12 +142,14 @@ func action_work(business: BusinessCard):
 	fill_hand()
 	
 	energy = energy - action_list.energy_cost_work
+	action_list.reset_list()
 	
 func action_discard():
 	discards(get_selected_card())
 	fill_hand()
 	
 	energy = energy - action_list.energy_cost_discard
+	action_list.reset_list()
 
 func action_sell():
 	var selected_card: Array[Card] = get_selected_card()
@@ -170,6 +172,7 @@ func action_sell():
 	fill_hand()
 	
 	energy = energy - action_list.energy_cost_sell
+	action_list.reset_list()
 
 func action_buy():
 	pass

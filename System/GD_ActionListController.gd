@@ -24,11 +24,7 @@ var show_end : bool:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#btn_working.hide()
-	show_sell = false
-	show_discard = false
-	show_end = true
-	pass # Replace with function body.
+	reset_list()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -68,6 +64,11 @@ func can_work(selected_card: Array[Card], energy: int) -> bool:
 func update_list(selected_card: Array[Card], energy: int):
 	show_sell = can_sell(selected_card, energy)
 	show_discard = can_discard(selected_card, energy)
+	
+func reset_list():
+	show_sell = false
+	show_discard = false
+	show_end = true
 
 func _on_sell_button_pressed() -> void:
 	emit_signal("btn_sell_pressed")
