@@ -32,6 +32,13 @@ offset_right = 1450.0
 offset_bottom = 1050.0
 alignment = 1
 
+[node name="Shop" type="HBoxContainer" parent="."]
+offset_left = 500.0
+offset_top = 200.0
+offset_right = 1900.0
+offset_bottom = 450.0
+alignment = 1
+
 [node name="Discard" type="Control" parent="."]
 visible = false
 anchors_preset = 0

@@ -6,9 +6,11 @@ class_name GameManager
 @export var contract_turn : int = 3
 @export var target_score : int = 500
 
-@onready var deck = $Deck
 @onready var field = $Field
 @onready var hand = $Hand
+@onready var shop = $Shop
+
+@onready var deck = $Deck
 @onready var discarded = $Discard
 @onready var played = $Played
 
@@ -41,11 +43,10 @@ var gold : int:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	start_game()
 	action_list.btn_sell_pressed.connect(action_sell)
 	action_list.btn_discard_pressed.connect(action_discard)
 	action_list.btn_end_pressed.connect(end_turn)
-	pass # Replace with function body.
+	start_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -59,21 +60,32 @@ func start_game():
 	added_start_deck()
 	added_business_field()
 	start_new_turn()
+	
+func create_worker_card() -> WorkerCard:
+	var card : WorkerCard = worker_card.instantiate()
+	card.is_buy.connect(action_buy)
+	return card
+
+func create_business_card() -> BusinessCard:
+	var card : BusinessCard = business_card.instantiate()
+	card.is_buy.connect(action_buy)
+	card.selected_work.connect(action_work)
+	return card
 
 func added_start_deck():
 	for i in 10:
-		var card = worker_card.instantiate()
+		var card = create_worker_card()
 		deck.add_child(card)
 
 func added_business_field():
-	var card : BusinessCard = business_card.instantiate()
+	var card : BusinessCard = create_business_card()
 	field.add_child(card)
-	card.selected_work.connect(action_work)
 
 func start_new_turn():
 	energy = max_energy
 	reset_deck()
 	fill_hand()
+	reset_shop()
 
 func reset_deck():
 	for card in discarded.get_children():
@@ -102,6 +114,16 @@ func reset_hand():
 	for card in hand.get_children():
 		discard(card)
 
+func reset_shop():
+	for card in shop.get_children():
+		shop.remove_child(card)
+		if is_instance_valid(card):
+			card.queue_free()
+	for i in 3:
+		var card = create_worker_card()
+		shop.add_child(card)
+		card.in_shop = true
+
 func get_selected_card() -> Array[Card]:
 	var selected_card : Array[Card]
 	for card in hand.get_children():
@@ -129,8 +151,29 @@ func discard(card: Card):
 func discards(cards: Array[Card]):
 	for card in cards:
 		discard(card)
+		
+func free_played_card():
+	for card in played.get_children():
+		played.remove_child(card)
+		if is_instance_valid(card):
+			card.queue_free()
 
-# Actions
+func end_turn():
+	reset_hand()
+	free_played_card()
+	if turn >= contract_turn:
+		check_win_condition()
+	else:
+		turn = turn + 1
+		start_new_turn()
+
+func check_win_condition():
+	if score >= target_score:
+		print("You win")
+	else: 
+		print("You lose")
+
+# Section: Actions
 func action_work(business: BusinessCard):
 	var selected_card = get_selected_card()
 	
@@ -178,22 +221,13 @@ func action_sell():
 	energy = energy - action_list.energy_cost_sell
 	action_list.reset_list()
 
-func action_buy():
-	pass
+func action_buy(card: Card):
+	if card.shop_price > gold:
+		return
+	card.in_shop = false
+	gold = gold - card.shop_price
+	card.reparent(hand)
 
 func action_research():
 	pass
-
-func end_turn():
-	reset_hand()
-	if turn >= contract_turn:
-		check_win_condition()
-	else:
-		turn = turn + 1
-		start_new_turn()
-
-func check_win_condition():
-	if score >= target_score:
-		print("You win")
-	else: 
-		print("You lose")
+	

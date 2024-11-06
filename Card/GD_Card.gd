@@ -2,6 +2,7 @@ extends Control
 class_name Card
 
 signal selection_change
+signal is_buy(card: Card)
 
 @onready var label_name : Label = $Card/Container/Name
 @onready var label_description : Label = $Card/Container/Description
@@ -20,7 +21,14 @@ var card_description : String = "This is a new card description":
 	get:
 		return card_description
 
-var in_shop : bool = false
+var in_shop : bool = false:
+	set(value):
+		in_shop = value
+		if in_shop:
+			label_name.text = card_name + " (On Sale)"
+		else:
+			label_name.text = card_name
+var shop_price : int = 2
 
 var is_selected : bool:
 	set(value):
@@ -43,6 +51,9 @@ func _input(event: InputEvent) -> void:
 		selected()
 
 func selected():
+	if in_shop:
+		emit_signal("is_buy", self)
+		return
 	is_selected = !is_selected
 	emit_signal("selection_change")
 	
