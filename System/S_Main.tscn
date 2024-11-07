@@ -1,0 +1,168 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8np1rp7n5p17"]
+
+[ext_resource type="Script" path="res://System/GD_GameManager.gd" id="1_jfe42"]
+[ext_resource type="Script" path="res://System/GD_ActionListController.gd" id="2_n0yog"]
+[ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="3_fuj8y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4d276"]
+font_size = 32
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfe42")
+
+[node name="Field" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 500.0
+offset_right = 1450.0
+offset_bottom = 750.0
+alignment = 1
+
+[node name="Hand" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 800.0
+offset_right = 1450.0
+offset_bottom = 1050.0
+alignment = 1
+
+[node name="Shop" type="HBoxContainer" parent="."]
+offset_left = 500.0
+offset_top = 200.0
+offset_right = 1900.0
+offset_bottom = 450.0
+alignment = 1
+
+[node name="Discard" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+
+[node name="Deck" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+
+[node name="Played" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ActionList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("2_n0yog")
+
+[node name="SellButton" type="Button" parent="ActionList"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Sell"
+
+[node name="DiscardButton" type="Button" parent="ActionList"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Discard"
+
+[node name="EndTurnButton" type="Button" parent="ActionList"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "End turn"
+
+[node name="StatusBar" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 23.0
+offset_right = 426.0
+offset_bottom = 117.0
+script = ExtResource("3_fuj8y")
+
+[node name="Turn" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Turn"]
+layout_mode = 2
+text = "Turn: "
+label_settings = SubResource("LabelSettings_4d276")
+
+[node name="Value" type="Label" parent="StatusBar/Turn"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_4d276")
+horizontal_alignment = 2
+
+[node name="Score" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Score"]
+layout_mode = 2
+text = "Score: "
+label_settings = SubResource("LabelSettings_4d276")
+
+[node name="Value" type="Label" parent="StatusBar/Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_4d276")
+horizontal_alignment = 2
+
+[node name="Gold" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Gold"]
+layout_mode = 2
+text = "Gold: "
+label_settings = SubResource("LabelSettings_4d276")
+
+[node name="Value" type="Label" parent="StatusBar/Gold"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_4d276")
+horizontal_alignment = 2
+
+[node name="Energy" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+text = "Energy: "
+label_settings = SubResource("LabelSettings_4d276")
+
+[node name="Value" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_4d276")
+horizontal_alignment = 2
+
+[node name="Seperator" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_4d276")
+
+[node name="Max" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_4d276")
+
+[connection signal="pressed" from="ActionList/SellButton" to="ActionList" method="_on_sell_button_pressed"]
+[connection signal="pressed" from="ActionList/DiscardButton" to="ActionList" method="_on_discard_button_pressed"]
+[connection signal="pressed" from="ActionList/EndTurnButton" to="ActionList" method="_on_end_turn_button_pressed"]
