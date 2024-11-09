@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://5lbb0isje7e1"]
+
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_0u4oj"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_6w582"]
+
+[resource]
+script = ExtResource("2_6w582")
+yield_score = 9
+yield_gold = 1
+card_name = "Paper"
+card_id = 2009
+card_texture = ExtResource("1_0u4oj")
+shop_price = 0

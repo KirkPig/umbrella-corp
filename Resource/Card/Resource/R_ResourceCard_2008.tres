@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://w6dj3xme60nl"]
+
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_5qot5"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_xu3k3"]
+
+[resource]
+script = ExtResource("2_xu3k3")
+yield_score = 10
+yield_gold = 3
+card_name = "Zinc"
+card_id = 2007
+card_texture = ExtResource("1_5qot5")
+shop_price = 0

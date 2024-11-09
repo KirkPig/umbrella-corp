@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WorkerCardData" load_steps=3 format=3 uid="uid://c55w647ewm4tt"]
+
+[ext_resource type="Texture2D" uid="uid://bc4l3yykhcv0s" path="res://Assets/A_WorkerCard_0000.png" id="1_h57ce"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_WorkerCard.gd" id="2_6x7my"]
+
+[resource]
+script = ExtResource("2_6x7my")
+base_work_rate = 1
+special_work_rate = {}
+card_name = "Worker"
+card_id = 0
+card_texture = ExtResource("1_h57ce")
+shop_price = 2

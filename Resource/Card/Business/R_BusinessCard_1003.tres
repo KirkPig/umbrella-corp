@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=8 format=3 uid="uid://ddjom61ukysx3"]
+
+[ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/A_BusinessCard_1000.png" id="1_3bjy7"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_dipw2"]
+[ext_resource type="Resource" uid="uid://w6dj3xme60nl" path="res://Resource/Card/Resource/R_ResourceCard_2008.tres" id="3_o4p5k"]
+[ext_resource type="Resource" uid="uid://bi0p0ios6y4e3" path="res://Resource/Card/Resource/R_ResourceCard_2009.tres" id="4_d26xd"]
+[ext_resource type="Resource" uid="uid://5lbb0isje7e1" path="res://Resource/Card/Resource/R_ResourceCard_2010.tres" id="5_vnd7r"]
+[ext_resource type="Resource" uid="uid://dnu6uob03ev7q" path="res://Resource/Card/Resource/R_ResourceCard_2011.tres" id="6_mxon5"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="7_sk2gn"]
+
+[resource]
+script = ExtResource("7_sk2gn")
+worker_usage = 2
+resource_return = 3
+max_usage = 1
+resource_yield_list = Array[ExtResource("2_dipw2")]([ExtResource("3_o4p5k"), ExtResource("4_d26xd"), ExtResource("5_vnd7r"), ExtResource("6_mxon5")])
+card_name = "Forestry"
+card_id = 1002
+card_texture = ExtResource("1_3bjy7")
+shop_price = 4

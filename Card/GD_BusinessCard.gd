@@ -8,6 +8,7 @@ signal selected_work(card: BusinessCard)
 var worker_usage : int
 var resource_return : int
 var max_usage : int
+var resource_yield_list : Array[ResourceCardData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,3 +30,4 @@ func set_data(data: BusinessCardData):
 	worker_usage = data.worker_usage
 	resource_return = data.resource_return
 	max_usage = data.max_usage
+	resource_yield_list = data.resource_yield_list
