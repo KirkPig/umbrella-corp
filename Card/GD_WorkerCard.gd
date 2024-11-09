@@ -1,12 +1,18 @@
 extends Card
 class_name WorkerCard
 
+@export var base_work_rate : int
+@export var special_work_rate : Dictionary
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_name = "Worker"
-	card_description = "This is a worker card. You can use for gather resource from the business venture"
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	pass	
+
+func set_data(data: WorkerCardData):
+	set_base_data(data)
+	base_work_rate = data.base_work_rate
+	special_work_rate = data.special_work_rate

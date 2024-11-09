@@ -4,46 +4,27 @@ class_name Card
 signal selection_change
 signal is_buy(card: Card)
 
-@onready var label_name : Label = $Card/Container/Name
-@onready var label_description : Label = $Card/Container/Description
+@onready var card_anchor : Control = $Card
+@onready var card_texture : Sprite2D = $Card/Texture
+@onready var card_animation_player : AnimationPlayer = $AnimationPlayer
 
+var card_id : int = 0
 var card_cost : int = 0
-var card_name : String = "Card name": 
-	set(value):
-		card_name = value
-		label_name.text = card_name
-	get:
-		return card_name
-var card_description : String = "This is a new card description":
-	set(value):
-		card_description = value
-		label_description.text = card_description
-	get:
-		return card_description
-
-var in_shop : bool = false:
-	set(value):
-		in_shop = value
-		if in_shop:
-			label_name.text = card_name + " (On Sale)"
-		else:
-			label_name.text = card_name
+var in_shop : bool = false
 var shop_price : int = 2
 
+var is_hover : bool
 var is_selected : bool:
 	set(value):
+		if is_selected and !value:
+			card_anchor.position.y = 0
+		if !is_selected and value:
+			card_animation_player.play("Hover")
 		is_selected = value
-		if is_selected:
-			label_name.text = card_name + " (Selected)"
-		else:
-			label_name.text = card_name
 	get:
 		return is_selected
-var is_hover : bool
 
 func _ready() -> void:
-	card_name = card_name
-	card_description = card_description
 	pass
 
 func _input(event: InputEvent) -> void:
@@ -56,6 +37,11 @@ func selected():
 		return
 	is_selected = !is_selected
 	emit_signal("selection_change")
+
+func set_base_data(data: CardData):
+	card_id = data.card_id
+	card_texture.texture = data.card_texture
+	shop_price = data.shop_price
 	
 func _on_card_mouse_entered() -> void:
 	is_hover = true

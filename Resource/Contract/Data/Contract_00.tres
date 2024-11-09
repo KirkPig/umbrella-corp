@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ResourceContract" load_steps=2 format=3 uid="uid://cn8xfhqt5nasa"]
+
+[ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="1_roghn"]
+
+[resource]
+script = ExtResource("1_roghn")
+name = "Contract A"
+description = "Absolute Cinema"
+turn_limit = 3
+score_goal = 500
+reward_type = 0
+reward_gold = 690
+reward_card = 0
+reward_unlock_card = 0
+reward_upgrade = 0

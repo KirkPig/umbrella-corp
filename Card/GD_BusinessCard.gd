@@ -5,10 +5,12 @@ signal selected_work(card: BusinessCard)
 
 @onready var resource_card = preload("res://Card/Presets/S_Resource.tscn")
 
+var worker_usage : int
+var resource_return : int
+var max_usage : int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_name = "Farm"
-	card_description = "This is a farm."
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,3 +23,9 @@ func selected():
 func gather_resource():
 	var card = resource_card.instantiate()
 	return card
+
+func set_data(data: BusinessCardData):
+	set_base_data(data)
+	worker_usage = data.worker_usage
+	resource_return = data.resource_return
+	max_usage = data.max_usage
