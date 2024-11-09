@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 var energy_cost_sell: int = 1
 var energy_cost_discard: int = 0
 var energy_cost_work: int = 1
+var energy_cost_research: int = 1
 
 func can_sell(selected_card: Array[Card], energy: int) -> bool:
 	if selected_card.size() <= 0:
@@ -59,6 +60,13 @@ func can_work(selected_card: Array[Card], energy: int) -> bool:
 	for card in selected_card:
 		if card is not WorkerCard:
 			return false
+	return true
+
+func can_research(selected_card: Array[Card], energy: int) -> bool:
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_research:
+		return false
 	return true
 	
 func update_list(selected_card: Array[Card], energy: int):
