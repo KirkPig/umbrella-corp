@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://brd8se8wvi451"]
+
+[ext_resource type="PackedScene" uid="uid://685504p7642x" path="res://Card/Presets/S_Worker.tscn" id="1_bmndv"]
+
+[node name="Cards" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hand" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 422.0
+offset_right = 1679.0
+offset_bottom = 672.0
+alignment = 1
+
+[node name="WorkerCard" parent="Hand" instance=ExtResource("1_bmndv")]
+layout_mode = 2
+
+[node name="WorkerCard2" parent="Hand" instance=ExtResource("1_bmndv")]
+layout_mode = 2
+
+[node name="WorkerCard3" parent="Hand" instance=ExtResource("1_bmndv")]
+layout_mode = 2
+
+[node name="WorkerCard4" parent="Hand" instance=ExtResource("1_bmndv")]
+layout_mode = 2

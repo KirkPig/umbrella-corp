@@ -7,8 +7,6 @@ signal selected_work(card: BusinessCard)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_name = "Farm"
-	card_description = "This is a farm."
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
