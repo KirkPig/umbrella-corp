@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=6 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_GameManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/GD_ActionListController.gd" id="2_n0yog"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="3_fuj8y"]
+[ext_resource type="Script" path="res://System/GD_StateManager.gd" id="4_wepr5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4d276"]
 font_size = 32
@@ -33,6 +34,7 @@ offset_bottom = 1050.0
 alignment = 1
 
 [node name="Shop" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 500.0
 offset_top = 200.0
 offset_right = 1900.0
@@ -50,8 +52,6 @@ anchors_preset = 0
 [node name="Played" type="Control" parent="."]
 visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="ActionList" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -162,6 +162,9 @@ label_settings = SubResource("LabelSettings_4d276")
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_4d276")
+
+[node name="StateManager" type="Node" parent="."]
+script = ExtResource("4_wepr5")
 
 [connection signal="pressed" from="ActionList/SellButton" to="ActionList" method="_on_sell_button_pressed"]
 [connection signal="pressed" from="ActionList/DiscardButton" to="ActionList" method="_on_discard_button_pressed"]
