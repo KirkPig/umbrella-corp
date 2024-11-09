@@ -11,10 +11,10 @@ func _ready() -> void:
 
 func create_contract() -> Contract:
 	var random_contract : Contract = contract.instantiate()
-	var resource_file = DirAccess.get_files_at("res://Resource/Contract/")
+	var resource_file = DirAccess.get_files_at("res://Resource/Contract/Data/")
 	var random_resource = resource_file[randi() % resource_file.size()]
 	#print(random_resource.contract_res)
-	random_contract.contract_res = load("res://Resource/Contract/Data" + random_resource)
+	random_contract.contract_res = load("res://Resource/Contract/Data/" + random_resource)
 	return random_contract
 
 func start_select_contract() -> void:
