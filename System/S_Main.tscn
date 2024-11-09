@@ -16,6 +16,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
+start_energy = null
+max_hand = null
+contract_turn = null
+target_score = null
 
 [node name="Field" type="HBoxContainer" parent="."]
 layout_mode = 0

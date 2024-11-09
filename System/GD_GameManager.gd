@@ -1,10 +1,8 @@
 extends Control
-class_name GameManager
 
 @export var start_energy : int = 3
-@export var max_hand : int = 5
-@export var contract_turn : int = 3
-@export var target_score : int = 500
+@export var start_max_hand : int = 5
+
 
 @onready var field = $Field
 @onready var hand = $Hand
@@ -20,26 +18,6 @@ class_name GameManager
 @onready var worker_card = preload("res://Card/Presets/S_Worker.tscn")
 @onready var business_card = preload("res://Card/Presets/S_Business.tscn")
 
-var turn : int:
-	set(value):
-		turn = value
-		status_bar.turn = value
-var score : int:
-	set(value):
-		score = value
-		status_bar.score = value
-var energy : int:
-	set(value):
-		energy = value
-		status_bar.energy = value
-var max_energy : int:
-	set(value):
-		max_energy = value
-		status_bar.max_energy = value
-var gold : int:
-	set(value):
-		gold = value
-		status_bar.gold = value
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,10 +31,13 @@ func _process(delta: float) -> void:
 	pass
 
 func start_game():
-	turn = 1
-	score = 0
-	gold = 0
-	max_energy = start_energy
+	GameManager.turn = 1
+	GameManager.current_score = 0
+	GameManager.total_score = 0
+	GameManager.gold = 0
+	GameManager.max_energy = start_energy
+	GameManager.energy = start_energy
+	GameManager.max_hand = start_max_hand
 	added_start_deck()
 	added_business_field()
 	start_new_turn()

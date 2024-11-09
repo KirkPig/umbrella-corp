@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8np1rp7n5p17"]
+
+[ext_resource type="Script" path="res://System/GD_GameManager.gd" id="1_jfe42"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameManager" type="Control" parent="."]
+anchors_preset = 0
+script = ExtResource("1_jfe42")
+
+[node name="Field" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 194.0
+offset_right = 1423.0
+offset_bottom = 594.0
+alignment = 1
+
+[node name="Hand" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 669.0
+offset_right = 1383.0
+offset_bottom = 1069.0
+alignment = 1
+
+[node name="Discard" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Deck" type="Control" parent="."]
+visible = false
+anchors_preset = 0
