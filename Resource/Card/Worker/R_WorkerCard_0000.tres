@@ -7,6 +7,7 @@
 script = ExtResource("2_tyvkv")
 base_work_rate = 1
 special_work_rate = {}
+card_name = "Worker"
 card_id = 0
 card_texture = ExtResource("1_3fugd")
 shop_price = 2

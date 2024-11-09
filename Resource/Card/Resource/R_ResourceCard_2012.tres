@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://b4vn0xq52j43j"]
+
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_qtsi3"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_ypnw8"]
+
+[resource]
+script = ExtResource("2_ypnw8")
+yield_score = 8
+yield_gold = 1
+card_name = "Timber"
+card_id = 2011
+card_texture = ExtResource("1_qtsi3")
+shop_price = 0

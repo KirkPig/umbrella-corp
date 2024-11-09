@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://vojwk1ojl2sl"]
+
+[ext_resource type="Texture2D" uid="uid://vowkvwd56hb" path="res://Assets/worker_card.png" id="1_ih2yg"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_tmri7"]
+
+[resource]
+script = ExtResource("1_tmri7")
+yield_score = 8
+yield_gold = 2
+card_name = "Onion"
+card_id = 2003
+card_texture = ExtResource("1_ih2yg")
+shop_price = 0

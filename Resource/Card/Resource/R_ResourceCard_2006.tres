@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://c85fnbpbgwo1n"]
+
+[ext_resource type="Texture2D" uid="uid://vowkvwd56hb" path="res://Assets/worker_card.png" id="1_lksms"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_vp7sg"]
+
+[resource]
+script = ExtResource("2_vp7sg")
+yield_score = 20
+yield_gold = 1
+card_name = "Titanium"
+card_id = 2006
+card_texture = ExtResource("1_lksms")
+shop_price = 0
