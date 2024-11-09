@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=13 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_GameManager.gd" id="1_jfe42"]
+[ext_resource type="Script" path="res://System/Board/GD_Field.gd" id="2_078xj"]
 [ext_resource type="Script" path="res://System/GD_ActionListController.gd" id="2_n0yog"]
+[ext_resource type="Script" path="res://System/Card/GDR_BaseCard.gd" id="2_yo5vq"]
+[ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="3_fuj8y"]
+[ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="4_pj51p"]
 [ext_resource type="Script" path="res://System/GD_StateManager.gd" id="4_wepr5"]
+[ext_resource type="Script" path="res://System/Board/GD_Discard.gd" id="5_gyhr2"]
+[ext_resource type="Script" path="res://System/Board/GD_Deck.gd" id="6_qjuhx"]
+[ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4d276"]
 font_size = 32
@@ -16,10 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
-start_energy = null
-max_hand = null
-contract_turn = null
-target_score = null
+start_deck = Array[ExtResource("2_yo5vq")]([null])
 
 [node name="Field" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -28,6 +32,7 @@ offset_top = 500.0
 offset_right = 1450.0
 offset_bottom = 750.0
 alignment = 1
+script = ExtResource("2_078xj")
 
 [node name="Hand" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -36,6 +41,7 @@ offset_top = 800.0
 offset_right = 1450.0
 offset_bottom = 1050.0
 alignment = 1
+script = ExtResource("3_4qhri")
 
 [node name="Shop" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -44,18 +50,22 @@ offset_top = 200.0
 offset_right = 1900.0
 offset_bottom = 450.0
 alignment = 1
+script = ExtResource("4_pj51p")
 
 [node name="Discard" type="Control" parent="."]
 visible = false
 anchors_preset = 0
+script = ExtResource("5_gyhr2")
 
 [node name="Deck" type="Control" parent="."]
 visible = false
 anchors_preset = 0
+script = ExtResource("6_qjuhx")
 
 [node name="Played" type="Control" parent="."]
 visible = false
 anchors_preset = 0
+script = ExtResource("7_v7xax")
 
 [node name="ActionList" type="VBoxContainer" parent="."]
 layout_mode = 1
