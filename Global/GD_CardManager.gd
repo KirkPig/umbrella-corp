@@ -11,16 +11,16 @@ var played :Control
 func _ready() -> void:
 	pass # Replace with function body.
 
-#TODO
-func add_card_to_deck(res:ResourceBaseCard) -> void:
-	if res is ResourceWorkerCard:
+# TODO
+func add_card_to_deck(data : CardData) -> void:
+	if data is WorkerCardData:
 		pass
 		#var card : WorkerCard = worker_card.instantiate()
 		#card.is_buy.connect(action_buy)
 		#return card
 
-#TODO
-func added_business_field(res:ResourceBusinessCard):
+# TODO
+func added_business_field(data : BusinessCardData):
 	pass
 	#var card : BusinessCard = create_business_card()
 	#field.add_child(card)

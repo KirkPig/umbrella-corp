@@ -10,18 +10,10 @@ signal is_buy(card: Card)
 
 var card_id : int = 0
 var card_cost : int = 0
-
-var in_shop : bool = false:
-	set(value):
-		in_shop = value
-		if in_shop:
-			#label_name.text = card_name + " (On Sale)"
-			pass
-		else:
-			#label_name.text = card_name
-			pass
+var in_shop : bool = false
 var shop_price : int = 2
 
+var is_hover : bool
 var is_selected : bool:
 	set(value):
 		if is_selected and !value:
@@ -31,7 +23,6 @@ var is_selected : bool:
 		is_selected = value
 	get:
 		return is_selected
-var is_hover : bool
 
 func _ready() -> void:
 	pass
@@ -46,6 +37,11 @@ func selected():
 		return
 	is_selected = !is_selected
 	emit_signal("selection_change")
+
+func set_base_data(data: CardData):
+	card_id = data.card_id
+	card_texture.texture = data.card_texture
+	shop_price = data.shop_price
 	
 func _on_card_mouse_entered() -> void:
 	is_hover = true
