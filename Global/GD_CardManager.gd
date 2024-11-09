@@ -1,6 +1,5 @@
 extends Node
 
-#TODO: Setting All in Each
 var field: Control
 var hand: Control
 var shop: Control
@@ -44,9 +43,7 @@ func draw() -> bool:
 		return false
 	var draw_card: Card = deck_cards[randi() % deck_cards.size()]
 	draw_card.reparent(hand)
-	#TODO: Action Manager
-	#if !draw_card.selection_change.is_connected(check_selection_condition):
-		#draw_card.selection_change.connect(check_selection_condition)
+	ActionManager.coonect_selection(draw_card)
 	return true
 	
 func fill_hand():
@@ -66,11 +63,6 @@ func reset_deck():
 func move_to_hand(node:Card):
 	node.reparent(hand)
 
-
-#TODO: Action Manager
-#func check_selection_condition():
-	#action_list.update_list(get_selected_card(), energy)
-
 func get_selected_card() -> Array[Card]:
 	var selected_card : Array[Card]
 	for card in hand.get_children():
@@ -82,8 +74,7 @@ func get_selected_card() -> Array[Card]:
 func played_card(card: Card):
 	card.is_selected = false
 	card.reparent(played)
-	#if card.selection_change.is_connected(check_selection_condition):
-		#card.selection_change.disconnect(check_selection_condition)
+	ActionManager.coonect_selection(card)
 #
 func played_cards(cards: Array[Card]):
 	for card in cards:
@@ -92,9 +83,7 @@ func played_cards(cards: Array[Card]):
 func discard(card: Card):
 	card.is_selected = false
 	card.reparent(discarded)
-	#TODO: Action Manager
-	#if card.selection_change.is_connected(check_selection_condition):
-		#card.selection_change.disconnect(check_selection_condition)
+	ActionManager.coonect_selection(card)
 #
 func discards(cards: Array[Card]):
 	for card in cards:

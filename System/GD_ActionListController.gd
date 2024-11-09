@@ -1,10 +1,6 @@
 extends VBoxContainer
 class_name ActionListController
 
-signal btn_sell_pressed
-signal btn_discard_pressed
-signal btn_end_pressed
-
 @onready var btn_sell = $SellButton
 @onready var btn_discard = $DiscardButton
 @onready var btn_end = $EndTurnButton
@@ -80,15 +76,12 @@ func reset_list():
 	show_end = true
 
 func _on_sell_button_pressed() -> void:
-	emit_signal("btn_sell_pressed")
-	pass # Replace with function body.
+	ActionManager.action_sell()
 
 
 func _on_discard_button_pressed() -> void:
-	emit_signal("btn_discard_pressed")
-	pass # Replace with function body.
+	ActionManager.action_discard()
 
 
 func _on_end_turn_button_pressed() -> void:
-	emit_signal("btn_end_pressed")
-	pass # Replace with function body.
+	GameManager.end_turn()

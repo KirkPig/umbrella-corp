@@ -6,9 +6,8 @@ const contract = preload("res://System/Contract/S_Contract.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in range(3):
-		var contract = create_contract()# Replace with function body.
-		contract_list.add_child(contract)
+	GameManager.constract_selection = self
+	start_select_contract()
 
 func create_contract() -> Contract:
 	var random_contract : Contract = contract.instantiate()
@@ -17,6 +16,17 @@ func create_contract() -> Contract:
 	#print(random_resource.contract_res)
 	random_contract.contract_res = load("res://Resource/Contract/" + random_resource)
 	return random_contract
+
+func start_select_contract() -> void:
+	visible = true
+	for i in range(3):
+		var contract = create_contract()# Replace with function body.
+		contract_list.add_child(contract)
+		
+func clear_contract() -> void:
+	for contract in contract_list.get_children():
+		contract_list.remove_child(contract)
+		contract.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

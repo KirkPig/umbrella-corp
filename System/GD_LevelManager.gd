@@ -8,9 +8,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#action_list.btn_sell_pressed.connect(action_sell)
-	#action_list.btn_discard_pressed.connect(action_discard)
-	#action_list.btn_end_pressed.connect(end_turn)
 	start_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,11 +17,10 @@ func _process(delta: float) -> void:
 func start_game():
 	set_up_game_manager()
 	add_start_deck()
-	GameManager.next_turn()
 
 func set_up_game_manager() -> void:
-	GameManager.current_turn = 1
-	GameManager.total_turn = 1
+	GameManager.current_turn = 0
+	GameManager.total_turn = 0
 	GameManager.current_score = 0
 	GameManager.total_score = 0
 	GameManager.gold = 0

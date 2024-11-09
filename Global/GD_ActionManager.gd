@@ -67,6 +67,13 @@ func action_buy(card: Card):
 	GameManager.gold = GameManager.gold - card.shop_price
 	CardManager.move_to_hand(card)
 
+#TODO
 func action_research():
 	pass
 	
+func coonect_selection(draw_card:Card):
+	if !draw_card.selection_change.is_connected(check_selection_condition):
+		draw_card.selection_change.connect(check_selection_condition)
+
+func check_selection_condition():
+	action_list.update_list(CardManager.get_selected_card())
