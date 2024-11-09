@@ -25,9 +25,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-#TODO: when selected
-func selected() -> void:
-	pass
 
 # TODO:check id score pass
 func check_finish_contract() -> bool:
@@ -35,4 +32,4 @@ func check_finish_contract() -> bool:
 
 
 func _on_select_button_pressed() -> void:
-	selected() # Replace with function body.
+	GameManager.select_contract(contract_res)

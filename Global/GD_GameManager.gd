@@ -1,8 +1,10 @@
 extends Node
 
 signal current_turn_change(turn:int)
+signal goal_turn_change(turn:int)
 signal total_turn_change(turn:int)
 signal current_score_change(score:int)
+signal goal_score_change(turn:int)
 signal total_score_change(score:int)
 signal current_energy_change(energy:int)
 signal max_energy_change(energy:int)
@@ -14,6 +16,11 @@ var current_turn : int:
 		current_turn = value
 		current_turn_change.emit(value)
 
+var goal_turn : int:
+	set(value):
+		goal_turn = value
+		goal_turn_change.emit(value)
+		
 var total_turn : int:
 	set(value):
 		total_turn = value
@@ -23,6 +30,11 @@ var current_score : int:
 	set(value):
 		current_score = value
 		current_score_change.emit(value)
+		
+var goal_score : int:
+	set(value):
+		goal_score = value
+		goal_score_change.emit(value)
 		
 var total_score : int:
 	set(value):
@@ -49,11 +61,8 @@ var max_hand : int:
 		max_hand = value
 		max_hand_change.emit(value)
 		
-var selected_contract: Contract
-
-
-
-
+var selected_contract: ResourceContract
+var constract_selection: Control
 
 func next_turn():
 	total_turn += 1
@@ -65,12 +74,20 @@ func end_turn():
 	CardManager.end_turn()
 	var turn_limit = selected_contract.turn_limit
 	if current_turn == turn_limit:
-		#TODO: Check Contract
-		if selected_contract.check_finish_contract():
+		if selected_contract.check_finish_contract(current_score):
 			current_turn = 0 
 			current_score = 0
-		print('fail')
+		#TODO: Lose game
+		else:
+			print('fail')
 
-#TODO: make contract to select
-func select_contract():
-	pass
+func start_select_contract():
+	constract_selection.start_select_contract()
+	
+func select_contract(contract:ResourceContract) -> void:
+	selected_contract = contract
+	goal_turn = contract.turn_limit
+	goal_score = contract.score_goal
+	constract_selection.visible = false
+	constract_selection.clear_contract() 
+	GameManager.next_turn()

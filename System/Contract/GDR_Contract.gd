@@ -28,3 +28,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func check_finish_contract(score:int) -> bool:
+	return score >= score_goal
