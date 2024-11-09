@@ -67,8 +67,9 @@ func end_turn():
 	if current_turn == turn_limit:
 		#TODO: Check Contract
 		if selected_contract.check_finish_contract():
-			pass
-		current_turn = 0 
+			current_turn = 0 
+			current_score = 0
+		print('fail')
 
 #TODO: make contract to select
 func select_contract():

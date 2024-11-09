@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=13 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_GameManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Field.gd" id="2_078xj"]
 [ext_resource type="Script" path="res://System/GD_ActionListController.gd" id="2_n0yog"]
+[ext_resource type="Script" path="res://System/Card/GDR_BaseCard.gd" id="2_yo5vq"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="3_fuj8y"]
 [ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="4_pj51p"]
@@ -22,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
+start_deck = Array[ExtResource("2_yo5vq")]([null])
 
 [node name="Field" type="HBoxContainer" parent="."]
 layout_mode = 0

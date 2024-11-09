@@ -63,6 +63,9 @@ func reset_deck():
 	for card in discarded.get_children():
 		card.reparent(deck)
 
+func move_to_hand(node:Card):
+	node.reparent(hand)
+
 
 #TODO: Action Manager
 #func check_selection_condition():
