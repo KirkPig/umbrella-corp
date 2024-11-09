@@ -18,8 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://Global/GD_GameManager.gd"
+CardManager="*res://Global/GD_CardManager.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/globalize-plugins/plugin.cfg")

@@ -51,12 +51,25 @@ var max_hand : int:
 		
 var selected_contract: Contract
 
+
+
+
+
 func next_turn():
-	var turn_limit = selected_contract.turn_limit
-	if current_turn + 1 == turn_limit:
-		current_turn = 0 if selected_contract.check_finish_contract() else current_turn + 1
 	total_turn += 1
+	current_turn += 1
+	energy = max_energy
+	CardManager.next_turn()
 	
+func end_turn():
+	CardManager.end_turn()
+	var turn_limit = selected_contract.turn_limit
+	if current_turn == turn_limit:
+		#TODO: Check Contract
+		if selected_contract.check_finish_contract():
+			pass
+		current_turn = 0 
+
 #TODO: make contract to select
 func select_contract():
 	pass
