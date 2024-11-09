@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ResourceContract" load_steps=2 format=3 uid="uid://5jstbs1dwk2"]
+
+[ext_resource type="Script" path="res://System/Contract/GDR_Contract.gd" id="1_k8tvy"]
+
+[resource]
+script = ExtResource("1_k8tvy")
+name = "Contract C"
+description = "Chicken Dinner"
+turn_limit = 2
+score_goal = 690
+reward_type = 0
+reward_gold = 10
+reward_card = 0
+reward_unlock_card = 0
+reward_upgrade = 0

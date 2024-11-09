@@ -9,7 +9,7 @@ enum RewardType{
 }
 
 @export var name:String
-@export var decription: String
+@export var description: String
 @export var turn_limit:int
 @export var score_goal:int
 @export_category('Reward')
