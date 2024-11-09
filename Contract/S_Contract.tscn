@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dnuv8bdamyo5o"]
 
-[ext_resource type="Script" path="res://System/Contract/GD_Contract.gd" id="1_ubqey"]
-[ext_resource type="Resource" uid="uid://5jstbs1dwk2" path="res://Resource/Contract/Contract_02.tres" id="2_weehv"]
+[ext_resource type="Script" path="res://Contract/GD_Contract.gd" id="1_ubqey"]
+[ext_resource type="Resource" uid="uid://5jstbs1dwk2" path="res://Resource/Contract/Data/Contract_02.tres" id="2_weehv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_se68q"]
 font_size = 10

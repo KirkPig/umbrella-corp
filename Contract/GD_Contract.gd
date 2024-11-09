@@ -16,9 +16,6 @@ func _ready() -> void:
 	score.text = str(contract_res.score_goal)
 	reward.text = str(contract_res.reward_gold)
 	#print("reward", typeof(contract_res.reward_type))
-	
-	
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

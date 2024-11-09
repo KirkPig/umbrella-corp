@@ -3,8 +3,8 @@ extends Control
 @export var start_energy : int = 3
 @export var start_max_hand : int = 5
 
-@export var start_deck: Array[ResourceBaseCard]
-@export var start_business: Array[ResourceBusinessCard]
+@export var start_deck: Array[CardData]
+@export var start_business: Array[BusinessCardData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
