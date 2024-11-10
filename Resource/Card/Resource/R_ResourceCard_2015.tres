@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("2_2b4lx")
-yield_score = 11
+yield_score = 8
 yield_gold = 2
-card_name = "Egg"
-card_id = 2014
+card_name = "Milk"
+card_id = 2015
 card_texture = ExtResource("1_0bo8l")
 shop_price = 0
