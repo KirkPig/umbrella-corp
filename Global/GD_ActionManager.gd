@@ -1,11 +1,10 @@
 extends Node
 
-var action_list: Control
+var action_list: ActionListController
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,12 +18,13 @@ func action_work(business: BusinessCard):
 	if !action_list.can_work(selected_card):
 		return
 		
-	# TODO: CHnage to check rate
+	# TODO: Chnage to check rate
 	for card in selected_card:
 		if card.is_selected:
-			var _res = business.gather_resource()
-			# discarded.add_child(_res)
-	CardManager.iscards(selected_card)
+			var data = business.gather_resource()
+			var new_card = CardManager.add_card_to_deck(data)
+			CardManager.discard(new_card)
+	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
 	GameManager.energy = GameManager.energy - action_list.energy_cost_work
@@ -42,18 +42,19 @@ func action_sell():
 	var _dict : Dictionary = {}
 	var price = 0
 	for card : ResourceCard in selected_card:
-		if card.resource_id in _dict:
-			_dict[card.resource_id] += 1
+		if card.card_id in _dict:
+			_dict[card.card_id] += 1
 		else:
-			_dict[card.resource_id] = 1
-		price = price + card.point
-		GameManager.gold = GameManager.gold + card.gold
+			_dict[card.card_id] = 1
+		price = price + card.yield_score
+		GameManager.gold = GameManager.gold + card.yield_gold
 		
 	var mul : int = 0
 	for val in _dict.values():
 		mul = maxi(mul, val)
 	
-	GameManager.score = GameManager.score + (mul * price)
+	GameManager.current_score = GameManager.current_score + (mul * price)
+	GameManager.total_score = GameManager.total_score + (mul * price)
 	CardManager.played_cards(selected_card)
 	CardManager.fill_hand()
 	

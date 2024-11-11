@@ -1,8 +1,8 @@
 extends Card
 class_name WorkerCard
 
-@export var base_work_rate : int
-@export var special_work_rate : Dictionary
+var base_work_rate : int
+var special_work_rate : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass	
+	pass
 
 func set_data(data: WorkerCardData):
 	set_base_data(data)

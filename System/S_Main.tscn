@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=16 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Field.gd" id="2_078xj"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://Resource/Card/GDR_Card.gd" id="2_rera5"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="3_fuj8y"]
+[ext_resource type="Resource" uid="uid://3lrohpvfqffc" path="res://Resource/Card/Worker/R_WorkerCard_0000.tres" id="3_hyj6l"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="4_3w3nh"]
 [ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="4_pj51p"]
-[ext_resource type="Script" path="res://System/GD_StateManager.gd" id="4_wepr5"]
+[ext_resource type="Resource" uid="uid://ceikwd005j6vh" path="res://Resource/Card/Business/R_BusinessCard_1000.tres" id="5_gbtb5"]
 [ext_resource type="Script" path="res://System/Board/GD_Discard.gd" id="5_gyhr2"]
 [ext_resource type="Script" path="res://System/Board/GD_Deck.gd" id="6_qjuhx"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
@@ -24,7 +26,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
-start_deck = Array[ExtResource("2_rera5")]([null])
+start_deck = Array[ExtResource("2_rera5")]([ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l")])
+start_business = Array[ExtResource("4_3w3nh")]([ExtResource("5_gbtb5")])
 
 [node name="Field" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -213,9 +216,6 @@ label_settings = SubResource("LabelSettings_4d276")
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_4d276")
-
-[node name="StateManager" type="Node" parent="."]
-script = ExtResource("4_wepr5")
 
 [node name="SContractSelection" parent="." instance=ExtResource("12_nwqtc")]
 visible = false

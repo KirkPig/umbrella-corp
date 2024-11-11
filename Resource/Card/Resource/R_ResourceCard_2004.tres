@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://5arrjy4xyukv"]
 
-[ext_resource type="Texture2D" uid="uid://vowkvwd56hb" path="res://Assets/worker_card.png" id="1_ps7r8"]
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_0nhi1"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_7nyi8"]
 
 [resource]
@@ -9,5 +9,5 @@ yield_score = 13
 yield_gold = 2
 card_name = "Iron"
 card_id = 2004
-card_texture = ExtResource("1_ps7r8")
+card_texture = ExtResource("1_0nhi1")
 shop_price = 0
