@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://sjj5okxpp1y1"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_gjyh7"]
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_segbu"]
+
+[resource]
+script = ExtResource("1_gjyh7")
+yield_score = 12
+yield_gold = 1
+card_name = "Corn"
+card_id = 2001
+card_texture = ExtResource("1_segbu")
+shop_price = 0

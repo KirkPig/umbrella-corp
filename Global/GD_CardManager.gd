@@ -1,29 +1,54 @@
 extends Node
 
-var field: Control
-var hand: Control
-var shop: Control
-var deck :Control
-var discarded :Control
-var played :Control
+@onready var template_worker_card = preload("res://Card/Presets/S_Worker.tscn")
+@onready var template_business_card = preload("res://Card/Presets/S_Business.tscn")
+@onready var template_resource_card = preload("res://Card/Presets/S_Resource.tscn")
+
+var field : Control
+var hand : Control
+var shop : Control
+var deck : Control
+var discarded : Control
+var played : Control
+
+func create_worker_card(data: WorkerCardData) -> WorkerCard:
+	var card : WorkerCard = template_worker_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	return card
+
+func create_business_card(data: BusinessCardData) -> BusinessCard:
+	var card : BusinessCard = template_business_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	card.selected_work.connect(ActionManager.action_work)
+	return card
+
+func create_resource_card(data: ResourceCardData) -> ResourceCard:
+	var card : ResourceCard = template_resource_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	return card
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-# TODO
-func add_card_to_deck(data : CardData) -> void:
+func add_card_to_deck(data : CardData) -> Card:
+	var card : Card
 	if data is WorkerCardData:
-		pass
-		#var card : WorkerCard = worker_card.instantiate()
-		#card.is_buy.connect(action_buy)
-		#return card
+		card = create_worker_card(data)
+	elif data is ResourceCardData:
+		card = create_resource_card(data)
+	else:
+		return
+	
+	deck.add_child(card)
+	card.set_data(data)
+	
+	return card
 
-# TODO
 func added_business_field(data : BusinessCardData):
-	pass
-	#var card : BusinessCard = create_business_card()
-	#field.add_child(card)
+	var card : BusinessCard = create_business_card(data)
+	field.add_child(card)
+	card.set_data(data)
 
 #TODO: Shop Card 
 func reset_shop():
@@ -35,7 +60,6 @@ func reset_shop():
 		#var card = create_worker_card()
 		#shop.add_child(card)
 		#card.in_shop = true
-		
 
 func draw() -> bool:
 	var deck_cards = deck.get_children()
@@ -45,13 +69,13 @@ func draw() -> bool:
 	draw_card.reparent(hand)
 	ActionManager.coonect_selection(draw_card)
 	return true
-	
+
 func fill_hand():
 	while true:
 		var hand_cards = hand.get_children()
 		if hand_cards.size() >= GameManager.max_hand : break
 		if !draw(): break
-#
+
 func reset_hand():
 	for card in hand.get_children():
 		discard(card)
@@ -103,6 +127,7 @@ func next_turn():
 func end_turn():
 	reset_hand()
 	free_played_card()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
