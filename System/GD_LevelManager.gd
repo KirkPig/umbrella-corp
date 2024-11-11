@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 func start_game():
 	set_up_game_manager()
 	add_start_deck()
+	add_start_business()
 
 func set_up_game_manager() -> void:
 	GameManager.current_turn = 0
