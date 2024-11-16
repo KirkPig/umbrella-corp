@@ -2,14 +2,6 @@ extends Node
 
 var action_list: ActionListController
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 ## Section: Actions
 func action_work(business: BusinessCard):
 	var selected_card = CardManager.get_selected_card()
@@ -39,22 +31,8 @@ func action_discard():
 
 func action_sell():
 	var selected_card: Array[Card] = CardManager.get_selected_card()
-	var _dict : Dictionary = {}
-	var price = 0
-	for card : ResourceCard in selected_card:
-		if card.card_id in _dict:
-			_dict[card.card_id] += 1
-		else:
-			_dict[card.card_id] = 1
-		price = price + card.yield_score
-		GameManager.gold = GameManager.gold + card.yield_gold
-		
-	var mul : int = 0
-	for val in _dict.values():
-		mul = maxi(mul, val)
-	
-	GameManager.current_score = GameManager.current_score + (mul * price)
-	GameManager.total_score = GameManager.total_score + (mul * price)
+
+	SellManager.sell(selected_card)
 	CardManager.played_cards(selected_card)
 	CardManager.fill_hand()
 	
@@ -72,7 +50,7 @@ func action_buy(card: Card):
 func action_research():
 	pass
 	
-func coonect_selection(draw_card:Card):
+func connect_selection(draw_card:Card):
 	if !draw_card.selection_change.is_connected(check_selection_condition):
 		draw_card.selection_change.connect(check_selection_condition)
 

@@ -67,7 +67,7 @@ func draw() -> bool:
 		return false
 	var draw_card: Card = deck_cards[randi() % deck_cards.size()]
 	draw_card.reparent(hand)
-	ActionManager.coonect_selection(draw_card)
+	ActionManager.connect_selection(draw_card)
 	return true
 
 func fill_hand():
@@ -98,7 +98,7 @@ func get_selected_card() -> Array[Card]:
 func played_card(card: Card):
 	card.is_selected = false
 	card.reparent(played)
-	ActionManager.coonect_selection(card)
+	ActionManager.connect_selection(card)
 #
 func played_cards(cards: Array[Card]):
 	for card in cards:
@@ -107,7 +107,7 @@ func played_cards(cards: Array[Card]):
 func discard(card: Card):
 	card.is_selected = false
 	card.reparent(discarded)
-	ActionManager.coonect_selection(card)
+	ActionManager.connect_selection(card)
 #
 func discards(cards: Array[Card]):
 	for card in cards:

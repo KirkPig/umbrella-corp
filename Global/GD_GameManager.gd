@@ -18,6 +18,7 @@ var current_turn : int:
 
 var goal_turn : int:
 	set(value):
+		total_turn += value - goal_turn
 		goal_turn = value
 		goal_turn_change.emit(value)
 		
@@ -33,6 +34,7 @@ var current_score : int:
 		
 var goal_score : int:
 	set(value):
+		total_score += value - goal_score
 		goal_score = value
 		goal_score_change.emit(value)
 		
@@ -65,13 +67,13 @@ var selected_contract: ResourceContract
 var constract_selection: Control
 
 func next_turn():
-	total_turn += 1
 	current_turn += 1
 	energy = max_energy
 	CardManager.next_turn()
 	
 func end_turn():
 	CardManager.end_turn()
+	SellManager.end_turn()
 	var turn_limit = selected_contract.turn_limit
 	if current_turn == turn_limit:
 		if selected_contract.check_finish_contract(current_score):

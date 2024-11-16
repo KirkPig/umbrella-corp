@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Card/GD_ResourceCard.gd" id="1_2lajr"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_uqi2t"]
-[ext_resource type="Texture2D" uid="uid://vowkvwd56hb" path="res://Assets/worker_card.png" id="2_w7mwk"]
+[ext_resource type="Texture2D" uid="uid://vowkvwd56hb" path="res://Assets/WorkerCard/worker_card.png" id="2_w7mwk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mapuj"]
 resource_local_to_scene = true
