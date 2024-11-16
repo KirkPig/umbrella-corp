@@ -38,23 +38,23 @@ offset_bottom = 750.0
 alignment = 1
 script = ExtResource("2_078xj")
 
-[node name="Hand" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="Hand" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 50.0
 offset_top = 800.0
-offset_right = 1450.0
-offset_bottom = 1050.0
-alignment = 1
+offset_right = 50.0
+offset_bottom = 800.0
 script = ExtResource("3_4qhri")
+hand_width = 1400.0
 
-[node name="Shop" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="Shop" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 500.0
-offset_top = 200.0
-offset_right = 1900.0
-offset_bottom = 450.0
-alignment = 1
+offset_top = 50.0
+offset_right = 500.0
+offset_bottom = 50.0
 script = ExtResource("4_pj51p")
+shop_width = 1200.0
 
 [node name="Discard" parent="." instance=ExtResource("9_bes4e")]
 layout_mode = 1

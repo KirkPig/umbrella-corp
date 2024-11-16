@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BusinessCardData" load_steps=8 format=3 uid="uid://ceikwd005j6vh"]
 
-[ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/A_BusinessCard_1000.png" id="1_sauxl"]
+[ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/BusinessCard/A_BusinessCard_1000.png" id="1_sauxl"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_tfgv0"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_lc3g2"]
 [ext_resource type="Resource" uid="uid://b4rkvthmelmqy" path="res://Resource/Card/Resource/R_ResourceCard_2000.tres" id="3_8hgq0"]

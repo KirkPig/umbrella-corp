@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://bi0p0ios6y4e3"]
 
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_hm8a6"]
+[ext_resource type="Texture2D" uid="uid://dvu4qslk8nwhe" path="res://Assets/ResourceCard/A_ResourceCard_2009.png" id="1_i5cq6"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_nrxg3"]
 
 [resource]
@@ -9,5 +9,5 @@ yield_score = 7
 yield_gold = 1
 card_name = "Lumber"
 card_id = 2008
-card_texture = ExtResource("1_hm8a6")
+card_texture = ExtResource("1_i5cq6")
 shop_price = 0

@@ -53,7 +53,7 @@ var max_energy : int:
 		max_energy = value
 		max_energy_change.emit(value)
 		
-var gold : int:
+var gold : int = 10000:
 	set(value):
 		gold = value
 		gold_change.emit(value)

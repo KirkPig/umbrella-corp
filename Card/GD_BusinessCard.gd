@@ -17,6 +17,9 @@ func _process(delta: float) -> void:
 	pass
 
 func selected():
+	if in_shop:
+		emit_signal("is_buy", self)
+		return
 	emit_signal("selected_work", self)
 
 # TODO: Resource card pick on yield list

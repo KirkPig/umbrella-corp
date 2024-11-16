@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://brd8se8wvi451"]
+[gd_scene load_steps=7 format=3 uid="uid://brd8se8wvi451"]
 
-[ext_resource type="PackedScene" uid="uid://685504p7642x" path="res://Card/Presets/S_Worker.tscn" id="1_bmndv"]
+[ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="1_lpxpf"]
+[ext_resource type="Script" path="res://Card/GD_TestCard.gd" id="1_u4n5d"]
+[ext_resource type="Resource" uid="uid://b4rkvthmelmqy" path="res://Resource/Card/Resource/R_ResourceCard_2000.tres" id="2_gotvd"]
+[ext_resource type="Script" path="res://System/Board/GD_Deck.gd" id="3_3wbs5"]
+[ext_resource type="Resource" uid="uid://3lrohpvfqffc" path="res://Resource/Card/Worker/R_WorkerCard_0000.tres" id="3_l6w7y"]
+[ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="5_w38p4"]
 
 [node name="Cards" type="Control"]
 layout_mode = 3
@@ -9,25 +14,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u4n5d")
+card = ExtResource("2_gotvd")
+shop = ExtResource("3_l6w7y")
 
-[node name="Hand" type="HBoxContainer" parent="."]
+[node name="Hand" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 800.0
+offset_bottom = 800.0
+script = ExtResource("1_lpxpf")
+
+[node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="WorkerCard" parent="Hand" instance=ExtResource("1_bmndv")]
+[node name="AddCard" type="Button" parent="Container"]
 layout_mode = 2
+text = "Add Card"
 
-[node name="WorkerCard2" parent="Hand" instance=ExtResource("1_bmndv")]
+[node name="AddShop" type="Button" parent="Container"]
 layout_mode = 2
+text = "Add Shop"
 
-[node name="WorkerCard3" parent="Hand" instance=ExtResource("1_bmndv")]
-layout_mode = 2
+[node name="Deck" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_3wbs5")
 
-[node name="WorkerCard4" parent="Hand" instance=ExtResource("1_bmndv")]
-layout_mode = 2
+[node name="Shop" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 500.0
+offset_top = 20.0
+offset_right = 500.0
+offset_bottom = 20.0
+script = ExtResource("5_w38p4")
+
+[connection signal="pressed" from="Container/AddCard" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Container/AddShop" to="." method="_on_add_shop_pressed"]
