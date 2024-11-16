@@ -20,6 +20,9 @@ func start(_type : SellManager.EType, \
 	match type:
 		SellManager.EType.multiply:
 			SellManager.all_bonus[resource][type] *= amount
+		SellManager.EType.add, \
+		SellManager.EType.addEach:
+			SellManager.all_bonus[resource][type] += amount
 		SellManager.EType.Set:
 			SellManager.all_bonus[resource][type] += amount
 			SellManager.all_bonus[resource]['is_set'] = false
@@ -30,6 +33,9 @@ func end() -> void:
 	match type:
 		SellManager.EType.multiply:
 			SellManager.all_bonus[resource][type] /= amount
+		SellManager.EType.add, \
+		SellManager.EType.addEach:
+			SellManager.all_bonus[resource][type] -= amount
 		SellManager.EType.Set:
 			SellManager.all_bonus[resource][type] -= amount
 			SellManager.all_bonus[resource]['is_set'] = false

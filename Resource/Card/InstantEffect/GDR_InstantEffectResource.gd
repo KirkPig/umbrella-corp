@@ -1,5 +1,5 @@
 extends InstantEffect
-class_name InstantResource
+class_name InstantEffectResource
 
 enum EEffectType{
 	gain,
