@@ -13,10 +13,8 @@ func _ready() -> void:
 	CardManager.discarded = $DiscardCard
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func get_all_card() -> Array[Node]:
+	return discard_card.get_children()
 
 func _on_discard_card_child_order_changed() -> void:
 	card_number = discard_card.get_child_count()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=3 format=3 uid="uid://dn6kvrw5i5rym"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_n2k1g"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_jxew5"]
+
+[resource]
+script = ExtResource("2_jxew5")
+target_mode = 0
+target_type = 0
+effects = Array[ExtResource("1_n2k1g")]([])
+card_name = ""
+card_id = 0
+shop_price = 0

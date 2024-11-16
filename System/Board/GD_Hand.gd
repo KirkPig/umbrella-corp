@@ -8,7 +8,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
-
+	
+func get_all_card() -> Array[Node]:
+	return self.get_children()
+	
 func update_in_hand():
 	var cards = self.get_children()
 	var i = 0

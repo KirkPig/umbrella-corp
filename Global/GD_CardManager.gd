@@ -4,6 +4,14 @@ extends Node
 @onready var template_business_card = preload("res://Card/Presets/S_Business.tscn")
 @onready var template_resource_card = preload("res://Card/Presets/S_Resource.tscn")
 
+enum ECardLocation {
+	hand,
+	shop,
+	field,
+	deck,
+	discarded
+}
+
 var field: Control
 var hand: HandController
 var shop: ShopController
@@ -153,6 +161,43 @@ func next_turn():
 	reset_deck()
 	fill_hand()
 	reset_shop()
+
+func get_all_card(location:ECardLocation) -> Array[Card]:
+	var cards:Array[Card] = []
+	
+	var location_node:Node
+	match location:
+		ECardLocation.hand:
+			location_node = hand
+		ECardLocation.shop:
+			location_node = shop
+		ECardLocation.deck:
+			location_node = deck
+		ECardLocation.discarded:
+			location_node = discarded
+			
+	for node in location_node.get_children():
+		if node is Card:
+			cards.append(node)
+	
+	return cards
+
+func move_cards_to(cards:Array[Card],target_location:ECardLocation) -> void:
+	var location_node:Node
+	match target_location:
+		ECardLocation.hand:
+			for card in cards:
+				card.reparent(hand)
+			hand.update_in_hand()
+		#TODO
+		ECardLocation.shop:
+			pass
+		ECardLocation.deck:
+			for card in cards:
+				card.reparent(deck)
+		ECardLocation.discarded:
+			for card in cards:
+				card.reparent(discarded)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

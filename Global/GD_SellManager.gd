@@ -11,17 +11,22 @@ enum EResource{
 enum EType{
 	multiply,
 	add,
-	Set
+	Set,
+	addEach
 }
 var bonus_effect_list :Array[SellBonusEffect]= []
 var all_bonus = {
 	EResource.sell_score:{
 		EType.multiply: 1,
+		EType.add: 0,
+		EType.addEach: 0,
 		EType.Set:0,
 		'is_set':false
 	},
 	EResource.sell_gold:{
 		EType.multiply: 1,
+		EType.add: 0,
+		EType.addEach: 0,
 		EType.Set:0,
 		'is_set':false
 	}
@@ -40,10 +45,10 @@ func end_turn()-> void:
 func cal_sell_gold(sell_card:Array[Card]):
 	var price  = 0
 	for card : ResourceCard in sell_card:
-		price = price + card.yield_score
-	GameManager.gold += int(price * all_bonus[EResource.sell_gold][EType.multiply]) \
+		price = price + card.yield_score + all_bonus[EResource.sell_gold][EType.addEach] 
+	GameManager.gold += all_bonus[EResource.sell_gold][EType.Set]  \
 						if all_bonus[EResource.sell_gold]['is_set'] else \
-						all_bonus[EResource.sell_gold][EType.Set]
+						int(price * all_bonus[EResource.sell_gold][EType.multiply]) + all_bonus[EResource.sell_gold][EType.add] 
 						
 
 func cal_sell_score(sell_card:Array[Card]):	
@@ -54,12 +59,12 @@ func cal_sell_score(sell_card:Array[Card]):
 			_dict[card.card_id] += 1
 		else:
 			_dict[card.card_id] = 1
-		price = price + card.yield_score
+		price = price + card.yield_score + all_bonus[EResource.sell_score][EType.addEach] 
 		
 	var mul : int = 0
 	for val in _dict.values():
 		mul = maxi(mul, val)
 
-	GameManager.current_score += (mul * price) * all_bonus[EResource.sell_score][EType.multiply] \
+	GameManager.current_score += all_bonus[EResource.sell_score][EType.Set]  \
 						if all_bonus[EResource.sell_score]['is_set'] else \
-						all_bonus[EResource.sell_score][EType.Set]
+						(mul * price) * all_bonus[EResource.sell_score][EType.multiply] + all_bonus[EResource.sell_gold][EType.add]

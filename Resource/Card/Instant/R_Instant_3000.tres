@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InstantCardData" load_steps=5 format=3 uid="uid://b310oxdaytwbd"]
 
-[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectBasic.gd" id="1_4eigl"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectResource.gd" id="1_4eigl"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_v76uh"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="1_wuwa2"]
 

@@ -16,5 +16,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func get_all_card() -> Array[Node]:
+	return deck_card.get_children()
+	
 func _on_deck_card_child_order_changed() -> void:
 	card_number = deck_card.get_child_count()

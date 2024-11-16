@@ -86,7 +86,7 @@ func end_turn():
 		if selected_contract.check_finish_contract(current_score):
 			current_turn = 0 
 			current_score = 0
-			print("win")
+			start_select_contract()
 		#TODO: Lose game
 		else:
 			print('fail')
