@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://685504p7642x"]
+
+[ext_resource type="Script" path="res://Card/GD_WorkerCard.gd" id="1_xhlpt"]
+[ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_g04dg"]
+[ext_resource type="Texture2D" uid="uid://bc4l3yykhcv0s" path="res://Assets/WorkerCard/A_WorkerCard_0000.png" id="3_jww0k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q23vy"]
+resource_local_to_scene = true
+shader = ExtResource("2_g04dg")
+shader_parameter/rect_size = Vector2(540, 756)
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[node name="WorkerCard" type="Control"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xhlpt")
+angle_x_max = null
+angle_y_max = null
+
+[node name="Card" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_q23vy")
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 840.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_jww0k")
+
+[connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
+[connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]
+[connection signal="mouse_exited" from="Card" to="." method="_on_card_mouse_exited"]

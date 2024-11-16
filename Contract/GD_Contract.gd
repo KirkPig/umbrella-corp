@@ -22,11 +22,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-# TODO:check id score pass
 func check_finish_contract() -> bool:
-	return false
-
+	return GameManager.current_score >= contract_res.score_goal
 
 func _on_select_button_pressed() -> void:
 	GameManager.select_contract(contract_res)

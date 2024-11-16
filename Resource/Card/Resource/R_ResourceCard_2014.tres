@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://bc8urv015piti"]
 
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_vmoud"]
+[ext_resource type="Texture2D" uid="uid://bdpre2nipv14m" path="res://Assets/ResourceCard/A_ResourceCard_2014.png" id="1_8l1qc"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_7nh81"]
 
 [resource]
@@ -9,5 +9,5 @@ yield_score = 12
 yield_gold = 1
 card_name = "Pork"
 card_id = 2013
-card_texture = ExtResource("1_vmoud")
+card_texture = ExtResource("1_8l1qc")
 shop_price = 0

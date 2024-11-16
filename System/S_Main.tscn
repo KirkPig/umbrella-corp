@@ -10,9 +10,9 @@
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="4_3w3nh"]
 [ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="4_pj51p"]
 [ext_resource type="Resource" uid="uid://ceikwd005j6vh" path="res://Resource/Card/Business/R_BusinessCard_1000.tres" id="5_gbtb5"]
-[ext_resource type="Script" path="res://System/Board/GD_Discard.gd" id="5_gyhr2"]
-[ext_resource type="Script" path="res://System/Board/GD_Deck.gd" id="6_qjuhx"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
+[ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://System/Board/S_Discard.tscn" id="9_bes4e"]
+[ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://System/Board/S_Deck.tscn" id="10_r3mj1"]
 [ext_resource type="PackedScene" uid="uid://bsn11t7pc3pei" path="res://System/S_ContractSelection.tscn" id="12_nwqtc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4d276"]
@@ -38,33 +38,29 @@ offset_bottom = 750.0
 alignment = 1
 script = ExtResource("2_078xj")
 
-[node name="Hand" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="Hand" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 50.0
 offset_top = 800.0
-offset_right = 1450.0
-offset_bottom = 1050.0
-alignment = 1
+offset_right = 50.0
+offset_bottom = 800.0
 script = ExtResource("3_4qhri")
+hand_width = 1400.0
 
-[node name="Shop" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="Shop" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 500.0
-offset_top = 200.0
-offset_right = 1900.0
-offset_bottom = 450.0
-alignment = 1
+offset_top = 50.0
+offset_right = 500.0
+offset_bottom = 50.0
 script = ExtResource("4_pj51p")
+shop_width = 1200.0
 
-[node name="Discard" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-script = ExtResource("5_gyhr2")
+[node name="Discard" parent="." instance=ExtResource("9_bes4e")]
+layout_mode = 1
 
-[node name="Deck" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-script = ExtResource("6_qjuhx")
+[node name="Deck" parent="." instance=ExtResource("10_r3mj1")]
+layout_mode = 1
 
 [node name="Played" type="Control" parent="."]
 visible = false
