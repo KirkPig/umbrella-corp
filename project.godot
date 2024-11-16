@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 GameManager="*res://Global/GD_GameManager.gd"
 CardManager="*res://Global/GD_CardManager.gd"
 ActionManager="*res://Global/GD_ActionManager.gd"
-RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
+RuntimeDebugTools="res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
 SellManager="*res://Global/GD_SellManager.gd"
 
 [display]

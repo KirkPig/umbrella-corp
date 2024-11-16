@@ -10,7 +10,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
+func get_all_card() -> Array[Node]:
+	return self.get_children()
+	
 func update_in_shop():
 	var cards = self.get_children()
 	var i = 0

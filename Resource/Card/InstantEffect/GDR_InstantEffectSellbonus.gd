@@ -1,5 +1,5 @@
 extends InstantEffect
-class_name InstantBonus
+class_name InstantEffectSellbonus
 
 @export var effect_resource : SellManager.EResource
 @export var effect_type : SellManager.EType

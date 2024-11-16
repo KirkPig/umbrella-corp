@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=3 format=3 uid="uid://dtvhbj31menl0"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_tcp6c"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_5qgb2"]
+
+[resource]
+script = ExtResource("2_5qgb2")
+target_mode = 0
+target_type = 0
+effects = Array[ExtResource("1_tcp6c")]([])
+card_name = ""
+card_id = 0
+shop_price = 0

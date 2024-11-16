@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InstantCardData" load_steps=5 format=3 uid="uid://b2cm71bkg773k"]
 
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_sxdii"]
-[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectBonus.gd" id="2_elnwu"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="2_elnwu"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_o6hmy"]
 
 [sub_resource type="Resource" id="Resource_jblko"]
