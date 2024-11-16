@@ -26,49 +26,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-var energy_cost_sell: int = 1
-var energy_cost_discard: int = 0
-var energy_cost_work: int = 1
-var energy_cost_research: int = 1
-
-func can_sell(selected_card: Array[Card]) -> bool:
-	if selected_card.size() <= 0:
-		return false
-	if GameManager.energy < energy_cost_sell:
-		return false
-	for card in selected_card:
-		if card is not ResourceCard:
-			return false
-	return true
-
-func can_discard(selected_card: Array[Card]) -> bool:
-	if selected_card.size() <= 0:
-		return false
-	if GameManager.energy < energy_cost_discard:
-		return false
-	return true
-
-func can_work(selected_card: Array[Card]) -> bool:
-	if selected_card.size() <= 0:
-		return false
-	if GameManager.energy < energy_cost_work:
-		return false
-	for card in selected_card:
-		if card is not WorkerCard:
-			return false
-	return true
-
-func can_research(selected_card: Array[Card]) -> bool:
-	if selected_card.size() <= 0:
-		return false
-	if GameManager.energy < energy_cost_research:
-		return false
-	return true
 	
 func update_list(selected_card: Array[Card] ):
-	show_sell = can_sell(selected_card)
-	show_discard = can_discard(selected_card)
+	show_sell = GameManager.can_sell(selected_card)
+	show_discard = GameManager.can_discard(selected_card)
 	
 func reset_list():
 	show_sell = false

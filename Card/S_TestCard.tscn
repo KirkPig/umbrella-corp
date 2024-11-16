@@ -1,11 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://brd8se8wvi451"]
+[gd_scene load_steps=11 format=3 uid="uid://brd8se8wvi451"]
 
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="1_lpxpf"]
 [ext_resource type="Script" path="res://Card/GD_TestCard.gd" id="1_u4n5d"]
 [ext_resource type="Resource" uid="uid://b4rkvthmelmqy" path="res://Resource/Card/Resource/R_ResourceCard_2000.tres" id="2_gotvd"]
 [ext_resource type="Script" path="res://System/Board/GD_Deck.gd" id="3_3wbs5"]
 [ext_resource type="Resource" uid="uid://3lrohpvfqffc" path="res://Resource/Card/Worker/R_WorkerCard_0000.tres" id="3_l6w7y"]
+[ext_resource type="Resource" uid="uid://ceikwd005j6vh" path="res://Resource/Card/Business/R_BusinessCard_1000.tres" id="4_17t38"]
+[ext_resource type="Resource" uid="uid://b310oxdaytwbd" path="res://Resource/Card/Instant/R_Instant_3000.tres" id="5_g84rg"]
 [ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="5_w38p4"]
+[ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="9_4g3e7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xw8eu"]
+font_size = 32
 
 [node name="Cards" type="Control"]
 layout_mode = 3
@@ -15,8 +21,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u4n5d")
-card = ExtResource("2_gotvd")
-shop = ExtResource("3_l6w7y")
+worker_card = ExtResource("3_l6w7y")
+resource_card = ExtResource("2_gotvd")
+business_card = ExtResource("4_17t38")
+instant_card = ExtResource("5_g84rg")
 
 [node name="Hand" type="Control" parent="."]
 anchors_preset = 0
@@ -44,6 +52,10 @@ text = "Add Card"
 layout_mode = 2
 text = "Add Shop"
 
+[node name="Research" type="Button" parent="Container"]
+layout_mode = 2
+text = "Research"
+
 [node name="Deck" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -58,5 +70,124 @@ offset_right = 500.0
 offset_bottom = 20.0
 script = ExtResource("5_w38p4")
 
+[node name="StatusBar" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 23.0
+offset_right = 426.0
+offset_bottom = 117.0
+script = ExtResource("9_4g3e7")
+
+[node name="Turn" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Turn"]
+layout_mode = 2
+text = "Turn: "
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Value" type="Label" parent="StatusBar/Turn"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+horizontal_alignment = 2
+
+[node name="Seperator" type="Label" parent="StatusBar/Turn"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Max" type="Label" parent="StatusBar/Turn"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Score" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Score"]
+layout_mode = 2
+text = "Score: "
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Value" type="Label" parent="StatusBar/Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+horizontal_alignment = 2
+
+[node name="Seperator" type="Label" parent="StatusBar/Score"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Max" type="Label" parent="StatusBar/Score"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="TotalScore" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/TotalScore"]
+layout_mode = 2
+text = "Total Score: "
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Value" type="Label" parent="StatusBar/TotalScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+horizontal_alignment = 2
+
+[node name="Gold" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Gold"]
+layout_mode = 2
+text = "Gold: "
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Value" type="Label" parent="StatusBar/Gold"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+horizontal_alignment = 2
+
+[node name="Energy" type="HBoxContainer" parent="StatusBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+text = "Energy: "
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Value" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+horizontal_alignment = 2
+
+[node name="Seperator" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Max" type="Label" parent="StatusBar/Energy"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_xw8eu")
+
 [connection signal="pressed" from="Container/AddCard" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Container/AddShop" to="." method="_on_add_shop_pressed"]
+[connection signal="pressed" from="Container/Research" to="." method="_on_research_pressed"]

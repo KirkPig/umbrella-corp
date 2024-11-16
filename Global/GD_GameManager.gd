@@ -66,6 +66,13 @@ var max_hand : int:
 var selected_contract: ResourceContract
 var constract_selection: Control
 
+var rng: RandomNumberGenerator
+
+var energy_cost_sell: int = 1
+var energy_cost_discard: int = 0
+var energy_cost_work: int = 1
+var energy_cost_research: int = 1
+
 func next_turn():
 	current_turn += 1
 	energy = max_energy
@@ -95,4 +102,45 @@ func select_contract(contract:ResourceContract) -> void:
 	goal_score = contract.score_goal
 	constract_selection.visible = false
 	constract_selection.clear_contract() 
-	GameManager.next_turn()
+	next_turn()
+
+func can_sell(selected_card: Array[Card]) -> bool:
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_sell:
+		return false
+	for card in selected_card:
+		if card is not ResourceCard:
+			return false
+	return true
+
+func can_discard(selected_card: Array[Card]) -> bool:
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_discard:
+		return false
+	return true
+
+func can_work(selected_card: Array[Card]) -> bool:
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_work:
+		return false
+	for card in selected_card:
+		if card is not WorkerCard:
+			return false
+	return true
+
+func can_research(selected_card: Array[Card]) -> bool:
+	if selected_card.size() != 3:
+		return false
+	if energy < energy_cost_research:
+		return false
+	var _resource: int = 0
+	var _worker: int = 0
+	for _card: Card in selected_card:
+		if _card is ResourceCard:
+			_resource += 1
+		elif _card is WorkerCard:
+			_worker += 1
+	return (_resource == 2) and (_worker == 1)
