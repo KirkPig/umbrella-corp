@@ -1,12 +1,14 @@
 extends Node
 
+#signal hand_updated
+
 @onready var template_worker_card = preload("res://Card/Presets/S_Worker.tscn")
 @onready var template_business_card = preload("res://Card/Presets/S_Business.tscn")
 @onready var template_resource_card = preload("res://Card/Presets/S_Resource.tscn")
 
 var field : Control
-var hand : Control
-var shop : Control
+var hand : HandController
+var shop : ShopController
 var deck : Control
 var discarded : Control
 var played : Control
@@ -31,7 +33,7 @@ func create_resource_card(data: ResourceCardData) -> ResourceCard:
 func _ready() -> void:
 	pass # Replace with function body.
 
-func add_card_to_deck(data : CardData) -> Card:
+func add_card_to_deck(data: CardData) -> Card:
 	var card : Card
 	if data is WorkerCardData:
 		card = create_worker_card(data)
@@ -45,13 +47,44 @@ func add_card_to_deck(data : CardData) -> Card:
 	
 	return card
 
+func add_card_to_hand(data: CardData) -> Card:
+	var card : Card
+	if data is WorkerCardData:
+		card = create_worker_card(data)
+	elif data is ResourceCardData:
+		card = create_resource_card(data)
+	else:
+		return
+	
+	hand.add_child(card)
+	card.set_data(data)
+	ActionManager.connect_selection(card)
+	hand.update_in_hand()
+	return card
+	
+func add_card_to_shop(data: CardData) -> Card:
+	var card: Card
+	if data is WorkerCardData:
+		card = create_worker_card(data)
+	elif data is BusinessCardData:
+		card = create_business_card(data)
+	else:
+		return
+	
+	shop.add_child(card)
+	card.set_data(data)
+	ActionManager.connect_selection(card)
+	card.in_shop = true
+	shop.update_in_shop()
+	return card
+
 func added_business_field(data : BusinessCardData):
 	var card : BusinessCard = create_business_card(data)
 	field.add_child(card)
 	card.set_data(data)
 
-#TODO: Shop Card 
 func reset_shop():
+	# TODO: Random card in the pool to the shop
 	for card in shop.get_children():
 		shop.remove_child(card)
 		if is_instance_valid(card):
@@ -67,7 +100,8 @@ func draw() -> bool:
 		return false
 	var draw_card: Card = deck_cards[randi() % deck_cards.size()]
 	draw_card.reparent(hand)
-	ActionManager.coonect_selection(draw_card)
+	ActionManager.connect_selection(draw_card)
+	hand.update_in_hand()
 	return true
 
 func fill_hand():
@@ -84,8 +118,9 @@ func reset_deck():
 	for card in discarded.get_children():
 		card.reparent(deck)
 
-func move_to_hand(node:Card):
+func move_to_hand(node: Card):
 	node.reparent(hand)
+	hand.update_in_hand()
 
 func get_selected_card() -> Array[Card]:
 	var selected_card : Array[Card]
@@ -93,12 +128,11 @@ func get_selected_card() -> Array[Card]:
 		if card is Card and card.is_selected:
 			selected_card.append(card)
 	return selected_card
-	
 #
 func played_card(card: Card):
 	card.is_selected = false
 	card.reparent(played)
-	ActionManager.coonect_selection(card)
+	ActionManager.connect_selection(card)
 #
 func played_cards(cards: Array[Card]):
 	for card in cards:
@@ -107,7 +141,7 @@ func played_cards(cards: Array[Card]):
 func discard(card: Card):
 	card.is_selected = false
 	card.reparent(discarded)
-	ActionManager.coonect_selection(card)
+	ActionManager.connect_selection(card)
 #
 func discards(cards: Array[Card]):
 	for card in cards:

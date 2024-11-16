@@ -15,14 +15,16 @@ shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
 [node name="WorkerCard" type="Control"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 3
 anchors_preset = 0
-pivot_offset = Vector2(120, 168)
 script = ExtResource("1_xhlpt")
+angle_x_max = null
+angle_y_max = null
 
 [node name="Card" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_q23vy")
-layout_mode = 2
+layout_mode = 0
 offset_right = 600.0
 offset_bottom = 840.0
 scale = Vector2(0.4, 0.4)

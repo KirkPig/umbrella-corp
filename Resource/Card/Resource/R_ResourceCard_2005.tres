@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://l1o4mphsr3ed"]
 
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_okrcl"]
+[ext_resource type="Texture2D" uid="uid://cghe0i8wologp" path="res://Assets/ResourceCard/A_ResourceCard_2005.png" id="1_s1b3r"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_5tl15"]
 
 [resource]
@@ -9,5 +9,5 @@ yield_score = 15
 yield_gold = 2
 card_name = "Gold"
 card_id = 2005
-card_texture = ExtResource("1_okrcl")
+card_texture = ExtResource("1_s1b3r")
 shop_price = 0
