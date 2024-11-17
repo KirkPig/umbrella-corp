@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://brd8se8wvi451"]
+[gd_scene load_steps=12 format=3 uid="uid://brd8se8wvi451"]
 
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="1_lpxpf"]
 [ext_resource type="Script" path="res://Card/GD_TestCard.gd" id="1_u4n5d"]
 [ext_resource type="Resource" uid="uid://b4rkvthmelmqy" path="res://Resource/Card/Resource/R_ResourceCard_2000.tres" id="2_gotvd"]
-[ext_resource type="Script" path="res://System/Board/GD_Deck.gd" id="3_3wbs5"]
 [ext_resource type="Resource" uid="uid://3lrohpvfqffc" path="res://Resource/Card/Worker/R_WorkerCard_0000.tres" id="3_l6w7y"]
 [ext_resource type="Resource" uid="uid://ceikwd005j6vh" path="res://Resource/Card/Business/R_BusinessCard_1000.tres" id="4_17t38"]
 [ext_resource type="Resource" uid="uid://b310oxdaytwbd" path="res://Resource/Card/Instant/R_Instant_3000.tres" id="5_g84rg"]
 [ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="5_w38p4"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="9_4g3e7"]
+[ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://System/Board/S_Deck.tscn" id="9_64shx"]
+[ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://System/Board/S_Discard.tscn" id="10_hs3f2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xw8eu"]
 font_size = 32
@@ -55,12 +56,6 @@ text = "Add Shop"
 [node name="Research" type="Button" parent="Container"]
 layout_mode = 2
 text = "Research"
-
-[node name="Deck" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_3wbs5")
 
 [node name="Shop" type="Control" parent="."]
 anchors_preset = 0
@@ -187,6 +182,12 @@ label_settings = SubResource("LabelSettings_xw8eu")
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_xw8eu")
+
+[node name="Deck" parent="." instance=ExtResource("9_64shx")]
+layout_mode = 1
+
+[node name="Discard" parent="." instance=ExtResource("10_hs3f2")]
+layout_mode = 1
 
 [connection signal="pressed" from="Container/AddCard" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Container/AddShop" to="." method="_on_add_shop_pressed"]
