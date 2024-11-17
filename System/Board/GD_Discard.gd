@@ -11,9 +11,9 @@ var card_number : int  = 0 :
 		card_number = value
 		discard_button.text = "Discard Pile ("+str(value)+")"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	CardManager.discarded = $DiscardCard
+# Called when the node enters the scene tree for the first time.
 
 
 func get_all_card() -> Array[Node]:
