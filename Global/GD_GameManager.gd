@@ -86,15 +86,13 @@ func end_turn():
 		if selected_contract.check_finish_contract(current_score):
 			current_turn = 0 
 			current_score = 0
-			start_select_contract()
+			selected_contract.get_reward()
+			constract_selection.start_select_contract()
 		#TODO: Lose game
 		else:
 			print('fail')
 	else:
 		next_turn()
-
-func start_select_contract():
-	constract_selection.start_select_contract()
 	
 func select_contract(contract:ResourceContract) -> void:
 	selected_contract = contract

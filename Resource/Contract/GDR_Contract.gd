@@ -6,6 +6,7 @@ class_name ResourceContract
 @export var description: String
 @export var turn_limit:int
 @export var score_goal:int
+@export_multiline var reward_text:String
 @export var reward_list:Array[ContractReward]
 
 # Called when the node enters the scene tree for the first time.
@@ -21,4 +22,5 @@ func check_finish_contract(score:int) -> bool:
 	return score >= score_goal
 
 func get_reward() -> void:
-	pass
+	for reward in reward_list:
+		reward.get_reward()
