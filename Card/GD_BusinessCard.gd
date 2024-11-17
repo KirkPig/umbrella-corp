@@ -3,6 +3,14 @@ class_name BusinessCard
 
 signal selected_work(card: BusinessCard)
 
+var card_data: BusinessCardData:
+	set(value):
+		if card_data:
+			card_data.changed.disconnect(set_data)
+		value.changed.connect(set_data)
+		card_data = value
+		set_data(value)
+
 var worker_usage : int
 var resource_return : int
 var max_usage : int
