@@ -56,7 +56,7 @@ func add_card_to_deck(data: CardData) -> Card:
 	if !card:
 		return
 	deck.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 	
 	return card
 
@@ -65,7 +65,7 @@ func add_card_to_hand(data: CardData) -> Card:
 	if !card:
 		return
 	hand.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 	ActionManager.connect_selection(card)
 	hand.update_in_hand()
 	return card
@@ -75,16 +75,18 @@ func add_card_to_shop(data: CardData) -> Card:
 	if !card:
 		return
 	shop.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 	ActionManager.connect_selection(card)
 	card.in_shop = true
 	shop.update_in_shop()
 	return card
 
 func added_business_field(data : BusinessCardData):
-	var card : BusinessCard = create_business_card(data)
+	var card = create_card(data)
+	if !card:
+		return
 	field.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 
 func reset_shop():
 	for card in shop.get_children():
