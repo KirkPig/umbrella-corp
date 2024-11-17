@@ -1,11 +1,8 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=8 format=3 uid="uid://ddjom61ukysx3"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=5 format=3 uid="uid://ddjom61ukysx3"]
 
 [ext_resource type="Texture2D" uid="uid://dxrfipsvoejpe" path="res://Assets/BusinessCard/A_BusinessCard_1003.png" id="1_cg765"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_dipw2"]
 [ext_resource type="Resource" uid="uid://b4vn0xq52j43j" path="res://Resource/Card/Resource/R_ResourceCard_2012.tres" id="3_0yabl"]
-[ext_resource type="Resource" uid="uid://dkrkf0lovpynu" path="res://Resource/Card/Resource/R_ResourceCard_2013.tres" id="4_fc7hm"]
-[ext_resource type="Resource" uid="uid://bc8urv015piti" path="res://Resource/Card/Resource/R_ResourceCard_2014.tres" id="5_n4xe4"]
-[ext_resource type="Resource" uid="uid://i708uotn4f3" path="res://Resource/Card/Resource/R_ResourceCard_2015.tres" id="6_qs8a6"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="7_sk2gn"]
 
 [resource]
@@ -13,7 +10,7 @@ script = ExtResource("7_sk2gn")
 worker_usage = 1
 resource_return = 1
 max_usage = 1
-resource_yield_list = Array[ExtResource("2_dipw2")]([ExtResource("3_0yabl"), ExtResource("4_fc7hm"), ExtResource("5_n4xe4"), ExtResource("6_qs8a6")])
+resource_yield_list = Array[ExtResource("2_dipw2")]([ExtResource("3_0yabl")])
 card_name = "Livestock"
 card_id = 1003
 card_texture = ExtResource("1_cg765")

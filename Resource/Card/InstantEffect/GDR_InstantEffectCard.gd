@@ -12,7 +12,7 @@ func activate(target:Array[Card]) -> void:
 	
 	var picked_cards = []
 	while len(picked_cards) < amount or len(picked_cards) == len(cards):
-		var card = cards[randi() % len(cards)]
+		var card = cards[GameManager.rng.randi() % len(cards)]
 		if not picked_cards.has(card):
 			picked_cards.append(card)
 			

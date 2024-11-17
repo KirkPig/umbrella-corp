@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=17 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Field.gd" id="2_078xj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="4_3w3nh"]
 [ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="4_pj51p"]
 [ext_resource type="Resource" uid="uid://ceikwd005j6vh" path="res://Resource/Card/Business/R_BusinessCard_1000.tres" id="5_gbtb5"]
+[ext_resource type="Resource" uid="uid://c4vhoirtuh2yi" path="res://Resource/Card/Business/R_BusinessCard_1001.tres" id="6_pmh0r"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
 [ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://System/Board/S_Discard.tscn" id="9_bes4e"]
 [ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://System/Board/S_Deck.tscn" id="10_r3mj1"]
@@ -28,6 +29,7 @@ grow_vertical = 2
 script = ExtResource("1_jfe42")
 start_deck = Array[ExtResource("2_rera5")]([ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l"), ExtResource("3_hyj6l")])
 start_business = Array[ExtResource("4_3w3nh")]([ExtResource("5_gbtb5")])
+card_pool = Array[ExtResource("2_rera5")]([ExtResource("3_hyj6l"), ExtResource("5_gbtb5"), ExtResource("6_pmh0r")])
 
 [node name="Field" type="HBoxContainer" parent="."]
 layout_mode = 0

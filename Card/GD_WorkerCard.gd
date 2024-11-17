@@ -1,6 +1,14 @@
 extends Card
 class_name WorkerCard
 
+var card_data: WorkerCardData:
+	set(value):
+		if card_data:
+			card_data.changed.disconnect(set_data)
+		value.changed.connect(set_data)
+		card_data = value
+		set_data(value)
+
 var base_work_rate : int
 var special_work_rate : Dictionary
 

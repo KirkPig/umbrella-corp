@@ -1,7 +1,5 @@
 extends Node
 
-#signal hand_updated
-
 @onready var template_worker_card = preload("res://Card/Presets/S_Worker.tscn")
 @onready var template_business_card = preload("res://Card/Presets/S_Business.tscn")
 @onready var template_resource_card = preload("res://Card/Presets/S_Resource.tscn")
@@ -14,12 +12,24 @@ enum ECardLocation {
 	discarded
 }
 
-var field : Control
-var hand : HandController
-var shop : ShopController
-var deck : Control
-var discarded : Control
-var played : Control
+var field: Control
+var hand: HandController
+var shop: ShopController
+var deck: Control
+var discarded: Control
+var played: Control
+
+var card_pool: Array[CardData]
+
+func create_card(data: CardData) -> Card:
+	if data is WorkerCardData:
+		return create_worker_card(data)
+	elif data is BusinessCardData:
+		return create_business_card(data)
+	elif data is ResourceCardData:
+		return create_resource_card(data)
+	else:
+		return
 
 func create_worker_card(data: WorkerCardData) -> WorkerCard:
 	var card : WorkerCard = template_worker_card.instantiate()
@@ -42,71 +52,55 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func add_card_to_deck(data: CardData) -> Card:
-	var card : Card
-	if data is WorkerCardData:
-		card = create_worker_card(data)
-	elif data is ResourceCardData:
-		card = create_resource_card(data)
-	else:
+	var card = create_card(data)
+	if !card:
 		return
-	
 	deck.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 	
 	return card
 
 func add_card_to_hand(data: CardData) -> Card:
-	var card : Card
-	if data is WorkerCardData:
-		card = create_worker_card(data)
-	elif data is ResourceCardData:
-		card = create_resource_card(data)
-	else:
+	var card = create_card(data)
+	if !card:
 		return
-	
 	hand.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 	ActionManager.connect_selection(card)
 	hand.update_in_hand()
 	return card
 	
 func add_card_to_shop(data: CardData) -> Card:
-	var card: Card
-	if data is WorkerCardData:
-		card = create_worker_card(data)
-	elif data is BusinessCardData:
-		card = create_business_card(data)
-	else:
+	var card = create_card(data)
+	if !card:
 		return
-	
 	shop.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 	ActionManager.connect_selection(card)
 	card.in_shop = true
 	shop.update_in_shop()
 	return card
 
 func added_business_field(data : BusinessCardData):
-	var card : BusinessCard = create_business_card(data)
+	var card = create_card(data)
+	if !card:
+		return
 	field.add_child(card)
-	card.set_data(data)
+	card.card_data = data
 
 func reset_shop():
-	# TODO: Random card in the pool to the shop
 	for card in shop.get_children():
 		shop.remove_child(card)
 		if is_instance_valid(card):
 			card.queue_free()
-	#for i in 3:
-		#var card = create_worker_card()
-		#shop.add_child(card)
-		#card.in_shop = true
+	for i in 3:
+		add_card_to_shop(card_pool[GameManager.rng.randi() % card_pool.size()])
 
 func draw() -> bool:
 	var deck_cards = deck.get_children()
 	if deck_cards.size() <= 0:
 		return false
-	var draw_card: Card = deck_cards[randi() % deck_cards.size()]
+	var draw_card: Card = deck_cards[GameManager.rng.randi() % deck_cards.size()]
 	draw_card.reparent(hand)
 	ActionManager.connect_selection(draw_card)
 	hand.update_in_hand()
@@ -160,16 +154,15 @@ func free_played_card():
 		played.remove_child(card)
 		if is_instance_valid(card):
 			card.queue_free()
-			
-func next_turn():
-	reset_deck()
-	fill_hand()
-	reset_shop()
 
 func end_turn():
 	reset_hand()
 	free_played_card()
 
+func next_turn():
+	reset_deck()
+	fill_hand()
+	reset_shop()
 
 func get_all_card(location:ECardLocation) -> Array[Card]:
 	var cards:Array[Card] = []

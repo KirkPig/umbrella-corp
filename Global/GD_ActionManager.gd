@@ -5,9 +5,7 @@ var action_list: ActionListController
 ## Section: Actions
 func action_work(business: BusinessCard):
 	var selected_card = CardManager.get_selected_card()
-	
-	# TODO: More on can not work if energy is not enough
-	if !action_list.can_work(selected_card):
+	if !GameManager.can_work(selected_card):
 		return
 		
 	# TODO: Chnage to check rate
@@ -19,14 +17,14 @@ func action_work(business: BusinessCard):
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
-	GameManager.energy = GameManager.energy - action_list.energy_cost_work
+	GameManager.energy = GameManager.energy - GameManager.energy_cost_work
 	action_list.reset_list()
 	
 func action_discard():
 	CardManager.discards(CardManager.get_selected_card())
 	CardManager.fill_hand()
 	
-	GameManager.energy = GameManager.energy - action_list.energy_cost_discard
+	GameManager.energy = GameManager.energy - GameManager.energy_cost_discard
 	action_list.reset_list()
 
 func action_sell():
@@ -36,7 +34,7 @@ func action_sell():
 	CardManager.played_cards(selected_card)
 	CardManager.fill_hand()
 	
-	GameManager.energy = GameManager.energy - action_list.energy_cost_sell
+	GameManager.energy = GameManager.energy - GameManager.energy_cost_sell
 	action_list.reset_list()
 
 func action_buy(card: Card):

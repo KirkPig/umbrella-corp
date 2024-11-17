@@ -31,4 +31,48 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(280, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 140.0
+offset_right = -160.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="DiscardGridContainer" type="GridContainer" parent="CanvasLayer/Panel/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 360)
+layout_mode = 2
+columns = 5
+
+[node name="ClosedButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 60.0
+offset_right = -60.0
+offset_bottom = 91.0
+grow_horizontal = 0
+text = "Close"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="child_order_changed" from="DiscardCard" to="." method="_on_discard_card_child_order_changed"]
+[connection signal="pressed" from="CanvasLayer/ClosedButton" to="." method="_on_closed_button_pressed"]
