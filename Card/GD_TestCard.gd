@@ -25,6 +25,7 @@ func _on_research_pressed() -> void:
 	var selected_card = CardManager.get_selected_card()
 	if GameManager.can_research(selected_card):
 		print("ok")
+		ActionManager.action_research()
 	else:
 		print("not ok")
 	pass # Replace with function body.

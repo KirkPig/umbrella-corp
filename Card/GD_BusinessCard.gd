@@ -14,7 +14,7 @@ var card_data: BusinessCardData:
 var worker_usage : int
 var resource_return : int
 var max_usage : int
-var resource_yield_list : Array[ResourceCardData]
+var resource_yield_list : Array[int]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,7 +32,7 @@ func selected():
 
 # TODO: Resource card pick on yield list
 func gather_resource() -> ResourceCardData:
-	return resource_yield_list[0]
+	return CardManager.card_dict[resource_yield_list[0]]
 
 func set_data(data: BusinessCardData):
 	set_base_data(data)

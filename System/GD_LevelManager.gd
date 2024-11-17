@@ -3,10 +3,10 @@ extends Control
 @export var start_energy : int = 3
 @export var start_max_hand : int = 5
 
-@export var start_deck: Array[CardData]
-@export var start_business: Array[BusinessCardData]
+@export var start_deck: Array[int]
+@export var start_business: Array[int]
 
-@export var card_pool: Array[CardData]
+@export var card_pool: Array[int]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,8 +40,10 @@ func add_card_pool() -> void:
 
 func add_start_deck()-> void:
 	for res_card in start_deck:
-		CardManager.add_card_to_deck(res_card)
+		var data: CardData = CardManager.card_dict[res_card]
+		CardManager.add_card_to_deck(data)
 		
 func add_start_business()-> void:
 	for res_card in start_business:
-		CardManager.added_business_field(res_card)
+		var data: CardData = CardManager.card_dict[res_card]
+		CardManager.added_business_field(data)

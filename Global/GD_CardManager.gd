@@ -12,6 +12,8 @@ enum ECardLocation {
 	discarded
 }
 
+var card_dict: Dictionary = {}
+
 var field: Control
 var hand: HandController
 var shop: ShopController
@@ -19,7 +21,18 @@ var deck: Control
 var discarded: Control
 var played: Control
 
-var card_pool: Array[CardData]
+var card_pool: Array[int]
+
+func _ready() -> void:
+	load_cards("res://Resource/Card/Business/")
+	load_cards("res://Resource/Card/Resource/")
+	load_cards("res://Resource/Card/Worker/")
+
+func load_cards(_path: String) -> void:
+	var _card_res = DirAccess.get_files_at(_path)
+	for _files in _card_res:
+		var data: CardData = load(_path + _files)
+		card_dict[data.card_id] = data
 
 func create_card(data: CardData) -> Card:
 	if data is WorkerCardData:
@@ -46,10 +59,6 @@ func create_resource_card(data: ResourceCardData) -> ResourceCard:
 	var card : ResourceCard = template_resource_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 func add_card_to_deck(data: CardData) -> Card:
 	var card = create_card(data)
@@ -94,7 +103,8 @@ func reset_shop():
 		if is_instance_valid(card):
 			card.queue_free()
 	for i in 3:
-		add_card_to_shop(card_pool[GameManager.rng.randi() % card_pool.size()])
+		var _id = card_pool[GameManager.rng.randi() % card_pool.size()]
+		add_card_to_shop(card_dict[_id])
 
 func draw() -> bool:
 	var deck_cards = deck.get_children()

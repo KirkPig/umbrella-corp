@@ -1,8 +1,6 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=5 format=3 uid="uid://cccfor5437kmi"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://cccfor5437kmi"]
 
 [ext_resource type="Texture2D" uid="uid://de4k4f71x3i7w" path="res://Assets/BusinessCard/A_BusinessCard_1002.png" id="1_sxo2r"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_aqluk"]
-[ext_resource type="Resource" uid="uid://5arrjy4xyukv" path="res://Resource/Card/Resource/R_ResourceCard_2004.tres" id="3_nndb8"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="7_14dl4"]
 
 [resource]
@@ -10,8 +8,8 @@ script = ExtResource("7_14dl4")
 worker_usage = 2
 resource_return = 1
 max_usage = 1
-resource_yield_list = Array[ExtResource("2_aqluk")]([ExtResource("3_nndb8")])
-card_name = "Mine"
-card_id = 1001
+resource_yield_list = Array[int]([2008])
+card_name = "Forest"
+card_id = 1002
 card_texture = ExtResource("1_sxo2r")
 shop_price = 5
