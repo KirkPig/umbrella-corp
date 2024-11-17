@@ -3,8 +3,8 @@ class_name ResearchRewardUnlockCard
 
 @export var unlocked_card: CardData
 
-func can_activate(_resource: ResourceCardData) -> bool:
-	if another_resource and _resource.card_id != another_resource.card_id:
+func can_activate(_resource: int) -> bool:
+	if !super(_resource):
 		return false
 	return unlocked_card not in CardManager.card_pool
 

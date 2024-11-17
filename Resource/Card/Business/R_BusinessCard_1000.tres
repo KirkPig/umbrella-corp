@@ -1,19 +1,14 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=8 format=3 uid="uid://ceikwd005j6vh"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://ceikwd005j6vh"]
 
 [ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/BusinessCard/A_BusinessCard_1000.png" id="1_sauxl"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_tfgv0"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_lc3g2"]
-[ext_resource type="Resource" uid="uid://b4rkvthmelmqy" path="res://Resource/Card/Resource/R_ResourceCard_2000.tres" id="3_8hgq0"]
-[ext_resource type="Resource" uid="uid://sjj5okxpp1y1" path="res://Resource/Card/Resource/R_ResourceCard_2001.tres" id="4_tg2cv"]
-[ext_resource type="Resource" uid="uid://dnv0op4qe6xer" path="res://Resource/Card/Resource/R_ResourceCard_2002.tres" id="5_5jd04"]
-[ext_resource type="Resource" uid="uid://vojwk1ojl2sl" path="res://Resource/Card/Resource/R_ResourceCard_2003.tres" id="6_c1enn"]
 
 [resource]
 script = ExtResource("2_lc3g2")
 worker_usage = 1
 resource_return = 1
 max_usage = 1
-resource_yield_list = Array[ExtResource("1_tfgv0")]([ExtResource("3_8hgq0"), ExtResource("4_tg2cv"), ExtResource("5_5jd04"), ExtResource("6_c1enn")])
+resource_yield_list = Array[int]([2000])
 card_name = "Farm"
 card_id = 1000
 card_texture = ExtResource("1_sauxl")
