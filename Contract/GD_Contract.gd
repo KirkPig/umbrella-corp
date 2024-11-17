@@ -14,7 +14,7 @@ func _ready() -> void:
 	description.text = contract_res.description
 	turn_limit.text = str(contract_res.turn_limit)
 	score.text = str(contract_res.score_goal)
-	#reward.text = str(contract_res.reward_gold)
+	reward.text = str(contract_res.reward_text)
 	#print("reward", typeof(contract_res.reward_type))
 
 
@@ -25,5 +25,8 @@ func _process(delta: float) -> void:
 func check_finish_contract() -> bool:
 	return GameManager.current_score >= contract_res.score_goal
 
+func get_reward() -> void:
+	contract_res.get_reward()
+	
 func _on_select_button_pressed() -> void:
 	GameManager.select_contract(contract_res)

@@ -1,6 +1,13 @@
-[gd_resource type="Resource" script_class="ResourceContract" load_steps=2 format=3 uid="uid://bdpvorodwwuga"]
+[gd_resource type="Resource" script_class="ResourceContract" load_steps=5 format=3 uid="uid://bdpvorodwwuga"]
 
+[ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_edw5t"]
 [ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="1_q42pp"]
+[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardResource.gd" id="2_hfx7l"]
+
+[sub_resource type="Resource" id="Resource_m8tse"]
+script = ExtResource("2_hfx7l")
+reward_amount = 1
+reward_resource = 2
 
 [resource]
 script = ExtResource("1_q42pp")
@@ -8,8 +15,5 @@ name = "Contract B"
 description = "Drill Missile"
 turn_limit = 4
 score_goal = 1000
-reward_type = 0
-reward_gold = 200
-reward_card = 0
-reward_unlock_card = 0
-reward_upgrade = 0
+reward_text = ""
+reward_list = Array[ExtResource("1_edw5t")]([SubResource("Resource_m8tse")])
