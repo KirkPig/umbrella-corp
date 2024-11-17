@@ -15,8 +15,11 @@ shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
 [node name="WorkerCard" type="Control"]
+custom_minimum_size = Vector2(280, 360)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 420.0
 pivot_offset = Vector2(120, 168)
 script = ExtResource("1_xhlpt")
 
