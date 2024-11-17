@@ -14,7 +14,7 @@ func _ready() -> void:
 	description.text = contract_res.description
 	turn_limit.text = str(contract_res.turn_limit)
 	score.text = str(contract_res.score_goal)
-	reward.text = str(contract_res.reward_gold)
+	#reward.text = str(contract_res.reward_gold)
 	#print("reward", typeof(contract_res.reward_type))
 
 

@@ -8,8 +8,8 @@ enum ERewardBonusResource {
 @export var card_reward: CardData
 @export var amount: int
 
-func can_activate(_resource: ResourceCardData) -> bool:
-	if another_resource and _resource.card_id != another_resource.card_id:
+func can_activate(_resource: int) -> bool:
+	if !super(_resource):
 		return false
 	match ERewardBonusResource:
 		ERewardBonusResource.gold:
