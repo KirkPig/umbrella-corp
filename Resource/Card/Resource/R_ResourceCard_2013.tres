@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://dkrkf0lovpynu"]
 
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_eum26"]
+[ext_resource type="Texture2D" uid="uid://jl8fufyb3u1v" path="res://Assets/ResourceCard/A_ResourceCard_2013.png" id="1_5meer"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_mvt0e"]
 
 [resource]
@@ -9,5 +9,5 @@ yield_score = 10
 yield_gold = 1
 card_name = "Meat"
 card_id = 2012
-card_texture = ExtResource("1_eum26")
+card_texture = ExtResource("1_5meer")
 shop_price = 0

@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://dnu6uob03ev7q"]
 
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_884th"]
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2000.png" id="1_884th"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_5kx3s"]
 
 [resource]
 script = ExtResource("2_5kx3s")
 yield_score = 10
 yield_gold = 2
-card_name = "Resin"
+card_name = "Rubber"
 card_id = 2010
 card_texture = ExtResource("1_884th")
 shop_price = 0

@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 GameManager="*res://Global/GD_GameManager.gd"
 CardManager="*res://Global/GD_CardManager.gd"
 ActionManager="*res://Global/GD_ActionManager.gd"
+RuntimeDebugTools="res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
+SellManager="*res://Global/GD_SellManager.gd"
 
 [display]
 
@@ -28,4 +30,4 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/globalize-plugins/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/globalize-plugins/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg")

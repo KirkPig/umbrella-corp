@@ -1,6 +1,14 @@
 extends Card
 class_name ResourceCard
 
+var card_data: ResourceCardData:
+	set(value):
+		if card_data:
+			card_data.changed.disconnect(set_data)
+		value.changed.connect(set_data)
+		card_data = value
+		set_data(value)
+
 var yield_score = 10
 var yield_gold = 1
 

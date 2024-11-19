@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbueoycu12p3s"
-path="res://.godot/imported/A_BusinessCard_1000.png-ff6cda9f95a0e57bf105a4150d389ca9.ctex"
+uid="uid://7sl5e7xqh0cj"
+path="res://.godot/imported/A_ResourceCard_2015.png-fce7f64f3725d119f292aa770f05121f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/A_BusinessCard_1000.png"
-dest_files=["res://.godot/imported/A_BusinessCard_1000.png-ff6cda9f95a0e57bf105a4150d389ca9.ctex"]
+source_file="res://Assets/ResourceCard/A_ResourceCard_2015.png"
+dest_files=["res://.godot/imported/A_ResourceCard_2015.png-fce7f64f3725d119f292aa770f05121f.ctex"]
 
 [params]
 

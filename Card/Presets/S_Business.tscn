@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0k7l318sse8m"]
+[gd_scene load_steps=5 format=3 uid="uid://b0k7l318sse8m"]
 
 [ext_resource type="Script" path="res://Card/GD_BusinessCard.gd" id="1_b6kww"]
-[ext_resource type="Texture2D" uid="uid://vowkvwd56hb" path="res://Assets/worker_card.png" id="2_5gyx1"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_wo584"]
+[ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/BusinessCard/A_BusinessCard_1000.png" id="3_4dgul"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -14,52 +14,11 @@ shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="Animation" id="Animation_arid4"]
-resource_name = "Dehover"
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_rjpfj"]
-resource_name = "Hover"
-length = 0.0333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -40)]
-}
-
-[sub_resource type="Animation" id="Animation_n7m0m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qc5xl"]
-_data = {
-"Dehover": SubResource("Animation_arid4"),
-"Hover": SubResource("Animation_rjpfj"),
-"RESET": SubResource("Animation_n7m0m")
-}
-
 [node name="BusinessCard" type="Control"]
-custom_minimum_size = Vector2(220, 0)
+custom_minimum_size = Vector2(280, 360)
 layout_mode = 3
 anchors_preset = 0
+pivot_offset = Vector2(120, 168)
 script = ExtResource("1_b6kww")
 
 [node name="Card" type="TextureRect" parent="."]
@@ -68,13 +27,8 @@ layout_mode = 0
 offset_right = 600.0
 offset_bottom = 840.0
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_5gyx1")
+texture = ExtResource("3_4dgul")
 stretch_mode = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_qc5xl")
-}
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

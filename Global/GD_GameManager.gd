@@ -18,6 +18,7 @@ var current_turn : int:
 
 var goal_turn : int:
 	set(value):
+		total_turn += value - goal_turn
 		goal_turn = value
 		goal_turn_change.emit(value)
 		
@@ -33,6 +34,7 @@ var current_score : int:
 		
 var goal_score : int:
 	set(value):
+		total_score += value - goal_score
 		goal_score = value
 		goal_score_change.emit(value)
 		
@@ -51,7 +53,7 @@ var max_energy : int:
 		max_energy = value
 		max_energy_change.emit(value)
 		
-var gold : int:
+var gold : int = 10000:
 	set(value):
 		gold = value
 		gold_change.emit(value)
@@ -64,28 +66,33 @@ var max_hand : int:
 var selected_contract: ResourceContract
 var constract_selection: Control
 
+var rng: RandomNumberGenerator
+
+var energy_cost_sell: int = 1
+var energy_cost_discard: int = 0
+var energy_cost_work: int = 1
+var energy_cost_research: int = 1
+
 func next_turn():
-	total_turn += 1
 	current_turn += 1
 	energy = max_energy
 	CardManager.next_turn()
 	
 func end_turn():
 	CardManager.end_turn()
+	SellManager.end_turn()
 	var turn_limit = selected_contract.turn_limit
 	if current_turn == turn_limit:
 		if selected_contract.check_finish_contract(current_score):
 			current_turn = 0 
 			current_score = 0
-			print("win")
+			selected_contract.get_reward()
+			constract_selection.start_select_contract()
 		#TODO: Lose game
 		else:
 			print('fail')
 	else:
 		next_turn()
-
-func start_select_contract():
-	constract_selection.start_select_contract()
 	
 func select_contract(contract:ResourceContract) -> void:
 	selected_contract = contract
@@ -93,4 +100,45 @@ func select_contract(contract:ResourceContract) -> void:
 	goal_score = contract.score_goal
 	constract_selection.visible = false
 	constract_selection.clear_contract() 
-	GameManager.next_turn()
+	next_turn()
+
+func can_sell(selected_card: Array[Card]) -> bool:
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_sell:
+		return false
+	for card in selected_card:
+		if card is not ResourceCard:
+			return false
+	return true
+
+func can_discard(selected_card: Array[Card]) -> bool:
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_discard:
+		return false
+	return true
+
+func can_work(selected_card: Array[Card]) -> bool:
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_work:
+		return false
+	for card in selected_card:
+		if card is not WorkerCard:
+			return false
+	return true
+
+func can_research(selected_card: Array[Card]) -> bool:
+	if selected_card.size() != 3:
+		return false
+	if energy < energy_cost_research:
+		return false
+	var _resource: int = 0
+	var _worker: int = 0
+	for _card: Card in selected_card:
+		if _card is ResourceCard:
+			_resource += 1
+		elif _card is WorkerCard:
+			_worker += 1
+	return (_resource == 2) and (_worker == 1)

@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://dnv0op4qe6xer"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=4 format=3 uid="uid://dnv0op4qe6xer"]
 
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_g04bi"]
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/A_ResourceCard_2000.png" id="1_tgpaw"]
+[ext_resource type="Texture2D" uid="uid://bijbyuvj3vh1y" path="res://Assets/ResourceCard/A_ResourceCard_2002.png" id="1_kl8un"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="2_ogd0l"]
 
 [resource]
 script = ExtResource("1_g04bi")
 yield_score = 11
 yield_gold = 2
+research_yield = Array[ExtResource("2_ogd0l")]([])
 card_name = "Tomato"
 card_id = 2002
-card_texture = ExtResource("1_tgpaw")
+card_texture = ExtResource("1_kl8un")
 shop_price = 0
