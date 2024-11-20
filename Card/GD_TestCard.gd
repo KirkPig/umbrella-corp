@@ -12,7 +12,7 @@ func _ready() -> void:
 	GameManager.rng.seed = hash("0")
 
 func _on_button_pressed() -> void:
-	CardManager.add_card_to_hand(resource_card)
+	CardManager.add_card_to_hand(resource_card.card_id)
 	pass # Replace with function body.
 
 

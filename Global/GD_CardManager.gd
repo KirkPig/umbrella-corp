@@ -14,7 +14,7 @@ enum ECardLocation {
 
 var card_dict: Dictionary = {}
 
-var field: Control
+var field: FieldController
 var hand: HandController
 var shop: ShopController
 var deck: Control
@@ -34,15 +34,21 @@ func load_cards(_path: String) -> void:
 		var data: CardData = load(_path + _files)
 		card_dict[data.card_id] = data
 
-func create_card(data: CardData) -> Card:
+func add_card(_id: int, _target: Control) -> Card:
+	var data = card_dict[_id]
+	var card
 	if data is WorkerCardData:
-		return create_worker_card(data)
+		card = create_worker_card(data)
 	elif data is BusinessCardData:
-		return create_business_card(data)
+		card = create_business_card(data)
 	elif data is ResourceCardData:
-		return create_resource_card(data)
+		card = create_resource_card(data)
 	else:
 		return
+	
+	_target.add_child(card)
+	card.card_data = data
+	return card
 
 func create_worker_card(data: WorkerCardData) -> WorkerCard:
 	var card : WorkerCard = template_worker_card.instantiate()
@@ -60,51 +66,26 @@ func create_resource_card(data: ResourceCardData) -> ResourceCard:
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
 
-func add_card_to_deck(data: CardData) -> Card:
-	var card = create_card(data)
+func add_card_to_deck(_id: int) -> Card:
+	var card = add_card(_id, deck)
 	if !card:
 		return
-	deck.add_child(card)
-	card.card_data = data
-	
 	return card
 
-func add_card_to_hand(data: CardData) -> Card:
-	var card = create_card(data)
+func add_card_to_hand(_id: int) -> Card:
+	var card = add_card(_id, hand)
 	if !card:
 		return
-	hand.add_child(card)
-	card.card_data = data
 	ActionManager.connect_selection(card)
 	hand.update_in_hand()
 	return card
-	
-func add_card_to_shop(data: CardData) -> Card:
-	var card = create_card(data)
+
+func add_card_to_field(_id: int) -> Card:
+	var card = add_card(_id, field)
 	if !card:
 		return
-	shop.add_child(card)
-	card.card_data = data
-	ActionManager.connect_selection(card)
-	card.in_shop = true
-	shop.update_in_shop()
+	field.update_in_field()
 	return card
-
-func added_business_field(data : BusinessCardData):
-	var card = create_card(data)
-	if !card:
-		return
-	field.add_child(card)
-	card.card_data = data
-
-func reset_shop():
-	for card in shop.get_children():
-		shop.remove_child(card)
-		if is_instance_valid(card):
-			card.queue_free()
-	for i in 3:
-		var _id = card_pool[GameManager.rng.randi() % card_pool.size()]
-		add_card_to_shop(card_dict[_id])
 
 func draw() -> bool:
 	var deck_cards = deck.get_children()
@@ -129,10 +110,6 @@ func reset_hand():
 func reset_deck():
 	for card in discarded.get_children():
 		card.reparent(deck)
-
-func move_to_hand(node: Card):
-	node.reparent(hand)
-	hand.update_in_hand()
 
 func get_selected_card() -> Array[Card]:
 	var selected_card : Array[Card]
@@ -172,7 +149,7 @@ func end_turn():
 func next_turn():
 	reset_deck()
 	fill_hand()
-	reset_shop()
+	shop.reset_shop()
 
 func get_all_card(location:ECardLocation) -> Array[Card]:
 	var cards:Array[Card] = []
