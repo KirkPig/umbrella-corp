@@ -11,14 +11,14 @@ func _ready() -> void:
 func get_all_card() -> Array[Node]:
 	return self.get_children()
 
-func move_to_field(node: Card):
+func add_exists(node: Card):
 	node.reparent(self)
-	update_in_field()
+	update_position()
 
 func _process(delta: float) -> void:
 	pass
 
-func update_in_field():
+func update_position():
 	var cards = self.get_children()
 	var i = 0
 	for card: Card in cards:

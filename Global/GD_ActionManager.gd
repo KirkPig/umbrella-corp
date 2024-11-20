@@ -45,9 +45,9 @@ func action_buy(card: Card):
 	card.in_shop = false
 	
 	if card is BusinessCard:
-		CardManager.field.move_to_field(card)
+		CardManager.field.add_exists(card)
 	else:
-		CardManager.hand.move_to_hand(card)
+		CardManager.hand.add_exists(card)
 
 func _get_research_reward_by_priority(_data: ResourceCardData, _priority: int) -> Array[ResearchReward]:
 	var _resp: Array[ResearchReward] = []

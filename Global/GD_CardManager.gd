@@ -9,7 +9,8 @@ enum ECardLocation {
 	shop,
 	field,
 	deck,
-	discarded
+	discarded,
+	played
 }
 
 var card_dict: Dictionary = {}
@@ -77,14 +78,14 @@ func add_card_to_hand(_id: int) -> Card:
 	if !card:
 		return
 	ActionManager.connect_selection(card)
-	hand.update_in_hand()
+	hand.update_position()
 	return card
 
 func add_card_to_field(_id: int) -> Card:
 	var card = add_card(_id, field)
 	if !card:
 		return
-	field.update_in_field()
+	field.update_position()
 	return card
 
 func draw() -> bool:
@@ -92,9 +93,8 @@ func draw() -> bool:
 	if deck_cards.size() <= 0:
 		return false
 	var draw_card: Card = deck_cards[GameManager.rng.randi() % deck_cards.size()]
-	draw_card.reparent(hand)
 	ActionManager.connect_selection(draw_card)
-	hand.update_in_hand()
+	move_cards_to([draw_card], ECardLocation.hand)
 	return true
 
 func fill_hand():
@@ -108,24 +108,13 @@ func reset_hand():
 		discard(card)
 
 func reset_deck():
-	for card in discarded.get_children():
-		card.reparent(deck)
+	move_cards_to(get_all_card(ECardLocation.discarded), ECardLocation.deck)
 
 func get_selected_card() -> Array[Card]:
-	var selected_card : Array[Card]
-	for card in hand.get_children():
-		if card is Card and card.is_selected:
-			selected_card.append(card)
-	return selected_card
-#
-func played_card(card: Card):
-	card.is_selected = false
-	card.reparent(played)
-	ActionManager.connect_selection(card)
-#
+	return hand.get_selected_card()
+
 func played_cards(cards: Array[Card]):
-	for card in cards:
-		played_card(card)
+	move_cards_to(cards, ECardLocation.played)
 #
 func discard(card: Card):
 	card.is_selected = false
@@ -154,16 +143,20 @@ func next_turn():
 func get_all_card(location:ECardLocation) -> Array[Card]:
 	var cards:Array[Card] = []
 	
-	var location_node:Node
+	var location_node: Node
 	match location:
 		ECardLocation.hand:
 			location_node = hand
 		ECardLocation.shop:
 			location_node = shop
+		ECardLocation.field:
+			location_node = field
 		ECardLocation.deck:
 			location_node = deck
 		ECardLocation.discarded:
 			location_node = discarded
+		ECardLocation.played:
+			location_node = played
 			
 	for node in location_node.get_children():
 		if node is Card:
@@ -171,22 +164,33 @@ func get_all_card(location:ECardLocation) -> Array[Card]:
 	
 	return cards
 
-func move_cards_to(cards:Array[Card],target_location:ECardLocation) -> void:
-	var location_node:Node
+func move_cards_to(cards:Array[Card], target_location:ECardLocation) -> void:
+	var location_node: Node
 	match target_location:
 		ECardLocation.hand:
 			for card in cards:
-				card.reparent(hand)
-			hand.update_in_hand()
-		#TODO
+				card.is_selected = false
+				hand.add_exists(card)
 		ECardLocation.shop:
-			pass
+			for card in cards:
+				card.is_selected = false
+				shop.add_exists(card)
+		ECardLocation.field:
+			for card in cards:
+				card.is_selected = false
+				field.add_exists(card)
 		ECardLocation.deck:
 			for card in cards:
+				card.is_selected = false
 				card.reparent(deck)
 		ECardLocation.discarded:
 			for card in cards:
+				card.is_selected = false
 				card.reparent(discarded)
+		ECardLocation.played:
+			for card in cards:
+				card.is_selected = false
+				card.reparent(played)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

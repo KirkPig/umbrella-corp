@@ -14,8 +14,13 @@ func _process(delta: float) -> void:
 	
 func get_all_card() -> Array[Node]:
 	return self.get_children()
+
+func add_exists(node: Card):
+	node.in_shop = true
+	node.reparent(self)
+	update_position()
 	
-func update_in_shop():
+func update_position():
 	var cards = self.get_children()
 	var i = 0
 	for card: Card in cards:
@@ -38,5 +43,5 @@ func add_card_to_shop(_id: int) -> Card:
 		return
 	ActionManager.connect_selection(card)
 	card.in_shop = true
-	update_in_shop()
+	update_position()
 	return card
