@@ -3,6 +3,7 @@ extends Node
 @onready var template_worker_card = preload("res://Card/Presets/S_Worker.tscn")
 @onready var template_business_card = preload("res://Card/Presets/S_Business.tscn")
 @onready var template_resource_card = preload("res://Card/Presets/S_Resource.tscn")
+@onready var template_instant_card = preload("res://Card/Presets/S_Instant.tscn")
 
 enum ECardLocation {
 	hand,
@@ -28,6 +29,7 @@ func _ready() -> void:
 	load_cards("res://Resource/Card/Business/")
 	load_cards("res://Resource/Card/Resource/")
 	load_cards("res://Resource/Card/Worker/")
+	load_cards("res://Resource/Card/Instant/")
 
 func load_cards(_path: String) -> void:
 	var _card_res = DirAccess.get_files_at(_path)
@@ -44,6 +46,8 @@ func add_card(_id: int, _target: Control) -> Card:
 		card = create_business_card(data)
 	elif data is ResourceCardData:
 		card = create_resource_card(data)
+	elif data is InstantCardData:
+		card = create_instant_card(data)
 	else:
 		return
 	
@@ -64,6 +68,11 @@ func create_business_card(data: BusinessCardData) -> BusinessCard:
 
 func create_resource_card(data: ResourceCardData) -> ResourceCard:
 	var card : ResourceCard = template_resource_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	return card
+
+func create_instant_card(data: InstantCardData) -> InstantCard:
+	var card : InstantCard = template_instant_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
 

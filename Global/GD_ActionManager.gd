@@ -91,6 +91,13 @@ func action_research():
 	var _w = PackedFloat32Array(_w_arr)
 	print(_reward[GameManager.rng.rand_weighted(_w)].chance)
 	
+	
+func action_activate() -> void:
+	var selected_card: Array[Card] = CardManager.get_selected_card()
+	selected_card[0].activate()
+	CardManager.discards(selected_card)
+	CardManager.fill_hand()
+	
 func connect_selection(draw_card: Card):
 	if !draw_card.selection_change.is_connected(check_selection_condition):
 		draw_card.selection_change.connect(check_selection_condition)
