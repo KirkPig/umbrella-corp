@@ -97,6 +97,11 @@ func added_business_field(data : BusinessCardData):
 	field.add_child(card)
 	card.card_data = data
 
+func add_card_to_pool(card_id_list:Array[int]) -> void:
+	for card_id in card_id_list:
+		if card_id not in card_pool:
+			card_pool.append(card_id)
+
 func reset_shop():
 	for card in shop.get_children():
 		shop.remove_child(card)
