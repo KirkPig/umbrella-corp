@@ -7,9 +7,23 @@ signal is_buy(card: Card)
 var tween_selected: Tween
 var tween_hover: Tween
 var tween_rot: Tween
+var tween_moving: Tween
 
 @export var angle_x_max: float = 0.05
 @export var angle_y_max: float = 0.05
+@export var toggle_up_pixel: float = 50
+
+@export_category("Oscillator")
+@export var spring: float = 150.0
+@export var damp: float = 8.0
+@export var velocity_multiplier: float = 4.0
+
+var displacement: float = 0.0 
+var oscillator_velocity: float = 0.0
+
+var last_pos: Vector2
+var velocity: Vector2
+var in_rotation_play: bool = false
 
 @onready var card_texture : TextureRect = $Card
 
@@ -27,12 +41,15 @@ var is_selected : bool:
 			card_texture.position.y = 0
 		if !is_selected and value:
 			tween_selected = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-			tween_selected.tween_property(card_texture, "position", Vector2(0, -100), 0.25)
+			tween_selected.tween_property(card_texture, "position", Vector2(0, -toggle_up_pixel), 0.25)
 			_set_card_rotation(0, 0)
 		is_selected = value
 
 func _ready() -> void:
 	pass
+	
+func _process(delta: float) -> void:
+	rotate_velocity(delta)
 
 func handle_mouse_click(event: InputEvent) -> void:
 	if event is InputEventMouseButton and is_hover and event.is_pressed():
@@ -50,6 +67,12 @@ func set_base_data(data: CardData):
 	card_texture.texture = data.card_texture
 	shop_price = data.shop_price
 
+func change_card_position(_pos: Vector2, _time: float):
+	if tween_moving and tween_moving.is_running():
+		tween_moving.kill()
+	tween_moving = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.NOTIFICATION_PREDELETE)
+	tween_moving.tween_property(self, "position", _pos, _time)
+
 func set_card_hand_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x: float, _card_min_x: float, in_hand: bool):
 	var _middle_pos = (_max_x + _min_x) / 2
 	var _pos_x: float
@@ -59,17 +82,14 @@ func set_card_hand_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x
 		_pos_y = 0
 	else:
 		_pos_x = remap(_card_pos, 0, _in_hand - 1, 
-		max(_min_x, _middle_pos - (_card_min_x / 2 * (_in_hand - 1))), 
-		min(_max_x, _middle_pos + (_card_min_x / 2 * (_in_hand - 1))),
+			max(_min_x, _middle_pos - (_card_min_x / 2 * (_in_hand - 1))), 
+			min(_max_x, _middle_pos + (_card_min_x / 2 * (_in_hand - 1))),
 		)
-		_pos_y = remap(abs(_pos_x - _middle_pos), 0, _middle_pos, 0, 30)
+		_pos_y = remap(abs(_pos_x - _middle_pos), 0, _middle_pos, 0, 20)
 	if !in_hand:
 		_pos_y = 0
-	# TODO: Animation on the change position
-	# TODO(OPTIONAL): More on the rotation randomize with pattern
-	position = Vector2(_pos_x, _pos_y)
-	
-	
+	change_card_position(Vector2(_pos_x, _pos_y), 0.2)
+
 func _on_card_mouse_entered() -> void:
 	is_hover = true
 	if tween_hover and tween_hover.is_running():
@@ -123,3 +143,19 @@ func _on_card_gui_input(event: InputEvent) -> void:
 	#print("Rot y: ", rot_y)
 	
 	_set_card_rotation(rot_x, rot_y)
+
+# Card rotation as it moved
+func rotate_velocity(delta: float) -> void:
+	var center_pos: Vector2 = position + pivot_offset
+	# Compute the velocity
+	velocity = (position - last_pos) / delta
+	last_pos = position
+	
+	oscillator_velocity += velocity.normalized().x * velocity_multiplier
+	
+	# Oscillator stuff
+	var force = -spring * displacement - damp * oscillator_velocity
+	oscillator_velocity += force * delta
+	displacement += oscillator_velocity * delta
+	
+	rotation = deg_to_rad(displacement)

@@ -8,11 +8,11 @@ func action_work(business: BusinessCard):
 	if !GameManager.can_work(selected_card):
 		return
 		
-	# TODO: Chnage to check rate
+	# TODO: Change to check rate
 	for card in selected_card:
 		if card.is_selected:
-			var data = business.gather_resource()
-			var new_card = CardManager.add_card_to_deck(data)
+			var _res_id = business.gather_resource()
+			var new_card = CardManager.add_card_to_deck(_res_id)
 			CardManager.discard(new_card)
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
@@ -40,9 +40,14 @@ func action_sell():
 func action_buy(card: Card):
 	if card.shop_price > GameManager.gold:
 		return
-	card.in_shop = false
+	
 	GameManager.gold = GameManager.gold - card.shop_price
-	CardManager.move_to_hand(card)
+	card.in_shop = false
+	
+	if card is BusinessCard:
+		CardManager.field.add_exists(card)
+	else:
+		CardManager.hand.add_exists(card)
 
 func _get_research_reward_by_priority(_data: ResourceCardData, _priority: int) -> Array[ResearchReward]:
 	var _resp: Array[ResearchReward] = []
@@ -85,6 +90,13 @@ func action_research():
 	
 	var _w = PackedFloat32Array(_w_arr)
 	print(_reward[GameManager.rng.rand_weighted(_w)].chance)
+	
+	
+func action_activate() -> void:
+	var selected_card: Array[Card] = CardManager.get_selected_card()
+	selected_card[0].activate()
+	CardManager.discards(selected_card)
+	CardManager.fill_hand()
 	
 func connect_selection(draw_card: Card):
 	if !draw_card.selection_change.is_connected(check_selection_condition):

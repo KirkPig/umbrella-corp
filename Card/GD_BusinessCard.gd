@@ -22,7 +22,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	super(delta)
 
 func selected():
 	if in_shop:
@@ -31,8 +31,8 @@ func selected():
 	emit_signal("selected_work", self)
 
 # TODO: Resource card pick on yield list
-func gather_resource() -> ResourceCardData:
-	return CardManager.card_dict[resource_yield_list[0]]
+func gather_resource() -> int:
+	return resource_yield_list[0]
 
 func set_data(data: BusinessCardData):
 	set_base_data(data)
