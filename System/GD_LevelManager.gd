@@ -40,10 +40,8 @@ func add_card_pool() -> void:
 
 func add_start_deck()-> void:
 	for res_card in start_deck:
-		var data: CardData = CardManager.card_dict[res_card]
-		CardManager.add_card_to_deck(data)
+		CardManager.add_card_to_deck(res_card)
 		
 func add_start_business()-> void:
 	for res_card in start_business:
-		var data: CardData = CardManager.card_dict[res_card]
-		CardManager.added_business_field(data)
+		CardManager.add_card_to_field(res_card)

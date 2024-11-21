@@ -26,13 +26,12 @@ start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 start_business = Array[int]([1000])
 card_pool = Array[int]([0, 1000, 1001, 1002, 1003])
 
-[node name="Field" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="Field" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 50.0
 offset_top = 500.0
-offset_right = 1450.0
-offset_bottom = 750.0
-alignment = 1
+offset_right = 50.0
+offset_bottom = 500.0
 script = ExtResource("2_078xj")
 
 [node name="Hand" type="Control" parent="."]
