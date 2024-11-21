@@ -21,10 +21,14 @@ func reset_selection():
 	var cards = self.get_children()
 	for card: Card in cards:
 		card.is_selected = false
-	
+
+func _compare_card(a: Card, b: Card) -> bool:
+	return a.card_id < b.card_id
+
 func update_position():
 	var cards = self.get_children()
 	var i = 0
+	cards.sort_custom(_compare_card)
 	for card: Card in cards:
 		card.set_card_hand_position(i, cards.size(), 0, hand_width, card_gap, true)
 		i+=1

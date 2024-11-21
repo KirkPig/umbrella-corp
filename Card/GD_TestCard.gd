@@ -17,7 +17,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_add_shop_pressed() -> void:
-	CardManager.add_card_to_shop(worker_card)
+	CardManager.shop.add_card_to_shop(worker_card.card_id)
 	pass # Replace with function body.
 
 
