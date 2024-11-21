@@ -142,3 +142,8 @@ func can_research(selected_card: Array[Card]) -> bool:
 		elif _card is WorkerCard:
 			_worker += 1
 	return (_resource == 2) and (_worker == 1)
+
+func can_activate(selected_card: Array[Card]) -> bool:
+	if selected_card.size() != 1:
+		return false
+	return selected_card[0] is InstantCard
