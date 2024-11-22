@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="InstantCardData" load_steps=7 format=3 uid="uid://c04hl36qaf8qt"]
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=8 format=3 uid="uid://c04hl36qaf8qt"]
 
+[ext_resource type="Texture2D" uid="uid://bdt1j2mull0f7" path="res://Assets/InstantCard/A_InstantCard_3010.png" id="1_7osfn"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_ucfjs"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_2b2uh"]
 [ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="2_v8f51"]
@@ -25,5 +26,6 @@ target_mode = 0
 target_type = 0
 effects = Array[ExtResource("1_ucfjs")]([SubResource("Resource_8ntqd"), SubResource("Resource_4gyvn")])
 card_name = ""
-card_id = 0
+card_id = 3010
+card_texture = ExtResource("1_7osfn")
 shop_price = 0
