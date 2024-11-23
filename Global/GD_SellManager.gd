@@ -7,6 +7,8 @@ enum ETimesType{
 enum EResource{
 	sell_score,
 	sell_gold,
+	price,
+	demand
 }
 enum EType{
 	multiply,
@@ -29,6 +31,10 @@ var all_bonus = {
 		EType.addEach: 0,
 		EType.Set:0,
 		'is_set':false
+	},
+	EResource.price:{
+	},
+	EResource.demand:{
 	}
 }
 
@@ -45,7 +51,7 @@ func end_turn()-> void:
 func cal_sell_gold(sell_card:Array[Card]):
 	var price  = 0
 	for card : ResourceCard in sell_card:
-		price = price + card.yield_score + all_bonus[EResource.sell_gold][EType.addEach] 
+		price += card.yield_score + all_bonus[EResource.sell_gold][EType.addEach] 
 	GameManager.gold += all_bonus[EResource.sell_gold][EType.Set]  \
 						if all_bonus[EResource.sell_gold]['is_set'] else \
 						int(price * all_bonus[EResource.sell_gold][EType.multiply]) + all_bonus[EResource.sell_gold][EType.add] 

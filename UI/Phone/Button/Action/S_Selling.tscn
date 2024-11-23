@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://clkfnv78u3lbp"]
+
+[ext_resource type="Texture2D" uid="uid://c7cig67hklv6p" path="res://Assets/Phone/sellcard.png" id="1_br4f8"]
+[ext_resource type="LabelSettings" uid="uid://b04mknxim6hs1" path="res://UI/Phone/Button/Action/ButtonActionFontSetting.tres" id="2_qdrnd"]
+
+[node name="SSell" type="Control"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(550, 180)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 155.0
+offset_bottom = 150.0
+texture = ExtResource("1_br4f8")
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 66.0
+offset_right = 346.0
+offset_bottom = 108.0
+text = "Resoure selling"
+label_settings = ExtResource("2_qdrnd")

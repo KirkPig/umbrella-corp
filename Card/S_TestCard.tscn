@@ -6,10 +6,10 @@
 [ext_resource type="Resource" uid="uid://3lrohpvfqffc" path="res://Resource/Card/Worker/R_WorkerCard_0000.tres" id="3_l6w7y"]
 [ext_resource type="Resource" uid="uid://ceikwd005j6vh" path="res://Resource/Card/Business/R_BusinessCard_1000.tres" id="4_17t38"]
 [ext_resource type="Resource" uid="uid://b310oxdaytwbd" path="res://Resource/Card/Instant/R_Instant_3000.tres" id="5_g84rg"]
-[ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="5_w38p4"]
+[ext_resource type="Script" path="res://UI/Phone/Button/Shop/GD_Shop.gd" id="5_w38p4"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="9_4g3e7"]
-[ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://System/Board/S_Deck.tscn" id="9_64shx"]
-[ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://System/Board/S_Discard.tscn" id="10_hs3f2"]
+[ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://UI/Phone/Button/S_Deck.tscn" id="9_64shx"]
+[ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://UI/Phone/Button/S_Discard.tscn" id="10_hs3f2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xw8eu"]
 font_size = 32
