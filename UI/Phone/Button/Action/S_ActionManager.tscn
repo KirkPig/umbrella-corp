@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlcm1w387qi0m"]
+
+[ext_resource type="Script" path="res://UI/Phone/Button/Action/GD_ActionListController.gd" id="1_82in7"]
+[ext_resource type="Texture2D" uid="uid://b4wrux3hacggr" path="res://Assets/Phone/phonecall.png" id="2_mfnxu"]
+[ext_resource type="LabelSettings" uid="uid://c36fkrew2f0u6" path="res://UI/Phone/Button/Action/ActionFontSetting.tres" id="3_ehl42"]
+[ext_resource type="PackedScene" uid="uid://x1egs844gqu5" path="res://UI/Phone/Button/Action/S_Research.tscn" id="4_xli7t"]
+[ext_resource type="PackedScene" uid="uid://clkfnv78u3lbp" path="res://UI/Phone/Button/Action/S_Selling.tscn" id="5_c5qge"]
+[ext_resource type="PackedScene" uid="uid://ds4ia7o22b84e" path="res://UI/Phone/Button/Action/S_Discard.tscn" id="6_8ht0y"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_left = 38.0
+offset_top = 109.0
+offset_right = 608.0
+offset_bottom = 721.0
+script = ExtResource("1_82in7")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 68.0
+texture = ExtResource("2_mfnxu")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 22.0
+offset_right = 226.0
+offset_bottom = 64.0
+text = "Call action"
+label_settings = ExtResource("3_ehl42")
+
+[node name="SResearch" parent="." instance=ExtResource("4_xli7t")]
+visible = false
+layout_mode = 2
+
+[node name="SSell" parent="." instance=ExtResource("5_c5qge")]
+visible = false
+layout_mode = 2
+
+[node name="SDiscard" parent="." instance=ExtResource("6_8ht0y")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="SResearch" to="." method="_on_research_button_pressed"]
+[connection signal="pressed" from="SSell" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="SDiscard" to="." method="_on_discard_button_pressed"]

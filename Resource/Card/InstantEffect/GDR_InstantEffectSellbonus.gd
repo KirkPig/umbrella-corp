@@ -6,6 +6,7 @@ class_name InstantEffectSellbonus
 @export var effect_amount : float
 @export var effect_time_type : SellManager.ETimesType
 @export var effect_time : int
+@export var effect_target : ResourceCardData.EBusiness
 
 func activate(target:Array[Card]) -> void:
 	var bonus_effect = SellBonusEffect.new()
@@ -14,5 +15,6 @@ func activate(target:Array[Card]) -> void:
 		effect_time,
 		effect_time_type,
 		effect_amount,
-		effect_resource)
+		effect_resource,
+		effect_target)
 	

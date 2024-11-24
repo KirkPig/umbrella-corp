@@ -3,7 +3,10 @@ extends CanvasLayer
 var time:int = 0
 @onready var time_label = $"Control/TextureRect/VSplitContainer/Data/Time Label"
 @onready var energy_label = $Control/TextureRect/VSplitContainer/Data/Control/Energy
-@onready var energy_progressl = $Control/TextureRect/VSplitContainer/Data/Control/TextureProgressBar
+@onready var energy_progress = $Control/TextureRect/VSplitContainer/Data/Control/TextureProgressBar
+
+@onready var action_screen = $Control/TextureRect
+@onready var out_of_energy_screen = $"Control/Our of energy"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.current_energy_change.connect(_on_energy_change)
@@ -24,8 +27,10 @@ func _on_timer_timeout() -> void:
 					if hour > 0 else minute + ":" + sec
 
 func _on_max_energy_change(max_energy:int) -> void:
-	energy_progressl.max_value = max_energy
+	pass
 
 func _on_energy_change(energy:int) -> void:
 	energy_label.text = str(energy*25) + "%"
-	energy_progressl.value = energy
+	energy_progress.value = energy
+	action_screen.visible = energy > 0
+	out_of_energy_screen.visible = energy ==0 
