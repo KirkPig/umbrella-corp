@@ -15,7 +15,6 @@ shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
 [node name="ResourceCard" type="Control"]
-custom_minimum_size = Vector2(280, 360)
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(90, 126)
