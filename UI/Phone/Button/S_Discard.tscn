@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgtvpmh2w5wm3"]
+[gd_scene load_steps=7 format=3 uid="uid://dgtvpmh2w5wm3"]
 
 [ext_resource type="Script" path="res://UI/Phone/Button/GD_Discard.gd" id="1_8rrri"]
 [ext_resource type="Texture2D" uid="uid://3s84xkkydk33" path="res://Assets/Phone/discardpile.png" id="2_x8uug"]
+[ext_resource type="Theme" uid="uid://uutcpcwlfoyu" path="res://UI/Phone/theme/ui.theme" id="3_0omy3"]
 [ext_resource type="LabelSettings" uid="uid://d3bit3qtq3v0r" path="res://UI/Phone/Button/ButtonFontSetting.tres" id="3_3l8gu"]
+[ext_resource type="StyleBox" uid="uid://rq4cp7w0v2fx" path="res://UI/Phone/theme/panel/noti_panel.stylebox" id="4_0ckye"]
+[ext_resource type="LabelSettings" uid="uid://dwmn8b6v7534y" path="res://UI/Phone/NotiFontSetting.tres" id="5_vsx1f"]
 
 [node name="Discard" type="Control"]
 layout_mode = 3
@@ -32,24 +35,54 @@ offset_bottom = 40.0
 layout_mode = 2
 texture_normal = ExtResource("2_x8uug")
 
-[node name="CardsLabel" type="Label" parent="Control/VSplitContainer/ViewButton"]
-z_index = 2
-layout_mode = 0
-offset_left = 105.0
-offset_top = -21.0
-offset_right = 145.0
-offset_bottom = 21.0
-text = "1"
-label_settings = ExtResource("3_3l8gu")
+[node name="Control" type="Control" parent="Control/VSplitContainer/ViewButton"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
 
-[node name="ColorRect" type="ColorRect" parent="Control/VSplitContainer/ViewButton/CardsLabel"]
-z_index = -1
-layout_mode = 0
-offset_left = -10.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 42.0
-color = Color(1, 0, 0, 1)
+[node name="Control" type="Control" parent="Control/VSplitContainer/ViewButton/Control"]
+anchors_preset = 0
+offset_right = 60.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/VSplitContainer/ViewButton/Control/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_0omy3")
+theme_override_styles/panel = ExtResource("4_0ckye")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CardsLabel" type="Label" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer/CenterContainer"]
+z_index = 2
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("5_vsx1f")
+
+[node name="Control2" type="Control" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/VSplitContainer"]
 layout_mode = 2

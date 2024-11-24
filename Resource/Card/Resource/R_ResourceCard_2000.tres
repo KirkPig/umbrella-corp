@@ -15,8 +15,10 @@ chance = 100
 
 [resource]
 script = ExtResource("1_6u2c5")
+demand = 0
 yield_score = 10
 yield_gold = 1
+business = 1
 research_yield = Array[ExtResource("2_ayq2l")]([SubResource("Resource_o74eu")])
 card_name = "Wheat"
 card_id = 2000

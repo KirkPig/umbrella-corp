@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bo44cfxqlqyrj"]
+
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="1_yof6x"]
+
+[resource]
+font = ExtResource("1_yof6x")
+font_size = 40

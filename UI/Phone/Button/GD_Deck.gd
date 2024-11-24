@@ -1,7 +1,7 @@
 extends Control
 
 @onready var deck_button = $Control/VSplitContainer/ViewButton
-@onready var deck_button_label = $Control/VSplitContainer/ViewButton/CardsLabel
+@onready var deck_button_label = $Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer/CenterContainer/CardsLabel
 
 @onready var deck_card = %DeckCard
 

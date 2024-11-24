@@ -22,6 +22,7 @@ func update_list(selected_card: Array[Card] ):
 func reset_list():
 	update_list([])
 
+	
 func _on_sell_button_pressed() -> void:
 	ActionManager.action_sell()
 

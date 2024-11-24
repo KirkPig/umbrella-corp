@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dwmn8b6v7534y"]
+
+[ext_resource type="FontFile" uid="uid://b44qaa3hcljg3" path="res://Assets/Font/SF-Pro-Rounded-Medium.otf" id="1_ipdp4"]
+
+[resource]
+font = ExtResource("1_ipdp4")
+font_size = 40

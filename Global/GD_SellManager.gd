@@ -19,9 +19,9 @@ var bonus_effect_list :Array[SellBonusEffect]= []
 var all_bonus :Dictionary = {}
 func _ready() -> void:
 	for data_type in EResource:
-		all_bonus[data_type] = {}
+		all_bonus[EResource[data_type]] = {}
 		for target in ResourceCardData.EBusiness:
-			all_bonus[data_type][target] = {
+			all_bonus[EResource[data_type]][ResourceCardData.EBusiness[target]] = {
 				EType.MULTIPLY: 1,
 				EType.ADD : 0,
 			}
