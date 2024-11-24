@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4k7h608rbynp"
-path="res://.godot/imported/labor-icon.svg-659628c026e802e7cff67f29800b57a2.ctex"
+path="res://.godot/imported/labor-icon.svg-bfd8478a6ab79badf08d805fac929ec8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Business/labor-icon.svg"
-dest_files=["res://.godot/imported/labor-icon.svg-659628c026e802e7cff67f29800b57a2.ctex"]
+source_file="res://Assets/UI/Business/labor-icon.svg"
+dest_files=["res://.godot/imported/labor-icon.svg-bfd8478a6ab79badf08d805fac929ec8.ctex"]
 
 [params]
 

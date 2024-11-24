@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2kr3bpbr3ua3"
-path="res://.godot/imported/A_ResourceCard_2000.png-2a5def6d5a4f931062c19fec117a62af.ctex"
+uid="uid://dhevoipmptw4s"
+path="res://.godot/imported/test2.png-0052231a05055d18b1f34d2856b91f9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ResourceCard/A_ResourceCard_2000.png"
-dest_files=["res://.godot/imported/A_ResourceCard_2000.png-2a5def6d5a4f931062c19fec117a62af.ctex"]
+source_file="res://Assets/UI/Contract/test2.png"
+dest_files=["res://.godot/imported/test2.png-0052231a05055d18b1f34d2856b91f9a.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

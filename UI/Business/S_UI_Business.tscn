@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://lh1fsywke2mu"]
+[gd_scene load_steps=10 format=3 uid="uid://lh1fsywke2mu"]
 
-[ext_resource type="Script" path="res://UI/Business/GD_Business.gd" id="1_tge38"]
+[ext_resource type="Script" path="res://UI/Business/GD_BusinessUI.gd" id="1_tge38"]
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="2_vt6os"]
-[ext_resource type="Texture2D" uid="uid://b4k7h608rbynp" path="res://Assets/Business/labor-icon.svg" id="3_to8dd"]
+[ext_resource type="Texture2D" uid="uid://b4k7h608rbynp" path="res://Assets/UI/Business/labor-icon.svg" id="3_to8dd"]
+[ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="3_xg0d7"]
 [ext_resource type="FontFile" uid="uid://cjgxkmfq6di8l" path="res://Assets/Font/SF-Pro-Rounded-Bold.otf" id="4_qeiud"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ti8em"]
@@ -65,6 +66,7 @@ layout_mode = 2
 
 [node name="Container" type="HBoxContainer" parent="Container/Detail/Title"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="Container/Detail/Title/Container"]
 layout_mode = 2
@@ -72,6 +74,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vt6os")
 theme_override_font_sizes/font_size = 36
 text = "Farm"
+
+[node name="Icon" type="TextureRect" parent="Container/Detail/Title/Container"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_xg0d7")
+expand_mode = 1
 
 [node name="Labor" type="HBoxContainer" parent="Container/Detail"]
 layout_mode = 2

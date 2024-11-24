@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://csgj6tukmkxpu"]
+[gd_scene load_steps=8 format=3 uid="uid://csgj6tukmkxpu"]
 
+[ext_resource type="Script" path="res://UI/Contract/GD_ContractUI.gd" id="1_y5rbc"]
 [ext_resource type="FontFile" uid="uid://d23nihmpuj0q8" path="res://Assets/Font/SF-Pro-Rounded-Regular.otf" id="1_yenpy"]
 [ext_resource type="FontFile" uid="uid://b44qaa3hcljg3" path="res://Assets/Font/SF-Pro-Rounded-Medium.otf" id="2_mmf35"]
+[ext_resource type="Texture2D" uid="uid://dhevoipmptw4s" path="res://Assets/UI/Contract/test2.png" id="2_pc362"]
+[ext_resource type="Texture2D" uid="uid://chdi2jqbytxf" path="res://Assets/UI/Contract/tabler_sun-filled.svg" id="4_j083k"]
+[ext_resource type="Texture2D" uid="uid://counuv34lumn1" path="res://Assets/UI/Contract/sell.svg" id="6_tc84l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33vun"]
 bg_color = Color(0.780392, 1, 0.560784, 1)
@@ -15,11 +19,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_y5rbc")
 
 [node name="Background" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 380.0
 offset_bottom = 287.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_33vun")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 35.0
+offset_right = 178.0
+offset_bottom = 185.0
+texture = ExtResource("2_pc362")
 
 [node name="Description" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -39,17 +53,28 @@ theme_override_fonts/font = ExtResource("1_yenpy")
 theme_override_font_sizes/font_size = 16
 text = "Contract Deadline"
 
-[node name="Value" type="Label" parent="Description/Deadline"]
+[node name="Container" type="HBoxContainer" parent="Description/Deadline"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Description/Deadline/Container"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_j083k")
+
+[node name="Value" type="Label" parent="Description/Deadline/Container"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_mmf35")
 theme_override_font_sizes/font_size = 64
-text = "7
-"
+text = "7"
 
 [node name="Target" type="VBoxContainer" parent="Description"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="Description/Target"]
 layout_mode = 2
@@ -59,16 +84,26 @@ theme_override_fonts/font = ExtResource("1_yenpy")
 theme_override_font_sizes/font_size = 16
 text = "Target"
 
-[node name="Value" type="Label" parent="Description/Target"]
+[node name="Container" type="HBoxContainer" parent="Description/Target"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Description/Target/Container"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_tc84l")
+
+[node name="Value" type="Label" parent="Description/Target/Container"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_mmf35")
-theme_override_font_sizes/font_size = 48
-text = "650
-"
+theme_override_font_sizes/font_size = 36
+text = "650"
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 236.0
 offset_right = 71.0
