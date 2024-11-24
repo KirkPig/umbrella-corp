@@ -3,6 +3,7 @@ extends Control
 @export var start_energy : int = 3
 @export var start_max_hand : int = 5
 @export var start_discard_energy : int = 3
+@export var start_shop_refresh : int = 10
 
 @export var start_deck: Array[int]
 @export var start_business: Array[int]
@@ -30,11 +31,15 @@ func set_up_game_manager() -> void:
 	GameManager.current_score = 0
 	GameManager.total_score = 0
 	GameManager.gold = 0
-	GameManager.max_energy = start_energy
 	GameManager.energy = start_energy
+	GameManager.max_energy = start_energy
 	GameManager.max_hand = start_max_hand
-	GameManager.max_discard_energy = start_discard_energy
 	GameManager.discard_energy = start_discard_energy
+	GameManager.max_discard_energy = start_discard_energy
+	GameManager.shop_refresh = start_shop_refresh
+	GameManager.max_shop_refresh = start_shop_refresh
+	
+	
 	GameManager.rng = RandomNumberGenerator.new()
 	GameManager.rng.seed = hash("0")
 

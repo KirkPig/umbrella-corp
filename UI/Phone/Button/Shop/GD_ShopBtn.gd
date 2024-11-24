@@ -9,3 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
+
+
+func _on_view_button_pressed() -> void:
+	shop_btn_pressed.emit()

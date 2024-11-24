@@ -12,6 +12,8 @@ signal gold_change(gold:int)
 signal max_hand_change(max_hand:int)
 signal current_discard_energy_change(energy:int)
 signal max_discard_energy_change(energy:int)
+signal current_shop_refresh_change(gold:int)
+signal max_shop_refresh_change(max_hand:int)
 
 var current_turn : int:
 	set(value):
@@ -64,7 +66,16 @@ var max_discard_energy : int:
 	set(value):
 		max_discard_energy = value
 		max_discard_energy_change.emit(value)
+				
+var shop_refresh : int:
+	set(value):
+		shop_refresh = value
+		current_shop_refresh_change.emit(value)
 		
+var max_shop_refresh : int:
+	set(value):
+		max_shop_refresh = value
+		max_shop_refresh_change.emit(value)
 
 var gold : int = 10000:
 	set(value):
@@ -89,6 +100,8 @@ var energy_cost_research: int = 1
 func next_turn():
 	current_turn += 1
 	energy = max_energy
+	discard_energy = max_discard_energy
+	shop_refresh = max_shop_refresh
 	CardManager.next_turn()
 	
 func end_turn():

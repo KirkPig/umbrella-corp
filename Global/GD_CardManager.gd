@@ -4,6 +4,7 @@ extends Node
 @onready var template_business_card = preload("res://Card/Presets/S_Business.tscn")
 @onready var template_resource_card = preload("res://Card/Presets/S_Resource.tscn")
 @onready var template_instant_card = preload("res://Card/Presets/S_Instant.tscn")
+@onready var template_upgrade_card = preload("res://Card/Presets/S_Upgrad.tscn")
 
 enum ECardLocation {
 	hand,
@@ -30,6 +31,7 @@ func _ready() -> void:
 	load_cards("res://Resource/Card/Resource/")
 	load_cards("res://Resource/Card/Worker/")
 	load_cards("res://Resource/Card/Instant/")
+	load_cards("res://Resource/Card/Upgrade/")
 
 func load_cards(_path: String) -> void:
 	var _card_res = DirAccess.get_files_at(_path)
@@ -48,6 +50,8 @@ func add_card(_id: int, _target: Control) -> Card:
 		card = create_resource_card(data)
 	elif data is InstantCardData:
 		card = create_instant_card(data)
+	elif data is UpgradeCardData:
+		card = create_upgrade_card(data)
 	else:
 		return
 	
@@ -76,6 +80,11 @@ func create_instant_card(data: InstantCardData) -> InstantCard:
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
 
+func create_upgrade_card(data: UpgradeCardData) -> UpgradeCard:
+	var card : UpgradeCard= template_upgrade_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	return card
+	
 func add_card_to_deck(_id: int) -> Card:
 	var card = add_card(_id, deck)
 	if !card:
@@ -162,7 +171,7 @@ func get_all_card(location:ECardLocation) -> Array[Card]:
 		ECardLocation.hand:
 			location_node = hand
 		ECardLocation.shop:
-			location_node = shop
+			location_node = shop.card_node
 		ECardLocation.field:
 			location_node = field
 		ECardLocation.deck:
@@ -188,7 +197,7 @@ func move_cards_to(cards:Array[Card], target_location:ECardLocation) -> void:
 		ECardLocation.shop:
 			for card in cards:
 				card.is_selected = false
-				shop.add_exists(card)
+				shop.card_node.add_exists(card)
 		ECardLocation.field:
 			for card in cards:
 				card.is_selected = false

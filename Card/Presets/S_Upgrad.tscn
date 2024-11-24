@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://becl08cgnwobe"]
+[gd_scene load_steps=5 format=3 uid="uid://becl08cgnwobe"]
 
+[ext_resource type="Script" path="res://Card/GD_UpgradeCard.gd" id="1_xp53s"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_7imes"]
 [ext_resource type="Texture2D" uid="uid://bv3m4cs4f8mue" path="res://Assets/InstantCard/A_InstantCard_3000.png" id="3_jp6co"]
 
@@ -14,10 +15,10 @@ shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
 [node name="UpgradeCard" type="Control"]
-custom_minimum_size = Vector2(280, 360)
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(90, 126)
+script = ExtResource("1_xp53s")
 
 [node name="Card" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_sa7br")

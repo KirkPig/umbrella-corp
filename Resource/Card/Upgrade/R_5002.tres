@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeCardData" load_steps=3 format=3 uid="uid://bdx3tf1h2im2v"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_UpgradeCard.gd" id="1_dyuy5"]
+[ext_resource type="Texture2D" uid="uid://c1wsq8avglckq" path="res://Assets/UpgradeCard/A_UpgradeCard_maxCard.png" id="1_q88of"]
+
+[resource]
+script = ExtResource("1_dyuy5")
+upgrade_type = 0
+upgrade_resoruce_id = -1
+upgrade_amount = 1
+card_name = ""
+card_id = 5002
+card_texture = ExtResource("1_q88of")
+shop_price = 10

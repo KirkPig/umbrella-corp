@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bisxenor2iny5"]
+[gd_scene load_steps=29 format=3 uid="uid://bisxenor2iny5"]
 
 [ext_resource type="Script" path="res://UI/Phone/GD_phone.gd" id="1_lk1nw"]
 [ext_resource type="Texture2D" uid="uid://dybaqdfpu283c" path="res://Assets/Phone/phoneframe.png" id="1_t4ip5"]
@@ -17,6 +17,28 @@
 [ext_resource type="PackedScene" uid="uid://bvft4vbbbwl0u" path="res://UI/Phone/Button/S_EndTurn.tscn" id="9_lku81"]
 [ext_resource type="Texture2D" uid="uid://dffxit0f4kjkm" path="res://Assets/Phone/phonenobatttery.png" id="13_ofx7v"]
 [ext_resource type="Texture2D" uid="uid://31qbnfv7c16f" path="res://Assets/Phone/phoneframewhite.png" id="17_r8gh7"]
+[ext_resource type="Texture2D" uid="uid://btw6n386dx7q7" path="res://Assets/Phone/back.png" id="18_qpv4y"]
+[ext_resource type="FontFile" uid="uid://b44qaa3hcljg3" path="res://Assets/Font/SF-Pro-Rounded-Medium.otf" id="19_643q4"]
+[ext_resource type="Texture2D" uid="uid://cksvevd2nskkd" path="res://Assets/Phone/shop.png" id="19_wt8ja"]
+[ext_resource type="Texture2D" uid="uid://b5hf1dbe7tqkc" path="res://Assets/Phone/wallet.png" id="21_ckcg4"]
+[ext_resource type="Script" path="res://UI/Phone/Button/Shop/GD_Shop.gd" id="22_nxci6"]
+[ext_resource type="Texture2D" uid="uid://c8nf0ryhi0fir" path="res://Assets/Phone/goldbg.png" id="23_w4am7"]
+[ext_resource type="Texture2D" uid="uid://cr1a0fsy37el0" path="res://Assets/Phone/bluebg.png" id="24_81r17"]
+[ext_resource type="Texture2D" uid="uid://dxbll1qq3t35q" path="res://Assets/Phone/refreshnobg.png" id="25_r5ktg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5buys"]
+font = ExtResource("19_643q4")
+font_size = 76
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iqnry"]
+font = ExtResource("19_643q4")
+font_size = 52
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_khe3o"]
+font = ExtResource("19_643q4")
+font_size = 40
 
 [node name="SUiPhont" type="CanvasLayer"]
 script = ExtResource("1_lk1nw")
@@ -34,7 +56,6 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -372,6 +393,7 @@ custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
 
 [node name="Shop" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -412,9 +434,6 @@ offset_right = 156.0
 grow_vertical = 0
 text = "00:00"
 label_settings = ExtResource("3_yinhk")
-
-[node name="Timer" type="Timer" parent="Control/Shop/VSplitContainer/Data/Time Label"]
-autostart = true
 
 [node name="Control" type="Control" parent="Control/Shop/VSplitContainer/Data"]
 layout_mode = 1
@@ -458,5 +477,150 @@ max_value = 4.0
 value = 4.0
 texture_progress = ExtResource("5_2u0bw")
 
+[node name="Control" type="Control" parent="Control/Shop/VSplitContainer"]
+anchors_preset = 0
+offset_left = 54.0
+offset_top = 143.0
+offset_right = 94.0
+offset_bottom = 183.0
+
+[node name="CloseShop" type="TextureButton" parent="Control/Shop/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 6.0
+offset_right = 116.0
+offset_bottom = 54.0
+texture_normal = ExtResource("18_qpv4y")
+
+[node name="Label" type="Label" parent="Control/Shop/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 58.0
+offset_right = 422.0
+offset_bottom = 155.0
+text = "Shop"
+label_settings = SubResource("LabelSettings_5buys")
+
+[node name="ShopImage" type="TextureRect" parent="Control/Shop/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 52.0
+offset_right = 556.0
+offset_bottom = 180.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("19_wt8ja")
+
+[node name="MoneyImage" type="TextureRect" parent="Control/Shop/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 146.0
+offset_right = 134.0
+offset_bottom = 274.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("21_ckcg4")
+
+[node name="MoneyLabel" type="Label" parent="Control/Shop/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 166.0
+offset_right = 294.0
+offset_bottom = 263.0
+text = "$ 0"
+label_settings = SubResource("LabelSettings_iqnry")
+
+[node name="Control2" type="Control" parent="Control/Shop/VSplitContainer"]
+anchors_preset = 0
+offset_left = 110.0
+offset_top = 429.0
+offset_right = 150.0
+offset_bottom = 469.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Shop/VSplitContainer/Control2"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 199.0
+offset_bottom = 380.0
+scale = Vector2(2, 2)
+script = ExtResource("22_nxci6")
+
+[node name="Control3" type="Control" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="ShopController" type="Control" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control3"]
+custom_minimum_size = Vector2(150, 250)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 250.0
+scale = Vector2(1.2, 1.2)
+
+[node name="Control" type="Control" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BuyButton" type="TextureButton" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control"]
+layout_mode = 2
+offset_left = 12.0
+offset_right = 494.0
+offset_bottom = 112.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("23_w4am7")
+
+[node name="Label" type="Label" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control/BuyButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "$ 99"
+label_settings = SubResource("LabelSettings_khe3o")
+
+[node name="Control2" type="Control" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ResetButton2" type="TextureButton" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control2"]
+layout_mode = 2
+offset_left = 12.0
+offset_right = 494.0
+offset_bottom = 112.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("24_81r17")
+
+[node name="Control" type="HBoxContainer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control2/ResetButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -32.0
+offset_right = 34.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control2/ResetButton2/Control"]
+layout_mode = 2
+texture = ExtResource("25_r5ktg")
+
+[node name="Label" type="Label" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control2/ResetButton2/Control"]
+layout_mode = 2
+text = "Free (10)"
+label_settings = SubResource("LabelSettings_khe3o")
+
 [connection signal="timeout" from="Control/TextureRect/VSplitContainer/Data/Time Label/Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Control/Shop/VSplitContainer/Data/Time Label/Timer" to="." method="_on_timer_timeout"]
+[connection signal="shop_btn_pressed" from="Control/TextureRect/VSplitContainer/HSplitContainer2/Control/Shop" to="." method="_on_shop_shop_btn_pressed"]
+[connection signal="pressed" from="Control/Shop/VSplitContainer/Control/CloseShop" to="." method="_on_close_shop_pressed"]
+[connection signal="pressed" from="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control/BuyButton" to="Control/Shop/VSplitContainer/Control2/VBoxContainer" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control2/ResetButton2" to="Control/Shop/VSplitContainer/Control2/VBoxContainer" method="_on_reset_button_2_pressed"]

@@ -1,47 +1,47 @@
 extends Control
 class_name ShopController
 
-@export var card_gap: float = 200
-@export var shop_width: float = 800
-
+@onready var card_node = $Control3/ShopController
+@onready var card_price_label = $Control/BuyButton/Label
+@onready var shop_refresh_label = $Control2/ResetButton2/Control/Label
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	CardManager.shop = self
+	GameManager.current_shop_refresh_change.connect(_on_shop_refresh_change)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
 func get_all_card() -> Array[Node]:
-	return self.get_children()
-
-func add_exists(node: Card):
-	node.in_shop = true
-	node.reparent(self)
-	update_position()
-	
-func update_position():
-	var cards = self.get_children()
-	var i = 0
-	for card: Card in cards:
-		card.set_card_hand_position(i, cards.size(), 0, shop_width, card_gap, false)
-		i+=1
-	pass
+	return card_node.get_children()
 
 func reset_shop():
-	for card in self.get_children():
-		self.remove_child(card)
+	for card in card_node.get_children():
+		card_node.remove_child(card)
 		if is_instance_valid(card):
 			card.queue_free()
-	for i in 3:
-		var _id = CardManager.card_pool[GameManager.rng.randi() % CardManager.card_pool.size()]
-		add_card_to_shop(_id)
+	var _id = CardManager.card_pool[GameManager.rng.randi() % CardManager.card_pool.size()]
+	add_card_to_shop(_id)
 
 func add_card_to_shop(_id: int) -> Card:
-	var card = CardManager.add_card(_id, self)
+	var card = CardManager.add_card(_id, card_node)
 	if !card:
 		return
-	ActionManager.connect_selection(card)
 	card.in_shop = true
-	update_position()
+	card_price_label.text = "$ "+str(card.card_data.shop_price)
 	return card
+
+func _on_shop_refresh_change(value:int) -> void:
+	shop_refresh_label.text = "Free (" + str(value) +")"
+
+func _on_buy_button_pressed() -> void:
+	var card_list = card_node.get_children()
+	if ActionManager.action_buy(card_list[0]):
+		reset_shop()
+
+
+func _on_reset_button_2_pressed() -> void:
+	if GameManager.shop_refresh > 0:
+		GameManager.shop_refresh -= 1
+		reset_shop()

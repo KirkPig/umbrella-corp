@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Card/GD_InstantCard.gd" id="1_yotca"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_3dkl3"]
-[ext_resource type="Texture2D" uid="uid://bv3m4cs4f8mue" path="res://Assets/InstantCard/A_InstantCard_3000.png" id="3_8xy5p"]
+[ext_resource type="Texture2D" uid="uid://c1wsq8avglckq" path="res://Assets/UpgradeCard/A_UpgradeCard_maxCard.png" id="3_u6f8j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -15,7 +15,6 @@ shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
 [node name="InstantCard" type="Control"]
-custom_minimum_size = Vector2(280, 360)
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(90, 126)
@@ -27,7 +26,7 @@ layout_mode = 0
 offset_right = 600.0
 offset_bottom = 840.0
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8xy5p")
+texture = ExtResource("3_u6f8j")
 stretch_mode = 2
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]

@@ -9,9 +9,6 @@ var card_data: UpgradeCardData:
 		card_data = value
 		set_data(value)
 
-var base_work_rate : int
-var special_work_rate : Dictionary
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -20,7 +17,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 
-func set_data(data: WorkerCardData):
+func set_data(data: UpgradeCardData):
 	set_base_data(data)
-	base_work_rate = data.base_work_rate
-	special_work_rate = data.special_work_rate

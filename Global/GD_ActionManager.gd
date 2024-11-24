@@ -37,17 +37,21 @@ func action_sell():
 	GameManager.energy = GameManager.energy - GameManager.energy_cost_sell
 	action_list.reset_list()
 
-func action_buy(card: Card):
+func action_buy(card: Card)-> bool:
 	if card.shop_price > GameManager.gold:
-		return
+		return false
 	
 	GameManager.gold = GameManager.gold - card.shop_price
 	card.in_shop = false
 	
 	if card is BusinessCard:
 		CardManager.field.add_exists(card)
+	elif card is UpgradeCard:
+		card.card_data.played()
+		card.queue_free()
 	else:
 		CardManager.hand.add_exists(card)
+	return true
 
 func _get_research_reward_by_priority(_data: ResourceCardData, _priority: int) -> Array[ResearchReward]:
 	var _resp: Array[ResearchReward] = []
