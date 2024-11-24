@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d3bit3qtq3v0r"]
+
+[ext_resource type="FontFile" uid="uid://d23nihmpuj0q8" path="res://Assets/Font/SF-Pro-Rounded-Regular.otf" id="1_ato86"]
+
+[resource]
+font = ExtResource("1_ato86")
+font_size = 34

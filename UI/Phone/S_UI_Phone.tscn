@@ -1,0 +1,308 @@
+[gd_scene load_steps=14 format=3 uid="uid://bisxenor2iny5"]
+
+[ext_resource type="Script" path="res://UI/Phone/GD_phone.gd" id="1_lk1nw"]
+[ext_resource type="Texture2D" uid="uid://dybaqdfpu283c" path="res://Assets/Phone/phoneframe.png" id="1_t4ip5"]
+[ext_resource type="LabelSettings" uid="uid://bjwqr4371a7sr" path="res://UI/Phone/FontSetting.tres" id="3_yinhk"]
+[ext_resource type="Texture2D" uid="uid://dpwhd2tomn1aq" path="res://Assets/Phone/battery.png" id="4_k4qrl"]
+[ext_resource type="Texture2D" uid="uid://c5rkw02cexjs8" path="res://Assets/Phone/Signal.png" id="5_2u0bw"]
+[ext_resource type="Texture2D" uid="uid://c3vm0veiib7lp" path="res://Assets/Phone/batteryinside.png" id="5_3ghh6"]
+[ext_resource type="PackedScene" uid="uid://dlcm1w387qi0m" path="res://UI/Phone/Button/Action/S_ActionManager.tscn" id="7_3uk0j"]
+[ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://UI/Phone/Button/S_Deck.tscn" id="7_8yex0"]
+[ext_resource type="PackedScene" uid="uid://b1tlaenmph0vv" path="res://UI/Phone/Button/Setting/S_Setting.tscn" id="8_gjytp"]
+[ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://UI/Phone/Button/S_Discard.tscn" id="8_jjuje"]
+[ext_resource type="PackedScene" uid="uid://qlptp7of8ifh" path="res://UI/Phone/Button/Shop/S_Shop.tscn" id="8_tlx3m"]
+[ext_resource type="PackedScene" uid="uid://bvft4vbbbwl0u" path="res://UI/Phone/Button/S_EndTurn.tscn" id="9_lku81"]
+[ext_resource type="Texture2D" uid="uid://dffxit0f4kjkm" path="res://Assets/Phone/phonenobatttery.png" id="13_ofx7v"]
+
+[node name="SUiPhont" type="CanvasLayer"]
+script = ExtResource("1_lk1nw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -646.0
+offset_top = -1381.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(586, 1481)
+texture = ExtResource("1_t4ip5")
+
+[node name="VSplitContainer" type="Control" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Data" type="Control" parent="Control/TextureRect/VSplitContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 646.0
+offset_bottom = 100.0
+
+[node name="Time Label" type="Label" parent="Control/TextureRect/VSplitContainer/Data"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -44.0
+offset_right = 156.0
+grow_vertical = 0
+text = "00:00"
+label_settings = ExtResource("3_yinhk")
+
+[node name="Timer" type="Timer" parent="Control/TextureRect/VSplitContainer/Data/Time Label"]
+autostart = true
+
+[node name="Control" type="Control" parent="Control/TextureRect/VSplitContainer/Data"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Energy" type="Label" parent="Control/TextureRect/VSplitContainer/Data/Control"]
+layout_mode = 1
+offset_left = -246.0
+offset_top = -43.0
+offset_right = -150.0
+offset_bottom = 1.0
+text = "75%
+"
+label_settings = ExtResource("3_yinhk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/TextureRect/VSplitContainer/Data/Control"]
+layout_mode = 0
+offset_left = -176.0
+offset_top = -35.0
+offset_right = -136.0
+offset_bottom = 5.0
+max_value = 4.0
+value = 3.0
+texture_over = ExtResource("4_k4qrl")
+texture_progress = ExtResource("5_3ghh6")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="Control/TextureRect/VSplitContainer/Data/Control"]
+layout_mode = 1
+offset_left = -108.0
+offset_top = -35.0
+offset_right = -87.0
+offset_bottom = -22.0
+scale = Vector2(2, 2)
+max_value = 4.0
+value = 4.0
+texture_progress = ExtResource("5_2u0bw")
+
+[node name="VBoxContainer" parent="Control/TextureRect/VSplitContainer" instance=ExtResource("7_3uk0j")]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 125.0
+offset_right = 604.0
+offset_bottom = 737.0
+
+[node name="HSplitContainer2" type="HBoxContainer" parent="Control/TextureRect/VSplitContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -621.0
+offset_right = 15.0
+offset_bottom = -401.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Shop" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control" instance=ExtResource("8_tlx3m")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Setting" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control3" instance=ExtResource("8_gjytp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="HSplitContainer" type="HBoxContainer" parent="Control/TextureRect/VSplitContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -381.0
+offset_right = 15.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Deck" parent="Control/TextureRect/VSplitContainer/HSplitContainer/Control" instance=ExtResource("7_8yex0")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Control2" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Discard" parent="Control/TextureRect/VSplitContainer/HSplitContainer/Control2" instance=ExtResource("8_jjuje")]
+layout_mode = 1
+anchors_preset = -1
+
+[node name="Control3" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="End" parent="Control/TextureRect/VSplitContainer/HSplitContainer/Control3" instance=ExtResource("9_lku81")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Our of energy" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -646.0
+offset_top = -1381.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(586, 1481)
+texture = ExtResource("13_ofx7v")
+
+[node name="VSplitContainer" type="Control" parent="Control/Our of energy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Data" type="Control" parent="Control/Our of energy/VSplitContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 646.0
+offset_bottom = 100.0
+
+[node name="Time Label" type="Label" parent="Control/Our of energy/VSplitContainer/Data"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -44.0
+offset_right = 156.0
+grow_vertical = 0
+text = "00:00"
+label_settings = ExtResource("3_yinhk")
+
+[node name="Timer" type="Timer" parent="Control/Our of energy/VSplitContainer/Data/Time Label"]
+autostart = true
+
+[node name="HSplitContainer2" type="HBoxContainer" parent="Control/Our of energy/VSplitContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -738.0
+offset_right = -6.0
+offset_bottom = -518.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Setting" parent="Control/Our of energy/VSplitContainer/HSplitContainer2/Control3" instance=ExtResource("8_gjytp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Control2" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="End" parent="Control/Our of energy/VSplitContainer/HSplitContainer2/Control2" instance=ExtResource("9_lku81")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control4" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[connection signal="timeout" from="Control/TextureRect/VSplitContainer/Data/Time Label/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Control/Our of energy/VSplitContainer/Data/Time Label/Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvft4vbbbwl0u"]
+
+[ext_resource type="Script" path="res://UI/Phone/Button/GD_EndTurn.gd" id="1_8c8oa"]
+[ext_resource type="Texture2D" uid="uid://bj0iwg45ka83w" path="res://Assets/Phone/endturn.png" id="2_sv8es"]
+[ext_resource type="LabelSettings" uid="uid://d3bit3qtq3v0r" path="res://UI/Phone/Button/ButtonFontSetting.tres" id="3_s5tq3"]
+
+[node name="End" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8c8oa")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -65.0
+offset_top = -65.0
+offset_right = -65.0
+offset_bottom = -65.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ViewButton" type="TextureButton" parent="Control/VSplitContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_sv8es")
+
+[node name="Label" type="Label" parent="Control/VSplitContainer"]
+layout_mode = 2
+text = "End Day"
+label_settings = ExtResource("3_s5tq3")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Control/VSplitContainer/ViewButton" to="." method="_on_view_button_pressed"]
