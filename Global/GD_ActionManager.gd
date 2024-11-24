@@ -19,7 +19,7 @@ func action_work(business: BusinessCard):
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
-	GameManager.energy = GameManager.energy - GameManager.energy_cost_work
+	GameManager.energy -=  GameManager.energy_cost_work
 	action_list.reset_list()
 	
 	emit_signal("action_done")
@@ -28,7 +28,7 @@ func action_discard():
 	CardManager.discards(CardManager.get_selected_card())
 	CardManager.fill_hand()
 	
-	GameManager.energy = GameManager.energy - GameManager.energy_cost_discard
+	GameManager.discard_energy -= GameManager.energy_cost_discard
 	action_list.reset_list()
 	
 	emit_signal("action_done")

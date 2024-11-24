@@ -1,7 +1,7 @@
 extends Control
 
 @onready var discard_button = $Control/VSplitContainer/ViewButton
-@onready var discard_button_label = $Control/VSplitContainer/ViewButton/CardsLabel
+@onready var discard_button_label = $Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer/CenterContainer/CardsLabel
 
 @onready var discard_card = $DiscardCard
 

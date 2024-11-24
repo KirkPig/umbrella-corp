@@ -10,6 +10,8 @@ signal current_energy_change(energy:int)
 signal max_energy_change(energy:int)
 signal gold_change(gold:int)
 signal max_hand_change(max_hand:int)
+signal current_discard_energy_change(energy:int)
+signal max_discard_energy_change(energy:int)
 
 var current_turn : int:
 	set(value):
@@ -53,6 +55,17 @@ var max_energy : int:
 		max_energy = value
 		max_energy_change.emit(value)
 		
+var discard_energy : int:
+	set(value):
+		discard_energy = value
+		current_discard_energy_change.emit(value)
+		
+var max_discard_energy : int:
+	set(value):
+		max_discard_energy = value
+		max_discard_energy_change.emit(value)
+		
+
 var gold : int = 10000:
 	set(value):
 		gold = value
@@ -69,7 +82,7 @@ var constract_selection: Control
 var rng: RandomNumberGenerator
 
 var energy_cost_sell: int = 1
-var energy_cost_discard: int = 0
+var energy_cost_discard: int = 1
 var energy_cost_work: int = 1
 var energy_cost_research: int = 1
 

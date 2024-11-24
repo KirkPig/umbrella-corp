@@ -1,7 +1,7 @@
 extends Card
-class_name ResourceCard
+class_name UpgradeCard
 
-var card_data: ResourceCardData:
+var card_data: UpgradeCardData:
 	set(value):
 		if card_data:
 			card_data.changed.disconnect(set_data)
@@ -9,10 +9,9 @@ var card_data: ResourceCardData:
 		card_data = value
 		set_data(value)
 
-var yield_score = 10
-var yield_gold = 1
-var business = 0
-var demand = 1
+var base_work_rate : int
+var special_work_rate : Dictionary
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -21,9 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 
-func set_data(data: ResourceCardData):
+func set_data(data: WorkerCardData):
 	set_base_data(data)
-	yield_score = data.yield_score
-	yield_gold = data.yield_gold
-	business = data.business
-	demand = data.demand
+	base_work_rate = data.base_work_rate
+	special_work_rate = data.special_work_rate
