@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://csgj6tukmkxpu"]
+
+[ext_resource type="FontFile" uid="uid://d23nihmpuj0q8" path="res://Assets/Font/SF-Pro-Rounded-Regular.otf" id="1_yenpy"]
+[ext_resource type="FontFile" uid="uid://b44qaa3hcljg3" path="res://Assets/Font/SF-Pro-Rounded-Medium.otf" id="2_mmf35"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33vun"]
+bg_color = Color(0.780392, 1, 0.560784, 1)
+shadow_size = 4
+shadow_offset = Vector2(4, 4)
+
+[node name="Contract" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="."]
+offset_right = 380.0
+offset_bottom = 287.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_33vun")
+
+[node name="Description" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 35.0
+offset_right = 336.0
+offset_bottom = 75.0
+alignment = 1
+
+[node name="Deadline" type="VBoxContainer" parent="Description"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Description/Deadline"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_yenpy")
+theme_override_font_sizes/font_size = 16
+text = "Contract Deadline"
+
+[node name="Value" type="Label" parent="Description/Deadline"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mmf35")
+theme_override_font_sizes/font_size = 64
+text = "7
+"
+
+[node name="Target" type="VBoxContainer" parent="Description"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Description/Target"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_yenpy")
+theme_override_font_sizes/font_size = 16
+text = "Target"
+
+[node name="Value" type="Label" parent="Description/Target"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mmf35")
+theme_override_font_sizes/font_size = 48
+text = "650
+"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 236.0
+offset_right = 71.0
+offset_bottom = 256.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_yenpy")
+theme_override_font_sizes/font_size = 16
+text = "Reward"
