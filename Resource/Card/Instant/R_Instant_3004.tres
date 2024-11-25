@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="3_vm1fs"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cbjeb"]
-load_path = "res://.godot/imported/A_InstantCard_3003.png-1c99f9eb5ef1151d692be2ca4572782c.ctex"
+load_path = "res://.godot/imported/A_InstantCard_3004.png-7b60ea31b5a8b4eef963b9746703834c.ctex"
 
 [sub_resource type="Resource" id="Resource_66vqg"]
 script = ExtResource("2_uvajv")
@@ -21,7 +21,7 @@ script = ExtResource("3_vm1fs")
 target_mode = 0
 target_type = 0
 effects = Array[ExtResource("1_53jwo")]([SubResource("Resource_66vqg")])
-card_name = ""
+card_name = "Beach Erosion"
 card_id = 3004
 card_texture = SubResource("CompressedTexture2D_cbjeb")
 shop_price = 30

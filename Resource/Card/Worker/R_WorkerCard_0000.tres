@@ -10,4 +10,4 @@ special_work_rate = {}
 card_name = "Worker"
 card_id = 0
 card_texture = ExtResource("1_5hp3q")
-shop_price = 2
+shop_price = 3
