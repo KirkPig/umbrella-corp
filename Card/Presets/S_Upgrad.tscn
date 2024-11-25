@@ -23,9 +23,9 @@ script = ExtResource("1_xp53s")
 [node name="Card" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_sa7br")
 layout_mode = 0
-offset_right = 600.0
-offset_bottom = 840.0
-scale = Vector2(0.3, 0.3)
+offset_right = 480.0
+offset_bottom = 720.0
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_jp6co")
 stretch_mode = 2
 

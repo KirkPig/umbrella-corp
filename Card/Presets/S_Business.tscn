@@ -15,7 +15,6 @@ shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
 [node name="BusinessCard" type="Control"]
-custom_minimum_size = Vector2(280, 360)
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(90, 126)
@@ -25,10 +24,11 @@ script = ExtResource("1_b6kww")
 texture_filter = 6
 material = SubResource("ShaderMaterial_sa7br")
 layout_mode = 0
-offset_right = 600.0
-offset_bottom = 840.0
-scale = Vector2(0.3, 0.3)
+offset_right = 480.0
+offset_bottom = 720.0
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_6jrv4")
+stretch_mode = 2
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

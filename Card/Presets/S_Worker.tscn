@@ -23,10 +23,11 @@ script = ExtResource("1_xhlpt")
 [node name="Card" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_q23vy")
 layout_mode = 2
-offset_right = 600.0
-offset_bottom = 840.0
-scale = Vector2(0.3, 0.3)
+offset_right = 480.0
+offset_bottom = 720.0
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_jww0k")
+stretch_mode = 2
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]
