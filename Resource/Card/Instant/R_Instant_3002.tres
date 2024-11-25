@@ -2,21 +2,24 @@
 
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_n2k1g"]
 [ext_resource type="Texture2D" uid="uid://bpp5i7w4oeqwf" path="res://Assets/InstantCard/A_InstantCard_3002.png" id="1_qi0sg"]
-[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectCard.gd" id="2_6nmy8"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_jxew5"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="3_6vind"]
 
-[sub_resource type="Resource" id="Resource_jnrqy"]
-script = ExtResource("2_6nmy8")
-effect_start_location = 4
-amount = 1
-effect_end_location = 0
+[sub_resource type="Resource" id="Resource_rtl5h"]
+script = ExtResource("3_6vind")
+effect_resource = 2
+effect_type = 1
+effect_amount = 30.0
+effect_time_type = 0
+effect_time = 1
+effect_target = 2
 
 [resource]
 script = ExtResource("2_jxew5")
 target_mode = 0
 target_type = 0
-effects = Array[ExtResource("1_n2k1g")]([SubResource("Resource_jnrqy")])
+effects = Array[ExtResource("1_n2k1g")]([SubResource("Resource_rtl5h")])
 card_name = ""
 card_id = 3002
 card_texture = ExtResource("1_qi0sg")
-shop_price = 0
+shop_price = 30

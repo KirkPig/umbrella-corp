@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=6 format=3 uid="uid://ce1qhg4ktqrh2"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_h6wjq"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="2_6743q"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="3_tnno5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ssg0"]
+load_path = "res://.godot/imported/A_InstantCard_3006.png-7c49fb52ddd2fe2aa400cfb662b79c76.ctex"
+
+[sub_resource type="Resource" id="Resource_3336q"]
+script = ExtResource("2_6743q")
+effect_resource = 1
+effect_type = 1
+effect_amount = 2.0
+effect_time_type = 0
+effect_time = 1
+effect_target = 1
+
+[resource]
+script = ExtResource("3_tnno5")
+target_mode = 0
+target_type = 0
+effects = Array[ExtResource("1_h6wjq")]([SubResource("Resource_3336q")])
+card_name = ""
+card_id = 3006
+card_texture = SubResource("CompressedTexture2D_7ssg0")
+shop_price = 20
