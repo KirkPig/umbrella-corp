@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mapuj"]
 resource_local_to_scene = true
 shader = ExtResource("2_uqi2t")
-shader_parameter/rect_size = Vector2(540, 756)
+shader_parameter/rect_size = Vector2(480, 720)
 shader_parameter/fov = 90.0
 shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
@@ -23,9 +23,9 @@ script = ExtResource("1_2lajr")
 [node name="Card" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_mapuj")
 layout_mode = 0
-offset_right = 600.0
-offset_bottom = 840.0
-scale = Vector2(0.3, 0.3)
+offset_right = 480.0
+offset_bottom = 720.0
+scale = Vector2(0.333, 0.333)
 texture = ExtResource("3_0ery7")
 stretch_mode = 2
 

@@ -31,3 +31,7 @@ window/size/viewport_height=1080
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/globalize-plugins/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=2

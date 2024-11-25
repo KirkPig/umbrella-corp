@@ -1,0 +1,140 @@
+[gd_scene load_steps=10 format=3 uid="uid://lh1fsywke2mu"]
+
+[ext_resource type="Script" path="res://UI/Business/GD_BusinessUI.gd" id="1_tge38"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="2_vt6os"]
+[ext_resource type="Texture2D" uid="uid://b4k7h608rbynp" path="res://Assets/UI/Business/labor-icon.svg" id="3_to8dd"]
+[ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="3_xg0d7"]
+[ext_resource type="FontFile" uid="uid://cjgxkmfq6di8l" path="res://Assets/Font/SF-Pro-Rounded-Bold.otf" id="4_qeiud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ti8em"]
+bg_color = Color(0.956863, 1, 0.94902, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odwnn"]
+bg_color = Color(0.721569, 1, 0.678431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8b5jj"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj5oo"]
+bg_color = Color(0.160784, 0.858824, 0.47451, 1)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[node name="Business" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tge38")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 282.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ti8em")
+
+[node name="Container" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(396, 230)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 36.0
+offset_right = 263.0
+offset_bottom = 266.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Container"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_odwnn")
+
+[node name="Detail" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Title" type="HBoxContainer" parent="Container/Detail"]
+layout_mode = 2
+
+[node name="Container" type="HBoxContainer" parent="Container/Detail/Title"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Container/Detail/Title/Container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 36
+text = "Farm"
+
+[node name="Icon" type="TextureRect" parent="Container/Detail/Title/Container"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_xg0d7")
+expand_mode = 1
+
+[node name="Labor" type="HBoxContainer" parent="Container/Detail"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Container/Detail/Labor"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_to8dd")
+
+[node name="Progress" type="VBoxContainer" parent="Container/Detail/Labor"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Yield" type="Label" parent="Container/Detail/Labor/Progress"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 14
+text = "1x Wheat"
+
+[node name="Value" type="ProgressBar" parent="Container/Detail/Labor/Progress"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_8b5jj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_aj5oo")
+value = 25.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Container/Detail/Labor/Progress"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 14
+text = "1 / 4"
+
+[node name="Component" type="VBoxContainer" parent="Container/Detail"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Container/Detail/Component"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_qeiud")
+theme_override_font_sizes/font_size = 20
+text = "Component"
+
+[node name="List" type="VBoxContainer" parent="Container/Detail/Component"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Item" type="HBoxContainer" parent="Container/Detail/Component/List"]
+layout_mode = 2
+alignment = 1

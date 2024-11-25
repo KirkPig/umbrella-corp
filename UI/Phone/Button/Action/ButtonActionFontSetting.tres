@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b04mknxim6hs1"]
+
+[ext_resource type="FontFile" uid="uid://cjgxkmfq6di8l" path="res://Assets/Font/SF-Pro-Rounded-Bold.otf" id="1_fk02b"]
+
+[resource]
+font = ExtResource("1_fk02b")
+font_size = 34
+font_color = Color(0, 0, 0, 1)

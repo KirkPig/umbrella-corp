@@ -1,5 +1,7 @@
 extends Node
 
+signal action_done
+
 var action_list: ActionListController
 
 ## Section: Actions
@@ -17,15 +19,19 @@ func action_work(business: BusinessCard):
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
-	GameManager.energy = GameManager.energy - GameManager.energy_cost_work
+	GameManager.energy -=  GameManager.energy_cost_work
 	action_list.reset_list()
+	
+	emit_signal("action_done")
 	
 func action_discard():
 	CardManager.discards(CardManager.get_selected_card())
 	CardManager.fill_hand()
 	
-	GameManager.energy = GameManager.energy - GameManager.energy_cost_discard
+	GameManager.discard_energy -= GameManager.energy_cost_discard
 	action_list.reset_list()
+	
+	emit_signal("action_done")
 
 func action_sell():
 	var selected_card: Array[Card] = CardManager.get_selected_card()
@@ -36,18 +42,26 @@ func action_sell():
 	
 	GameManager.energy = GameManager.energy - GameManager.energy_cost_sell
 	action_list.reset_list()
+	
+	emit_signal("action_done")
 
-func action_buy(card: Card):
+func action_buy(card: Card)-> bool:
 	if card.shop_price > GameManager.gold:
-		return
+		return false
 	
 	GameManager.gold = GameManager.gold - card.shop_price
 	card.in_shop = false
 	
 	if card is BusinessCard:
 		CardManager.field.add_exists(card)
+	elif card is UpgradeCard:
+		card.card_data.played()
+		card.queue_free()
 	else:
 		CardManager.hand.add_exists(card)
+	
+	emit_signal("action_done")
+	return true
 
 func _get_research_reward_by_priority(_data: ResourceCardData, _priority: int) -> Array[ResearchReward]:
 	var _resp: Array[ResearchReward] = []
@@ -89,7 +103,8 @@ func action_research():
 		_w_arr.append(_r.chance)
 	
 	var _w = PackedFloat32Array(_w_arr)
-	print(_reward[GameManager.rng.rand_weighted(_w)].chance)
+	#print(_reward[GameManager.rng.rand_weighted(_w)].chance)
+	emit_signal("action_done")
 	
 	
 func action_activate() -> void:

@@ -42,7 +42,7 @@ var is_selected : bool:
 		if !is_selected and value:
 			tween_selected = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 			tween_selected.tween_property(card_texture, "position", Vector2(0, -toggle_up_pixel), 0.25)
-			_set_card_rotation(0, 0)
+			_set_card_rotation_effect(0, 0)
 		is_selected = value
 
 func _ready() -> void:
@@ -52,8 +52,12 @@ func _process(delta: float) -> void:
 	rotate_velocity(delta)
 
 func handle_mouse_click(event: InputEvent) -> void:
-	if event is InputEventMouseButton and is_hover and event.is_pressed():
-		selected()
+	if event is not InputEventMouseButton: return
+	if event.button_index != MOUSE_BUTTON_LEFT: return
+	if !is_hover: return 
+	if !event.is_pressed(): return
+	
+	selected()
 
 func selected():
 	if in_shop:
@@ -89,6 +93,7 @@ func set_card_hand_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x
 	if !in_hand:
 		_pos_y = 0
 	change_card_position(Vector2(_pos_x, _pos_y), 0.2)
+	z_index = _card_pos
 
 func _on_card_mouse_entered() -> void:
 	is_hover = true
@@ -96,7 +101,6 @@ func _on_card_mouse_entered() -> void:
 		tween_hover.kill()
 	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween_hover.tween_property(self, "scale", Vector2(1.05, 1.05), 0.4)
-	pass # Replace with function body.
 
 func _on_card_mouse_exited() -> void:
 	is_hover = false
@@ -111,38 +115,26 @@ func _on_card_mouse_exited() -> void:
 		tween_hover.kill()
 	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween_hover.tween_property(self, "scale", Vector2.ONE, 0.4)
-	_set_card_rotation(0, 0)
-	pass # Replace with function body.
+	_set_card_rotation_effect(0, 0)
 
-func _set_card_rotation(x: float, y: float):
+func _set_card_rotation_effect(x: float, y: float):
 	card_texture.material.set_shader_parameter("x_rot", x)
 	card_texture.material.set_shader_parameter("y_rot", y)
 
 func _on_card_gui_input(event: InputEvent) -> void:
-	
-	#print("--------------------------")
 	handle_mouse_click(event)
 	
 	# TODO: Don't compute rotation when moving the card
 	if is_selected: return
 	if not event is InputEventMouseMotion: return
 	
-	# Handles rotation
-	# Get local mouse pos
+	# Handles rotation effect
 	var mouse_pos: Vector2 = card_texture.get_local_mouse_position()
 	var lerp_val_x: float = remap(mouse_pos.x, 0.0, card_texture.size.x, 0, 1)
 	var lerp_val_y: float = remap(mouse_pos.y, 0.0, card_texture.size.y, 0, 1)
 	var rot_x: float = rad_to_deg(lerp_angle(-angle_x_max, angle_x_max, lerp_val_x))
 	var rot_y: float = rad_to_deg(lerp_angle(angle_y_max, -angle_y_max, lerp_val_y))
-	#print("Mouse: ", mouse_pos)
-	#print("Card: ", position + card_anchor.size)
-	#print("diff: ", diff)
-	#print("Lerp val x: ", lerp_val_x)
-	#print("lerp val y: ", lerp_val_y)
-	#print("Rot x: ", rot_x)
-	#print("Rot y: ", rot_y)
-	
-	_set_card_rotation(rot_x, rot_y)
+	_set_card_rotation_effect(rot_x, rot_y)
 
 # Card rotation as it moved
 func rotate_velocity(delta: float) -> void:

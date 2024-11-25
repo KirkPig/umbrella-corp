@@ -1,17 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=10 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Field.gd" id="2_078xj"]
-[ext_resource type="Script" path="res://System/GD_ActionListController.gd" id="2_n0yog"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="3_fuj8y"]
-[ext_resource type="Script" path="res://System/Board/GD_Shop.gd" id="4_pj51p"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
-[ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://System/Board/S_Discard.tscn" id="9_bes4e"]
-[ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://System/Board/S_Deck.tscn" id="10_r3mj1"]
-[ext_resource type="Texture2D" uid="uid://dhsgptm2yumy1" path="res://Assets/UI/Phone.png" id="10_x74vo"]
 [ext_resource type="Texture2D" uid="uid://bevpmelaa7v4x" path="res://Assets/UI/Table.png" id="11_7mt5x"]
 [ext_resource type="PackedScene" uid="uid://bsn11t7pc3pei" path="res://System/S_ContractSelection.tscn" id="12_nwqtc"]
+[ext_resource type="PackedScene" uid="uid://bisxenor2iny5" path="res://UI/Phone/S_UI_Phone.tscn" id="13_herli"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4d276"]
 font_size = 32
@@ -26,7 +22,7 @@ grow_vertical = 2
 script = ExtResource("1_jfe42")
 start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 start_business = Array[int]([1000])
-card_pool = Array[int]([0, 1000, 1001, 1002, 1003])
+card_pool = Array[int]([0, 1000, 5001, 5002, 5003, 5004])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -54,60 +50,10 @@ offset_bottom = 800.0
 script = ExtResource("3_4qhri")
 hand_width = 1400.0
 
-[node name="Shop" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 500.0
-offset_top = 50.0
-offset_right = 500.0
-offset_bottom = 50.0
-script = ExtResource("4_pj51p")
-shop_width = 1200.0
-
-[node name="Discard" parent="." instance=ExtResource("9_bes4e")]
-layout_mode = 1
-
-[node name="Deck" parent="." instance=ExtResource("10_r3mj1")]
-layout_mode = 1
-
 [node name="Played" type="Control" parent="."]
 visible = false
 anchors_preset = 0
 script = ExtResource("7_v7xax")
-
-[node name="ActionList" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -62.0
-offset_bottom = 62.0
-grow_horizontal = 0
-grow_vertical = 2
-script = ExtResource("2_n0yog")
-
-[node name="ActionButton" type="TextureButton" parent="ActionList"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-texture_normal = ExtResource("10_x74vo")
-
-[node name="Label" type="Label" parent="ActionList/ActionButton"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 82.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "END TURN"
-
-[node name="DiscardButton" type="Button" parent="ActionList"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-text = "Discard"
 
 [node name="StatusBar" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -231,5 +177,4 @@ label_settings = SubResource("LabelSettings_4d276")
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="ActionList/ActionButton" to="ActionList" method="_on_sell_button_pressed"]
-[connection signal="pressed" from="ActionList/DiscardButton" to="ActionList" method="_on_discard_button_pressed"]
+[node name="SUiPhont" parent="." instance=ExtResource("13_herli")]
