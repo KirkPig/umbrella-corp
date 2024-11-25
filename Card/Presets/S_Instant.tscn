@@ -25,7 +25,7 @@ material = SubResource("ShaderMaterial_sa7br")
 layout_mode = 0
 offset_right = 480.0
 offset_bottom = 720.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.333, 0.333)
 texture = ExtResource("3_u6f8j")
 stretch_mode = 2
 
