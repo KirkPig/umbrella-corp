@@ -2,11 +2,9 @@ extends Control
 
 @onready var discard_button = $Control/VSplitContainer/ViewButton
 @onready var discard_button_label = $Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer/CenterContainer/CardsLabel
-
 @onready var discard_card = $DiscardCard
 
-@onready var discard_view = $CanvasLayer
-@onready var discard_grid = %DiscardGridContainer
+@onready var discard_view = $SDiscardPile
 
 var card_number : int  = 0 :
 	set(value):
@@ -15,6 +13,7 @@ var card_number : int  = 0 :
 
 func _ready() -> void:
 	CardManager.discarded = $DiscardCard
+	discard_view.close_view.connect(_on_closed_button_pressed)
 
 func get_all_card() -> Array[Node]:
 	return discard_card.get_children()
@@ -25,11 +24,9 @@ func _on_discard_card_child_order_changed() -> void:
 
 func _on_closed_button_pressed() -> void:
 	discard_view.visible = false
-	for card in discard_grid.get_children():
+	for card in discard_view.get_all_card():
 		card.reparent(discard_card)
-
 
 func _on_view_button_pressed() -> void:
 	discard_view.visible = true
-	for card in discard_card.get_children():
-		card.reparent(discard_grid)
+	discard_view.move_card_to_pile(discard_card.get_children())

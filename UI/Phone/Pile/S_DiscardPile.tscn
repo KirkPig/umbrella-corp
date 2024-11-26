@@ -1,0 +1,160 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjbxav8pme3gn"]
+
+[ext_resource type="Script" path="res://UI/Phone/Pile/GD_Pile.gd" id="1_0aatv"]
+[ext_resource type="Theme" uid="uid://uutcpcwlfoyu" path="res://UI/Phone/theme/ui.theme" id="2_jy7mp"]
+[ext_resource type="Texture2D" uid="uid://ctswytyihto7e" path="res://Assets/Phone/numberbg1.png" id="3_cj7ko"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="4_foat7"]
+[ext_resource type="Texture2D" uid="uid://3s84xkkydk33" path="res://Assets/Phone/discardpile.png" id="5_4d0l0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tno7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g4ry"]
+bg_color = Color(0.909804, 0.992157, 1, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4lgf"]
+font = ExtResource("4_foat7")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6t6x"]
+font = ExtResource("4_foat7")
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[node name="SDiscardPile" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_0aatv")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -869.0
+offset_top = -468.5
+offset_right = 869.0
+offset_bottom = 468.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jy7mp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6tno7")
+
+[node name="HSplitContainer" type="HBoxContainer" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftControl" type="Panel" parent="Panel/Panel/HSplitContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme = ExtResource("2_jy7mp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3g4ry")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/HSplitContainer/LeftControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="CloseButton" type="TextureButton" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer/Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 66.0
+offset_bottom = 66.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_cj7ko")
+
+[node name="Label" type="Label" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer/Control"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 16.0
+offset_right = 142.0
+offset_bottom = 41.0
+text = "Close
+"
+label_settings = SubResource("LabelSettings_x4lgf")
+
+[node name="Control2" type="Control" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer/Control2"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 18.0
+offset_right = 160.0
+offset_bottom = 146.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_4d0l0")
+
+[node name="Label" type="Label" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer/Control2"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 25.0
+offset_right = 235.0
+offset_bottom = 76.0
+text = "Bin"
+label_settings = SubResource("LabelSettings_f6t6x")
+
+[node name="Control3" type="Control" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer/Control3"]
+layout_mode = 2
+offset_left = 32.0
+offset_right = 332.0
+offset_bottom = 100.0
+columns = 4
+
+[node name="Control" type="Control" parent="Panel/Panel/HSplitContainer"]
+layout_mode = 2
+
+[node name="WorkerPile" type="Control" parent="Panel/Panel/HSplitContainer/Control"]
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 86.0
+offset_right = 70.0
+offset_bottom = 126.0
+
+[node name="ResourcePile" type="Control" parent="Panel/Panel/HSplitContainer/Control"]
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 350.0
+offset_right = 70.0
+offset_bottom = 390.0
+
+[node name="InstantPile" type="Control" parent="Panel/Panel/HSplitContainer/Control"]
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 610.0
+offset_right = 70.0
+offset_bottom = 650.0
+
+[connection signal="pressed" from="Panel/Panel/HSplitContainer/LeftControl/VBoxContainer/Control/CloseButton" to="." method="_on_close_button_pressed"]
