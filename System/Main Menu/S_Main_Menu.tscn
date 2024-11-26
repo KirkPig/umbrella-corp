@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://f8ugyrvsmwsh"]
+[gd_scene load_steps=16 format=3 uid="uid://f8ugyrvsmwsh"]
 
 [ext_resource type="Script" path="res://System/Main Menu/GD_Main_Menu.gd" id="1_iknjf"]
 [ext_resource type="FontFile" uid="uid://bxchq3gleel5m" path="res://Assets/Font/SF-Pro-Text-Regular.otf" id="2_d1lcu"]
 [ext_resource type="FontFile" uid="uid://iiw0vpoox3ma" path="res://Assets/Font/SF-Pro-Text-Heavy.otf" id="3_8x6pc"]
 [ext_resource type="FontFile" uid="uid://xc1il18p7pp2" path="res://Assets/Font/SF-Pro-Text-Medium.otf" id="4_l7owq"]
+[ext_resource type="Texture2D" uid="uid://c2id4bpp8cvgm" path="res://Assets/UI/Umbrella.png" id="4_quyci"]
+[ext_resource type="Texture2D" uid="uid://8jqhp5yb26ch" path="res://Assets/UI/Play.png" id="5_nxcau"]
+[ext_resource type="Texture2D" uid="uid://cdqenu81jfyf4" path="res://Assets/UI/Exit.png" id="7_juco5"]
+[ext_resource type="FontFile" uid="uid://ba6lnqy1t08lo" path="res://Assets/Font/SF-Pro-Display-Medium.otf" id="8_qn4ev"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e7j1q"]
 font = ExtResource("3_8x6pc")
@@ -17,9 +21,17 @@ font_size = 48
 font = ExtResource("4_l7owq")
 font_size = 48
 
+[sub_resource type="Theme" id="Theme_xfl3c"]
+
+[sub_resource type="Theme" id="Theme_84nfa"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_laayc"]
 font = ExtResource("2_d1lcu")
 font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_kv5fq"]
+font = ExtResource("8_qn4ev")
+font_size = 24
 
 [node name="Main_Menu" type="CanvasLayer"]
 process_mode = 1
@@ -51,9 +63,9 @@ grow_vertical = 2
 [node name="Container" type="Control" parent="Control"]
 anchors_preset = 0
 offset_left = -400.0
-offset_top = -200.0
+offset_top = -220.0
 offset_right = -360.0
-offset_bottom = -160.0
+offset_bottom = -180.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Container"]
 layout_mode = 2
@@ -107,9 +119,17 @@ grow_vertical = 2
 text = "Company"
 label_settings = SubResource("LabelSettings_hjupf")
 
-[node name="TextureRect" type="TextureRect" parent="Control/Container/HBoxContainer"]
+[node name="Control" type="Control" parent="Control/Container/HBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Container/HBoxContainer/Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_quyci")
 
 [node name="ButtonList" type="HBoxContainer" parent="."]
 anchors_preset = 8
@@ -117,20 +137,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -102.0
-offset_top = 32.0
-offset_right = 102.0
-offset_bottom = 168.0
+offset_left = -116.0
+offset_top = 60.0
+offset_right = 116.0
+offset_bottom = 204.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_xfl3c")
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonList"]
 layout_mode = 2
+theme = SubResource("Theme_84nfa")
+theme_override_constants/separation = 12
 
-[node name="StartButton" type="TextureButton" parent="ButtonList/VBoxContainer"]
+[node name="Control" type="Control" parent="ButtonList/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+
+[node name="StartButton" type="TextureButton" parent="ButtonList/VBoxContainer/Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_nxcau")
 
 [node name="Label" type="Label" parent="ButtonList/VBoxContainer"]
 layout_mode = 2
@@ -141,9 +173,17 @@ horizontal_alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="ButtonList"]
 layout_mode = 2
 
-[node name="exitButton" type="TextureButton" parent="ButtonList/VBoxContainer2"]
+[node name="Control2" type="Control" parent="ButtonList/VBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+
+[node name="exitButton" type="TextureButton" parent="ButtonList/VBoxContainer2/Control2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_juco5")
 
 [node name="Label2" type="Label" parent="ButtonList/VBoxContainer2"]
 layout_mode = 2
@@ -151,5 +191,35 @@ text = "Exit"
 label_settings = SubResource("LabelSettings_laayc")
 horizontal_alignment = 1
 
-[connection signal="pressed" from="ButtonList/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ButtonList/VBoxContainer2/exitButton" to="." method="_on_exit_button_pressed"]
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -302.0
+offset_top = -101.0
+offset_right = -32.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Umbrella Phone Company
+v0.0.1-asdasd"
+label_settings = SubResource("LabelSettings_kv5fq")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="ButtonList/VBoxContainer/Control/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonList/VBoxContainer2/Control2/exitButton" to="." method="_on_exit_button_pressed"]
