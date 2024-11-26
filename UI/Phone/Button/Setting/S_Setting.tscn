@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1tlaenmph0vv"]
+[gd_scene load_steps=5 format=3 uid="uid://b1tlaenmph0vv"]
 
 [ext_resource type="Script" path="res://UI/Phone/Button/Setting/GD_Setting.gd" id="1_un7w0"]
 [ext_resource type="Texture2D" uid="uid://clfglhtdjea2c" path="res://Assets/Phone/pause.png" id="2_2kafo"]
 [ext_resource type="LabelSettings" uid="uid://d3bit3qtq3v0r" path="res://UI/Phone/Button/ButtonFontSetting.tres" id="3_7gakc"]
+[ext_resource type="PackedScene" uid="uid://ctruwb84p47pj" path="res://UI/Pause/S_PauseMenu.tscn" id="4_xfbnh"]
 
 [node name="Setting" type="Control"]
 layout_mode = 3
@@ -37,8 +38,13 @@ texture_normal = ExtResource("2_2kafo")
 
 [node name="Label" type="Label" parent="Control/VSplitContainer"]
 layout_mode = 2
-text = "Setting"
+text = "Pause"
 label_settings = ExtResource("3_7gakc")
 horizontal_alignment = 1
+
+[node name="SPauseMenu" parent="." instance=ExtResource("4_xfbnh")]
+process_mode = 3
+layer = 3
+visible = false
 
 [connection signal="pressed" from="Control/VSplitContainer/ViewButton" to="." method="_on_view_button_pressed"]
