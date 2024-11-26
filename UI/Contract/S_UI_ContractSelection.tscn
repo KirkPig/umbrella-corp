@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://uc70mvrqrusf"]
+
+[ext_resource type="Script" path="res://UI/Contract/GD_UI_ContractSelection.gd" id="1_sx83x"]
+[ext_resource type="Texture2D" uid="uid://by3pgvubcgv8b" path="res://Assets/UI/Contract/umbrella.svg" id="5_qen4l"]
+[ext_resource type="FontFile" uid="uid://c7igk6hta7uoj" path="res://Assets/Font/SF-Pro-Display-Regular.otf" id="6_q505p"]
+[ext_resource type="FontFile" uid="uid://cpexbtghs4w0n" path="res://Assets/Font/SF-Pro-Display-Black.otf" id="7_704pi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxngg"]
+bg_color = Color(0, 0, 0, 0.74902)
+
+[node name="ContractSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sx83x")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxngg")
+
+[node name="Placeholder" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 100.0
+offset_right = 20.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Placeholder"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("5_qen4l")
+expand_mode = 1
+
+[node name="Labels" type="HBoxContainer" parent="Placeholder"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Placeholder/Labels"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_q505p")
+theme_override_font_sizes/font_size = 60
+text = "Select"
+
+[node name="Label2" type="Label" parent="Placeholder/Labels"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("7_704pi")
+theme_override_font_sizes/font_size = 64
+text = "Contract"
+
+[node name="List" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1

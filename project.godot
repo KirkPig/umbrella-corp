@@ -22,6 +22,7 @@ CardManager="*res://Global/GD_CardManager.gd"
 ActionManager="*res://Global/GD_ActionManager.gd"
 RuntimeDebugTools="res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
 SellManager="*res://Global/GD_SellManager.gd"
+ContractManager="*res://Global/GD_ContractManager.gd"
 
 [display]
 

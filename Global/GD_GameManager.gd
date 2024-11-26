@@ -87,8 +87,8 @@ var max_hand : int:
 		max_hand = value
 		max_hand_change.emit(value)
 		
-var selected_contract: ResourceContract
-var constract_selection: Control
+var selected_contract: ContractData
+var contract_selection: UIContractSelection
 
 var rng: RandomNumberGenerator
 
@@ -96,6 +96,13 @@ var energy_cost_sell: int = 1
 var energy_cost_discard: int = 1
 var energy_cost_work: int = 1
 var energy_cost_research: int = 1
+
+func start_select_contract() -> void:
+	contract_selection.show()
+	contract_selection.clear_contract()
+	for i in 3:
+		var _data = ContractManager.get_random_contract_data()
+		contract_selection.add_contract(_data)
 
 func next_turn():
 	current_turn += 1
@@ -113,19 +120,18 @@ func end_turn():
 			current_turn = 0 
 			current_score = 0
 			selected_contract.get_reward()
-			constract_selection.start_select_contract()
+			start_select_contract()
 		#TODO: Lose game
 		else:
 			print('fail')
 	else:
 		next_turn()
 	
-func select_contract(contract:ResourceContract) -> void:
+func select_contract(contract: ContractData) -> void:
 	selected_contract = contract
 	goal_turn = contract.turn_limit
 	goal_score = contract.score_goal
-	constract_selection.visible = false
-	constract_selection.clear_contract() 
+	contract_selection.hide()
 	next_turn()
 
 func can_sell(selected_card: Array[Card]) -> bool:
