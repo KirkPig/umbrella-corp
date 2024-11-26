@@ -1,7 +1,7 @@
 extends Control
 class_name Contract
 
-@export var contract_res: ResourceContract
+@export var contract_res: ContractData
 @onready var contract_name: Label = $Contract/Container/Name
 @onready var description: Label = $Contract/Container/Description
 @onready var turn_limit: Label = $Contract/Container/HBoxContainer2/TurnLimit
