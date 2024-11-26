@@ -1,0 +1,217 @@
+[gd_scene load_steps=11 format=3 uid="uid://eu6g75bkdrew"]
+
+[ext_resource type="Script" path="res://UI/Score Board/GD_ScoreBoard.gd" id="1_65hb4"]
+[ext_resource type="FontFile" uid="uid://cen2dqunilgq8" path="res://Assets/Font/SF-Pro-Rounded-Heavy.otf" id="1_qbre4"]
+[ext_resource type="Texture2D" uid="uid://c7cig67hklv6p" path="res://Assets/Phone/sellcard.png" id="2_rqghp"]
+[ext_resource type="FontFile" uid="uid://d23nihmpuj0q8" path="res://Assets/Font/SF-Pro-Rounded-Regular.otf" id="3_vl6fh"]
+
+[sub_resource type="Theme" id="Theme_eiu35"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dlvo6"]
+font = ExtResource("1_qbre4")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_m7qva"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_timlu"]
+font = ExtResource("3_vl6fh")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5eyj"]
+font = ExtResource("3_vl6fh")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltve3"]
+font = ExtResource("1_qbre4")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[node name="SScoreBoard" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_65hb4")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(380, 290)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_eiu35")
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 120)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control3" type="Control" parent="HBoxContainer/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect/VBoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_rqghp")
+
+[node name="Label" type="Label" parent="HBoxContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_dlvo6")
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 120)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 27.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="HBoxContainer/TextureRect2/VBoxContainer2"]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect2/VBoxContainer2/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_rqghp")
+
+[node name="Control" type="Control" parent="HBoxContainer/TextureRect2/VBoxContainer2"]
+custom_minimum_size = Vector2(54, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/TextureRect2/VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m7qva")
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/TextureRect2/VBoxContainer2/Control/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_dlvo6")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/TextureRect2/VBoxContainer2/Control/HBoxContainer"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_timlu")
+
+[node name="Control" type="Control" parent="HBoxContainer/TextureRect2/VBoxContainer2/Control/HBoxContainer"]
+custom_minimum_size = Vector2(10, 8)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/TextureRect2/VBoxContainer2/Control/HBoxContainer/Control"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 12.0
+offset_bottom = 41.0
+label_settings = SubResource("LabelSettings_m5eyj")
+vertical_alignment = 2
+
+[node name="TextureRect3" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/TextureRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -51.0
+offset_right = 36.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/TextureRect3/VBoxContainer3"]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect3/VBoxContainer3/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_rqghp")
+
+[node name="Label" type="Label" parent="HBoxContainer/TextureRect3/VBoxContainer3"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_ltve3")
+horizontal_alignment = 1

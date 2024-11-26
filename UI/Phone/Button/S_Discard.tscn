@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgtvpmh2w5wm3"]
+[gd_scene load_steps=8 format=3 uid="uid://dgtvpmh2w5wm3"]
 
 [ext_resource type="Script" path="res://UI/Phone/Button/GD_Discard.gd" id="1_8rrri"]
 [ext_resource type="Texture2D" uid="uid://3s84xkkydk33" path="res://Assets/Phone/discardpile.png" id="2_x8uug"]
@@ -6,6 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://d3bit3qtq3v0r" path="res://UI/Phone/Button/ButtonFontSetting.tres" id="3_3l8gu"]
 [ext_resource type="StyleBox" uid="uid://rq4cp7w0v2fx" path="res://UI/Phone/theme/panel/noti_panel.stylebox" id="4_0ckye"]
 [ext_resource type="LabelSettings" uid="uid://dwmn8b6v7534y" path="res://UI/Phone/NotiFontSetting.tres" id="5_vsx1f"]
+[ext_resource type="PackedScene" uid="uid://bjbxav8pme3gn" path="res://UI/Phone/Pile/S_DiscardPile.tscn" id="7_gihgw"]
 
 [node name="Discard" type="Control"]
 layout_mode = 3
@@ -138,6 +139,9 @@ offset_right = -60.0
 offset_bottom = 91.0
 grow_horizontal = 0
 text = "Close"
+
+[node name="SDiscardPile" parent="." instance=ExtResource("7_gihgw")]
+visible = false
 
 [connection signal="pressed" from="Control/VSplitContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="child_order_changed" from="DiscardCard" to="." method="_on_discard_card_child_order_changed"]

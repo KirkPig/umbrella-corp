@@ -1,16 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=9 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Field.gd" id="2_078xj"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
-[ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="3_fuj8y"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
+[ext_resource type="PackedScene" uid="uid://eu6g75bkdrew" path="res://S_ScoreBoard.tscn" id="8_8lk2h"]
 [ext_resource type="Texture2D" uid="uid://bevpmelaa7v4x" path="res://Assets/UI/Table.png" id="11_7mt5x"]
 [ext_resource type="PackedScene" uid="uid://bsn11t7pc3pei" path="res://System/S_ContractSelection.tscn" id="12_nwqtc"]
 [ext_resource type="PackedScene" uid="uid://bisxenor2iny5" path="res://UI/Phone/S_UI_Phone.tscn" id="13_herli"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4d276"]
-font_size = 32
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -55,126 +52,16 @@ visible = false
 anchors_preset = 0
 script = ExtResource("7_v7xax")
 
-[node name="StatusBar" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 23.0
-offset_right = 426.0
-offset_bottom = 117.0
-script = ExtResource("3_fuj8y")
-
-[node name="Turn" type="HBoxContainer" parent="StatusBar"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatusBar/Turn"]
-layout_mode = 2
-text = "Turn: "
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Value" type="Label" parent="StatusBar/Turn"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-horizontal_alignment = 2
-
-[node name="Seperator" type="Label" parent="StatusBar/Turn"]
-layout_mode = 2
-text = "/"
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Max" type="Label" parent="StatusBar/Turn"]
-layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Score" type="HBoxContainer" parent="StatusBar"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatusBar/Score"]
-layout_mode = 2
-text = "Score: "
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Value" type="Label" parent="StatusBar/Score"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-horizontal_alignment = 2
-
-[node name="Seperator" type="Label" parent="StatusBar/Score"]
-layout_mode = 2
-text = "/"
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Max" type="Label" parent="StatusBar/Score"]
-layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="TotalScore" type="HBoxContainer" parent="StatusBar"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatusBar/TotalScore"]
-layout_mode = 2
-text = "Total Score: "
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Value" type="Label" parent="StatusBar/TotalScore"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-horizontal_alignment = 2
-
-[node name="Gold" type="HBoxContainer" parent="StatusBar"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatusBar/Gold"]
-layout_mode = 2
-text = "Gold: "
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Value" type="Label" parent="StatusBar/Gold"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-horizontal_alignment = 2
-
-[node name="Energy" type="HBoxContainer" parent="StatusBar"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatusBar/Energy"]
-layout_mode = 2
-text = "Energy: "
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Value" type="Label" parent="StatusBar/Energy"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-horizontal_alignment = 2
-
-[node name="Seperator" type="Label" parent="StatusBar/Energy"]
-layout_mode = 2
-text = "/"
-label_settings = SubResource("LabelSettings_4d276")
-
-[node name="Max" type="Label" parent="StatusBar/Energy"]
-layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_4d276")
-
 [node name="SContractSelection" parent="." instance=ExtResource("12_nwqtc")]
 visible = false
 layout_mode = 1
 
 [node name="SUiPhont" parent="." instance=ExtResource("13_herli")]
+
+[node name="SScoreBoard" parent="." instance=ExtResource("8_8lk2h")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -17,12 +17,12 @@ signal max_shop_refresh_change(max_hand:int)
 
 var current_turn : int:
 	set(value):
+		total_turn += value - current_turn
 		current_turn = value
 		current_turn_change.emit(value)
 
 var goal_turn : int:
 	set(value):
-		total_turn += value - goal_turn
 		goal_turn = value
 		goal_turn_change.emit(value)
 		
