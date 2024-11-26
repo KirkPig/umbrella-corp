@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://ogpd6lwjk818"]
+
+[ext_resource type="Texture2D" uid="uid://fdhti2qp5u3h" path="res://Assets/BusinessCard/A_BusinessCard_1005.png" id="1_m07vu"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_u1byg"]
+
+[resource]
+script = ExtResource("2_u1byg")
+max_usage = 3
+resource_yield_list = Array[int]([])
+card_id = 1005
+card_name = "Livestock"
+card_texture = ExtResource("1_m07vu")
+shop_price = 50

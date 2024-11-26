@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://4xy5gqr0q8ty"]
+
+[ext_resource type="Texture2D" uid="uid://dxqln8g8n6yde" path="res://Assets/BusinessCard/A_BusinessCard_1010.png" id="1_qge4i"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_0vue8"]
+
+[resource]
+script = ExtResource("2_0vue8")
+max_usage = 2
+resource_yield_list = Array[int]([])
+card_id = 1010
+card_name = "Chemical Factory"
+card_texture = ExtResource("1_qge4i")
+shop_price = 250

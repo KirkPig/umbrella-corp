@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://lh1fsywke2mu"]
+[gd_scene load_steps=13 format=3 uid="uid://lh1fsywke2mu"]
 
 [ext_resource type="Script" path="res://UI/Business/GD_BusinessUI.gd" id="1_tge38"]
+[ext_resource type="Texture2D" uid="uid://mih5wymxdnlq" path="res://Assets/BusinessIcon/A_BusinessIcon_0000.png" id="2_7oipk"]
+[ext_resource type="Resource" uid="uid://ceikwd005j6vh" path="res://Resource/Card/Business/R_BusinessCard_1000.tres" id="2_u37q2"]
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="2_vt6os"]
 [ext_resource type="Texture2D" uid="uid://b4k7h608rbynp" path="res://Assets/UI/Business/labor-icon.svg" id="3_to8dd"]
 [ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="3_xg0d7"]
 [ext_resource type="FontFile" uid="uid://cjgxkmfq6di8l" path="res://Assets/Font/SF-Pro-Rounded-Bold.otf" id="4_qeiud"]
+[ext_resource type="PackedScene" uid="uid://cvt2ihggg283r" path="res://UI/Business/Component/Scene/S_UI_BusinessComponent.tscn" id="6_a2u48"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ti8em"]
 bg_color = Color(0.956863, 1, 0.94902, 1)
@@ -33,6 +36,7 @@ corner_radius_bottom_left = 1000
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tge38")
+test_business_card = ExtResource("2_u37q2")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 0
@@ -55,6 +59,19 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_odwnn")
+
+[node name="Icon" type="TextureRect" parent="Container/Panel"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7oipk")
+expand_mode = 3
 
 [node name="Detail" type="VBoxContainer" parent="Container"]
 layout_mode = 2
@@ -120,7 +137,6 @@ theme_override_font_sizes/font_size = 14
 text = "1 / 4"
 
 [node name="Component" type="VBoxContainer" parent="Container/Detail"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 
@@ -135,6 +151,8 @@ text = "Component"
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Item" type="HBoxContainer" parent="Container/Detail/Component/List"]
+[node name="Component" parent="Container/Detail/Component/List" instance=ExtResource("6_a2u48")]
 layout_mode = 2
-alignment = 1
+
+[node name="Component2" parent="Container/Detail/Component/List" instance=ExtResource("6_a2u48")]
+layout_mode = 2

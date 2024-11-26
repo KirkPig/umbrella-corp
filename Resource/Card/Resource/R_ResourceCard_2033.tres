@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://cpwc8048j38kc"]
+
+[ext_resource type="Texture2D" uid="uid://db83kdqxi4aax" path="res://Assets/ResourceCard/A_ResourceCard_2033.png" id="1_pe7fj"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_c10nd"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_uo6dy"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_2fco1"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_c10nd")
+resource_id = 2032
+amount = 1
+
+[sub_resource type="Resource" id="Resource_kwm7d"]
+script = ExtResource("2_c10nd")
+resource_id = 2024
+amount = 1
+
+[resource]
+script = ExtResource("4_2fco1")
+business_id = 1008
+yield_price = 50
+yield_demand = 5
+labor_per_piece = 1
+yield_gold = 18
+components = Array[ExtResource("2_c10nd")]([SubResource("Resource_rksl3"), SubResource("Resource_kwm7d")])
+research_yield = Array[ExtResource("3_uo6dy")]([])
+card_id = 2033
+card_name = "Apple Pie"
+card_texture = ExtResource("1_pe7fj")
+shop_price = 0

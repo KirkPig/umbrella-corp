@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://b04dv6jxwkmfa"]
+
+[ext_resource type="Texture2D" uid="uid://clwq8g6h1uqfp" path="res://Assets/ResourceCard/A_ResourceCard_2057.png" id="1_8wp7i"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_8ossb"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_wbbsy"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_opouw"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_8ossb")
+resource_id = 2057
+amount = 1
+
+[sub_resource type="Resource" id="Resource_xn5y0"]
+script = ExtResource("2_8ossb")
+resource_id = 2024
+amount = 2
+
+[resource]
+script = ExtResource("4_opouw")
+business_id = 1012
+yield_price = 110
+yield_demand = 3
+labor_per_piece = 3
+yield_gold = 15
+yield_piece = 1
+components = Array[ExtResource("2_8ossb")]([SubResource("Resource_rksl3"), SubResource("Resource_xn5y0")])
+research_yield = Array[ExtResource("3_wbbsy")]([])
+card_id = 2057
+card_name = "Canned Apple"
+card_texture = ExtResource("1_8wp7i")
+shop_price = 0

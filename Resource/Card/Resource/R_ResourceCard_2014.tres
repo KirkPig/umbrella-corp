@@ -1,13 +1,25 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://bc8urv015piti"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://d36srw1y4rg08"]
 
-[ext_resource type="Texture2D" uid="uid://bdpre2nipv14m" path="res://Assets/ResourceCard/A_ResourceCard_2014.png" id="1_8l1qc"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_7nh81"]
+[ext_resource type="Texture2D" uid="uid://bdpre2nipv14m" path="res://Assets/ResourceCard/A_ResourceCard_2014.png" id="1_vwcph"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_2o3jw"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_l26hk"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_k01ia"]
+
+[sub_resource type="Resource" id="Resource_35ewk"]
+script = ExtResource("2_2o3jw")
+resource_id = 2000
+amount = 1
 
 [resource]
-script = ExtResource("2_7nh81")
-yield_score = 12
-yield_gold = 1
-card_name = "Pork"
-card_id = 2013
-card_texture = ExtResource("1_8l1qc")
+script = ExtResource("4_k01ia")
+business_id = 1005
+yield_price = 20
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 5
+components = Array[ExtResource("2_2o3jw")]([SubResource("Resource_35ewk")])
+research_yield = Array[ExtResource("3_l26hk")]([])
+card_id = 2014
+card_name = "Beef"
+card_texture = ExtResource("1_vwcph")
 shop_price = 0

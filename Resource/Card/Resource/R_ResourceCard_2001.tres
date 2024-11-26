@@ -1,13 +1,46 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://sjj5okxpp1y1"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=10 format=3 uid="uid://bhjv75qi5eash"]
 
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2000.png" id="1_582x6"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_gjyh7"]
-[ext_resource type="Texture2D" uid="uid://dayp32v6h4nf" path="res://Assets/ResourceCard/A_ResourceCard_2001.png" id="1_qr8ah"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_b7jui"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_0cbo2"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="4_pv85b"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardBonus.gd" id="5_nm4pf"]
+
+[sub_resource type="Resource" id="Resource_k1ms5"]
+script = ExtResource("4_pv85b")
+unlocked_resource_id = 2001
+need_resource = -1
+priority = 0
+chance = 100
+
+[sub_resource type="Resource" id="Resource_3wenx"]
+script = ExtResource("4_pv85b")
+unlocked_resource_id = 2014
+need_resource = -1
+priority = 1
+chance = 20
+
+[sub_resource type="Resource" id="Resource_xbard"]
+script = ExtResource("5_nm4pf")
+reward_type = 0
+card_reward_id = 0
+amount_from = 6
+amount_to = 10
+need_resource = -1
+priority = 1
+chance = 80
 
 [resource]
 script = ExtResource("1_gjyh7")
-yield_score = 12
-yield_gold = 1
-card_name = "Corn"
-card_id = 2001
-card_texture = ExtResource("1_qr8ah")
+business_id = 1000
+yield_price = 10
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 4
+components = Array[ExtResource("2_b7jui")]([])
+research_yield = Array[ExtResource("3_0cbo2")]([SubResource("Resource_k1ms5"), SubResource("Resource_3wenx"), SubResource("Resource_xbard")])
+card_id = 2000
+card_name = "Wheat"
+card_texture = ExtResource("1_582x6")
 shop_price = 0

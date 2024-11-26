@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=5 format=3 uid="uid://rtficy7jqt0p"]
+
+[ext_resource type="Texture2D" uid="uid://bco5m1aj0njrd" path="res://Assets/ResourceCard/A_ResourceCard_2028.png" id="1_dk3iy"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_jw6ok"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_6gikt"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_wi054"]
+
+[resource]
+script = ExtResource("4_wi054")
+business_id = 1008
+yield_price = 25
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 7
+components = Array[ExtResource("2_jw6ok")]([])
+research_yield = Array[ExtResource("3_6gikt")]([])
+card_id = 2028
+card_name = "Flour"
+card_texture = ExtResource("1_dk3iy")
+shop_price = 0

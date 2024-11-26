@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://bx2ysnv2dstqs"]
+
+[ext_resource type="Texture2D" uid="uid://clvuf14ocyei5" path="res://Assets/ResourceCard/A_ResourceCard_2043.png" id="1_ixokw"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_ls3dm"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_88x5p"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ptvbc"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_ls3dm")
+resource_id = 2012
+amount = 1
+
+[resource]
+script = ExtResource("4_ptvbc")
+business_id = 1010
+yield_price = 65
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 8
+yield_piece = 2
+components = Array[ExtResource("2_ls3dm")]([SubResource("Resource_rksl3")])
+research_yield = Array[ExtResource("3_88x5p")]([])
+card_id = 2043
+card_name = "Plastic"
+card_texture = ExtResource("1_ixokw")
+shop_price = 0

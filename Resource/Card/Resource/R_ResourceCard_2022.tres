@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=5 format=3 uid="uid://dd6nlxyc242os"]
+
+[ext_resource type="Texture2D" uid="uid://n4wyxcmgvgdx" path="res://Assets/ResourceCard/A_ResourceCard_2022.png" id="1_f4ld1"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_c8xwg"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_fofwc"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_jjgeh"]
+
+[resource]
+script = ExtResource("4_jjgeh")
+business_id = 1006
+yield_price = 20
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 4
+components = Array[ExtResource("2_c8xwg")]([])
+research_yield = Array[ExtResource("3_fofwc")]([])
+card_id = 2022
+card_name = "Cotton"
+card_texture = ExtResource("1_f4ld1")
+shop_price = 0

@@ -1,26 +1,46 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://b4rkvthmelmqy"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=10 format=3 uid="uid://b4rkvthmelmqy"]
 
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_6u2c5"]
 [ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2000.png" id="1_g5jr0"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="2_ayq2l"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_psvvm"]
 [ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="3_bgs1h"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardBonus.gd" id="5_qath4"]
 
-[sub_resource type="Resource" id="Resource_o74eu"]
+[sub_resource type="Resource" id="Resource_k1ms5"]
 script = ExtResource("3_bgs1h")
 unlocked_resource_id = 2001
-target_business_id = 1000
-another_resource_id = -1
+need_resource = -1
 priority = 0
 chance = 100
 
+[sub_resource type="Resource" id="Resource_3wenx"]
+script = ExtResource("3_bgs1h")
+unlocked_resource_id = 2028
+need_resource = -1
+priority = 1
+chance = 20
+
+[sub_resource type="Resource" id="Resource_xbard"]
+script = ExtResource("5_qath4")
+reward_type = 0
+card_reward_id = 0
+amount_from = 6
+amount_to = 10
+need_resource = -1
+priority = 1
+chance = 80
+
 [resource]
 script = ExtResource("1_6u2c5")
-demand = 0
-yield_score = 10
-yield_gold = 1
-business = 1
-research_yield = Array[ExtResource("2_ayq2l")]([SubResource("Resource_o74eu")])
-card_name = "Wheat"
+business_id = 1000
+yield_price = 10
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 4
+components = Array[ExtResource("2_psvvm")]([])
+research_yield = Array[ExtResource("2_ayq2l")]([SubResource("Resource_k1ms5"), SubResource("Resource_3wenx"), SubResource("Resource_xbard")])
 card_id = 2000
+card_name = "Wheat"
 card_texture = ExtResource("1_g5jr0")
 shop_price = 0

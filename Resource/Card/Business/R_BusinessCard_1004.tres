@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://dcopuiyhiu6mq"]
+
+[ext_resource type="Texture2D" uid="uid://di6b0bdpa4p3s" path="res://Assets/BusinessCard/A_BusinessCard_1004.png" id="1_r5bic"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_4kfah"]
+
+[resource]
+script = ExtResource("2_4kfah")
+max_usage = 2
+resource_yield_list = Array[int]([])
+card_id = 1004
+card_name = "Oil Rig"
+card_texture = ExtResource("1_r5bic")
+shop_price = 100

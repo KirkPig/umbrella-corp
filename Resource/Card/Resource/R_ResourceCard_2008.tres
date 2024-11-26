@@ -1,13 +1,20 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://w6dj3xme60nl"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=5 format=3 uid="uid://cka6ixldycm8y"]
 
-[ext_resource type="Texture2D" uid="uid://bdorp0t8ouweb" path="res://Assets/ResourceCard/A_ResourceCard_2008.png" id="1_hovgk"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_xu3k3"]
+[ext_resource type="Texture2D" uid="uid://bdorp0t8ouweb" path="res://Assets/ResourceCard/A_ResourceCard_2008.png" id="1_0tgh8"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_4jjiv"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_wwf7o"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ww0if"]
 
 [resource]
-script = ExtResource("2_xu3k3")
-yield_score = 10
-yield_gold = 3
-card_name = "Zinc"
-card_id = 2007
-card_texture = ExtResource("1_hovgk")
+script = ExtResource("4_ww0if")
+business_id = 1002
+yield_price = 10
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 2
+components = Array[ExtResource("2_4jjiv")]([])
+research_yield = Array[ExtResource("3_wwf7o")]([])
+card_id = 2008
+card_name = "Wood"
+card_texture = ExtResource("1_0tgh8")
 shop_price = 0
