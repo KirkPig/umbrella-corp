@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ContractData" load_steps=6 format=3 uid="uid://cn8xfhqt5nasa"]
+
+[ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_6n1yf"]
+[ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="1_roghn"]
+[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardGold.gd" id="2_6vkpq"]
+[ext_resource type="Texture2D" uid="uid://b2ybhgfmiilam" path="res://Assets/Phone/walletnobg.png" id="2_fu18v"]
+
+[sub_resource type="Resource" id="Resource_p0q6l"]
+script = ExtResource("2_6vkpq")
+reward_resource = 0
+name = ""
+amount = 55
+icon = ExtResource("2_fu18v")
+icon_bg_color = Color(0, 0, 0, 1)
+
+[resource]
+script = ExtResource("1_roghn")
+name = "Contract A"
+description = "Absolute Cinema"
+turn_limit = 4
+score_goal = 200
+reward_text = ""
+reward_list = Array[ExtResource("1_6n1yf")]([SubResource("Resource_p0q6l")])

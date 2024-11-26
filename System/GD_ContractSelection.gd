@@ -6,15 +6,7 @@ const contract = preload("res://Contract/S_Contract.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.constract_selection = self
-
-func create_contract() -> Contract:
-	var random_contract : Contract = contract.instantiate()
-	var resource_file = DirAccess.get_files_at("res://Resource/Contract/Data/")
-	var random_resource = resource_file[GameManager.rng.randi() % resource_file.size()]
-	#print(random_resource.contract_res)
-	random_contract.contract_res = load("res://Resource/Contract/Data/" + random_resource)
-	return random_contract
+	GameManager.contract_selection = self
 
 func start_select_contract() -> void:
 	visible = true

@@ -15,6 +15,15 @@ enum ECardLocation {
 	played
 }
 
+enum ECardType {
+	all,
+	worker,
+	business,
+	resource,
+	instant,
+	upgrade,
+}
+
 var card_dict: Dictionary = {}
 
 var field: FieldController
@@ -25,6 +34,40 @@ var discarded: Control
 var played: Control
 
 var card_pool: Array[int]
+
+func get_card_pool(_type: ECardType) -> Array[int]:
+	var from: int
+	var to: int
+	match _type:
+		ECardType.all:
+			from = 0
+			to = 10000
+		ECardType.worker:
+			from = 0
+			to = 1000
+		ECardType.business:
+			from = 1000
+			to = 2000
+		ECardType.resource:
+			from = 2000
+			to = 3000
+		ECardType.instant:
+			from = 3000
+			to = 4000
+		ECardType.upgrade:
+			from = 4000
+			to = 10000
+	
+	var cards: Array[int]
+	for id in card_pool:
+		if id >= from and id < to:
+			cards.append(id)
+	
+	return cards
+
+func random_card_pool(_type: ECardType) -> int:
+	var cards = get_card_pool(_type)
+	return cards[GameManager.rng.randi() % cards.size()]
 
 func _ready() -> void:
 	load_cards("res://Resource/Card/Business/")
@@ -163,7 +206,7 @@ func next_turn():
 	fill_hand()
 	shop.reset_shop()
 
-func get_all_card(location:ECardLocation) -> Array[Card]:
+func get_all_card(location: ECardLocation) -> Array[Card]:
 	var cards:Array[Card] = []
 	
 	var location_node: Node
@@ -187,7 +230,7 @@ func get_all_card(location:ECardLocation) -> Array[Card]:
 	
 	return cards
 
-func move_cards_to(cards:Array[Card], target_location:ECardLocation) -> void:
+func move_cards_to(cards:Array[Card], target_location: ECardLocation) -> void:
 	var location_node: Node
 	match target_location:
 		ECardLocation.hand:

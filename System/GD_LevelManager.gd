@@ -23,7 +23,7 @@ func start_game():
 	add_card_pool()
 	add_start_deck()
 	add_start_business()
-	GameManager.constract_selection.start_select_contract()
+	GameManager.start_select_contract()
 
 func set_up_game_manager() -> void:
 	GameManager.current_turn = 0
