@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvt2ihggg283r"]
+[gd_scene load_steps=4 format=3 uid="uid://cvt2ihggg283r"]
 
+[ext_resource type="Script" path="res://UI/Business/Component/Script/GD_UI_BusinessComponent.gd" id="1_kh0qo"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="1_qetyo"]
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="2_wcodt"]
 
@@ -8,6 +9,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+script = ExtResource("1_kh0qo")
 
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(20, 20)

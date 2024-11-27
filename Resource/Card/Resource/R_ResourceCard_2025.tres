@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=5 format=3 uid="uid://dscu7f2xuks82"]
 
 [ext_resource type="Texture2D" uid="uid://bpvgs1gvgo0ix" path="res://Assets/ResourceCard/A_ResourceCard_2025.png" id="1_pau56"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2025.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_ot3e4"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_lxfod"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_6tiyh"]
@@ -18,3 +19,4 @@ card_id = 2025
 card_name = "Olives"
 card_texture = ExtResource("1_pau56")
 shop_price = 0
+card_icon = ExtResource("1_ga26q")

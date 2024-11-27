@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://c1bbpuptioy0m"]
 
 [ext_resource type="Texture2D" uid="uid://ccd87c4jvd4s7" path="res://Assets/ResourceCard/A_ResourceCard_2004.png" id="1_2tj78"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2004.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_5iy4o"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_ru06t"]
 [ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardBonus.gd" id="5_1xb3k"]
@@ -29,3 +30,4 @@ card_id = 2004
 card_name = "Potato"
 card_texture = ExtResource("1_2tj78")
 shop_price = 0
+card_icon = ExtResource("1_ga26q")

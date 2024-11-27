@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://du110mdn28u2y"]
 
 [ext_resource type="Texture2D" uid="uid://516mhswyqhub" path="res://Assets/ResourceCard/A_ResourceCard_2031.png" id="1_ffi2p"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2031.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_f5ds2"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_48ihb"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_x6cr1"]
@@ -24,3 +25,4 @@ card_id = 2031
 card_name = "Bun"
 card_texture = ExtResource("1_ffi2p")
 shop_price = 0
+card_icon = ExtResource("1_ga26q")

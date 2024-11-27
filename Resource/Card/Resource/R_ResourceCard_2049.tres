@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://vbixsgpxaxa7"]
 
 [ext_resource type="Texture2D" uid="uid://dl40hhtawdvtk" path="res://Assets/ResourceCard/A_ResourceCard_2049.png" id="1_3m82k"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2049.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_6bo1t"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_ixxgg"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ji5nx"]
@@ -24,3 +25,4 @@ card_id = 2049
 card_name = "Concrete"
 card_texture = ExtResource("1_3m82k")
 shop_price = 0
+card_icon = ExtResource("1_ga26q")

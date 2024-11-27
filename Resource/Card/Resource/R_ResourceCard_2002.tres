@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_g04bi"]
 [ext_resource type="Texture2D" uid="uid://bijbyuvj3vh1y" path="res://Assets/ResourceCard/A_ResourceCard_2002.png" id="1_kl8un"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2002.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_cwswb"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="2_ogd0l"]
 [ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="4_sr0jp"]
@@ -37,3 +38,4 @@ card_id = 2002
 card_name = "Tomato"
 card_texture = ExtResource("1_kl8un")
 shop_price = 0
+card_icon = ExtResource("1_ga26q")

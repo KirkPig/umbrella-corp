@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://cpwc8048j38kc"]
 
 [ext_resource type="Texture2D" uid="uid://db83kdqxi4aax" path="res://Assets/ResourceCard/A_ResourceCard_2033.png" id="1_pe7fj"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2033.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_c10nd"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_uo6dy"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_2fco1"]
@@ -28,3 +29,4 @@ card_id = 2033
 card_name = "Apple Pie"
 card_texture = ExtResource("1_pe7fj")
 shop_price = 0
+card_icon = ExtResource("1_ga26q")

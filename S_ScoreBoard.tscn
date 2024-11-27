@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://eu6g75bkdrew"]
+[gd_scene load_steps=13 format=3 uid="uid://c6a1y0g401gjq"]
 
 [ext_resource type="Script" path="res://UI/Score Board/GD_ScoreBoard.gd" id="1_65hb4"]
 [ext_resource type="FontFile" uid="uid://cen2dqunilgq8" path="res://Assets/Font/SF-Pro-Rounded-Heavy.otf" id="1_qbre4"]

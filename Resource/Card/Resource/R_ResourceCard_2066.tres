@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://deh7gi8biwbf7"]
 
 [ext_resource type="Texture2D" uid="uid://diomin8jhb7ww" path="res://Assets/ResourceCard/A_ResourceCard_2066.png" id="1_c2nm5"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2066.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_2n7hf"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_q715y"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ga5sb"]
@@ -24,3 +25,4 @@ card_id = 2066
 card_name = "Ring"
 card_texture = ExtResource("1_c2nm5")
 shop_price = 0
+card_icon = ExtResource("1_ga26q")
