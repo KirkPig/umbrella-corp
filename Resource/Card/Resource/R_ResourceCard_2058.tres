@@ -1,31 +1,31 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://yjxo0ck3ur3m"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://bahtrk8p2am4"]
 
-[ext_resource type="Texture2D" uid="uid://clwq8g6h1uqfp" path="res://Assets/ResourceCard/A_ResourceCard_2057.png" id="1_qx7hi"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_rcy8l"]
-[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_nk0pl"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ccwgn"]
+[ext_resource type="Texture2D" uid="uid://cvevmo81nppjj" path="res://Assets/ResourceCard/A_ResourceCard_2058.png" id="1_ks6hh"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_71uum"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_r713h"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_qqihv"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
-script = ExtResource("2_rcy8l")
-resource_id = 2057
+script = ExtResource("2_71uum")
+resource_id = 2056
 amount = 1
 
 [sub_resource type="Resource" id="Resource_xn5y0"]
-script = ExtResource("2_rcy8l")
-resource_id = 2024
+script = ExtResource("2_71uum")
+resource_id = 2027
 amount = 2
 
 [resource]
-script = ExtResource("4_ccwgn")
+script = ExtResource("4_qqihv")
 business_id = 1012
-yield_price = 110
+yield_price = 125
 yield_demand = 3
 labor_per_piece = 3
 yield_gold = 15
 yield_piece = 1
-components = Array[ExtResource("2_rcy8l")]([SubResource("Resource_rksl3"), SubResource("Resource_xn5y0")])
-research_yield = Array[ExtResource("3_nk0pl")]([])
-card_id = 2057
-card_name = "Canned Apple"
-card_texture = ExtResource("1_qx7hi")
+components = Array[ExtResource("2_71uum")]([SubResource("Resource_rksl3"), SubResource("Resource_xn5y0")])
+research_yield = Array[ExtResource("3_r713h")]([])
+card_id = 2058
+card_name = "Canned Grapes"
+card_texture = ExtResource("1_ks6hh")
 shop_price = 0

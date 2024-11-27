@@ -1,26 +1,31 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://b21xtx6xlh8u0"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://y8hhsy031mps"]
 
-[ext_resource type="Texture2D" uid="uid://nrv3t5gk8awp" path="res://Assets/ResourceCard/A_ResourceCard_2069.png" id="1_o46ni"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_neesk"]
-[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_mtpxs"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_qdj4w"]
+[ext_resource type="Texture2D" uid="uid://b13cbkp3n7lvs" path="res://Assets/ResourceCard/A_ResourceCard_2070.png" id="1_inqw5"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_kfl78"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_6t2dh"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_f6ubk"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
-script = ExtResource("2_neesk")
-resource_id = 2041
-amount = 10
+script = ExtResource("2_kfl78")
+resource_id = 2005
+amount = 2
+
+[sub_resource type="Resource" id="Resource_mjj63"]
+script = ExtResource("2_kfl78")
+resource_id = 2006
+amount = 1
 
 [resource]
-script = ExtResource("4_qdj4w")
+script = ExtResource("4_f6ubk")
 business_id = 1015
-yield_price = 600
+yield_price = 350
 yield_demand = 1
-labor_per_piece = 15
-yield_gold = 40
-yield_piece = 2
-components = Array[ExtResource("2_neesk")]([SubResource("Resource_rksl3")])
-research_yield = Array[ExtResource("3_mtpxs")]([])
-card_id = 2069
-card_name = "Boat"
-card_texture = ExtResource("1_o46ni")
+labor_per_piece = 18
+yield_gold = 90
+yield_piece = 1
+components = Array[ExtResource("2_kfl78")]([SubResource("Resource_rksl3"), SubResource("Resource_mjj63")])
+research_yield = Array[ExtResource("3_6t2dh")]([])
+card_id = 2070
+card_name = "Engine"
+card_texture = ExtResource("1_inqw5")
 shop_price = 0

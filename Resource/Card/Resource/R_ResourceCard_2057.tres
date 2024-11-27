@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_rksl3"]
 script = ExtResource("2_8ossb")
-resource_id = 2057
+resource_id = 2056
 amount = 1
 
 [sub_resource type="Resource" id="Resource_xn5y0"]

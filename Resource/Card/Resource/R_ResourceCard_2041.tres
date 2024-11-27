@@ -13,8 +13,8 @@ amount = 1
 [resource]
 script = ExtResource("4_lbur7")
 business_id = 1009
-yield_price = 35
-yield_demand = 1
+yield_price = 40
+yield_demand = 2
 labor_per_piece = 2
 yield_gold = 4
 yield_piece = 1

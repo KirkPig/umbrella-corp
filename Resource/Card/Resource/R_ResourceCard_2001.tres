@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=10 format=3 uid="uid://bhjv75qi5eash"]
 
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2000.png" id="1_582x6"]
+[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2001.png" id="1_582x6"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_gjyh7"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_b7jui"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_0cbo2"]
@@ -34,13 +34,14 @@ chance = 80
 [resource]
 script = ExtResource("1_gjyh7")
 business_id = 1000
-yield_price = 10
+yield_price = 15
 yield_demand = 1
 labor_per_piece = 1
 yield_gold = 4
+yield_piece = 1
 components = Array[ExtResource("2_b7jui")]([])
 research_yield = Array[ExtResource("3_0cbo2")]([SubResource("Resource_k1ms5"), SubResource("Resource_3wenx"), SubResource("Resource_xbard")])
-card_id = 2000
-card_name = "Wheat"
+card_id = 2001
+card_name = "Corn"
 card_texture = ExtResource("1_582x6")
 shop_price = 0

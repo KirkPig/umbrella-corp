@@ -1,26 +1,26 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://c1yl7bp1y7b5h"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://k6i7ksww2pfh"]
 
-[ext_resource type="Texture2D" uid="uid://ceki7diwau34f" path="res://Assets/ResourceCard/A_ResourceCard_2061.png" id="1_my6fq"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_ngvvg"]
-[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_gs1py"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_c40yc"]
+[ext_resource type="Texture2D" uid="uid://blkha403c7xxm" path="res://Assets/ResourceCard/A_ResourceCard_2062.png" id="1_fhh42"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_h6bje"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_ynbpw"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ac7pl"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
-script = ExtResource("2_ngvvg")
+script = ExtResource("2_h6bje")
 resource_id = 2041
 amount = 4
 
 [resource]
-script = ExtResource("4_c40yc")
+script = ExtResource("4_ac7pl")
 business_id = 1013
-yield_price = 145
+yield_price = 120
 yield_demand = 1
-labor_per_piece = 4
+labor_per_piece = 3
 yield_gold = 18
 yield_piece = 1
-components = Array[ExtResource("2_ngvvg")]([SubResource("Resource_rksl3")])
-research_yield = Array[ExtResource("3_gs1py")]([])
-card_id = 2061
-card_name = "Bench"
-card_texture = ExtResource("1_my6fq")
+components = Array[ExtResource("2_h6bje")]([SubResource("Resource_rksl3")])
+research_yield = Array[ExtResource("3_ynbpw")]([])
+card_id = 2062
+card_name = "Table"
+card_texture = ExtResource("1_fhh42")
 shop_price = 0

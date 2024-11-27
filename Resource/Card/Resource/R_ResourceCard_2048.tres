@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://c8h2f5sws2cae"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://bx2ysnv2dstqs"]
 
-[ext_resource type="Texture2D" uid="uid://dcocpmd8h137s" path="res://Assets/ResourceCard/A_ResourceCard_2047.png" id="1_02t58"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_x14qd"]
-[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_spds0"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_x501b"]
+[ext_resource type="Texture2D" uid="uid://clvuf14ocyei5" path="res://Assets/ResourceCard/A_ResourceCard_2048.png" id="1_ixokw"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_ls3dm"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_88x5p"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ptvbc"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
 script = ExtResource("2_x14qd")
@@ -12,20 +12,20 @@ amount = 1
 
 [sub_resource type="Resource" id="Resource_fngft"]
 script = ExtResource("2_x14qd")
-resource_id = 2051
-amount = 2
+resource_id = 2043
+amount = 1
 
 [resource]
-script = ExtResource("4_x501b")
+script = ExtResource("4_ptvbc")
 business_id = 1010
-yield_price = 95
-yield_demand = 3
-labor_per_piece = 2
-yield_gold = 15
+yield_price = 120
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 14
 yield_piece = 1
-components = Array[ExtResource("2_x14qd")]([SubResource("Resource_rksl3"), SubResource("Resource_fngft")])
-research_yield = Array[ExtResource("3_spds0")]([])
-card_id = 2047
-card_name = "Paint"
-card_texture = ExtResource("1_02t58")
+components = Array[ExtResource("2_ls3dm")]([SubResource("Resource_rksl3"), SubResource("Resource_fngft")])
+research_yield = Array[ExtResource("3_88x5p")]([])
+card_id = 2048
+card_name = "Adhesive"
+card_texture = ExtResource("1_ixokw")
 shop_price = 0

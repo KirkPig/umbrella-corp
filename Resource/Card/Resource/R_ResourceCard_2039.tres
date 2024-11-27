@@ -1,30 +1,31 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://1pa0jym7trv1"]
 
-[ext_resource type="Texture2D" uid="uid://bfglmaq8kwqa2" path="res://Assets/ResourceCard/A_ResourceCard_2038.png" id="1_3knln"]
+[ext_resource type="Texture2D" uid="uid://bfglmaq8kwqa2" path="res://Assets/ResourceCard/A_ResourceCard_2039.png" id="1_3knln"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_go2h4"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_brpfl"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_mr7af"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
 script = ExtResource("2_go2h4")
-resource_id = 2028
+resource_id = 2038
 amount = 1
 
 [sub_resource type="Resource" id="Resource_kwm7d"]
 script = ExtResource("2_go2h4")
-resource_id = 2029
+resource_id = 2021
 amount = 1
 
 [resource]
 script = ExtResource("4_mr7af")
 business_id = 1008
 yield_price = 35
-yield_demand = 4
+yield_demand = 5
 labor_per_piece = 1
-yield_gold = 11
+yield_gold = 17
+yield_piece = 1
 components = Array[ExtResource("2_go2h4")]([SubResource("Resource_rksl3"), SubResource("Resource_kwm7d")])
 research_yield = Array[ExtResource("3_brpfl")]([])
-card_id = 2038
-card_name = "Donut"
+card_id = 2039
+card_name = "Chocolate Donut"
 card_texture = ExtResource("1_3knln")
 shop_price = 0

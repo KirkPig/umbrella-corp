@@ -1,26 +1,31 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://bnmrlljq7a2by"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://oqfdlywwrerq"]
 
-[ext_resource type="Texture2D" uid="uid://dg5eq8aaeksje" path="res://Assets/ResourceCard/A_ResourceCard_2067.png" id="1_wcefe"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_781m5"]
-[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_03tmi"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_t04tk"]
+[ext_resource type="Texture2D" uid="uid://diomin8jhb7ww" path="res://Assets/ResourceCard/A_ResourceCard_2068.png" id="1_u8pvt"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_oyqwt"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_lajdm"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_6an8a"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
-script = ExtResource("2_781m5")
+script = ExtResource("2_oyqwt")
 resource_id = 2007
-amount = 7
+amount = 2
+
+[sub_resource type="Resource" id="Resource_rty90"]
+script = ExtResource("2_oyqwt")
+resource_id = 2005
+amount = 3
 
 [resource]
-script = ExtResource("4_t04tk")
+script = ExtResource("4_6an8a")
 business_id = 1014
-yield_price = 800
-yield_demand = 2
-labor_per_piece = 6
-yield_gold = 100
-yield_piece = 1
-components = Array[ExtResource("2_781m5")]([SubResource("Resource_rksl3")])
-research_yield = Array[ExtResource("3_03tmi")]([])
-card_id = 2067
-card_name = "Gold bar"
-card_texture = ExtResource("1_wcefe")
+yield_price = 300
+yield_demand = 4
+labor_per_piece = 8
+yield_gold = 35
+yield_piece = 2
+components = Array[ExtResource("2_oyqwt")]([SubResource("Resource_rksl3"), SubResource("Resource_rty90")])
+research_yield = Array[ExtResource("3_lajdm")]([])
+card_id = 2068
+card_name = "Necklace"
+card_texture = ExtResource("1_u8pvt")
 shop_price = 0

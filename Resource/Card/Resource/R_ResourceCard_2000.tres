@@ -38,6 +38,7 @@ yield_price = 10
 yield_demand = 1
 labor_per_piece = 1
 yield_gold = 4
+yield_piece = 1
 components = Array[ExtResource("2_psvvm")]([])
 research_yield = Array[ExtResource("2_ayq2l")]([SubResource("Resource_k1ms5"), SubResource("Resource_3wenx"), SubResource("Resource_xbard")])
 card_id = 2000
