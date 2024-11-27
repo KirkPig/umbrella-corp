@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://c6gkwkikj34h"]
 
 [ext_resource type="Texture2D" uid="uid://bmcay2wr3q3gi" path="res://Assets/ResourceCard/A_ResourceCard_2056.png" id="1_7lmih"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2056.png" id="1_hjmme"]
+[ext_resource type="Texture2D" uid="uid://cmie4mgcea2tu" path="res://Assets/IconNoBG/A_ResourceIcon_2056.png" id="1_73sf7"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_qmc2v"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_xymku"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_74o1i"]
@@ -25,4 +25,4 @@ card_id = 2056
 card_name = "Can"
 card_texture = ExtResource("1_7lmih")
 shop_price = 0
-card_icon = ExtResource("1_hjmme")
+card_icon = ExtResource("1_73sf7")

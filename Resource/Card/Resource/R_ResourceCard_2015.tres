@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://d2jokysjdf36y"]
 
 [ext_resource type="Texture2D" uid="uid://7sl5e7xqh0cj" path="res://Assets/ResourceCard/A_ResourceCard_2015.png" id="1_7jnr3"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2015.png" id="1_scfjf"]
+[ext_resource type="Texture2D" uid="uid://clbcxx865oql3" path="res://Assets/IconNoBG/A_ResourceIcon_2015.png" id="1_yo0ur"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_fe48b"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_wxvrf"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_a6cah"]
@@ -25,4 +25,4 @@ card_id = 2015
 card_name = "Pork"
 card_texture = ExtResource("1_7jnr3")
 shop_price = 0
-card_icon = ExtResource("1_scfjf")
+card_icon = ExtResource("1_yo0ur")

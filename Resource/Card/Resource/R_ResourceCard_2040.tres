@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://dxifuejjygoeh"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2040.png" id="1_jgrpj"]
-[ext_resource type="Texture2D" uid="uid://blhp8xqqxxw31" path="res://Assets/ResourceCard/A_ResourceCard_2039.png" id="1_of4bx"]
+[ext_resource type="Texture2D" uid="uid://dtqidygou6xyr" path="res://Assets/IconNoBG/A_ResourceIcon_2040.png" id="1_5f707"]
+[ext_resource type="Texture2D" uid="uid://bjspmddjy2pnt" path="res://Assets/ResourceCard/A_ResourceCard_2040.png" id="2_i1lis"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_j47l8"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_iuqu1"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_vonn4"]
@@ -28,6 +28,6 @@ components = Array[ExtResource("2_j47l8")]([SubResource("Resource_rksl3"), SubRe
 research_yield = Array[ExtResource("3_iuqu1")]([])
 card_id = 2040
 card_name = "Sugar Donut"
-card_texture = ExtResource("1_of4bx")
+card_texture = ExtResource("2_i1lis")
 shop_price = 0
-card_icon = ExtResource("1_jgrpj")
+card_icon = ExtResource("1_5f707")

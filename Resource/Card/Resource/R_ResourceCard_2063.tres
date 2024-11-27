@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://g2bbha2hq6en"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2063.png" id="1_vsuwq"]
 [ext_resource type="Texture2D" uid="uid://bpo82pxqqnhok" path="res://Assets/ResourceCard/A_ResourceCard_2063.png" id="1_tgkxk"]
+[ext_resource type="Texture2D" uid="uid://b8fxedaob0aqn" path="res://Assets/IconNoBG/A_ResourceIcon_2063.png" id="1_x8f2p"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_qqybp"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_7xajd"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_iy22w"]
@@ -25,4 +25,4 @@ card_id = 2063
 card_name = "Chair"
 card_texture = ExtResource("1_tgkxk")
 shop_price = 0
-card_icon = ExtResource("1_vsuwq")
+card_icon = ExtResource("1_x8f2p")

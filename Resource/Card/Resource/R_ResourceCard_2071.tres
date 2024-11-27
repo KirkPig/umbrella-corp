@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://b21xtx6xlh8u0"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2071.png" id="1_ailqv"]
-[ext_resource type="Texture2D" uid="uid://nrv3t5gk8awp" path="res://Assets/ResourceCard/A_ResourceCard_2069.png" id="1_o46ni"]
+[ext_resource type="Texture2D" uid="uid://b3u60tfypqicy" path="res://Assets/IconNoBG/A_ResourceIcon_2071.png" id="1_nf1py"]
+[ext_resource type="Texture2D" uid="uid://co2vdd25mpobk" path="res://Assets/ResourceCard/A_ResourceCard_2071.png" id="2_f8oou"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_neesk"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_mtpxs"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_qdj4w"]
@@ -28,6 +28,6 @@ components = Array[ExtResource("2_neesk")]([SubResource("Resource_rksl3"), SubRe
 research_yield = Array[ExtResource("3_mtpxs")]([])
 card_id = 2071
 card_name = "Car Frame"
-card_texture = ExtResource("1_o46ni")
+card_texture = ExtResource("2_f8oou")
 shop_price = 0
-card_icon = ExtResource("1_ailqv")
+card_icon = ExtResource("1_nf1py")

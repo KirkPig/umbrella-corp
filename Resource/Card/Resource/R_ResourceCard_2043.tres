@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://2f2eo74guasv"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2043.png" id="1_tebiu"]
+[ext_resource type="Texture2D" uid="uid://dfmdcuoyqsh61" path="res://Assets/IconNoBG/A_ResourceIcon_2043.png" id="1_2icny"]
 [ext_resource type="Texture2D" uid="uid://clvuf14ocyei5" path="res://Assets/ResourceCard/A_ResourceCard_2043.png" id="1_koows"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_2atfn"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_vevj1"]
@@ -25,4 +25,4 @@ card_id = 2043
 card_name = "Plastic"
 card_texture = ExtResource("1_koows")
 shop_price = 0
-card_icon = ExtResource("1_tebiu")
+card_icon = ExtResource("1_2icny")

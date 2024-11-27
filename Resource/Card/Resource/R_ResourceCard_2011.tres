@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://bikl6hp1wgnfx"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2011.png" id="1_bzffq"]
+[ext_resource type="Texture2D" uid="uid://cmcfose2n188x" path="res://Assets/IconNoBG/A_ResourceIcon_2011.png" id="1_bpjq2"]
 [ext_resource type="Texture2D" uid="uid://bgmt82diutoxl" path="res://Assets/ResourceCard/A_ResourceCard_2011.png" id="1_je47c"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_a16fw"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_sngv3"]
@@ -20,4 +20,4 @@ card_id = 2011
 card_name = "Sand"
 card_texture = ExtResource("1_je47c")
 shop_price = 0
-card_icon = ExtResource("1_bzffq")
+card_icon = ExtResource("1_bpjq2")

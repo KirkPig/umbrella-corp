@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://dnr0hchjr6o4p"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2054.png" id="1_nmbtk"]
+[ext_resource type="Texture2D" uid="uid://bxg5531kbgu2b" path="res://Assets/IconNoBG/A_ResourceIcon_2054.png" id="1_r3x7d"]
 [ext_resource type="Texture2D" uid="uid://diua8xq7lmdds" path="res://Assets/ResourceCard/A_ResourceCard_2054.png" id="1_x3n8h"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_chilq"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_krauf"]
@@ -30,4 +30,4 @@ card_id = 2054
 card_name = "Cloths"
 card_texture = ExtResource("1_x3n8h")
 shop_price = 0
-card_icon = ExtResource("1_nmbtk")
+card_icon = ExtResource("1_r3x7d")

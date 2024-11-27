@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=11 format=3 uid="uid://bhjv75qi5eash"]
 
-[ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2001.png" id="1_582x6"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2001.png" id="1_bcgmi"]
+[ext_resource type="Texture2D" uid="uid://cp1oacotwt4oe" path="res://Assets/IconNoBG/A_ResourceIcon_2001.png" id="1_fli0q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_gjyh7"]
+[ext_resource type="Texture2D" uid="uid://dayp32v6h4nf" path="res://Assets/ResourceCard/A_ResourceCard_2001.png" id="2_6v088"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_b7jui"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_0cbo2"]
 [ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="4_pv85b"]
@@ -44,6 +44,6 @@ components = Array[ExtResource("2_b7jui")]([])
 research_yield = Array[ExtResource("3_0cbo2")]([SubResource("Resource_k1ms5"), SubResource("Resource_3wenx"), SubResource("Resource_xbard")])
 card_id = 2001
 card_name = "Corn"
-card_texture = ExtResource("1_582x6")
+card_texture = ExtResource("2_6v088")
 shop_price = 0
-card_icon = ExtResource("1_bcgmi")
+card_icon = ExtResource("1_fli0q")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://cucvro73x7631"]
 
+[ext_resource type="Texture2D" uid="uid://cgev6lcry15fl" path="res://Assets/IconNoBG/A_ResourceIcon_2021.png" id="1_60kqm"]
 [ext_resource type="Texture2D" uid="uid://dpjx386xd8hx4" path="res://Assets/ResourceCard/A_ResourceCard_2021.png" id="1_fwt67"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2021.png" id="1_snvhj"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_csage"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_nxd5j"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_66di4"]
@@ -20,4 +20,4 @@ card_id = 2021
 card_name = "Cocoa"
 card_texture = ExtResource("1_fwt67")
 shop_price = 0
-card_icon = ExtResource("1_snvhj")
+card_icon = ExtResource("1_60kqm")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://c1yl7bp1y7b5h"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2065.png" id="1_qynmz"]
-[ext_resource type="Texture2D" uid="uid://ceki7diwau34f" path="res://Assets/ResourceCard/A_ResourceCard_2061.png" id="1_my6fq"]
+[ext_resource type="Texture2D" uid="uid://sdjjoplb6ntl" path="res://Assets/IconNoBG/A_ResourceIcon_2065.png" id="1_0ppr7"]
+[ext_resource type="Texture2D" uid="uid://dxj6mjc5kvxnw" path="res://Assets/ResourceCard/A_ResourceCard_2065.png" id="2_lfdev"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_ngvvg"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_gs1py"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_c40yc"]
@@ -28,6 +28,6 @@ components = Array[ExtResource("2_ngvvg")]([SubResource("Resource_rksl3"), SubRe
 research_yield = Array[ExtResource("3_gs1py")]([])
 card_id = 2065
 card_name = "Bed"
-card_texture = ExtResource("1_my6fq")
+card_texture = ExtResource("2_lfdev")
 shop_price = 0
-card_icon = ExtResource("1_qynmz")
+card_icon = ExtResource("1_0ppr7")

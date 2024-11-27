@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://blkm8n2srk71r"]
 
 [ext_resource type="Texture2D" uid="uid://dibkp1q10ymf1" path="res://Assets/ResourceCard/A_ResourceCard_2035.png" id="1_1q5pp"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2035.png" id="1_ghxdg"]
+[ext_resource type="Texture2D" uid="uid://cxbi7xamvx558" path="res://Assets/IconNoBG/A_ResourceIcon_2035.png" id="1_3jio5"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_g7hjm"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_l0vvi"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_8gba2"]
@@ -30,4 +30,4 @@ card_id = 2035
 card_name = "Cake"
 card_texture = ExtResource("1_1q5pp")
 shop_price = 0
-card_icon = ExtResource("1_ghxdg")
+card_icon = ExtResource("1_3jio5")
