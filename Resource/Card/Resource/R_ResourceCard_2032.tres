@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://bt3cuu58ux3ic"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://bt3cuu58ux3ic"]
 
 [ext_resource type="Texture2D" uid="uid://ctsj8j15s02kv" path="res://Assets/ResourceCard/A_ResourceCard_2032.png" id="1_4p80o"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2032.png" id="1_ga26q"]
@@ -23,6 +23,7 @@ yield_price = 40
 yield_demand = 4
 labor_per_piece = 1
 yield_gold = 13
+yield_piece = 1
 components = Array[ExtResource("2_xxwua")]([SubResource("Resource_rksl3"), SubResource("Resource_kwm7d")])
 research_yield = Array[ExtResource("3_04yat")]([])
 card_id = 2032

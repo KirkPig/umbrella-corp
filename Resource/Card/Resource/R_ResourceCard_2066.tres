@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://deh7gi8biwbf7"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://deh7gi8biwbf7"]
 
 [ext_resource type="Texture2D" uid="uid://diomin8jhb7ww" path="res://Assets/ResourceCard/A_ResourceCard_2066.png" id="1_c2nm5"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2066.png" id="1_ga26q"]

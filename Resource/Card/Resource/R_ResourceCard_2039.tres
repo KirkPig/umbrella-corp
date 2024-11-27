@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://1pa0jym7trv1"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://1pa0jym7trv1"]
 
-[ext_resource type="Texture2D" uid="uid://bfglmaq8kwqa2" path="res://Assets/ResourceCard/A_ResourceCard_2039.png" id="1_3knln"]
+[ext_resource type="Texture2D" uid="uid://bfglmaq8kwqa2" path="res://Assets/ResourceCard/A_ResourceCard_2038.png" id="1_3knln"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2039.png" id="1_ga26q"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_go2h4"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_brpfl"]

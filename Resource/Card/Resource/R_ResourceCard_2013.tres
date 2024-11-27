@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=5 format=3 uid="uid://ba20d5g160f7r"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://ba20d5g160f7r"]
 
-[ext_resource type="Texture2D" uid="uid://jl8fufyb3u1v" path="res://Assets/ResourceCard/A_ResourceCard_2013.png" id="1_iu2lu"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2013.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://jl8fufyb3u1v" path="res://Assets/ResourceCard/A_ResourceCard_2013.png" id="1_iu2lu"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_p0lup"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_gg6iy"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_5ssn6"]
@@ -13,6 +13,7 @@ yield_price = 55
 yield_demand = 2
 labor_per_piece = 3
 yield_gold = 5
+yield_piece = 1
 components = Array[ExtResource("2_p0lup")]([])
 research_yield = Array[ExtResource("3_gg6iy")]([])
 card_id = 2013
