@@ -6,9 +6,9 @@ extends Control
 @export var start_shop_refresh : int = 10
 
 @export var start_deck: Array[int]
-@export var start_business: Array[int]
+@export var start_resource_pool: Array[int]
 
-@export var card_pool: Array[int]
+@export var start_business: Array[int]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,7 +44,8 @@ func set_up_game_manager() -> void:
 	GameManager.rng.seed = hash("0")
 
 func add_card_pool() -> void:
-	CardManager.card_pool = card_pool
+	for _id in start_resource_pool:
+		CardManager.unlock_resource(_id)
 
 func add_start_deck()-> void:
 	for res_card in start_deck:

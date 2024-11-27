@@ -35,6 +35,17 @@ var played: Control
 
 var card_pool: Array[int]
 
+func unlock_resource(_id: int):
+	var _res_data: ResourceCardData = card_dict[_id]
+	var _bus_data: BusinessCardData = card_dict[_res_data.business_id]
+	if _bus_data.card_id not in card_pool:
+		card_pool.append(_bus_data.card_id)
+	if _res_data.card_id not in card_pool:
+		card_pool.append(_res_data.card_id)
+	if _res_data.card_id not in _bus_data.resource_yield_list:
+		_bus_data.resource_yield_list.append(_res_data.card_id)
+	pass
+
 func get_card_pool(_type: ECardType) -> Array[int]:
 	var from: int
 	var to: int

@@ -5,6 +5,8 @@ extends Control
 @export var business_card: BusinessCardData
 @export var instant_card: InstantCardData
 
+@onready var playing_field: PlayingFieldController = $PlayingField
+
 func _ready() -> void:
 	GameManager.gold = 10000
 	GameManager.energy = 10000
@@ -29,3 +31,9 @@ func _on_research_pressed() -> void:
 	else:
 		print("not ok")
 	pass # Replace with function body.
+
+
+func _on_test_pressed() -> void:
+	var selected_card = CardManager.get_selected_card()
+	playing_field.playing_cards(selected_card, Vector2(-300, 500), true)
+	CardManager.hand.update_position()

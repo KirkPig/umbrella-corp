@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brd8se8wvi451"]
+[gd_scene load_steps=11 format=3 uid="uid://brd8se8wvi451"]
 
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="1_lpxpf"]
 [ext_resource type="Script" path="res://Card/GD_TestCard.gd" id="1_u4n5d"]
@@ -8,8 +8,7 @@
 [ext_resource type="Resource" uid="uid://b310oxdaytwbd" path="res://Resource/Card/Instant/R_Instant_3000.tres" id="5_g84rg"]
 [ext_resource type="Script" path="res://UI/Phone/Button/Shop/GD_Shop.gd" id="5_w38p4"]
 [ext_resource type="Script" path="res://System/GD_StatusBarController.gd" id="9_4g3e7"]
-[ext_resource type="PackedScene" uid="uid://n6pbyf35d50p" path="res://UI/Phone/Button/S_Deck.tscn" id="9_64shx"]
-[ext_resource type="PackedScene" uid="uid://dgtvpmh2w5wm3" path="res://UI/Phone/Button/S_Discard.tscn" id="10_hs3f2"]
+[ext_resource type="Script" path="res://System/Board/GD_PlayingField.gd" id="9_mj3kl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xw8eu"]
 font_size = 32
@@ -29,7 +28,9 @@ instant_card = ExtResource("5_g84rg")
 
 [node name="Hand" type="Control" parent="."]
 anchors_preset = 0
+offset_left = 50.0
 offset_top = 800.0
+offset_right = 50.0
 offset_bottom = 800.0
 script = ExtResource("1_lpxpf")
 
@@ -56,6 +57,10 @@ text = "Add Shop"
 [node name="Research" type="Button" parent="Container"]
 layout_mode = 2
 text = "Research"
+
+[node name="Test" type="Button" parent="Container"]
+layout_mode = 2
+text = "Test"
 
 [node name="Shop" type="Control" parent="."]
 anchors_preset = 0
@@ -183,12 +188,15 @@ layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_xw8eu")
 
-[node name="Deck" parent="." instance=ExtResource("9_64shx")]
-layout_mode = 1
-
-[node name="Discard" parent="." instance=ExtResource("10_hs3f2")]
-layout_mode = 1
+[node name="PlayingField" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 500.0
+offset_right = 100.0
+offset_bottom = 500.0
+script = ExtResource("9_mj3kl")
 
 [connection signal="pressed" from="Container/AddCard" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Container/AddShop" to="." method="_on_add_shop_pressed"]
 [connection signal="pressed" from="Container/Research" to="." method="_on_research_pressed"]
+[connection signal="pressed" from="Container/Test" to="." method="_on_test_pressed"]

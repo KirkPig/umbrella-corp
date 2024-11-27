@@ -4,19 +4,22 @@ class_name Card
 signal selection_change
 signal is_buy(card: Card)
 
+signal card_scaling_up
+
 var tween_selected: Tween
 var tween_hover: Tween
 var tween_rot: Tween
 var tween_moving: Tween
+var tween_bouncing: Tween
 
 @export var angle_x_max: float = 0.05
 @export var angle_y_max: float = 0.05
 @export var toggle_up_pixel: float = 50
 
 @export_category("Oscillator")
-@export var spring: float = 150.0
-@export var damp: float = 8.0
-@export var velocity_multiplier: float = 4.0
+@export var spring: float = 500.0
+@export var damp: float = 20.0
+@export var velocity_multiplier: float = 10.0
 
 var displacement: float = 0.0 
 var oscillator_velocity: float = 0.0
@@ -50,6 +53,20 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	rotate_velocity(delta)
+
+func bouncing_card() -> void:
+	if tween_bouncing and tween_bouncing.is_running():
+		tween_bouncing.kill()
+	scale = Vector2.ONE
+	tween_bouncing = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	tween_bouncing.tween_property(self, "scale", Vector2(1.2, 1.2), 0.2)
+	await tween_bouncing.finished
+	await get_tree().create_timer(0.05).timeout
+	emit_signal("card_scaling_up")
+	await get_tree().create_timer(0.03).timeout
+	tween_bouncing = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
+	tween_bouncing.tween_property(self, "scale", Vector2.ONE, 0.1)
+	pass
 
 func handle_mouse_click(event: InputEvent) -> void:
 	if event is not InputEventMouseButton: return

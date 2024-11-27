@@ -7,8 +7,17 @@ class_name UIBusinessComponent
 
 var component_data: ResourceComponentItemData:
 	set(value):
-		_set_data(value)
+		var _data: ResourceCardData = CardManager.card_dict[value.resource_id]
+		icon_texture.texture = _data.card_icon
+		label_name.text = _data.card_name
+		current_component = 0
+		need_component = value.amount
 		component_data = value
-
-func _set_data(_data: ResourceComponentItemData):
-	var _card_data = CardManager.card_dict[_data.resource_id]
+var current_component: int = 0:
+	set(value):
+		current_component = value
+		label_value.text = str(current_component) + " / " + str(need_component)
+var need_component: int = 0:
+	set(value):
+		need_component = value
+		label_value.text = str(current_component) + " / " + str(need_component)
