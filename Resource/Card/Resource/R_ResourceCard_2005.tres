@@ -1,10 +1,50 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://ts6k14swgbrq"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=13 format=3 uid="uid://ts6k14swgbrq"]
 
 [ext_resource type="Texture2D" uid="uid://cghe0i8wologp" path="res://Assets/ResourceCard/A_ResourceCard_2005.png" id="1_d1a4p"]
 [ext_resource type="Texture2D" uid="uid://cj14rxo4jaw77" path="res://Assets/IconNoBG/A_ResourceIcon_2005.png" id="1_qqcfy"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_iu1mn"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_rpc1q"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_m4362"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="5_mjiaw"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardBonus.gd" id="6_svqgh"]
+
+[sub_resource type="Resource" id="Resource_sgcfb"]
+script = ExtResource("5_m4362")
+unlocked_resource_id = 2006
+need_resource = -1
+priority = 0
+chance = 100
+
+[sub_resource type="Resource" id="Resource_40pxd"]
+script = ExtResource("6_svqgh")
+reward_type = 0
+card_reward_id = 0
+amount_from = 10
+amount_to = 20
+need_resource = -1
+priority = 1
+chance = 80
+
+[sub_resource type="Resource" id="Resource_5khou"]
+script = ExtResource("5_m4362")
+unlocked_resource_id = 2056
+need_resource = -1
+priority = 1
+chance = 20
+
+[sub_resource type="Resource" id="Resource_gw1kt"]
+script = ExtResource("5_m4362")
+unlocked_resource_id = 2068
+need_resource = 2007
+priority = 1
+chance = 10
+
+[sub_resource type="Resource" id="Resource_kfmul"]
+script = ExtResource("5_m4362")
+unlocked_resource_id = 2071
+need_resource = 2070
+priority = 1
+chance = 10
 
 [resource]
 script = ExtResource("5_mjiaw")
@@ -15,7 +55,7 @@ labor_per_piece = 3
 yield_gold = 5
 yield_piece = 1
 components = Array[ExtResource("2_iu1mn")]([])
-research_yield = Array[ExtResource("3_rpc1q")]([])
+research_yield = Array[ExtResource("3_rpc1q")]([SubResource("Resource_sgcfb"), SubResource("Resource_40pxd"), SubResource("Resource_5khou"), SubResource("Resource_gw1kt"), SubResource("Resource_gw1kt"), SubResource("Resource_kfmul")])
 card_id = 2005
 card_name = "Iron"
 card_texture = ExtResource("1_d1a4p")
