@@ -19,6 +19,6 @@ target_mode = 0
 target_type = 0
 effects = Array[ExtResource("1_v76uh")]([SubResource("Resource_elw0n")])
 card_name = "Energy Drink"
-card_id = 3001
+card_id = 3000
 card_texture = SubResource("CompressedTexture2D_vujoi")
 shop_price = 20

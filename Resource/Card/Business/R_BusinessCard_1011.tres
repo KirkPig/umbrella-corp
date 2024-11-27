@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://xedfjv8tg6t4"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://cc1vckpmy811t"]
 
-[ext_resource type="Texture2D" uid="uid://dxqln8g8n6yde" path="res://Assets/BusinessCard/A_BusinessCard_1010.png" id="1_api88"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_t48n3"]
+[ext_resource type="Texture2D" uid="uid://emetevnxjt1h" path="res://Assets/BusinessCard/A_BusinessCard_1011.png" id="1_ebfd8"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_66xai"]
 
 [resource]
-script = ExtResource("2_t48n3")
+script = ExtResource("2_66xai")
 max_usage = 2
 resource_yield_list = Array[int]([])
-card_id = 1010
-card_name = "Chemical Factory"
-card_texture = ExtResource("1_api88")
-shop_price = 250
+card_id = 1011
+card_name = "Texile Mill"
+card_texture = ExtResource("1_ebfd8")
+shop_price = 200
