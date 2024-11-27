@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://b68h8omboahga"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2041.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2041.png" id="1_gvtdt"]
 [ext_resource type="Texture2D" uid="uid://c208vaidjpqrm" path="res://Assets/ResourceCard/A_ResourceCard_2041.png" id="1_klgfc"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_m0hhk"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_v10kh"]
@@ -25,4 +25,4 @@ card_id = 2041
 card_name = "Lumber"
 card_texture = ExtResource("1_klgfc")
 shop_price = 0
-card_icon = ExtResource("1_ga26q")
+card_icon = ExtResource("1_gvtdt")

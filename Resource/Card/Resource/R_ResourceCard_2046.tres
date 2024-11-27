@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://cs47p5kj5oj8g"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2046.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2046.png" id="1_qdtnt"]
 [ext_resource type="Texture2D" uid="uid://klfxm015b3dd" path="res://Assets/ResourceCard/A_ResourceCard_2046.png" id="1_xriym"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_almx2"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_vr8du"]
@@ -25,4 +25,4 @@ card_id = 2046
 card_name = "Tire"
 card_texture = ExtResource("1_xriym")
 shop_price = 0
-card_icon = ExtResource("1_ga26q")
+card_icon = ExtResource("1_qdtnt")

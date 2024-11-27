@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="1_6u2c5"]
 [ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2000.png" id="1_g5jr0"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="1_ymqyn"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="2_ayq2l"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_psvvm"]
 [ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="3_bgs1h"]
@@ -46,4 +46,4 @@ card_id = 2000
 card_name = "Wheat"
 card_texture = ExtResource("1_g5jr0")
 shop_price = 0
-card_icon = ExtResource("1_ga26q")
+card_icon = ExtResource("1_ymqyn")

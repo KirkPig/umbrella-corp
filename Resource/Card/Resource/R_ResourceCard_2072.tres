@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://dvoxuo4uiy7nn"]
 
 [ext_resource type="Texture2D" uid="uid://bri65g8ju2fv0" path="res://Assets/ResourceCard/A_ResourceCard_2072.png" id="1_g53ko"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2072.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2072.png" id="1_mmqml"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_fm0lg"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_d2bmy"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_f8e04"]
@@ -30,4 +30,4 @@ card_id = 2072
 card_name = "Car"
 card_texture = ExtResource("1_g53ko")
 shop_price = 0
-card_icon = ExtResource("1_ga26q")
+card_icon = ExtResource("1_mmqml")

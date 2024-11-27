@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://dhgbcyr4sybcl"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2045.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2045.png" id="1_diylh"]
 [ext_resource type="Texture2D" uid="uid://be6sprnbjdwkh" path="res://Assets/ResourceCard/A_ResourceCard_2045.png" id="1_ksexm"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_yde8i"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_pm8ln"]
@@ -25,4 +25,4 @@ card_id = 2045
 card_name = "Chemicals"
 card_texture = ExtResource("1_ksexm")
 shop_price = 0
-card_icon = ExtResource("1_ga26q")
+card_icon = ExtResource("1_diylh")

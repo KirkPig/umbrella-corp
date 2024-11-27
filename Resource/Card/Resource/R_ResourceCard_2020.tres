@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://dai8armbwc032"]
 
 [ext_resource type="Texture2D" uid="uid://1wilugpyg2j" path="res://Assets/ResourceCard/A_ResourceCard_2020.png" id="1_eht7u"]
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2020.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2020.png" id="1_yhcib"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_glioi"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_avcjk"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_l8im6"]
@@ -20,4 +20,4 @@ card_id = 2020
 card_name = "Berries"
 card_texture = ExtResource("1_eht7u")
 shop_price = 0
-card_icon = ExtResource("1_ga26q")
+card_icon = ExtResource("1_yhcib")

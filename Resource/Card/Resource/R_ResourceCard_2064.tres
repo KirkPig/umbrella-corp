@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://dsg6t21mfwl4s"]
 
-[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2064.png" id="1_ga26q"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2064.png" id="1_jspbg"]
 [ext_resource type="Texture2D" uid="uid://c074uq3nym05k" path="res://Assets/ResourceCard/A_ResourceCard_2064.png" id="1_pomg7"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_325x2"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_kv4b1"]
@@ -30,4 +30,4 @@ card_id = 2064
 card_name = "Sofa"
 card_texture = ExtResource("1_pomg7")
 shop_price = 0
-card_icon = ExtResource("1_ga26q")
+card_icon = ExtResource("1_jspbg")
