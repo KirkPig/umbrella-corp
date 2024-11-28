@@ -7,6 +7,7 @@ extends Control
 
 @export var start_deck: Array[int]
 @export var start_resource_pool: Array[int]
+@export var start_upgrade_pool: Array[int]
 
 @export var start_business: Array[int]
 
@@ -46,6 +47,8 @@ func set_up_game_manager() -> void:
 func add_card_pool() -> void:
 	for _id in start_resource_pool:
 		CardManager.unlock_resource(_id)
+	for _id in start_upgrade_pool:
+		CardManager.card_pool.append(_id)
 
 func add_start_deck()-> void:
 	for res_card in start_deck:

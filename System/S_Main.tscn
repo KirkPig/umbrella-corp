@@ -19,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_jfe42")
 start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 start_resource_pool = Array[int]([2000, 2004, 2005, 2006, 2008, 2011, 2014])
+start_upgrade_pool = Array[int]([5001, 5002, 5003, 5004])
 start_business = Array[int]([1000])
 
 [node name="TextureRect" type="TextureRect" parent="."]
