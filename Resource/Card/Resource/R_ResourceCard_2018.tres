@@ -1,15 +1,38 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://cki0rbcdlit3h"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=12 format=3 uid="uid://cki0rbcdlit3h"]
 
 [ext_resource type="Texture2D" uid="uid://43175pmcpyg4" path="res://Assets/IconNoBG/A_ResourceIcon_2018.png" id="1_0o1nq"]
 [ext_resource type="Texture2D" uid="uid://dsyairvsri5le" path="res://Assets/ResourceCard/A_ResourceCard_2018.png" id="1_g756d"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_24r44"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_rl7qq"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_gb3c4"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_rk3b3"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_s7tww"]
 
 [sub_resource type="Resource" id="Resource_35ewk"]
 script = ExtResource("2_24r44")
 resource_id = 2000
 amount = 1
+
+[sub_resource type="Resource" id="Resource_f32t1"]
+script = ExtResource("5_rk3b3")
+unlocked_resource_id = 2019
+need_resource = -1
+priority = 0
+chance = 100
+
+[sub_resource type="Resource" id="Resource_1h8s3"]
+script = ExtResource("5_rk3b3")
+unlocked_resource_id = 2054
+need_resource = 2053
+priority = 1
+chance = 10
+
+[sub_resource type="Resource" id="Resource_udabj"]
+script = ExtResource("5_rk3b3")
+unlocked_resource_id = 2055
+need_resource = -1
+priority = 1
+chance = 20
 
 [resource]
 script = ExtResource("4_gb3c4")
@@ -20,7 +43,13 @@ labor_per_piece = 2
 yield_gold = 7
 yield_piece = 1
 components = Array[ExtResource("2_24r44")]([SubResource("Resource_35ewk")])
-research_yield = Array[ExtResource("3_rl7qq")]([])
+research_yield = Array[ExtResource("3_rl7qq")]([SubResource("Resource_f32t1"), ExtResource("6_s7tww"), SubResource("Resource_1h8s3"), SubResource("Resource_udabj")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
 card_id = 2018
 card_name = "Leather"
 card_texture = ExtResource("1_g756d")

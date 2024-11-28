@@ -1,15 +1,24 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://d0fntbdofyxiy"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=10 format=3 uid="uid://d0fntbdofyxiy"]
 
 [ext_resource type="Texture2D" uid="uid://ceki7diwau34f" path="res://Assets/ResourceCard/A_ResourceCard_2061.png" id="1_f5jay"]
 [ext_resource type="Texture2D" uid="uid://c68ehfgl7uq6e" path="res://Assets/IconNoBG/A_ResourceIcon_2061.png" id="1_lauyg"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_u4l4w"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_7shri"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_girf0"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_nst7h"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_afqw1"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
 script = ExtResource("2_u4l4w")
 resource_id = 2041
 amount = 4
+
+[sub_resource type="Resource" id="Resource_nw54t"]
+script = ExtResource("5_nst7h")
+unlocked_resource_id = 2062
+need_resource = -1
+priority = 0
+chance = 100
 
 [resource]
 script = ExtResource("4_girf0")
@@ -20,7 +29,13 @@ labor_per_piece = 4
 yield_gold = 18
 yield_piece = 1
 components = Array[ExtResource("2_u4l4w")]([SubResource("Resource_rksl3")])
-research_yield = Array[ExtResource("3_7shri")]([])
+research_yield = Array[ExtResource("3_7shri")]([SubResource("Resource_nw54t"), ExtResource("6_afqw1")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
 card_id = 2061
 card_name = "Bench"
 card_texture = ExtResource("1_f5jay")

@@ -1,10 +1,33 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://dai8armbwc032"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=11 format=3 uid="uid://dai8armbwc032"]
 
 [ext_resource type="Texture2D" uid="uid://dop8vrjftn5o7" path="res://Assets/IconNoBG/A_ResourceIcon_2020.png" id="1_2t3hq"]
 [ext_resource type="Texture2D" uid="uid://1wilugpyg2j" path="res://Assets/ResourceCard/A_ResourceCard_2020.png" id="1_eht7u"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_glioi"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_avcjk"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_l8im6"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_ldfp4"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_vjmq8"]
+
+[sub_resource type="Resource" id="Resource_qqisn"]
+script = ExtResource("5_ldfp4")
+unlocked_resource_id = 2021
+need_resource = -1
+priority = 0
+chance = 100
+
+[sub_resource type="Resource" id="Resource_rubu0"]
+script = ExtResource("5_ldfp4")
+unlocked_resource_id = 2034
+need_resource = 2032
+priority = 1
+chance = 10
+
+[sub_resource type="Resource" id="Resource_5fxxh"]
+script = ExtResource("5_ldfp4")
+unlocked_resource_id = 2051
+need_resource = -1
+priority = 1
+chance = 20
 
 [resource]
 script = ExtResource("4_l8im6")
@@ -15,7 +38,13 @@ labor_per_piece = 1
 yield_gold = 4
 yield_piece = 1
 components = Array[ExtResource("2_glioi")]([])
-research_yield = Array[ExtResource("3_avcjk")]([])
+research_yield = Array[ExtResource("3_avcjk")]([SubResource("Resource_qqisn"), ExtResource("6_vjmq8"), SubResource("Resource_rubu0"), SubResource("Resource_5fxxh")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
 card_id = 2020
 card_name = "Berries"
 card_texture = ExtResource("1_eht7u")

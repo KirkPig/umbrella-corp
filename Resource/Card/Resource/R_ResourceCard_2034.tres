@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://6a6tl52nxl2b"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=11 format=3 uid="uid://6a6tl52nxl2b"]
 
 [ext_resource type="Texture2D" uid="uid://cuf4xaqc7hany" path="res://Assets/IconNoBG/A_ResourceIcon_2034.png" id="1_nrhnh"]
 [ext_resource type="Texture2D" uid="uid://cqpcgmjvkdk4i" path="res://Assets/ResourceCard/A_ResourceCard_2034.png" id="1_pe4gl"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_2cgmq"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_dgc6y"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_tpxmc"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_bepic"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_b8l2q"]
 
 [sub_resource type="Resource" id="Resource_rksl3"]
 script = ExtResource("2_2cgmq")
@@ -16,6 +18,13 @@ script = ExtResource("2_2cgmq")
 resource_id = 2020
 amount = 1
 
+[sub_resource type="Resource" id="Resource_8o8ht"]
+script = ExtResource("5_bepic")
+unlocked_resource_id = 2035
+need_resource = -1
+priority = 0
+chance = 100
+
 [resource]
 script = ExtResource("4_tpxmc")
 business_id = 1008
@@ -25,7 +34,13 @@ labor_per_piece = 1
 yield_gold = 17
 yield_piece = 1
 components = Array[ExtResource("2_2cgmq")]([SubResource("Resource_rksl3"), SubResource("Resource_kwm7d")])
-research_yield = Array[ExtResource("3_dgc6y")]([])
+research_yield = Array[ExtResource("3_dgc6y")]([SubResource("Resource_8o8ht"), ExtResource("6_b8l2q")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
 card_id = 2034
 card_name = "Berries Pie"
 card_texture = ExtResource("1_pe4gl")

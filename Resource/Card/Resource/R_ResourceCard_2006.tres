@@ -1,10 +1,26 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://bhhgh4bnty1ht"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=10 format=3 uid="uid://bhhgh4bnty1ht"]
 
 [ext_resource type="Texture2D" uid="uid://cvxl0qjli36uq" path="res://Assets/IconNoBG/A_ResourceIcon_2006.png" id="1_1dugq"]
 [ext_resource type="Texture2D" uid="uid://dqe4702i5psfx" path="res://Assets/ResourceCard/A_ResourceCard_2006.png" id="1_gomlp"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_tblti"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_uiobr"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_h32ex"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="5_v8yn3"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_s81kw"]
+
+[sub_resource type="Resource" id="Resource_ph5nn"]
+script = ExtResource("5_h32ex")
+unlocked_resource_id = 2007
+need_resource = -1
+priority = 0
+chance = 100
+
+[sub_resource type="Resource" id="Resource_lnjgq"]
+script = ExtResource("5_h32ex")
+unlocked_resource_id = 2070
+need_resource = 2005
+priority = 1
+chance = 10
 
 [resource]
 script = ExtResource("5_v8yn3")
@@ -15,7 +31,13 @@ labor_per_piece = 2
 yield_gold = 3
 yield_piece = 1
 components = Array[ExtResource("2_tblti")]([])
-research_yield = Array[ExtResource("3_uiobr")]([])
+research_yield = Array[ExtResource("3_uiobr")]([SubResource("Resource_ph5nn"), ExtResource("6_s81kw"), SubResource("Resource_lnjgq")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
 card_id = 2006
 card_name = "Copper"
 card_texture = ExtResource("1_gomlp")

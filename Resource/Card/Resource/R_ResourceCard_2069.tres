@@ -1,15 +1,28 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://bblw1xamkm0qu"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=10 format=3 uid="uid://bblw1xamkm0qu"]
 
-[ext_resource type="Texture2D" uid="uid://dmtu345dyef10" path="res://Assets/IconNoBG/A_ResourceIcon_2070.png" id="1_lxx46"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_pqg3d"]
-[ext_resource type="Texture2D" uid="uid://b13cbkp3n7lvs" path="res://Assets/ResourceCard/A_ResourceCard_2070.png" id="2_x8prk"]
 [ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_g8gw6"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="3_xfose"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="4_chid3"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_upxre"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wlxjl"]
+load_path = "res://.godot/imported/A_ResourceIcon_2069.png-c54448e9c03617f8ccf40fb8eec545df.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q2hsx"]
+load_path = "res://.godot/imported/A_ResourceCard_2069.png-e36d3531cebd1a3a17e2c3dfb4c73963.ctex"
 
 [sub_resource type="Resource" id="Resource_rksl3"]
 script = ExtResource("2_pqg3d")
 resource_id = 2041
 amount = 10
+
+[sub_resource type="Resource" id="Resource_aw28m"]
+script = ExtResource("3_xfose")
+unlocked_resource_id = 2070
+need_resource = -1
+priority = 0
+chance = 100
 
 [resource]
 script = ExtResource("4_upxre")
@@ -20,9 +33,15 @@ labor_per_piece = 15
 yield_gold = 60
 yield_piece = 1
 components = Array[ExtResource("2_pqg3d")]([SubResource("Resource_rksl3")])
-research_yield = Array[ExtResource("3_g8gw6")]([])
+research_yield = Array[ExtResource("3_g8gw6")]([SubResource("Resource_aw28m"), ExtResource("4_chid3")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
 card_id = 2069
 card_name = "Boat"
-card_texture = ExtResource("2_x8prk")
+card_texture = SubResource("CompressedTexture2D_q2hsx")
 shop_price = 0
-card_icon = ExtResource("1_lxx46")
+card_icon = SubResource("CompressedTexture2D_wlxjl")
