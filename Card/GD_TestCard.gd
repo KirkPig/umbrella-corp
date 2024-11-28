@@ -12,6 +12,7 @@ func _ready() -> void:
 	GameManager.energy = 10000
 	GameManager.rng = RandomNumberGenerator.new()
 	GameManager.rng.seed = hash("0")
+	GameManager.game_speed = 2.5
 
 func _on_button_pressed() -> void:
 	CardManager.add_card_to_hand(resource_card.card_id)

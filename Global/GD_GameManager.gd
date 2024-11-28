@@ -97,6 +97,8 @@ var energy_cost_discard: int = 1
 var energy_cost_work: int = 1
 var energy_cost_research: int = 1
 
+var game_speed: float = 1
+
 func start_select_contract() -> void:
 	contract_selection.show()
 	contract_selection.clear_contract()

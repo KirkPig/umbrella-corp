@@ -3,6 +3,7 @@ extends Node
 signal action_done
 
 var action_list: ActionListController
+var playing_field: PlayingFieldController
 
 ## Section: Actions
 func action_work(business: BusinessCard):
@@ -35,6 +36,12 @@ func action_discard():
 
 func action_sell():
 	var selected_card: Array[Card] = CardManager.get_selected_card()
+	
+	# TODO: show each price and demand in phone screen
+	if playing_field:
+		playing_field.playing_cards(selected_card, Vector2(-300, playing_field.global_position.y), false)
+		CardManager.hand.update_position()
+		await playing_field.playing_cards_done
 
 	SellManager.sell(selected_card)
 	CardManager.played_cards(selected_card)

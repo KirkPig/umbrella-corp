@@ -11,12 +11,15 @@ class_name UIBusiness
 @onready var component = $Container/Detail/Component
 @onready var component_list = $Container/Detail/Component/List
 
+@onready var btn_work = $ButtonGroup/Work
+@onready var btn_component = $ButtonGroup/Component
+@onready var btn_change_resource = $ButtonGroup/ChangeResource
+
 @onready var _template_business_component = preload("res://UI/Business/Component/Scene/S_UI_BusinessComponent.tscn")
 
 # TODO: handle when business data is changed
 var business_card_data: BusinessCardData:
 	set(value):
-		
 		label_business_name.text = value.card_name
 		var _id = business_card_data.resource_yield_list[0]
 		var _res: ResourceCardData = CardManager.card_dict[_id]

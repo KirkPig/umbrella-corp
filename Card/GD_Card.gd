@@ -58,14 +58,14 @@ func bouncing_card() -> void:
 	if tween_bouncing and tween_bouncing.is_running():
 		tween_bouncing.kill()
 	scale = Vector2.ONE
-	tween_bouncing = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
-	tween_bouncing.tween_property(self, "scale", Vector2(1.2, 1.2), 0.2)
-	await tween_bouncing.finished
-	await get_tree().create_timer(0.05).timeout
+	tween_bouncing = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_speed_scale(GameManager.game_speed)
+	tween_bouncing.tween_property(self, "scale", Vector2(1.25, 1.25), 1.2)
+	await get_tree().create_timer(0.6 / GameManager.game_speed).timeout
 	emit_signal("card_scaling_up")
-	await get_tree().create_timer(0.03).timeout
-	tween_bouncing = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
-	tween_bouncing.tween_property(self, "scale", Vector2.ONE, 0.1)
+	await get_tree().create_timer(0.2 / GameManager.game_speed).timeout
+	tween_bouncing.kill()
+	tween_bouncing = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_speed_scale(GameManager.game_speed)
+	tween_bouncing.tween_property(self, "scale", Vector2.ONE, 0.7)
 	pass
 
 func handle_mouse_click(event: InputEvent) -> void:
@@ -109,7 +109,7 @@ func set_card_hand_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x
 		_pos_y = remap(abs(_pos_x - _middle_pos), 0, _middle_pos, 0, 20)
 	if !in_hand:
 		_pos_y = 0
-	change_card_position(Vector2(_pos_x, _pos_y), 0.2)
+	change_card_position(Vector2(_pos_x, _pos_y), 0.2 / GameManager.game_speed)
 	z_index = _card_pos
 
 func set_card_pile_position(_in_hand: int, card_gap:int):

@@ -39,7 +39,6 @@ func set_up_game_manager() -> void:
 	GameManager.shop_refresh = start_shop_refresh
 	GameManager.max_shop_refresh = start_shop_refresh
 	
-	
 	GameManager.rng = RandomNumberGenerator.new()
 	GameManager.rng.seed = hash("0")
 
