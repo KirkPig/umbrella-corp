@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://bq0lamw6lp1gd"]
+
+[ext_resource type="Texture2D" uid="uid://cab7mt2orgkcv" path="res://Assets/IconNoBG/A_ResourceIcon_2037.png" id="1_5hu0u"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_om3yr"]
+[ext_resource type="Texture2D" uid="uid://1nm1cam5nm4i" path="res://Assets/ResourceCard/A_ResourceCard_2037.png" id="2_ps7y0"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_3om67"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_dsxev"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_om3yr")
+resource_id = 2035
+amount = 1
+
+[sub_resource type="Resource" id="Resource_kwm7d"]
+script = ExtResource("2_om3yr")
+resource_id = 2026
+amount = 1
+
+[resource]
+script = ExtResource("4_dsxev")
+business_id = 1008
+yield_price = 125
+yield_demand = 5
+labor_per_piece = 2
+yield_gold = 30
+yield_piece = 1
+components = Array[ExtResource("2_om3yr")]([SubResource("Resource_rksl3"), SubResource("Resource_kwm7d")])
+research_yield = Array[ExtResource("3_3om67")]([])
+card_id = 2037
+card_name = "Orange Cake"
+card_texture = ExtResource("2_ps7y0")
+shop_price = 0
+card_icon = ExtResource("1_5hu0u")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvt2ihggg283r"]
+
+[ext_resource type="Script" path="res://UI/Business/Component/Script/GD_UI_BusinessComponent.gd" id="1_kh0qo"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="1_qetyo"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="2_wcodt"]
+
+[node name="Component" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("1_kh0qo")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("1_qetyo")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wcodt")
+theme_override_font_sizes/font_size = 16
+text = "Wheat"
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wcodt")
+theme_override_font_sizes/font_size = 16
+text = "00 / 00"

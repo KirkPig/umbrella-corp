@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://ovx52a7obygy"]
+
+[ext_resource type="Texture2D" uid="uid://dh68pgpwx4i2e" path="res://Assets/BusinessCard/A_BusinessCard_1008.png" id="1_5t25w"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_24hiv"]
+
+[resource]
+script = ExtResource("2_24hiv")
+max_usage = 2
+resource_yield_list = Array[int]([])
+card_id = 1008
+card_name = "Bakery"
+card_texture = ExtResource("1_5t25w")
+shop_price = 55

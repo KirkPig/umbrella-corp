@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://c1ljov4scnupm"]
+
+[ext_resource type="Texture2D" uid="uid://3o8hdljxxhjo" path="res://Assets/IconNoBG/A_ResourceIcon_2027.png" id="1_kvix1"]
+[ext_resource type="Texture2D" uid="uid://dn1ja88ky80aj" path="res://Assets/ResourceCard/A_ResourceCard_2027.png" id="2_3jxds"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_vb24j"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_my5p6"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_is22l"]
+
+[resource]
+script = ExtResource("4_is22l")
+business_id = 1007
+yield_price = 25
+yield_demand = 1
+labor_per_piece = 2
+yield_gold = 6
+yield_piece = 1
+components = Array[ExtResource("2_vb24j")]([])
+research_yield = Array[ExtResource("3_my5p6")]([])
+card_id = 2027
+card_name = "Grapes"
+card_texture = ExtResource("2_3jxds")
+shop_price = 0
+card_icon = ExtResource("1_kvix1")

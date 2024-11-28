@@ -1,13 +1,23 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://5lbb0isje7e1"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://kouakh346bpr"]
 
-[ext_resource type="Texture2D" uid="uid://dklfkldunn1uw" path="res://Assets/ResourceCard/A_ResourceCard_2010.png" id="1_oc18b"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_6w582"]
+[ext_resource type="Texture2D" uid="uid://dklfkldunn1uw" path="res://Assets/ResourceCard/A_ResourceCard_2010.png" id="1_5tyv0"]
+[ext_resource type="Texture2D" uid="uid://du6knq3cv5cay" path="res://Assets/IconNoBG/A_ResourceIcon_2010.png" id="1_pq80x"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_43hqa"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_q6hf6"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_jg658"]
 
 [resource]
-script = ExtResource("2_6w582")
-yield_score = 9
-yield_gold = 1
-card_name = "Paper"
-card_id = 2009
-card_texture = ExtResource("1_oc18b")
+script = ExtResource("4_jg658")
+business_id = 1002
+yield_price = 20
+yield_demand = 1
+labor_per_piece = 2
+yield_gold = 4
+yield_piece = 1
+components = Array[ExtResource("2_43hqa")]([])
+research_yield = Array[ExtResource("3_q6hf6")]([])
+card_id = 2010
+card_name = "Rubber"
+card_texture = ExtResource("1_5tyv0")
 shop_price = 0
+card_icon = ExtResource("1_pq80x")

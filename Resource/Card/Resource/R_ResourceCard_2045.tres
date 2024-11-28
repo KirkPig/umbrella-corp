@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://dhgbcyr4sybcl"]
+
+[ext_resource type="Texture2D" uid="uid://ddlbayky2no13" path="res://Assets/IconNoBG/A_ResourceIcon_2045.png" id="1_5xb1i"]
+[ext_resource type="Texture2D" uid="uid://be6sprnbjdwkh" path="res://Assets/ResourceCard/A_ResourceCard_2045.png" id="1_ksexm"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_yde8i"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_pm8ln"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_utey1"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_yde8i")
+resource_id = 2013
+amount = 1
+
+[resource]
+script = ExtResource("4_utey1")
+business_id = 1010
+yield_price = 75
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 8
+yield_piece = 1
+components = Array[ExtResource("2_yde8i")]([SubResource("Resource_rksl3")])
+research_yield = Array[ExtResource("3_pm8ln")]([])
+card_id = 2045
+card_name = "Chemicals"
+card_texture = ExtResource("1_ksexm")
+shop_price = 0
+card_icon = ExtResource("1_5xb1i")

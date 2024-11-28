@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=6 format=3 uid="uid://htjcly5n0lms"]
+
+[ext_resource type="Texture2D" uid="uid://urhayx661b1f" path="res://Assets/ResourceCard/A_ResourceCard_2026.png" id="1_70ula"]
+[ext_resource type="Texture2D" uid="uid://dfaxisbh3ke7w" path="res://Assets/IconNoBG/A_ResourceIcon_2026.png" id="1_ry8tk"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_8j55s"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_gjevu"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_tmghg"]
+
+[resource]
+script = ExtResource("4_tmghg")
+business_id = 1007
+yield_price = 20
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 4
+yield_piece = 1
+components = Array[ExtResource("2_8j55s")]([])
+research_yield = Array[ExtResource("3_gjevu")]([])
+card_id = 2026
+card_name = "Orange"
+card_texture = ExtResource("1_70ula")
+shop_price = 0
+card_icon = ExtResource("1_ry8tk")

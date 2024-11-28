@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://c0iuq6ueyg7vp"]
+
+[ext_resource type="Texture2D" uid="uid://crlc6uhbwh2mn" path="res://Assets/BusinessCard/A_BusinessCard_1015.png" id="1_b75jv"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_ma0nf"]
+
+[resource]
+script = ExtResource("2_ma0nf")
+max_usage = 1
+resource_yield_list = Array[int]([])
+card_id = 1015
+card_name = "Vehicle Factory"
+card_texture = ExtResource("1_b75jv")
+shop_price = 450
