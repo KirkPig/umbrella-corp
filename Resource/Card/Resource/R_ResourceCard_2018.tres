@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://cki0rbcdlit3h"]
+
+[ext_resource type="Texture2D" uid="uid://43175pmcpyg4" path="res://Assets/IconNoBG/A_ResourceIcon_2018.png" id="1_0o1nq"]
+[ext_resource type="Texture2D" uid="uid://dsyairvsri5le" path="res://Assets/ResourceCard/A_ResourceCard_2018.png" id="1_g756d"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_24r44"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_rl7qq"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_gb3c4"]
+
+[sub_resource type="Resource" id="Resource_35ewk"]
+script = ExtResource("2_24r44")
+resource_id = 2000
+amount = 1
+
+[resource]
+script = ExtResource("4_gb3c4")
+business_id = 1005
+yield_price = 35
+yield_demand = 1
+labor_per_piece = 2
+yield_gold = 7
+yield_piece = 1
+components = Array[ExtResource("2_24r44")]([SubResource("Resource_35ewk")])
+research_yield = Array[ExtResource("3_rl7qq")]([])
+card_id = 2018
+card_name = "Leather"
+card_texture = ExtResource("1_g756d")
+shop_price = 0
+card_icon = ExtResource("1_0o1nq")

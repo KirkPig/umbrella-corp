@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://blkm8n2srk71r"]
+
+[ext_resource type="Texture2D" uid="uid://dibkp1q10ymf1" path="res://Assets/ResourceCard/A_ResourceCard_2035.png" id="1_1q5pp"]
+[ext_resource type="Texture2D" uid="uid://cxbi7xamvx558" path="res://Assets/IconNoBG/A_ResourceIcon_2035.png" id="1_3jio5"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_g7hjm"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_l0vvi"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_8gba2"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_g7hjm")
+resource_id = 2028
+amount = 2
+
+[sub_resource type="Resource" id="Resource_kwm7d"]
+script = ExtResource("2_g7hjm")
+resource_id = 2029
+amount = 2
+
+[resource]
+script = ExtResource("4_8gba2")
+business_id = 1008
+yield_price = 100
+yield_demand = 5
+labor_per_piece = 2
+yield_gold = 20
+yield_piece = 1
+components = Array[ExtResource("2_g7hjm")]([SubResource("Resource_rksl3"), SubResource("Resource_kwm7d")])
+research_yield = Array[ExtResource("3_l0vvi")]([])
+card_id = 2035
+card_name = "Cake"
+card_texture = ExtResource("1_1q5pp")
+shop_price = 0
+card_icon = ExtResource("1_3jio5")

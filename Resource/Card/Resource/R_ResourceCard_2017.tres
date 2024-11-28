@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://bh6n108822yva"]
+
+[ext_resource type="Texture2D" uid="uid://bpdkdx04v5rwi" path="res://Assets/ResourceCard/A_ResourceCard_2017.png" id="1_rlqxs"]
+[ext_resource type="Texture2D" uid="uid://b6aw2s7pga5x5" path="res://Assets/IconNoBG/A_ResourceIcon_2017.png" id="1_yu32w"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_48rio"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_3pxsi"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_wn7lp"]
+
+[sub_resource type="Resource" id="Resource_35ewk"]
+script = ExtResource("2_48rio")
+resource_id = 2001
+amount = 1
+
+[resource]
+script = ExtResource("4_wn7lp")
+business_id = 1005
+yield_price = 15
+yield_demand = 2
+labor_per_piece = 1
+yield_gold = 3
+yield_piece = 1
+components = Array[ExtResource("2_48rio")]([SubResource("Resource_35ewk")])
+research_yield = Array[ExtResource("3_3pxsi")]([])
+card_id = 2017
+card_name = "Egg"
+card_texture = ExtResource("1_rlqxs")
+shop_price = 0
+card_icon = ExtResource("1_yu32w")

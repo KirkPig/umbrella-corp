@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
 [ext_resource type="PackedScene" uid="uid://uc70mvrqrusf" path="res://UI/Contract/S_UI_ContractSelection.tscn" id="7_22o06"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
-[ext_resource type="PackedScene" uid="uid://eu6g75bkdrew" path="res://S_ScoreBoard.tscn" id="8_8lk2h"]
+[ext_resource type="PackedScene" uid="uid://c6a1y0g401gjq" path="res://S_ScoreBoard.tscn" id="8_8lk2h"]
 [ext_resource type="Texture2D" uid="uid://bevpmelaa7v4x" path="res://Assets/UI/Table.png" id="11_7mt5x"]
 [ext_resource type="PackedScene" uid="uid://bisxenor2iny5" path="res://UI/Phone/S_UI_Phone.tscn" id="13_herli"]
 
@@ -18,8 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
 start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+start_resource_pool = Array[int]([2000, 2004, 2005, 2006, 2008, 2011, 2014])
 start_business = Array[int]([1000])
-card_pool = Array[int]([0, 1, 1000])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

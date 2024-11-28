@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=7 format=3 uid="uid://iqsso8nj20c4"]
+
+[ext_resource type="Texture2D" uid="uid://dmuuctjud71ba" path="res://Assets/IconNoBG/A_ResourceIcon_2052.png" id="1_bx57y"]
+[ext_resource type="Texture2D" uid="uid://b5sov7qk8pn2k" path="res://Assets/ResourceCard/A_ResourceCard_2052.png" id="1_lu38q"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_jn3yh"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_m45q0"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_paqky"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_jn3yh")
+resource_id = 2022
+amount = 1
+
+[resource]
+script = ExtResource("4_paqky")
+business_id = 1011
+yield_price = 55
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 7
+yield_piece = 1
+components = Array[ExtResource("2_jn3yh")]([SubResource("Resource_rksl3")])
+research_yield = Array[ExtResource("3_m45q0")]([])
+card_id = 2052
+card_name = "Fiber"
+card_texture = ExtResource("1_lu38q")
+shop_price = 0
+card_icon = ExtResource("1_bx57y")

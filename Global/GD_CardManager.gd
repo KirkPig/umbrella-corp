@@ -35,6 +35,17 @@ var played: Control
 
 var card_pool: Array[int]
 
+func unlock_resource(_id: int):
+	var _res_data: ResourceCardData = card_dict[_id]
+	var _bus_data: BusinessCardData = card_dict[_res_data.business_id]
+	if _bus_data.card_id not in card_pool:
+		card_pool.append(_bus_data.card_id)
+	if _res_data.card_id not in card_pool:
+		card_pool.append(_res_data.card_id)
+	if _res_data.card_id not in _bus_data.resource_yield_list:
+		_bus_data.resource_yield_list.append(_res_data.card_id)
+	pass
+
 func get_card_pool(_type: ECardType) -> Array[int]:
 	var from: int
 	var to: int
@@ -86,15 +97,15 @@ func add_card(_id: int, _target: Control) -> Card:
 	var data = card_dict[_id]
 	var card
 	if data is WorkerCardData:
-		card = create_worker_card(data)
+		card = create_worker_card()
 	elif data is BusinessCardData:
-		card = create_business_card(data)
+		card = create_business_card()
 	elif data is ResourceCardData:
-		card = create_resource_card(data)
+		card = create_resource_card()
 	elif data is InstantCardData:
-		card = create_instant_card(data)
+		card = create_instant_card()
 	elif data is UpgradeCardData:
-		card = create_upgrade_card(data)
+		card = create_upgrade_card()
 	else:
 		return
 	
@@ -102,28 +113,28 @@ func add_card(_id: int, _target: Control) -> Card:
 	card.card_data = data
 	return card
 
-func create_worker_card(data: WorkerCardData) -> WorkerCard:
+func create_worker_card() -> WorkerCard:
 	var card : WorkerCard = template_worker_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
 
-func create_business_card(data: BusinessCardData) -> BusinessCard:
+func create_business_card() -> BusinessCard:
 	var card : BusinessCard = template_business_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	card.selected_work.connect(ActionManager.action_work)
 	return card
 
-func create_resource_card(data: ResourceCardData) -> ResourceCard:
+func create_resource_card() -> ResourceCard:
 	var card : ResourceCard = template_resource_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
 
-func create_instant_card(data: InstantCardData) -> InstantCard:
+func create_instant_card() -> InstantCard:
 	var card : InstantCard = template_instant_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
 
-func create_upgrade_card(data: UpgradeCardData) -> UpgradeCard:
+func create_upgrade_card() -> UpgradeCard:
 	var card : UpgradeCard= template_upgrade_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
@@ -231,7 +242,6 @@ func get_all_card(location: ECardLocation) -> Array[Card]:
 	return cards
 
 func move_cards_to(cards:Array[Card], target_location: ECardLocation) -> void:
-	var location_node: Node
 	match target_location:
 		ECardLocation.hand:
 			for card in cards:
@@ -257,7 +267,3 @@ func move_cards_to(cards:Array[Card], target_location: ECardLocation) -> void:
 			for card in cards:
 				card.is_selected = false
 				card.reparent(played)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

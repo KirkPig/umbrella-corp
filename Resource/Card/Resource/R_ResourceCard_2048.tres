@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=8 format=3 uid="uid://bx2ysnv2dstqs"]
+
+[ext_resource type="Texture2D" uid="uid://dkxw32f78irdw" path="res://Assets/IconNoBG/A_ResourceIcon_2048.png" id="1_nq7jk"]
+[ext_resource type="Texture2D" uid="uid://brhmym7f2p5ri" path="res://Assets/ResourceCard/A_ResourceCard_2048.png" id="2_ithln"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_ls3dm"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_88x5p"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_ptvbc"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_ls3dm")
+resource_id = 2045
+amount = 1
+
+[sub_resource type="Resource" id="Resource_fngft"]
+script = ExtResource("2_ls3dm")
+resource_id = 2043
+amount = 1
+
+[resource]
+script = ExtResource("4_ptvbc")
+business_id = 1010
+yield_price = 120
+yield_demand = 1
+labor_per_piece = 1
+yield_gold = 14
+yield_piece = 1
+components = Array[ExtResource("2_ls3dm")]([SubResource("Resource_rksl3"), SubResource("Resource_fngft")])
+research_yield = Array[ExtResource("3_88x5p")]([])
+card_id = 2048
+card_name = "Adhesive"
+card_texture = ExtResource("2_ithln")
+shop_price = 0
+card_icon = ExtResource("1_nq7jk")
