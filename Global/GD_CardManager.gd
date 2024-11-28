@@ -5,6 +5,9 @@ extends Node
 @onready var template_resource_card = preload("res://Card/Presets/S_Resource.tscn")
 @onready var template_instant_card = preload("res://Card/Presets/S_Instant.tscn")
 @onready var template_upgrade_card = preload("res://Card/Presets/S_Upgrad.tscn")
+@onready var template_upgrade_yield_card = preload("res://Card/Presets/S_Upgrade_yield.tscn")
+@onready var template_upgrade_demand_card = preload("res://Card/Presets/S_Upgrade_demand.tscn")
+@onready var template_upgrade_price_card = preload("res://Card/Presets/S_Upgrade_price.tscn")
 
 enum ECardLocation {
 	hand,
@@ -42,6 +45,9 @@ func unlock_resource(_id: int):
 		card_pool.append(_bus_data.card_id)
 	if _res_data.card_id not in card_pool:
 		card_pool.append(_res_data.card_id)
+		card_pool.append(_res_data.card_id+4000)
+		card_pool.append(_res_data.card_id+5000)
+		card_pool.append(_res_data.card_id+6000)
 	if _res_data.card_id not in _bus_data.resource_yield_list:
 		_bus_data.resource_yield_list.append(_res_data.card_id)
 	pass
@@ -92,6 +98,34 @@ func load_cards(_path: String) -> void:
 	for _files in _card_res:
 		var data: CardData = load(_path + _files)
 		card_dict[data.card_id] = data
+		if data is ResourceCardData:
+			add_upgrade_card_data(data)
+
+func add_upgrade_card_data(data:ResourceCardData):
+	for i in UpgradeCardData.EUpgradeResource:
+		var upgrade_card_data = UpgradeCardData.new()
+		upgrade_card_data.upgrade_resoruce_id = data.card_id
+		upgrade_card_data.upgrade_resoruce_icon = load("res://Assets/Icon/A_ResourceIcon_"+str(data.card_id)+".png")
+		match UpgradeCardData.EUpgradeResource[i]:
+			UpgradeCardData.EUpgradeResource.RESOURE_YEILD:
+				upgrade_card_data.card_id = data.card_id + 4000
+				upgrade_card_data.upgrade_type = UpgradeCardData.EUpgrade.RESOURE_YEILD
+				upgrade_card_data.upgrade_amount = data.upgrade_yield_amount
+				upgrade_card_data.shop_price = data.upgrade_yield_gold
+				upgrade_card_data.card_texture = load("res://Assets/UpgradeCard/A_UpgradeCard_yield.png")
+			UpgradeCardData.EUpgradeResource.RESOURE_DEMAND:
+				upgrade_card_data.card_id = data.card_id + 5000
+				upgrade_card_data.upgrade_type = UpgradeCardData.EUpgrade.RESOURE_DEMAND
+				upgrade_card_data.upgrade_amount = data.upgrade_demand_amount
+				upgrade_card_data.shop_price = data.upgrade_demand_gold
+				upgrade_card_data.card_texture = load("res://Assets/UpgradeCard/A_UpgradeCard_demand.png")
+			UpgradeCardData.EUpgradeResource.RESOURE_SCORE:
+				upgrade_card_data.card_id = data.card_id + 6000
+				upgrade_card_data.upgrade_type = UpgradeCardData.EUpgrade.RESOURE_SCORE
+				upgrade_card_data.upgrade_amount = data.upgrade_price_amount
+				upgrade_card_data.shop_price = data.upgrade_price_gold
+				upgrade_card_data.card_texture = load("res://Assets/UpgradeCard/A_UpgradeCard_price.png")
+		card_dict[upgrade_card_data.card_id] = upgrade_card_data
 
 func add_card(_id: int, _target: Control) -> Card:
 	var data = card_dict[_id]
@@ -104,8 +138,14 @@ func add_card(_id: int, _target: Control) -> Card:
 		card = create_resource_card()
 	elif data is InstantCardData:
 		card = create_instant_card()
-	elif data is UpgradeCardData:
+	elif data is UpgradeCardData and _id < 6000:
 		card = create_upgrade_card()
+	elif data is UpgradeCardData and _id < 7000:
+		card = create_upgrade_resource_yield_card()
+	elif data is UpgradeCardData and _id < 8000:
+		card = create_upgrade_resource_demand_card()
+	elif data is UpgradeCardData and _id < 9000:
+		card = create_upgrade_resource_price_card()
 	else:
 		return
 	
@@ -138,7 +178,23 @@ func create_upgrade_card() -> UpgradeCard:
 	var card : UpgradeCard= template_upgrade_card.instantiate()
 	card.is_buy.connect(ActionManager.action_buy)
 	return card
+
+func create_upgrade_resource_yield_card() -> UpgradeResourceCard:
+	var card : UpgradeResourceCard= template_upgrade_yield_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	return card
 	
+func create_upgrade_resource_demand_card() -> UpgradeResourceCard:
+	var card : UpgradeResourceCard= template_upgrade_demand_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	return card
+	
+func create_upgrade_resource_price_card() -> UpgradeResourceCard:
+	var card : UpgradeResourceCard= template_upgrade_price_card.instantiate()
+	card.is_buy.connect(ActionManager.action_buy)
+	return card
+	
+
 func add_card_to_deck(_id: int) -> Card:
 	var card = add_card(_id, deck)
 	if !card:

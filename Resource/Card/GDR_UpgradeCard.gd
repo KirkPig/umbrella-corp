@@ -1,6 +1,13 @@
 extends CardData
 class_name UpgradeCardData
 
+enum EUpgradeResource{
+	RESOURE_DEMAND,
+	RESOURE_SCORE,
+	RESOURE_GOLD,
+	RESOURE_YEILD
+}
+
 enum EUpgrade{
 	HAND,
 	SHOP,
@@ -9,6 +16,7 @@ enum EUpgrade{
 	RESOURE_DEMAND,
 	RESOURE_SCORE,
 	RESOURE_GOLD,
+	RESOURE_YEILD
 }
 
 @export var upgrade_type : EUpgrade
@@ -42,5 +50,8 @@ func played() -> void:
 				SellManager.card_sell_bonus[SellManager.EResource.GOLD][upgrade_resoruce_id] += upgrade_amount
 			else :
 				SellManager.card_sell_bonus[SellManager.EResource.GOLD][upgrade_resoruce_id] = upgrade_amount
+		EUpgrade.RESOURE_YEILD:
+			#TODO:
+			pass
 			
 			
