@@ -14,10 +14,12 @@ func action_work(business: UIBusiness):
 	# TODO: Change to check rate
 	for _card: WorkerCard in selected_card:
 		_card.card_play.connect(business.yield_labor)
+		_card.is_disable_hover = true
 	playing_field.playing_cards(selected_card, Vector2(-300, 500), false)
 	await playing_field.playing_cards_done
 	for _card: WorkerCard in selected_card:
 		_card.card_play.disconnect(business.yield_labor)
+		_card.is_disable_hover = false
 	
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
@@ -54,6 +56,13 @@ func action_sell():
 	
 	action_done.emit()
 
+func action_sell_business(_ui: UIBusiness):
+	# TODO: check on the sell business
+	GameManager.gold += _ui.sell_price
+	CardManager.business_field.remove_child(_ui)
+	if is_instance_valid(_ui):
+		_ui.queue_free()
+
 func action_buy(card: Card)-> bool:
 	if card.shop_price > GameManager.gold:
 		return false
@@ -62,13 +71,14 @@ func action_buy(card: Card)-> bool:
 	card.in_shop = false
 	
 	if card is BusinessCard:
-		CardManager.field.add_exists(card)
+		CardManager.add_card_to_business_field(card.card_id)
+		card.queue_free() # TODO: make animation buying
 	elif card is UpgradeCard:
 		card.card_data.played()
-		card.queue_free()
+		card.queue_free() # TODO: make animation buying
 	else:
-		CardManager.hand.add_exists(card)
-	
+		CardManager.hand.add_exists(card) # TODO: make animation buying
+	CardManager.shop.reset_shop()
 	action_done.emit()
 	return true
 

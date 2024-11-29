@@ -35,6 +35,8 @@ var card_cost : int = 0
 var in_shop : bool = false
 var shop_price : int = 2
 
+var is_disable_hover: bool = false
+
 var is_hover : bool
 var is_selected : bool:
 	set(value):
@@ -120,6 +122,7 @@ func set_card_pile_position(_in_hand: int, card_gap:int):
 	z_index = _in_hand
 
 func _on_card_mouse_entered() -> void:
+	if is_disable_hover: return
 	is_hover = true
 	if tween_hover and tween_hover.is_running():
 		tween_hover.kill()
@@ -127,6 +130,7 @@ func _on_card_mouse_entered() -> void:
 	tween_hover.tween_property(self, "scale", Vector2(1.05, 1.05), 0.4)
 
 func _on_card_mouse_exited() -> void:
+	if is_disable_hover: return
 	is_hover = false
 	if tween_rot and tween_rot.is_running():
 		tween_rot.kill()
@@ -151,7 +155,7 @@ func _on_card_gui_input(event: InputEvent) -> void:
 	# TODO: Don't compute rotation when moving the card
 	if is_selected: return
 	if not event is InputEventMouseMotion: return
-	
+	if is_disable_hover: return
 	# Handles rotation effect
 	var mouse_pos: Vector2 = card_texture.get_local_mouse_position()
 	var lerp_val_x: float = remap(mouse_pos.x, 0.0, card_texture.size.x, 0, 1)

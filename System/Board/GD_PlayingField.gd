@@ -71,6 +71,7 @@ func _card_enter(_nodes: Array[Card]):
 		_node.is_selected = false
 		_node.global_position = _old_pos + Vector2(0, -_node.toggle_up_pixel)
 	
+	CardManager.business_field.update_child_ui()
 	# animation
 	for i in n:
 		var _old_pos_list: Array[Vector2]

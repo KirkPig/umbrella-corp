@@ -39,7 +39,7 @@ var business_card_data: BusinessCardData:
 		var _id = value.resource_yield_list[0]
 		var _res: ResourceCardData = CardManager.card_dict[_id]
 		current_yield = _res
-		
+		sell_price = value.shop_price / 10 * 8
 		business_card_data = value
 		
 		button_state_checking()
@@ -82,6 +82,11 @@ var labor: int = 4:
 		label_progress.text = str(current_labor) + "/" + str(labor)
 		
 		progress_bar.max_value = value
+
+var sell_price: int = 0:
+	set(value):
+		btn_sell.text = "Sell ($" + str(value) + ")"
+		sell_price = value
 
 var current_components: Dictionary
 var components: Dictionary
@@ -208,6 +213,7 @@ func _process(delta: float) -> void:
 
 
 func _on_sell_pressed() -> void:
+	ActionManager.action_sell_business(self)
 	pass # Replace with function body.
 
 
