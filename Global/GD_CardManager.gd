@@ -29,8 +29,13 @@ enum ECardType {
 
 var card_dict: Dictionary = {}
 
-var field: FieldController
-var hand: HandController
+var business_field: BusinessFieldController
+var hand: HandController:
+	set(value):
+		if hand and hand.hand_selection_change.is_connected(_card_selection_handler):
+			hand.hand_selection_change.disconnect(_card_selection_handler)
+		value.hand_selection_change.connect(_card_selection_handler)
+		hand = value
 var shop: ShopController
 var deck: Control
 var discarded: Control
@@ -206,15 +211,11 @@ func add_card_to_hand(_id: int) -> Card:
 	if !card:
 		return
 	ActionManager.connect_selection(card)
-	hand.update_position()
+	hand.add_exists(card)
 	return card
 
-func add_card_to_field(_id: int) -> Card:
-	var card = add_card(_id, field)
-	if !card:
-		return
-	field.update_position()
-	return card
+func add_card_to_business_field(_id: int) -> UIBusiness:
+	return business_field.add_new_business(_id)
 	
 func add_card_to_pool(card_id_list:Array[int]) -> void:
 	for card_id in card_id_list:
@@ -282,8 +283,6 @@ func get_all_card(location: ECardLocation) -> Array[Card]:
 			location_node = hand
 		ECardLocation.shop:
 			location_node = shop.card_node
-		ECardLocation.field:
-			location_node = field
 		ECardLocation.deck:
 			location_node = deck
 		ECardLocation.discarded:
@@ -307,10 +306,6 @@ func move_cards_to(cards:Array[Card], target_location: ECardLocation) -> void:
 			for card in cards:
 				card.is_selected = false
 				shop.card_node.add_exists(card)
-		ECardLocation.field:
-			for card in cards:
-				card.is_selected = false
-				field.add_exists(card)
 		ECardLocation.deck:
 			for card in cards:
 				card.is_selected = false
@@ -323,3 +318,7 @@ func move_cards_to(cards:Array[Card], target_location: ECardLocation) -> void:
 			for card in cards:
 				card.is_selected = false
 				card.reparent(played)
+
+# Private func
+func _card_selection_handler():
+	business_field.update_child_ui()

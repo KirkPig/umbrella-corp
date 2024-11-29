@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://lh1fsywke2mu"]
+[gd_scene load_steps=26 format=3 uid="uid://lh1fsywke2mu"]
 
 [ext_resource type="Script" path="res://UI/Business/GD_BusinessUI.gd" id="1_tge38"]
 [ext_resource type="Texture2D" uid="uid://mih5wymxdnlq" path="res://Assets/BusinessIcon/A_BusinessIcon_0000.png" id="2_7oipk"]
@@ -8,6 +8,36 @@
 [ext_resource type="Texture2D" uid="uid://b4k7h608rbynp" path="res://Assets/UI/Business/labor-icon.svg" id="3_to8dd"]
 [ext_resource type="FontFile" uid="uid://cjgxkmfq6di8l" path="res://Assets/Font/SF-Pro-Rounded-Bold.otf" id="4_qeiud"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="5_rlgxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vuep"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+bg_color = Color(0.207312, 0.499797, 0.824749, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y32ha"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+bg_color = Color(0.0901495, 0.305781, 0.536985, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_demmu"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+bg_color = Color(0.32549, 0.6, 0.917647, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxtau"]
 content_margin_left = 8.0
@@ -135,7 +165,29 @@ corner_radius_bottom_left = 1000
 [node name="Business" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+pivot_offset = Vector2(10, 10)
 script = ExtResource("1_tge38")
+
+[node name="Sell" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+offset_left = 297.0
+offset_top = -37.0
+offset_right = 417.0
+offset_bottom = 7.0
+size_flags_horizontal = 8
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vuep")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y32ha")
+theme_override_styles/normal = SubResource("StyleBoxFlat_demmu")
+text = "Sell ($200)"
+icon = ExtResource("3_b88ch")
+expand_icon = true
 
 [node name="ButtonGroup" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(416, 44)
@@ -164,7 +216,7 @@ icon = ExtResource("3_0rkr6")
 expand_icon = true
 
 [node name="Component" type="Button" parent="ButtonGroup"]
-custom_minimum_size = Vector2(145, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
@@ -176,12 +228,12 @@ theme_override_font_sizes/font_size = 14
 theme_override_styles/hover = SubResource("StyleBoxFlat_j451u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_slfm3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_fwq6u")
-text = "Add component"
+text = "Send components"
 icon = ExtResource("3_0rkr6")
 expand_icon = true
 
 [node name="ChangeResource" type="Button" parent="ButtonGroup"]
-custom_minimum_size = Vector2(191, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
@@ -193,7 +245,7 @@ theme_override_font_sizes/font_size = 14
 theme_override_styles/hover = SubResource("StyleBoxFlat_vu45u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_04h8l")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvfm4")
-text = "Change resource ($25)"
+text = "Change resource ($250)"
 icon = ExtResource("3_b88ch")
 expand_icon = true
 
@@ -321,3 +373,8 @@ text = "Component"
 [node name="List" type="VBoxContainer" parent="Container/Detail/Component"]
 layout_mode = 2
 theme_override_constants/separation = 4
+
+[connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="ButtonGroup/Work" to="." method="_on_work_pressed"]
+[connection signal="pressed" from="ButtonGroup/Component" to="." method="_on_component_pressed"]
+[connection signal="pressed" from="ButtonGroup/ChangeResource" to="." method="_on_change_resource_pressed"]

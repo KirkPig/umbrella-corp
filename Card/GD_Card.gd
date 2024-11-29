@@ -5,6 +5,7 @@ signal selection_change
 signal is_buy(card: Card)
 
 signal card_scaling_up
+signal card_play(_card: Card)
 
 var tween_selected: Tween
 var tween_hover: Tween
@@ -26,7 +27,6 @@ var oscillator_velocity: float = 0.0
 
 var last_pos: Vector2
 var velocity: Vector2
-var in_rotation_play: bool = false
 
 @onready var card_texture : TextureRect = $Card
 
@@ -62,6 +62,7 @@ func bouncing_card() -> void:
 	tween_bouncing.tween_property(self, "scale", Vector2(1.25, 1.25), 1.2)
 	await get_tree().create_timer(0.6 / GameManager.game_speed).timeout
 	emit_signal("card_scaling_up")
+	card_play.emit(self)
 	await get_tree().create_timer(0.2 / GameManager.game_speed).timeout
 	tween_bouncing.kill()
 	tween_bouncing = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_speed_scale(GameManager.game_speed)

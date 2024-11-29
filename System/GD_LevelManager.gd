@@ -50,9 +50,9 @@ func add_card_pool() -> void:
 		CardManager.card_pool.append(_id)
 
 func add_start_deck()-> void:
-	for res_card in start_deck:
-		CardManager.add_card_to_deck(res_card)
+	for _id in start_deck:
+		CardManager.add_card_to_deck(_id)
 		
 func add_start_business()-> void:
-	for res_card in start_business:
-		CardManager.add_card_to_field(res_card)
+	for _id in start_business:
+		CardManager.add_card_to_business_field(_id)

@@ -1,6 +1,8 @@
 extends Control
 class_name HandController
 
+signal hand_selection_change
+
 @export var card_gap: float = 120
 @export var hand_width: float = 1200
 
@@ -12,6 +14,8 @@ func _process(delta: float) -> void:
 	
 func add_exists(node: Card):
 	node.reparent(self)
+	if !node.selection_change.is_connected(_selection_change_handler):
+		node.selection_change.connect(_selection_change_handler)
 	update_position()
 	
 func get_all_card() -> Array[Node]:
@@ -21,9 +25,6 @@ func reset_selection():
 	var cards = self.get_children()
 	for card: Card in cards:
 		card.is_selected = false
-
-func _compare_card(a: Card, b: Card) -> bool:
-	return a.card_id < b.card_id
 
 func update_position():
 	var cards = self.get_children()
@@ -39,3 +40,9 @@ func get_selected_card() -> Array[Card]:
 		if card is Card and card.is_selected:
 			selected_card.append(card)
 	return selected_card
+
+func _selection_change_handler():
+	emit_signal("hand_selection_change")
+
+func _compare_card(a: Card, b: Card) -> bool:
+	return a.card_id < b.card_id

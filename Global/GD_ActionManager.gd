@@ -6,25 +6,27 @@ var action_list: ActionListController
 var playing_field: PlayingFieldController
 
 ## Section: Actions
-func action_work(business: BusinessCard):
+func action_work(business: UIBusiness):
 	var selected_card = CardManager.get_selected_card()
 	if !GameManager.can_work(selected_card):
 		return
 		
 	# TODO: Change to check rate
-	for card in selected_card:
-		if card.is_selected:
-			var _res_id = business.gather_resource()
-			var new_card = CardManager.add_card_to_deck(_res_id)
-			CardManager.discard(new_card)
+	for _card: WorkerCard in selected_card:
+		_card.card_play.connect(business.yield_labor)
+	playing_field.playing_cards(selected_card, Vector2(-300, 500), false)
+	await playing_field.playing_cards_done
+	for _card: WorkerCard in selected_card:
+		_card.card_play.disconnect(business.yield_labor)
+	
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
 	GameManager.energy -=  GameManager.energy_cost_work
 	action_list.reset_list()
 	
-	emit_signal("action_done")
-	
+	action_done.emit()
+
 func action_discard():
 	CardManager.discards(CardManager.get_selected_card())
 	CardManager.fill_hand()
@@ -32,7 +34,7 @@ func action_discard():
 	GameManager.discard_energy -= GameManager.energy_cost_discard
 	action_list.reset_list()
 	
-	emit_signal("action_done")
+	action_done.emit()
 
 func action_sell():
 	var selected_card: Array[Card] = CardManager.get_selected_card()
@@ -50,7 +52,7 @@ func action_sell():
 	GameManager.energy = GameManager.energy - GameManager.energy_cost_sell
 	action_list.reset_list()
 	
-	emit_signal("action_done")
+	action_done.emit()
 
 func action_buy(card: Card)-> bool:
 	if card.shop_price > GameManager.gold:
@@ -67,7 +69,7 @@ func action_buy(card: Card)-> bool:
 	else:
 		CardManager.hand.add_exists(card)
 	
-	emit_signal("action_done")
+	action_done.emit()
 	return true
 
 func _get_research_reward_by_priority(_data: ResourceCardData, _priority: int) -> Array[ResearchReward]:
@@ -111,7 +113,7 @@ func action_research():
 	
 	var _w = PackedFloat32Array(_w_arr)
 	#print(_reward[GameManager.rng.rand_weighted(_w)].chance)
-	emit_signal("action_done")
+	action_done.emit()
 	
 	
 func action_activate() -> void:
