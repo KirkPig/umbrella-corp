@@ -14,12 +14,11 @@ func action_work(business: UIBusiness):
 	# TODO: Change to check rate
 	for _card: WorkerCard in selected_card:
 		_card.card_play.connect(business.yield_labor)
-		_card.is_disable_hover = true
 	playing_field.playing_cards(selected_card, Vector2(-300, 500), false)
+	CardManager.hand.update_position()
 	await playing_field.playing_cards_done
 	for _card: WorkerCard in selected_card:
 		_card.card_play.disconnect(business.yield_labor)
-		_card.is_disable_hover = false
 	
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
@@ -28,6 +27,27 @@ func action_work(business: UIBusiness):
 	action_list.reset_list()
 	
 	action_done.emit()
+
+func action_add_component(business: UIBusiness):
+	var selected_card = CardManager.get_selected_card()
+	if !GameManager.can_add_components(selected_card, business.current_yield.components):
+		return
+	
+	for _card: ResourceCard in selected_card:
+		_card.card_play.connect(business.added_component)
+	playing_field.playing_cards(selected_card, Vector2(-300, 500), false)
+	CardManager.hand.update_position()
+	await playing_field.playing_cards_done
+	for _card: ResourceCard in selected_card:
+		_card.card_play.disconnect(business.added_component)
+	CardManager.played_cards(selected_card)
+	CardManager.fill_hand()
+	
+	GameManager.energy -=  GameManager.energy_cost_work
+	#action_list.reset_list()
+	
+	action_done.emit()
+	
 
 func action_discard():
 	CardManager.discards(CardManager.get_selected_card())
@@ -42,10 +62,9 @@ func action_sell():
 	var selected_card: Array[Card] = CardManager.get_selected_card()
 	
 	# TODO: show each price and demand in phone screen
-	if playing_field:
-		playing_field.playing_cards(selected_card, Vector2(-300, playing_field.global_position.y), false)
-		CardManager.hand.update_position()
-		await playing_field.playing_cards_done
+	playing_field.playing_cards(selected_card, Vector2(-300, playing_field.global_position.y), false)
+	CardManager.hand.update_position()
+	await playing_field.playing_cards_done
 
 	SellManager.sell(selected_card)
 	CardManager.played_cards(selected_card)
@@ -120,9 +139,8 @@ func action_research():
 	var _w_arr: Array[float]
 	for _r in _reward:
 		_w_arr.append(_r.chance)
-	
 	var _w = PackedFloat32Array(_w_arr)
-	#print(_reward[GameManager.rng.rand_weighted(_w)].chance)
+	_reward[GameManager.rng.rand_weighted(_w)].activate()
 	action_done.emit()
 	
 	

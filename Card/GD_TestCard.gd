@@ -47,5 +47,5 @@ func _on_test_pressed() -> void:
 
 
 func _on_test_business_pressed() -> void:
-	business_field.add_new_business(CardManager.card_dict[1005])
+	business_field.add_new_business(1005)
 	pass # Replace with function body.

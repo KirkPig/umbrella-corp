@@ -16,8 +16,8 @@ var component_data: ResourceComponentItemData:
 var current_component: int = 0:
 	set(value):
 		current_component = value
-		label_value.text = str(current_component) + " / " + str(need_component)
+		label_value.text = str(value) + " / " + str(need_component)
 var need_component: int = 0:
 	set(value):
 		need_component = value
-		label_value.text = str(current_component) + " / " + str(need_component)
+		label_value.text = str(current_component) + " / " + str(value)

@@ -43,6 +43,14 @@ var played: Control
 
 var card_pool: Array[int]
 
+var shop_card_type_chance = {
+	ECardType.worker: 30,
+	ECardType.business: 10,
+	ECardType.resource: 0,
+	ECardType.instant: 30,
+	ECardType.upgrade: 10,
+}
+
 func unlock_resource(_id: int):
 	var _res_data: ResourceCardData = card_dict[_id]
 	var _bus_data: BusinessCardData = card_dict[_res_data.business_id]
@@ -89,22 +97,42 @@ func get_card_pool(_type: ECardType) -> Array[int]:
 
 func random_card_pool(_type: ECardType) -> int:
 	var cards = get_card_pool(_type)
+	if cards.size() <= 0:
+		return -1
 	return cards[GameManager.rng.randi() % cards.size()]
+	
+func random_shop_card() -> int:
+	var _t: Array[ECardType] = []
+	var _w_arr: Array[float] = []
+	for _k in shop_card_type_chance.keys():
+		_t.append(_k)
+		_w_arr.append(shop_card_type_chance[_k])
+	while true:
+		var _w = PackedFloat32Array(_w_arr)
+		var _rand_t = GameManager.rng.rand_weighted(_w)
+		var _id = random_card_pool(_t[_rand_t])
+		if _id != -1:
+			return _id
+		_w_arr[_rand_t] = 0
+	return 0
+	
 
 func _ready() -> void:
-	load_cards("res://Resource/Card/Business/")
-	load_cards("res://Resource/Card/Resource/")
-	load_cards("res://Resource/Card/Worker/")
-	load_cards("res://Resource/Card/Instant/")
-	load_cards("res://Resource/Card/Upgrade/")
+	load_cards("res://Resource/Card/Business/", false)
+	load_cards("res://Resource/Card/Resource/", false)
+	load_cards("res://Resource/Card/Worker/", false)
+	load_cards("res://Resource/Card/Instant/", true)
+	load_cards("res://Resource/Card/Upgrade/", false)
 
-func load_cards(_path: String) -> void:
+func load_cards(_path: String, _is_unlocked: bool) -> void:
 	var _card_res = DirAccess.get_files_at(_path)
 	for _files in _card_res:
 		var data: CardData = load(_path + _files)
 		card_dict[data.card_id] = data
 		if data is ResourceCardData:
 			add_upgrade_card_data(data)
+		if _is_unlocked:
+			card_pool.append(data.card_id)
 
 func add_upgrade_card_data(data:ResourceCardData):
 	for i in UpgradeCardData.EUpgradeResource:

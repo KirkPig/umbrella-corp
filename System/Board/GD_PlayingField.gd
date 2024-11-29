@@ -13,6 +13,8 @@ signal _card_exited
 var card_in_play: Array[Card]
 
 func playing_cards(_nodes: Array[Card], _exit_global_pos: Vector2, _destroy: bool):
+	for _node in _nodes:
+		_node.is_disable_hover = true
 	if _nodes.size() <= 0:
 		return
 	_card_enter(_nodes)
@@ -21,6 +23,8 @@ func playing_cards(_nodes: Array[Card], _exit_global_pos: Vector2, _destroy: boo
 	await _bouncing_done
 	_card_exit(_exit_global_pos)
 	await _card_exited
+	for _node in _nodes:
+		_node.is_disable_hover = false
 	if _destroy:
 		_clear_cards_in_play()
 	card_in_play = []

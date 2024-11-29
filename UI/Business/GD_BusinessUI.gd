@@ -88,7 +88,6 @@ var sell_price: int = 0:
 		btn_sell.text = "Sell ($" + str(value) + ")"
 		sell_price = value
 
-var current_components: Dictionary
 var components: Dictionary
 
 func hide_all_button():
@@ -130,13 +129,15 @@ func set_ui_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x: float
 	change_position(Vector2(_pos_x, _pos_y), 0.2 / GameManager.game_speed)
 	z_index = _card_pos
 
-# TODO: Spacial work rate (need to ask who do this)
+func added_component(_card: ResourceCard):
+	components[_card.card_id].current_component += 1
+
 func yield_labor(_worker: WorkerCard):
-	current_labor += _worker.base_work_rate
+	current_labor += _worker.yield_labor_value(self)
 
 func can_use_components() -> bool:
-	for _id in current_components.keys():
-		if current_components[_id] < components[_id].amount:
+	for _id in components.keys():
+		if components[_id].current_component < components[_id].need_component:
 			return false
 	return true
 
@@ -151,8 +152,8 @@ func _use_component() -> int:
 	if !can_use_components():
 		return 0
 	
-	for _id in current_components.keys():
-		current_components[_id] -= components[_id].amount
+	for _id in components.keys():
+		components[_id].current_component -= components[_id].need_component
 	
 	return 1
 
@@ -161,14 +162,13 @@ func _clear_component():
 		component_list.remove_child(item)
 		if is_instance_valid(item):
 			item.queue_free()
-	current_components = {}
+	components = {}
 
 func _add_component(_data: ResourceComponentItemData):
 	var _component: UIBusinessComponent = _template_business_component.instantiate()
 	component_list.add_child(_component)
 	_component.component_data = _data
-	current_components[_data.resource_id] = 0
-	components[_data.resource_id] = _data
+	components[_data.resource_id] = _component
 
 func _rotate_velocity(delta: float) -> void:
 	var center_pos: Vector2 = position + pivot_offset
@@ -223,6 +223,7 @@ func _on_work_pressed() -> void:
 
 
 func _on_component_pressed() -> void:
+	ActionManager.action_add_component(self)
 	pass # Replace with function body.
 
 
