@@ -7,11 +7,11 @@ extends VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.scoreboard = self
 	GameManager.current_turn_change.connect(turn_changed)
 	GameManager.current_score_change.connect(score_changed)
 	GameManager.current_contract_change.connect(current_contract_change)
 	GameManager.max_contract_change.connect(max_contract_changed)
-
 
 func turn_changed(value:int) ->void:
 	turn_value_label.text = String.num_int64(value)

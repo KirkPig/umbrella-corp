@@ -152,7 +152,6 @@ func _set_card_rotation_effect(x: float, y: float):
 func _on_card_gui_input(event: InputEvent) -> void:
 	handle_mouse_click(event)
 	
-	# TODO: Don't compute rotation when moving the card
 	if is_selected: return
 	if not event is InputEventMouseMotion: return
 	if is_disable_hover: return

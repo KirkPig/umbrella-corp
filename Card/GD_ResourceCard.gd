@@ -11,7 +11,7 @@ var card_data: ResourceCardData:
 
 var yield_score = 10
 var yield_gold = 1
-var business = 0 # TODO: What is business?
+var business = 0
 var demand = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

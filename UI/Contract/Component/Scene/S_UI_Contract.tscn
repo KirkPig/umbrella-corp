@@ -24,6 +24,7 @@ corner_radius_bottom_left = 8
 custom_minimum_size = Vector2(380, 287)
 layout_mode = 3
 anchors_preset = 0
+pivot_offset = Vector2(20, 20)
 script = ExtResource("1_3sfh0")
 
 [node name="Background" type="Panel" parent="."]

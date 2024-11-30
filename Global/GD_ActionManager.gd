@@ -3,7 +3,15 @@ extends Node
 signal action_done
 
 var action_list: ActionListController
-var playing_field: PlayingFieldController
+var playing_field: PlayingFieldController:
+	set(value):
+		if playing_field:
+			playing_field.selected_resource_done.disconnect(_finish_action_change_resource)
+		value.selected_resource_done.connect(_finish_action_change_resource)
+		playing_field = value
+
+var is_change_resource: bool = false
+var _selected_business_ui: UIBusiness
 
 ## Section: Actions
 func action_work(business: UIBusiness):
@@ -24,8 +32,9 @@ func action_work(business: UIBusiness):
 	CardManager.fill_hand()
 	
 	GameManager.energy -=  GameManager.energy_cost_work
-	action_list.reset_list()
 	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
 	action_done.emit()
 
 func action_add_component(business: UIBusiness):
@@ -44,18 +53,22 @@ func action_add_component(business: UIBusiness):
 	CardManager.fill_hand()
 	
 	GameManager.energy -=  GameManager.energy_cost_work
-	#action_list.reset_list()
 	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
 	action_done.emit()
 	
 
 func action_discard():
+	CardManager.hand.start_discard_transition()
+	await CardManager.hand.discard_transition_done
 	CardManager.discards(CardManager.get_selected_card())
 	CardManager.fill_hand()
 	
 	GameManager.discard_energy -= GameManager.energy_cost_discard
-	action_list.reset_list()
 	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
 	action_done.emit()
 
 func action_sell():
@@ -71,8 +84,9 @@ func action_sell():
 	CardManager.fill_hand()
 	
 	GameManager.energy = GameManager.energy - GameManager.energy_cost_sell
-	action_list.reset_list()
 	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
 	action_done.emit()
 
 func action_sell_business(_ui: UIBusiness):
@@ -81,6 +95,10 @@ func action_sell_business(_ui: UIBusiness):
 	CardManager.business_field.remove_child(_ui)
 	if is_instance_valid(_ui):
 		_ui.queue_free()
+	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
+	action_done.emit()
 
 func action_buy(card: Card)-> bool:
 	if card.shop_price > GameManager.gold:
@@ -97,8 +115,12 @@ func action_buy(card: Card)-> bool:
 		card.queue_free() # TODO: make animation buying
 	else:
 		CardManager.hand.add_exists(card) # TODO: make animation buying
+	
 	CardManager.shop.reset_shop()
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
 	action_done.emit()
+	
 	return true
 
 func _get_research_reward_by_priority(_data: ResourceCardData, _priority: int) -> Array[ResearchReward]:
@@ -127,8 +149,11 @@ func action_research():
 	if !GameManager.can_research(selected_card):
 		return
 	
+	var _worker: WorkerCard
 	var _res_card_data: Array[ResourceCardData]
 	for card: Card in selected_card:
+		if card is WorkerCard:
+			_worker = card
 		if card is ResourceCard:
 			_res_card_data.append(card.card_data)
 			
@@ -140,9 +165,24 @@ func action_research():
 	for _r in _reward:
 		_w_arr.append(_r.chance)
 	var _w = PackedFloat32Array(_w_arr)
-	_reward[GameManager.rng.rand_weighted(_w)].activate()
-	action_done.emit()
+	var _rand_r = _reward[GameManager.rng.rand_weighted(_w)]
+	print(_rand_r.priority, " ",_rand_r.chance)
+	_rand_r.activate()
+	CardManager.played_cards(selected_card)
 	
+	# Calculate chance that _worker is not destroy
+	var _k = [false, true]
+	var _n_w_arr = [_worker.card_data.research_chance_destroy, 100 - _worker.card_data.research_chance_destroy]
+	var _n_w = PackedFloat32Array(_w_arr)
+	if _k[GameManager.rng.rand_weighted(_n_w)]:
+		CardManager.discard(_worker)
+	
+	CardManager.fill_hand()
+	GameManager.energy -=  GameManager.energy_cost_work
+	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
+	action_done.emit()
 	
 func action_activate() -> void:
 	var selected_card: Array[Card] = CardManager.get_selected_card()
@@ -150,6 +190,30 @@ func action_activate() -> void:
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
+	action_done.emit()
+
+func action_change_resource(_business: UIBusiness) -> void:
+	if !GameManager.can_business_change_resource(_business): return
+	if is_change_resource: return
+	var _li = _business.business_card_data.resource_yield_list
+	playing_field.playing_change_resource(_li)
+	GameManager.gold -= _business.change_resource_price
+	is_change_resource = true
+	_selected_business_ui = _business
+	CardManager.business_field.update_child_ui()
+
+func _finish_action_change_resource(_card: Card):
+	playing_field.finish_playing_change_resource(Vector2(-300, 500))
+	await playing_field.playing_change_resource_done
+	_selected_business_ui.current_yield = CardManager.card_dict[_card.card_id]
+	is_change_resource = false
+	
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
+	action_done.emit()
+
 func connect_selection(draw_card: Card):
 	if !draw_card.selection_change.is_connected(check_selection_condition):
 		draw_card.selection_change.connect(check_selection_condition)

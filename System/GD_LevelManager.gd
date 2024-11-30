@@ -13,6 +13,7 @@ extends Control
 @export var start_business: Array[int]
 
 @onready var s_game_end: CanvasLayer = $SGameEnd
+@onready var s_ui_phone: CanvasLayer = $SUiPhone
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +47,8 @@ func set_up_game_manager() -> void:
 	GameManager.max_shop_refresh = start_shop_refresh
 	GameManager.max_contract = max_contract
 	
+	GameManager.phone_canvas = s_ui_phone
+	
 	GameManager.rng = RandomNumberGenerator.new()
 	GameManager.rng.seed = hash("0")
 
@@ -55,7 +58,11 @@ func clear_card_pool():
 func add_card_pool() -> void:
 	for _id in start_resource_pool:
 		CardManager.unlock_resource(_id)
-	for _id in start_upgrade_pool:
+	
+	# TODO: new ways for add card pool
+	for _id in range(6):
+		CardManager.card_pool.append(_id)
+	for _id in range(3000, 3018):
 		CardManager.card_pool.append(_id)
 
 func add_start_deck()-> void:

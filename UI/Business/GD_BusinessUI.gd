@@ -23,6 +23,8 @@ class_name UIBusiness
 @export var damp: float = 20.0
 @export var velocity_multiplier: float = 10.0
 
+var CENTER_POS = Vector2(210, 141)
+
 var tween_moving: Tween
 
 var displacement: float = 0.0 
@@ -31,8 +33,6 @@ var oscillator_velocity: float = 0.0
 var last_pos: Vector2
 var velocity: Vector2
 
-# TODO: sell business
-# TODO: handle when business data is changed
 var business_card_data: BusinessCardData:
 	set(value):
 		label_business_name.text = value.card_name
@@ -40,6 +40,7 @@ var business_card_data: BusinessCardData:
 		var _res: ResourceCardData = CardManager.card_dict[_id]
 		current_yield = _res
 		sell_price = value.shop_price / 10 * 8
+		change_resource_price = value.shop_price / 10 * 2
 		business_card_data = value
 		
 		button_state_checking()
@@ -67,6 +68,7 @@ var current_yield: ResourceCardData:
 ## labor state
 var current_labor: int = 0:
 	set(value):
+		# TODO: labor added transition
 		if !can_use_components():
 			return
 		while value >= labor:
@@ -88,6 +90,11 @@ var sell_price: int = 0:
 		btn_sell.text = "Sell ($" + str(value) + ")"
 		sell_price = value
 
+var change_resource_price: int = 0:
+	set(value):
+		btn_change_resource.text = "Change resource ($" + str(value) + ")"
+		change_resource_price = value
+
 var components: Dictionary
 
 func hide_all_button():
@@ -103,12 +110,12 @@ func button_state_checking():
 	var resource_components = current_yield.components
 	btn_work.visible = GameManager.can_work(selected_cards) and can_use_components()
 	btn_component.visible = GameManager.can_add_components(selected_cards, resource_components)
-	btn_change_resource.visible = GameManager.can_business_change_resource(business_card_data.card_id)
+	btn_change_resource.visible = GameManager.can_business_change_resource(self)
 	
 func change_position(_pos: Vector2, _time: float):
 	if tween_moving and tween_moving.is_running():
 		tween_moving.kill()
-	tween_moving = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.NOTIFICATION_PREDELETE)
+	tween_moving = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween_moving.tween_property(self, "position", _pos, _time)
 
 func set_ui_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x: float, _card_min_x: float, in_hand: bool):
@@ -228,4 +235,5 @@ func _on_component_pressed() -> void:
 
 
 func _on_change_resource_pressed() -> void:
+	ActionManager.action_change_resource(self)
 	pass # Replace with function body.

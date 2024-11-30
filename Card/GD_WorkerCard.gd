@@ -25,6 +25,9 @@ func set_data(data: WorkerCardData):
 	base_work_rate = data.base_work_rate
 	special_work_rate = data.special_work_rate
 
-# TODO: Spacial work rate (need to ask who do this)
+# TODO: Spacial work rate
 func yield_labor_value(business: UIBusiness):
+	var _id = business.business_card_data.card_id
+	if special_work_rate.has(_id):
+		return special_work_rate[_id]
 	return base_work_rate

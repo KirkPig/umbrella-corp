@@ -2,7 +2,7 @@ extends Control
 class_name UIContract
 
 signal checking_contract(_ui: UIContract)
-signal choose_contract(_data: ContractData)
+signal choose_contract(_data: UIContract)
 
 @onready var template_reward_small = preload("res://UI/Contract/Component/Scene/S_UI_ContractRewardSmall.tscn")
 @onready var template_reward_large = preload("res://UI/Contract/Component/Scene/S_UI_ContractRewardLarge.tscn")
@@ -16,6 +16,20 @@ signal choose_contract(_data: ContractData)
 @onready var reward_list = $Reward
 @onready var reward_desc = $RewardDesc
 
+@export_category("Oscillator")
+@export var spring: float = 500.0
+@export var damp: float = 20.0
+@export var velocity_multiplier: float = 4.0
+
+var tween_moving: Tween
+
+var displacement: float = 0.0 
+var oscillator_velocity: float = 0.0
+
+var last_pos: Vector2
+var velocity: Vector2
+
+var is_disable_selection: bool = false
 var is_selected: bool:
 	set(value):
 		if value:
@@ -46,6 +60,24 @@ var target = 650:
 		target = value
 		label_target.text = str(value)
 
+func _rotate_velocity(delta: float) -> void:
+	var center_pos: Vector2 = position + pivot_offset
+	# Compute the velocity
+	velocity = (position - last_pos) / delta
+	last_pos = position
+	
+	oscillator_velocity += velocity.normalized().x * velocity_multiplier
+	
+	# Oscillator stuff
+	var force = -spring * displacement - damp * oscillator_velocity
+	oscillator_velocity += force * delta
+	displacement += oscillator_velocity * delta
+	
+	rotation = deg_to_rad(displacement)
+
+func _process(delta: float) -> void:
+	_rotate_velocity(delta)
+
 func _ready() -> void:
 	is_selected = false
 
@@ -68,8 +100,9 @@ func _on_reward_resized() -> void:
 	pass # Replace with function body.
 
 func _on_select_frame_pressed() -> void:
+	if is_disable_selection: return
 	is_selected = true
-	emit_signal("checking_contract", self)
+	checking_contract.emit(self)
 
 func _on_choose_pressed() -> void:
-	emit_signal("choose_contract", data)
+	choose_contract.emit(self)
