@@ -7,6 +7,10 @@ var playing_field: PlayingFieldController:
 	set(value):
 		value.selected_resource_done.connect(_finish_action_change_resource)
 		playing_field = value
+var research_reward_summary: UIResearch:
+	set(value):
+		value.show_research_reward_done.connect(_finish_action_research)
+		research_reward_summary = value
 
 var is_change_resource: bool = false
 var _selected_business_ui: UIBusiness
@@ -164,20 +168,34 @@ func action_research():
 		_w_arr.append(_r.chance)
 	var _w = PackedFloat32Array(_w_arr)
 	var _rand_r = _reward[GameManager.rng.rand_weighted(_w)]
-	print(_rand_r.priority, " ",_rand_r.chance)
-	_rand_r.activate()
+	
 	CardManager.played_cards(selected_card)
+	CardManager.hand.update_position()
+	GameManager.energy -=  GameManager.energy_cost_work
 	
 	# Calculate chance that _worker is not destroy
 	var _k = [false, true]
 	var _n_w_arr = [_worker.card_data.research_chance_destroy, 100 - _worker.card_data.research_chance_destroy]
-	var _n_w = PackedFloat32Array(_w_arr)
+	var _n_w = PackedFloat32Array(_n_w_arr)
 	if _k[GameManager.rng.rand_weighted(_n_w)]:
 		CardManager.discard(_worker)
 	
-	CardManager.fill_hand()
-	GameManager.energy -=  GameManager.energy_cost_work
+	research_reward_summary.clear_reward()
+	if _rand_r is ResearchRewardBonus:
+		_rand_r.reward_bonus_gold_result.connect(research_reward_summary.add_gold_reward)
+		_rand_r.reward_bonus_card_result.connect(research_reward_summary.add_card_reward)
+	if _rand_r is ResearchRewardUnlockCard:
+		_rand_r.reward_bonus_unlock_card_result.connect(research_reward_summary.add_unlock_card)
+	if _rand_r is ResearchRewardUnlockResource:
+		_rand_r.reward_bonus_unlock_business_result.connect(research_reward_summary.add_unlock_business)
+		_rand_r.reward_bonus_unlock_resource_result.connect(research_reward_summary.add_unlock_resource)
+	_rand_r.activate()
+	research_reward_summary.show_research_reward_done.connect(_finish_action_research)
+	research_reward_summary.show()
 	
+func _finish_action_research():
+	research_reward_summary.hide()
+	CardManager.fill_hand()
 	action_list.reset_list()
 	CardManager.business_field.update_child_ui()
 	action_done.emit()

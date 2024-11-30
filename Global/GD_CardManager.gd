@@ -51,19 +51,23 @@ var shop_card_type_chance = {
 	ECardType.upgrade: 10,
 }
 
-func unlock_resource(_id: int):
+func unlock_resource(_id: int) -> Array[int]:
+	var _arr: Array[int] = [-1, -1]
 	var _res_data: ResourceCardData = card_dict[_id]
 	var _bus_data: BusinessCardData = card_dict[_res_data.business_id]
 	if _bus_data.card_id not in card_pool:
 		card_pool.append(_bus_data.card_id)
+		_arr[0] = _bus_data.card_id
 	if _res_data.card_id not in card_pool:
+		_arr[1] = _res_data.card_id
 		card_pool.append(_res_data.card_id)
 		card_pool.append(_res_data.card_id+4000)
 		card_pool.append(_res_data.card_id+5000)
 		card_pool.append(_res_data.card_id+6000)
 	if _res_data.card_id not in _bus_data.resource_yield_list:
 		_bus_data.resource_yield_list.append(_res_data.card_id)
-	pass
+	
+	return _arr
 
 func get_card_pool(_type: ECardType) -> Array[int]:
 	var from: int
@@ -301,6 +305,7 @@ func next_turn():
 	reset_deck()
 	fill_hand()
 	shop.reset_shop()
+	ActionManager.action_list.reset_list()
 
 func get_all_card(location: ECardLocation) -> Array[Card]:
 	var cards:Array[Card] = []

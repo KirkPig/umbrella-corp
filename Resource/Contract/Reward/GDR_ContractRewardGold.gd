@@ -11,4 +11,3 @@ func get_reward() -> void:
 	match reward_resource:
 		ERewaredResource.gold:
 			GameManager.gold += amount
-					

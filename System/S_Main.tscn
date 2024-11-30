@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=12 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
+[ext_resource type="PackedScene" uid="uid://dy1k6x40mjyna" path="res://UI/Research/S_UI_Research.tscn" id="6_6nugn"]
 [ext_resource type="PackedScene" uid="uid://uc70mvrqrusf" path="res://UI/Contract/S_UI_ContractSelection.tscn" id="7_22o06"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
 [ext_resource type="PackedScene" uid="uid://c6a1y0g401gjq" path="res://UI/Score Board/S_ScoreBoard.tscn" id="8_8lk2h"]
@@ -51,6 +52,8 @@ script = ExtResource("7_v7xax")
 layer = 2
 
 [node name="ContractSelection" parent="CanvasLayer" instance=ExtResource("7_22o06")]
+
+[node name="ResearchRewardScene" parent="CanvasLayer" instance=ExtResource("6_6nugn")]
 
 [node name="SUiPhone" parent="." instance=ExtResource("13_herli")]
 
