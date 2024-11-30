@@ -13,9 +13,10 @@ var yield_score = 10
 var yield_gold = 1
 var business = 0
 var demand = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,3 +28,13 @@ func set_data(data: ResourceCardData):
 	yield_gold = data.yield_gold
 	business = data.business_id - 1000
 	demand = data.yield_demand
+	s_tooltips.set_resource(data.card_id)
+	if len(data.keyword_list) > 0:
+		s_tooltips.set_keywords(data.keyword_list)
+	if data.Effect != "":
+		s_tooltips.set_effect(data.Effect)
+
+func _on_card_mouse_entered() -> void:
+	super()
+	if self is ResourceCard:
+		s_tooltips.set_resource(card_data.card_id)

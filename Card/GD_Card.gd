@@ -29,6 +29,7 @@ var last_pos: Vector2
 var velocity: Vector2
 
 @onready var card_texture : TextureRect = $Card
+@onready var s_tooltips: Tooptips = $Card/STooltips
 
 var card_id : int = 0
 var card_cost : int = 0
@@ -128,6 +129,8 @@ func _on_card_mouse_entered() -> void:
 		tween_hover.kill()
 	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween_hover.tween_property(self, "scale", Vector2(1.05, 1.05), 0.4)
+	
+	s_tooltips.visible =true
 
 func _on_card_mouse_exited() -> void:
 	if is_disable_hover: return
@@ -144,6 +147,8 @@ func _on_card_mouse_exited() -> void:
 	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween_hover.tween_property(self, "scale", Vector2.ONE, 0.4)
 	_set_card_rotation_effect(0, 0)
+	
+	s_tooltips.visible =false
 
 func _set_card_rotation_effect(x: float, y: float):
 	card_texture.material.set_shader_parameter("x_rot", x)

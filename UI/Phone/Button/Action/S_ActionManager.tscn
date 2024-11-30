@@ -15,7 +15,6 @@ offset_bottom = 721.0
 script = ExtResource("1_82in7")
 
 [node name="Control" type="Control" parent="."]
-visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
@@ -36,15 +35,12 @@ text = "Call action"
 label_settings = ExtResource("3_ehl42")
 
 [node name="SResearch" parent="." instance=ExtResource("4_xli7t")]
-visible = false
 layout_mode = 2
 
 [node name="SSell" parent="." instance=ExtResource("5_c5qge")]
-visible = false
 layout_mode = 2
 
 [node name="SDiscard" parent="." instance=ExtResource("6_8ht0y")]
-visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="SResearch" to="." method="_on_research_button_pressed"]

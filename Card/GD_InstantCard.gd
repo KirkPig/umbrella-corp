@@ -20,6 +20,10 @@ func _process(delta: float) -> void:
 
 func set_data(data: InstantCardData):
 	set_base_data(data)
+	if len(data.keyword_list) > 0:
+		s_tooltips.set_keywords(data.keyword_list)
+	if data.Effect != "":
+		s_tooltips.set_effect(data.Effect)
 	
 func activate() -> void:
 	card_data.activate([])

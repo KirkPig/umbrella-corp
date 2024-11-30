@@ -14,7 +14,7 @@ var special_work_rate : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,6 +24,13 @@ func set_data(data: WorkerCardData):
 	set_base_data(data)
 	base_work_rate = data.base_work_rate
 	special_work_rate = data.special_work_rate
+	s_tooltips.set_labor(data.base_work_rate)
+	if data and len(data.keyword_list) > 0:
+		s_tooltips.set_keywords(data.keyword_list)
+	if data and data.Effect != "":
+		s_tooltips.set_effect(data.Effect)
+
+
 
 func yield_labor_value(business: UIBusiness):
 	var _id = business.business_card_data.card_id
