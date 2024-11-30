@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=6 format=3 uid="uid://b1oj4ycprrx1o"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_e51pr"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="2_f8gyk"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="3_id4mv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r4hm6"]
+load_path = "res://.godot/imported/A_InstantCard_3005.png-8ea7ecd84df6b7b59f8f9d02e54d1b0a.ctex"
+
+[sub_resource type="Resource" id="Resource_2f213"]
+script = ExtResource("2_f8gyk")
+effect_resource = 2
+effect_type = 1
+effect_amount = 20.0
+effect_time_type = 0
+effect_time = 1
+effect_target = 5
+
+[resource]
+script = ExtResource("3_id4mv")
+target_mode = 0
+target_type = 0
+effects = Array[ExtResource("1_e51pr")]([SubResource("Resource_2f213")])
+card_name = "Infectious Virus"
+card_id = 3005
+card_texture = SubResource("CompressedTexture2D_r4hm6")
+shop_price = 30

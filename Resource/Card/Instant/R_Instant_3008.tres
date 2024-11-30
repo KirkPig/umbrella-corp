@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=6 format=3 uid="uid://05ofppkykxa4"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_2lwmb"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="2_sgyg5"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="3_50qo8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hfrpj"]
+load_path = "res://.godot/imported/A_InstantCard_3008.png-e91e5624dfe999e54780fde4d6912f8a.ctex"
+
+[sub_resource type="Resource" id="Resource_p8f8u"]
+script = ExtResource("2_sgyg5")
+effect_resource = 0
+effect_type = 1
+effect_amount = 20.0
+effect_time_type = 0
+effect_time = 1
+effect_target = 3
+
+[resource]
+script = ExtResource("3_50qo8")
+target_mode = 0
+target_type = 0
+effects = Array[ExtResource("1_2lwmb")]([SubResource("Resource_p8f8u")])
+card_name = "Construction Boom"
+card_id = 3008
+card_texture = SubResource("CompressedTexture2D_hfrpj")
+shop_price = 20

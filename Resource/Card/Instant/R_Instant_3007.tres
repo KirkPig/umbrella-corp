@@ -1,22 +1,27 @@
 [gd_resource type="Resource" script_class="InstantCardData" load_steps=6 format=3 uid="uid://dtvhbj31menl0"]
 
-[ext_resource type="Texture2D" uid="uid://b3p5jiu4ygjaq" path="res://Assets/InstantCard/A_InstantCard_3007.png" id="1_msjwx"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_tcp6c"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_5qgb2"]
-[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectCard.gd" id="2_yslne"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="3_sj26e"]
 
-[sub_resource type="Resource" id="Resource_265l1"]
-script = ExtResource("2_yslne")
-effect_start_location = 1
-amount = 1
-effect_end_location = 0
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hfrpj"]
+load_path = "res://.godot/imported/A_InstantCard_3007.png-467e6e62a92f7e988f8dbb6e9820013f.ctex"
+
+[sub_resource type="Resource" id="Resource_p3fai"]
+script = ExtResource("3_sj26e")
+effect_resource = 0
+effect_type = 1
+effect_amount = 20.0
+effect_time_type = 0
+effect_time = 1
+effect_target = 2
 
 [resource]
 script = ExtResource("2_5qgb2")
 target_mode = 0
 target_type = 0
-effects = Array[ExtResource("1_tcp6c")]([SubResource("Resource_265l1")])
-card_name = ""
+effects = Array[ExtResource("1_tcp6c")]([SubResource("Resource_p3fai")])
+card_name = "Industrial Revolution"
 card_id = 3007
-card_texture = ExtResource("1_msjwx")
-shop_price = 0
+card_texture = SubResource("CompressedTexture2D_hfrpj")
+shop_price = 20

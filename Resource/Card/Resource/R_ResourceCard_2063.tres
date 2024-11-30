@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=10 format=3 uid="uid://g2bbha2hq6en"]
+
+[ext_resource type="Texture2D" uid="uid://bpo82pxqqnhok" path="res://Assets/ResourceCard/A_ResourceCard_2063.png" id="1_tgkxk"]
+[ext_resource type="Texture2D" uid="uid://b8fxedaob0aqn" path="res://Assets/IconNoBG/A_ResourceIcon_2063.png" id="1_x8f2p"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_qqybp"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_7xajd"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_iy22w"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_5kwkv"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_wb50l"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_qqybp")
+resource_id = 2041
+amount = 2
+
+[sub_resource type="Resource" id="Resource_fbael"]
+script = ExtResource("5_5kwkv")
+unlocked_resource_id = 2064
+need_resource = -1
+priority = 0
+chance = 100
+
+[resource]
+script = ExtResource("4_iy22w")
+business_id = 1013
+yield_price = 85
+yield_demand = 1
+labor_per_piece = 3
+yield_gold = 9
+yield_piece = 1
+components = Array[ExtResource("2_qqybp")]([SubResource("Resource_rksl3")])
+research_yield = Array[ExtResource("3_7xajd")]([SubResource("Resource_fbael"), ExtResource("6_wb50l")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
+card_id = 2063
+card_name = "Chair"
+card_texture = ExtResource("1_tgkxk")
+shop_price = 0
+card_icon = ExtResource("1_x8f2p")

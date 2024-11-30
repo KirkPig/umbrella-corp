@@ -5,11 +5,9 @@
 
 [resource]
 script = ExtResource("7_x28sc")
-worker_usage = 1
-resource_return = 1
-max_usage = 1
-resource_yield_list = Array[int]([2004])
-card_name = "Mine"
+max_usage = 2
+resource_yield_list = Array[int]([])
 card_id = 1001
+card_name = "Mine"
 card_texture = ExtResource("1_stfys")
-shop_price = 2
+shop_price = 70

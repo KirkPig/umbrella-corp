@@ -11,8 +11,6 @@ var card_data: BusinessCardData:
 		card_data = value
 		set_data(value)
 
-var worker_usage : int
-var resource_return : int
 var max_usage : int
 var resource_yield_list : Array[int]
 
@@ -36,7 +34,5 @@ func gather_resource() -> int:
 
 func set_data(data: BusinessCardData):
 	set_base_data(data)
-	worker_usage = data.worker_usage
-	resource_return = data.resource_return
 	max_usage = data.max_usage
 	resource_yield_list = data.resource_yield_list

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResearchRewardBonus" load_steps=2 format=3 uid="uid://p1qp0710qdc8"]
+
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardBonus.gd" id="1_0to0d"]
+
+[resource]
+script = ExtResource("1_0to0d")
+reward_type = 0
+card_reward_id = 0
+amount_from = 10
+amount_to = 20
+need_resource = -1
+priority = 1
+chance = 80

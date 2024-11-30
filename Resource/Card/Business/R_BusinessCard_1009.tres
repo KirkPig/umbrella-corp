@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://bf30njqwx1ghy"]
+
+[ext_resource type="Texture2D" uid="uid://cyrlsdpus08xk" path="res://Assets/BusinessCard/A_BusinessCard_1009.png" id="1_0m7ir"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_6fpvx"]
+
+[resource]
+script = ExtResource("2_6fpvx")
+max_usage = 2
+resource_yield_list = Array[int]([])
+card_id = 1009
+card_name = "Lumbermill"
+card_texture = ExtResource("1_0m7ir")
+shop_price = 80

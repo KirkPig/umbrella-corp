@@ -10,15 +10,19 @@ signal current_energy_change(energy:int)
 signal max_energy_change(energy:int)
 signal gold_change(gold:int)
 signal max_hand_change(max_hand:int)
+signal current_discard_energy_change(energy:int)
+signal max_discard_energy_change(energy:int)
+signal current_shop_refresh_change(gold:int)
+signal max_shop_refresh_change(max_hand:int)
 
 var current_turn : int:
 	set(value):
+		total_turn += value - current_turn
 		current_turn = value
 		current_turn_change.emit(value)
 
 var goal_turn : int:
 	set(value):
-		total_turn += value - goal_turn
 		goal_turn = value
 		goal_turn_change.emit(value)
 		
@@ -53,6 +57,26 @@ var max_energy : int:
 		max_energy = value
 		max_energy_change.emit(value)
 		
+var discard_energy : int:
+	set(value):
+		discard_energy = value
+		current_discard_energy_change.emit(value)
+		
+var max_discard_energy : int:
+	set(value):
+		max_discard_energy = value
+		max_discard_energy_change.emit(value)
+				
+var shop_refresh : int:
+	set(value):
+		shop_refresh = value
+		current_shop_refresh_change.emit(value)
+		
+var max_shop_refresh : int:
+	set(value):
+		max_shop_refresh = value
+		max_shop_refresh_change.emit(value)
+
 var gold : int = 10000:
 	set(value):
 		gold = value
@@ -63,19 +87,30 @@ var max_hand : int:
 		max_hand = value
 		max_hand_change.emit(value)
 		
-var selected_contract: ResourceContract
-var constract_selection: Control
+var selected_contract: ContractData
+var contract_selection: UIContractSelection
 
 var rng: RandomNumberGenerator
 
 var energy_cost_sell: int = 1
-var energy_cost_discard: int = 0
+var energy_cost_discard: int = 1
 var energy_cost_work: int = 1
 var energy_cost_research: int = 1
+
+var game_speed: float = 1
+
+func start_select_contract() -> void:
+	contract_selection.show()
+	contract_selection.clear_contract()
+	for i in 3:
+		var _data = ContractManager.get_random_contract_data()
+		contract_selection.add_contract(_data)
 
 func next_turn():
 	current_turn += 1
 	energy = max_energy
+	discard_energy = max_discard_energy
+	shop_refresh = max_shop_refresh
 	CardManager.next_turn()
 	
 func end_turn():
@@ -87,19 +122,18 @@ func end_turn():
 			current_turn = 0 
 			current_score = 0
 			selected_contract.get_reward()
-			constract_selection.start_select_contract()
+			start_select_contract()
 		#TODO: Lose game
 		else:
 			print('fail')
 	else:
 		next_turn()
 	
-func select_contract(contract:ResourceContract) -> void:
+func select_contract(contract: ContractData) -> void:
 	selected_contract = contract
 	goal_turn = contract.turn_limit
 	goal_score = contract.score_goal
-	constract_selection.visible = false
-	constract_selection.clear_contract() 
+	contract_selection.hide()
 	next_turn()
 
 func can_sell(selected_card: Array[Card]) -> bool:
@@ -111,6 +145,25 @@ func can_sell(selected_card: Array[Card]) -> bool:
 		if card is not ResourceCard:
 			return false
 	return true
+
+func can_add_components(selected_card: Array[Card], resource_components: Array[ResourceComponentItemData]) -> bool:
+	var _li: Array[int] = []
+	for _j in resource_components:
+		_li.append(_j.resource_id)
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_sell:
+		return false
+	for card in selected_card:
+		if card is not ResourceCard:
+			return false
+		if card.card_id not in _li:
+			return false
+	return true
+
+func can_business_change_resource(business_card_id: int) -> bool:
+	var _data: BusinessCardData = CardManager.card_dict[business_card_id]
+	return _data.resource_yield_list.size() > 1
 
 func can_discard(selected_card: Array[Card]) -> bool:
 	if selected_card.size() <= 0:

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds4ia7o22b84e"]
+
+[ext_resource type="Texture2D" uid="uid://bcjah32tuth16" path="res://Assets/Phone/callactionbg.png" id="1_61gv6"]
+[ext_resource type="Texture2D" uid="uid://3rjox2l2lk22" path="res://Assets/Phone/discard.png" id="1_gktc4"]
+[ext_resource type="Script" path="res://UI/Phone/Button/Action/GD_ActionDiscard.gd" id="2_6k70m"]
+[ext_resource type="LabelSettings" uid="uid://b04mknxim6hs1" path="res://UI/Phone/Button/Action/ButtonActionFontSetting.tres" id="2_ugjwg"]
+
+[node name="SDiscard" type="TextureButton"]
+custom_minimum_size = Vector2(550, 180)
+offset_right = 550.0
+offset_bottom = 180.0
+texture_normal = ExtResource("1_61gv6")
+script = ExtResource("2_6k70m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 155.0
+offset_bottom = 150.0
+texture = ExtResource("1_gktc4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 66.0
+offset_right = 346.0
+offset_bottom = 108.0
+text = "Discard"
+label_settings = ExtResource("2_ugjwg")

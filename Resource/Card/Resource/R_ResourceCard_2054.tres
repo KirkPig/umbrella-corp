@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=11 format=3 uid="uid://dnr0hchjr6o4p"]
+
+[ext_resource type="Texture2D" uid="uid://bxg5531kbgu2b" path="res://Assets/IconNoBG/A_ResourceIcon_2054.png" id="1_r3x7d"]
+[ext_resource type="Texture2D" uid="uid://diua8xq7lmdds" path="res://Assets/ResourceCard/A_ResourceCard_2054.png" id="1_x3n8h"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_chilq"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_krauf"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_i7pm8"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_32un5"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_v7r5l"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_chilq")
+resource_id = 2054
+amount = 2
+
+[sub_resource type="Resource" id="Resource_4q44f"]
+script = ExtResource("2_chilq")
+resource_id = 2018
+amount = 1
+
+[sub_resource type="Resource" id="Resource_xemay"]
+script = ExtResource("5_32un5")
+unlocked_resource_id = 2055
+need_resource = -1
+priority = 0
+chance = 100
+
+[resource]
+script = ExtResource("4_i7pm8")
+business_id = 1011
+yield_price = 250
+yield_demand = 4
+labor_per_piece = 2
+yield_gold = 25
+yield_piece = 1
+components = Array[ExtResource("2_chilq")]([SubResource("Resource_rksl3"), SubResource("Resource_4q44f")])
+research_yield = Array[ExtResource("3_krauf")]([SubResource("Resource_xemay"), ExtResource("6_v7r5l")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
+card_id = 2054
+card_name = "Cloths"
+card_texture = ExtResource("1_x3n8h")
+shop_price = 0
+card_icon = ExtResource("1_r3x7d")

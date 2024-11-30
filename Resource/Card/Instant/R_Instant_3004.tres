@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=6 format=3 uid="uid://cyi8g7ywmhwbr"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_53jwo"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="2_uvajv"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="3_vm1fs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cbjeb"]
+load_path = "res://.godot/imported/A_InstantCard_3004.png-7b60ea31b5a8b4eef963b9746703834c.ctex"
+
+[sub_resource type="Resource" id="Resource_66vqg"]
+script = ExtResource("2_uvajv")
+effect_resource = 2
+effect_type = 1
+effect_amount = 35.0
+effect_time_type = 0
+effect_time = 1
+effect_target = 4
+
+[resource]
+script = ExtResource("3_vm1fs")
+target_mode = 0
+target_type = 0
+effects = Array[ExtResource("1_53jwo")]([SubResource("Resource_66vqg")])
+card_name = "Beach Erosion"
+card_id = 3004
+card_texture = SubResource("CompressedTexture2D_cbjeb")
+shop_price = 30

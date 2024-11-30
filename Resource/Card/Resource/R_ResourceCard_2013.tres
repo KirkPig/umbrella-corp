@@ -1,13 +1,38 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=3 format=3 uid="uid://dkrkf0lovpynu"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=9 format=3 uid="uid://ba20d5g160f7r"]
 
-[ext_resource type="Texture2D" uid="uid://jl8fufyb3u1v" path="res://Assets/ResourceCard/A_ResourceCard_2013.png" id="1_5meer"]
-[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="2_mvt0e"]
+[ext_resource type="Texture2D" uid="uid://dcisjlnq5aw0l" path="res://Assets/IconNoBG/A_ResourceIcon_2013.png" id="1_7wkxl"]
+[ext_resource type="Texture2D" uid="uid://jl8fufyb3u1v" path="res://Assets/ResourceCard/A_ResourceCard_2013.png" id="1_iu2lu"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_p0lup"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_gg6iy"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_5ssn6"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="5_iqu2u"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="6_optx1"]
+
+[sub_resource type="Resource" id="Resource_hr3f4"]
+script = ExtResource("6_optx1")
+unlocked_resource_id = 2045
+need_resource = -1
+priority = 1
+chance = 20
 
 [resource]
-script = ExtResource("2_mvt0e")
-yield_score = 10
-yield_gold = 1
-card_name = "Meat"
-card_id = 2012
-card_texture = ExtResource("1_5meer")
+script = ExtResource("4_5ssn6")
+business_id = 1004
+yield_price = 55
+yield_demand = 2
+labor_per_piece = 3
+yield_gold = 5
+yield_piece = 1
+components = Array[ExtResource("2_p0lup")]([])
+research_yield = Array[ExtResource("3_gg6iy")]([ExtResource("5_iqu2u"), SubResource("Resource_hr3f4")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
+card_id = 2013
+card_name = "Gas"
+card_texture = ExtResource("1_iu2lu")
 shop_price = 0
+card_icon = ExtResource("1_7wkxl")

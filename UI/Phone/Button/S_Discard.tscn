@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgtvpmh2w5wm3"]
+
+[ext_resource type="Script" path="res://UI/Phone/Button/GD_Discard.gd" id="1_8rrri"]
+[ext_resource type="Texture2D" uid="uid://3s84xkkydk33" path="res://Assets/Phone/discardpile.png" id="2_x8uug"]
+[ext_resource type="Theme" uid="uid://uutcpcwlfoyu" path="res://UI/Phone/theme/ui.theme" id="3_0omy3"]
+[ext_resource type="LabelSettings" uid="uid://d3bit3qtq3v0r" path="res://UI/Phone/Button/ButtonFontSetting.tres" id="3_3l8gu"]
+[ext_resource type="StyleBox" uid="uid://rq4cp7w0v2fx" path="res://UI/Phone/theme/panel/noti_panel.stylebox" id="4_0ckye"]
+[ext_resource type="LabelSettings" uid="uid://dwmn8b6v7534y" path="res://UI/Phone/NotiFontSetting.tres" id="5_vsx1f"]
+[ext_resource type="PackedScene" uid="uid://bjbxav8pme3gn" path="res://UI/Phone/Pile/S_DiscardPile.tscn" id="7_gihgw"]
+
+[node name="Discard" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rrri")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ViewButton" type="TextureButton" parent="Control/VSplitContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_x8uug")
+
+[node name="Control" type="Control" parent="Control/VSplitContainer/ViewButton"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Control" type="Control" parent="Control/VSplitContainer/ViewButton/Control"]
+anchors_preset = 0
+offset_right = 60.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/VSplitContainer/ViewButton/Control/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_0omy3")
+theme_override_styles/panel = ExtResource("4_0ckye")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CardsLabel" type="Label" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer/CenterContainer"]
+z_index = 2
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("5_vsx1f")
+
+[node name="Control2" type="Control" parent="Control/VSplitContainer/ViewButton/Control/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VSplitContainer"]
+layout_mode = 2
+text = "Bin"
+label_settings = ExtResource("3_3l8gu")
+horizontal_alignment = 1
+
+[node name="DiscardCard" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(280, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 140.0
+offset_right = -160.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="DiscardGridContainer" type="GridContainer" parent="CanvasLayer/Panel/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 360)
+layout_mode = 2
+columns = 5
+
+[node name="ClosedButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 60.0
+offset_right = -60.0
+offset_bottom = 91.0
+grow_horizontal = 0
+text = "Close"
+
+[node name="SDiscardPile" parent="." instance=ExtResource("7_gihgw")]
+visible = false
+
+[connection signal="pressed" from="Control/VSplitContainer/ViewButton" to="." method="_on_view_button_pressed"]
+[connection signal="child_order_changed" from="DiscardCard" to="." method="_on_discard_card_child_order_changed"]
+[connection signal="pressed" from="CanvasLayer/ClosedButton" to="." method="_on_closed_button_pressed"]

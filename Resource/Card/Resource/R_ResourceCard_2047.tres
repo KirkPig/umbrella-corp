@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=11 format=3 uid="uid://c8h2f5sws2cae"]
+
+[ext_resource type="Texture2D" uid="uid://dcocpmd8h137s" path="res://Assets/ResourceCard/A_ResourceCard_2047.png" id="1_02t58"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_x14qd"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_spds0"]
+[ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="4_l2bvf"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_x501b"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="5_d2vts"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cu5ly"]
+load_path = "res://.godot/imported/A_ResourceIcon_2047.png-24f318bfc7735b331d57544493b0b0e1.ctex"
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_x14qd")
+resource_id = 2045
+amount = 1
+
+[sub_resource type="Resource" id="Resource_fngft"]
+script = ExtResource("2_x14qd")
+resource_id = 2051
+amount = 2
+
+[sub_resource type="Resource" id="Resource_8pepp"]
+script = ExtResource("4_l2bvf")
+unlocked_resource_id = 2048
+need_resource = -1
+priority = 0
+chance = 100
+
+[resource]
+script = ExtResource("4_x501b")
+business_id = 1010
+yield_price = 95
+yield_demand = 3
+labor_per_piece = 2
+yield_gold = 15
+yield_piece = 1
+components = Array[ExtResource("2_x14qd")]([SubResource("Resource_rksl3"), SubResource("Resource_fngft")])
+research_yield = Array[ExtResource("3_spds0")]([SubResource("Resource_8pepp"), ExtResource("5_d2vts")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
+card_id = 2047
+card_name = "Paint"
+card_texture = ExtResource("1_02t58")
+shop_price = 0
+card_icon = SubResource("CompressedTexture2D_cu5ly")

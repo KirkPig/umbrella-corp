@@ -1,32 +1,39 @@
-[gd_resource type="Resource" script_class="InstantCardData" load_steps=7 format=3 uid="uid://dkqf3huvl7uem"]
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=10 format=3 uid="uid://dkqf3huvl7uem"]
 
-[ext_resource type="Texture2D" uid="uid://dcnlcb0n0uqee" path="res://Assets/InstantCard/A_InstantCard_3011.png" id="1_3f6x3"]
+[ext_resource type="Texture2D" uid="uid://wjbdmht0ua2k" path="res://Assets/InstantCard/A_InstantCard_3011.png" id="1_3f6x3"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_wvqnm"]
 [ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectSellbonus.gd" id="2_pvu54"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_sylp3"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectResource.gd" id="3_k4fl5"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectCard.gd" id="5_n3mdh"]
 
-[sub_resource type="Resource" id="Resource_j5k1j"]
-script = ExtResource("2_pvu54")
-effect_resource = 1
+[sub_resource type="Resource" id="Resource_eh5tk"]
+script = ExtResource("3_k4fl5")
 effect_type = 0
-effect_amount = 2.0
-effect_time_type = 0
-effect_time = 1
+effect_resource = 4
+amount = 1
 
-[sub_resource type="Resource" id="Resource_367od"]
+[sub_resource type="Resource" id="Resource_fdnkc"]
 script = ExtResource("2_pvu54")
 effect_resource = 0
-effect_type = 2
-effect_amount = 0.0
-effect_time_type = 0
+effect_type = 0
+effect_amount = 0.5
+effect_time_type = 1
 effect_time = 1
+effect_target = 0
+
+[sub_resource type="Resource" id="Resource_hanx8"]
+script = ExtResource("5_n3mdh")
+effect_start_location = 0
+amount = 0
+effect_end_location = 5
 
 [resource]
 script = ExtResource("2_sylp3")
 target_mode = 0
 target_type = 0
-effects = Array[ExtResource("1_wvqnm")]([SubResource("Resource_j5k1j"), SubResource("Resource_367od")])
-card_name = ""
+effects = Array[ExtResource("1_wvqnm")]([SubResource("Resource_eh5tk"), SubResource("Resource_fdnkc"), SubResource("Resource_hanx8")])
+card_name = "Late Contract"
 card_id = 3011
 card_texture = ExtResource("1_3f6x3")
-shop_price = 0
+shop_price = 50

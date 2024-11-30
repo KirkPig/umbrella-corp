@@ -11,7 +11,8 @@ var card_data: ResourceCardData:
 
 var yield_score = 10
 var yield_gold = 1
-
+var business = 0 # TODO: What is business?
+var demand = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -22,5 +23,7 @@ func _process(delta: float) -> void:
 
 func set_data(data: ResourceCardData):
 	set_base_data(data)
-	yield_score = data.yield_score
+	yield_score = data.yield_price
 	yield_gold = data.yield_gold
+	business = data.business_id - 1000
+	demand = data.yield_demand

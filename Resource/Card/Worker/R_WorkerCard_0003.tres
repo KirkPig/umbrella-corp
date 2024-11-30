@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WorkerCardData" load_steps=3 format=3 uid="uid://chjm6h7bb3wau"]
+
+[ext_resource type="Script" path="res://Resource/Card/GDR_WorkerCard.gd" id="1_my4av"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lh27j"]
+load_path = "res://.godot/imported/A_WorkerCard_0003.png-354d29e6a2b0c60d82efa49635aaab5d.ctex"
+
+[resource]
+script = ExtResource("1_my4av")
+base_work_rate = 1
+special_work_rate = {}
+card_name = "Farmer"
+card_id = 3
+card_texture = SubResource("CompressedTexture2D_lh27j")
+shop_price = 5

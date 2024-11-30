@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=9 format=3 uid="uid://dxifuejjygoeh"]
+
+[ext_resource type="Texture2D" uid="uid://dtqidygou6xyr" path="res://Assets/IconNoBG/A_ResourceIcon_2040.png" id="1_5f707"]
+[ext_resource type="Texture2D" uid="uid://bjspmddjy2pnt" path="res://Assets/ResourceCard/A_ResourceCard_2040.png" id="2_i1lis"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_Component.gd" id="2_j47l8"]
+[ext_resource type="Script" path="res://Resource/Research/GDR_ResearchReward.gd" id="3_iuqu1"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_vonn4"]
+[ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="5_akx22"]
+
+[sub_resource type="Resource" id="Resource_rksl3"]
+script = ExtResource("2_j47l8")
+resource_id = 2038
+amount = 1
+
+[sub_resource type="Resource" id="Resource_kwm7d"]
+script = ExtResource("2_j47l8")
+resource_id = 2023
+amount = 1
+
+[resource]
+script = ExtResource("4_vonn4")
+business_id = 1008
+yield_price = 55
+yield_demand = 5
+labor_per_piece = 1
+yield_gold = 19
+yield_piece = 1
+components = Array[ExtResource("2_j47l8")]([SubResource("Resource_rksl3"), SubResource("Resource_kwm7d")])
+research_yield = Array[ExtResource("3_iuqu1")]([ExtResource("5_akx22")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
+card_id = 2040
+card_name = "Sugar Donut"
+card_texture = ExtResource("2_i1lis")
+shop_price = 0
+card_icon = ExtResource("1_5f707")

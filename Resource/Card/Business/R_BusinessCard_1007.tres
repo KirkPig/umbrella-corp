@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://dw586f6m7sq5"]
+
+[ext_resource type="Texture2D" uid="uid://wvknv5bjsm5v" path="res://Assets/BusinessCard/A_BusinessCard_1007.png" id="1_nwt54"]
+[ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_sjgmj"]
+
+[resource]
+script = ExtResource("2_sjgmj")
+max_usage = 3
+resource_yield_list = Array[int]([])
+card_id = 1007
+card_name = "Orchard"
+card_texture = ExtResource("1_nwt54")
+shop_price = 55
