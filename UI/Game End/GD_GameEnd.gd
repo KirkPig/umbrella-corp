@@ -53,9 +53,11 @@ func add_founded_resource():
 	resource_founded_label.text = "Resource founded ("+str(founded_amount)+"/99)"
 	
 func _on_new_game_pressed() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_main_menu_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://System/Main Menu/S_Main_Menu.tscn")
 
 func _on_desktop_pressed() -> void:
