@@ -245,7 +245,7 @@ theme_override_font_sizes/font_size = 14
 theme_override_styles/hover = SubResource("StyleBoxFlat_vu45u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_04h8l")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvfm4")
-text = "Change resource ($250)"
+text = "Change product ($250)"
 icon = ExtResource("3_b88ch")
 expand_icon = true
 

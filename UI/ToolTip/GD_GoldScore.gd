@@ -20,4 +20,4 @@ func set_resource_data(resource_id:int) -> void:
 	var demand = card_data.yield_demand + SellManager.card_sell_bonus[SellManager.EResource.DEMAND][resource_id] \
 		if resource_id in SellManager.card_sell_bonus[SellManager.EResource.DEMAND] else card_data.yield_price 
 	price_label.text = str(price)
-	demand_label.text = demand
+	demand_label.text = str(demand)

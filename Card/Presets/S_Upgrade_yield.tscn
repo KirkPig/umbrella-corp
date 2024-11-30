@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgsraw84xrhf7"]
+[gd_scene load_steps=7 format=3 uid="uid://dgsraw84xrhf7"]
 
 [ext_resource type="Script" path="res://Card/GD_UpgradeResourceCard.gd" id="1_dm264"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_xk3p0"]
 [ext_resource type="Texture2D" uid="uid://jb004ywnebgp" path="res://Assets/UpgradeCard/A_UpgradeCard_yield.png" id="3_shsje"]
 [ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="4_olcfa"]
+[ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="5_nybyi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -43,6 +44,19 @@ offset_right = 154.0
 offset_bottom = 190.0
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_olcfa")
+
+[node name="STooltips" parent="." instance=ExtResource("5_nybyi")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 159.0
+offset_top = -5.0
+offset_right = 159.0
+offset_bottom = -5.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.6, 0.6)
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

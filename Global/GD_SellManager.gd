@@ -49,9 +49,7 @@ func cal_sell_gold(sell_card:Array[Card]):
 	var price  = 0
 	for card : ResourceCard in sell_card:
 		sell_history[card.card_id] = 1 if card.card_id not in sell_history else sell_history[card.card_id] + 1
-		if card.card_id in SellManager.card_sell_bonus[SellManager.EResource.GOLD]:
-			price += SellManager.card_sell_bonus[SellManager.EResource.GOLD][card.card_id]
-		price += card.yield_gold + all_bonus[EResource.GOLD][card.business][EType.ADD]
+		price += card.card_data.yield_gold + all_bonus[EResource.GOLD][card.business][EType.ADD]
 	GameManager.gold += int(price * all_bonus[EResource.GOLD][ResourceCardData.EBusiness.ALL][EType.MULTIPLY]) + all_bonus[EResource.GOLD][ResourceCardData.EBusiness.ALL][EType.ADD] 
 						
 
@@ -59,14 +57,10 @@ func cal_sell_score(sell_card:Array[Card]):
 	var _dict : Dictionary = {}
 	var price = 0
 	for card : ResourceCard in sell_card:
-		if card.card_id in SellManager.card_sell_bonus[SellManager.EResource.SCORE]:
-			price += SellManager.card_sell_bonus[SellManager.EResource.SCORE][card.card_id]
-		price += card.yield_score + all_bonus[EResource.SCORE][card.business][EType.ADD] 
+		price += card.card_data.yield_price + all_bonus[EResource.SCORE][card.business][EType.ADD] 
 		
 	var demand : int = 0
 	for card : ResourceCard in sell_card:
-		if card.card_id in SellManager.card_sell_bonus[SellManager.EResource.DEMAND]:
-			demand += SellManager.card_sell_bonus[SellManager.EResource.DEMAND][card.card_id]
-		demand += card.demand + all_bonus[EResource.DEMAND][card.business][EType.ADD] 
+		demand += card.card_data.yield_demand + all_bonus[EResource.DEMAND][card.business][EType.ADD] 
 
-	GameManager.current_score += price * all_bonus[EResource.SCORE][ResourceCardData.EBusiness.ALL][EType.MULTIPLY] + all_bonus[EResource.SCORE][ResourceCardData.EBusiness.ALL][EType.ADD]
+	GameManager.current_score += price * demand * all_bonus[EResource.SCORE][ResourceCardData.EBusiness.ALL][EType.MULTIPLY] + all_bonus[EResource.SCORE][ResourceCardData.EBusiness.ALL][EType.ADD]

@@ -118,21 +118,19 @@ func random_shop_card() -> int:
 	
 
 func _ready() -> void:
-	load_cards("res://Resource/Card/Business/", false)
-	load_cards("res://Resource/Card/Resource/", false)
-	load_cards("res://Resource/Card/Worker/", false)
-	load_cards("res://Resource/Card/Instant/", true)
-	load_cards("res://Resource/Card/Upgrade/", false)
+	load_cards("res://Resource/Card/Business/")
+	load_cards("res://Resource/Card/Resource/")
+	load_cards("res://Resource/Card/Worker/")
+	load_cards("res://Resource/Card/Instant/")
+	load_cards("res://Resource/Card/Upgrade/")
 
-func load_cards(_path: String, _is_unlocked: bool) -> void:
+func load_cards(_path: String) -> void:
 	var _card_res = DirAccess.get_files_at(_path)
 	for _files in _card_res:
 		var data: CardData = load(_path + _files)
 		card_dict[data.card_id] = data
 		if data is ResourceCardData:
 			add_upgrade_card_data(data)
-		if _is_unlocked:
-			card_pool.append(data.card_id)
 
 func add_upgrade_card_data(data:ResourceCardData):
 	for i in UpgradeCardData.EUpgradeResource:
@@ -242,8 +240,10 @@ func add_card_to_hand(_id: int) -> Card:
 	hand.add_exists(card)
 	return card
 
+# TODO: make business card from shop
 func add_card_to_business_field(_id: int) -> UIBusiness:
-	return business_field.add_new_business(_id)
+	var _bus: BusinessCardData = card_dict[_id]
+	return business_field.add_new_business(_id, _bus.resource_yield_list[0])
 	
 func add_card_to_pool(card_id_list:Array[int]) -> void:
 	for card_id in card_id_list:

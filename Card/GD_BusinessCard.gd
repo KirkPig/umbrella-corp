@@ -6,8 +6,8 @@ signal selected_work(card: BusinessCard)
 var card_data: BusinessCardData:
 	set(value):
 		if card_data:
-			card_data.changed.disconnect(set_data)
-		value.changed.connect(set_data)
+			card_data.changed.disconnect(refresh_data)
+		value.changed.connect(refresh_data)
 		card_data = value
 		set_data(value)
 
@@ -28,11 +28,12 @@ func selected():
 		return
 	emit_signal("selected_work", self)
 
-# TODO: Resource card pick on yield list
-func gather_resource() -> int:
-	return resource_yield_list[0]
-
 func set_data(data: BusinessCardData):
 	set_base_data(data)
 	max_usage = data.max_usage
 	resource_yield_list = data.resource_yield_list
+
+func refresh_data():
+	set_base_data(card_data)
+	max_usage = card_data.max_usage
+	resource_yield_list = card_data.resource_yield_list

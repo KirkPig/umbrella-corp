@@ -40,7 +40,7 @@ grow_vertical = 2
 script = ExtResource("1_65hb4")
 
 [node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(380, 290)
+custom_minimum_size = Vector2(380, 320)
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -48,6 +48,11 @@ size_flags_horizontal = 0
 layout_mode = 2
 theme = SubResource("Theme_eiu35")
 theme_override_constants/separation = 7
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="TextureRect" type="ColorRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(80, 120)
