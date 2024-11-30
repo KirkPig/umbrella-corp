@@ -21,7 +21,7 @@ func reset_shop():
 		card_node.remove_child(card)
 		if is_instance_valid(card):
 			card.queue_free()
-	var _id = CardManager.card_pool[GameManager.rng.randi() % CardManager.card_pool.size()]
+	var _id = CardManager.random_shop_card()
 	add_card_to_shop(_id)
 
 func add_card_to_shop(_id: int) -> Card:

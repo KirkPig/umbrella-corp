@@ -1,11 +1,136 @@
-[gd_scene load_steps=12 format=3 uid="uid://lh1fsywke2mu"]
+[gd_scene load_steps=26 format=3 uid="uid://lh1fsywke2mu"]
 
 [ext_resource type="Script" path="res://UI/Business/GD_BusinessUI.gd" id="1_tge38"]
 [ext_resource type="Texture2D" uid="uid://mih5wymxdnlq" path="res://Assets/BusinessIcon/A_BusinessIcon_0000.png" id="2_7oipk"]
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="2_vt6os"]
+[ext_resource type="Texture2D" uid="uid://b4wrux3hacggr" path="res://Assets/Phone/phonecall.png" id="3_0rkr6"]
+[ext_resource type="Texture2D" uid="uid://b2ybhgfmiilam" path="res://Assets/Phone/walletnobg.png" id="3_b88ch"]
 [ext_resource type="Texture2D" uid="uid://b4k7h608rbynp" path="res://Assets/UI/Business/labor-icon.svg" id="3_to8dd"]
 [ext_resource type="FontFile" uid="uid://cjgxkmfq6di8l" path="res://Assets/Font/SF-Pro-Rounded-Bold.otf" id="4_qeiud"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="5_rlgxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vuep"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+bg_color = Color(0.207312, 0.499797, 0.824749, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y32ha"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+bg_color = Color(0.0901495, 0.305781, 0.536985, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_demmu"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+bg_color = Color(0.32549, 0.6, 0.917647, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxtau"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.207312, 0.499797, 0.824749, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g304r"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.0901495, 0.305781, 0.536985, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3do1s"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.32549, 0.6, 0.917647, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j451u"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.982122, 0.390167, 0.999999, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slfm3"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.41845, 0.000159361, 0.434571, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwq6u"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.992157, 0.552941, 1, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu45u"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.999997, 0.425117, 0.439048, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04h8l"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.445003, 0, 0.0870926, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvfm4"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.513726, 0.513726, 1)
+shadow_color = Color(0, 0, 0, 0.258824)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ti8em"]
 bg_color = Color(0.956863, 1, 0.94902, 1)
@@ -40,9 +165,92 @@ corner_radius_bottom_left = 1000
 [node name="Business" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+pivot_offset = Vector2(10, 10)
 script = ExtResource("1_tge38")
 
+[node name="Sell" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+offset_left = 297.0
+offset_top = -37.0
+offset_right = 417.0
+offset_bottom = 7.0
+size_flags_horizontal = 8
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vuep")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y32ha")
+theme_override_styles/normal = SubResource("StyleBoxFlat_demmu")
+text = "Sell ($200)"
+icon = ExtResource("3_b88ch")
+expand_icon = true
+
+[node name="ButtonGroup" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(416, 44)
+layout_mode = 0
+offset_top = 277.0
+offset_right = 416.0
+offset_bottom = 321.0
+theme_override_constants/separation = -2
+alignment = 2
+
+[node name="Work" type="Button" parent="ButtonGroup"]
+custom_minimum_size = Vector2(79, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxtau")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g304r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3do1s")
+text = "Work"
+icon = ExtResource("3_0rkr6")
+expand_icon = true
+
+[node name="Component" type="Button" parent="ButtonGroup"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = SubResource("StyleBoxFlat_j451u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_slfm3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fwq6u")
+text = "Send components"
+icon = ExtResource("3_0rkr6")
+expand_icon = true
+
+[node name="ChangeResource" type="Button" parent="ButtonGroup"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_vt6os")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = SubResource("StyleBoxFlat_vu45u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_04h8l")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvfm4")
+text = "Change resource ($250)"
+icon = ExtResource("3_b88ch")
+expand_icon = true
+
 [node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(420, 282)
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 282.0
@@ -165,3 +373,8 @@ text = "Component"
 [node name="List" type="VBoxContainer" parent="Container/Detail/Component"]
 layout_mode = 2
 theme_override_constants/separation = 4
+
+[connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="ButtonGroup/Work" to="." method="_on_work_pressed"]
+[connection signal="pressed" from="ButtonGroup/Component" to="." method="_on_component_pressed"]
+[connection signal="pressed" from="ButtonGroup/ChangeResource" to="." method="_on_change_resource_pressed"]
