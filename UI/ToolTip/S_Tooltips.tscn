@@ -165,3 +165,9 @@ size_flags_vertical = 0
 text = "3x Labor in Farm, Livestock"
 label_settings = SubResource("LabelSettings_buvti")
 autowrap_mode = 3
+
+[node name="BusinessCostContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BusinessCostYeildContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
