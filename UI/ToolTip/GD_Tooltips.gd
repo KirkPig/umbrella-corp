@@ -52,5 +52,5 @@ func set_keywords(keyword_list:Array[ToolTipsKeyword.EKeyword])-> void:
 	for keyword in keyword_list:
 		var keyword_instance:ToolTipsKeyword = s_keyword.instantiate()
 		keyword_container.add_child(keyword_instance)
-		keyword_instance.set_keyword(ToolTipsKeyword.EKeyword.LABOR)
+		keyword_instance.set_keyword(keyword)
 		
