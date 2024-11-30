@@ -5,8 +5,8 @@ class_name InstantCard
 var card_data: InstantCardData:
 	set(value):
 		if card_data:
-			card_data.changed.disconnect(set_data)
-		value.changed.connect(set_data)
+			card_data.changed.disconnect(refresh_data)
+		value.changed.connect(refresh_data)
 		card_data = value
 		set_data(value)
 
@@ -21,9 +21,20 @@ func _process(delta: float) -> void:
 func set_data(data: InstantCardData):
 	set_base_data(data)
 	if len(data.keyword_list) > 0:
-		s_tooltips.set_keywords(data.keyword_list)
+		if s_tooltips:
+			s_tooltips.set_keywords(data.keyword_list)
 	if data.Effect != "":
-		s_tooltips.set_effect(data.Effect)
+		if s_tooltips:
+			s_tooltips.set_effect(data.Effect)
 	
 func activate() -> void:
 	card_data.activate([])
+
+func refresh_data():
+	set_base_data(card_data)
+	if len(card_data.keyword_list) > 0:
+		if s_tooltips:
+			s_tooltips.set_keywords(card_data.keyword_list)
+	if card_data.Effect != "":
+		if s_tooltips:
+			s_tooltips.set_effect(card_data.Effect)

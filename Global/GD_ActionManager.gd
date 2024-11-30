@@ -5,8 +5,6 @@ signal action_done
 var action_list: ActionListController
 var playing_field: PlayingFieldController:
 	set(value):
-		if playing_field:
-			playing_field.selected_resource_done.disconnect(_finish_action_change_resource)
 		value.selected_resource_done.connect(_finish_action_change_resource)
 		playing_field = value
 

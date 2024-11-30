@@ -36,22 +36,14 @@ func played() -> void:
 		EUpgrade.MAX_DISCARD:
 			GameManager.max_discard_energy += 1
 		EUpgrade.RESOURE_DEMAND:
-			if upgrade_resoruce_id in SellManager.card_sell_bonus[SellManager.EResource.DEMAND]:
-				SellManager.card_sell_bonus[SellManager.EResource.DEMAND][upgrade_resoruce_id] += upgrade_amount
-			else :
-				SellManager.card_sell_bonus[SellManager.EResource.DEMAND][upgrade_resoruce_id] = upgrade_amount
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_demand += upgrade_amount
 		EUpgrade.RESOURE_SCORE:
-			if upgrade_resoruce_id in SellManager.card_sell_bonus[SellManager.EResource.SCORE]:
-				SellManager.card_sell_bonus[SellManager.EResource.SCORE][upgrade_resoruce_id] += upgrade_amount
-			else :
-				SellManager.card_sell_bonus[SellManager.EResource.SCORE][upgrade_resoruce_id] = upgrade_amount
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_price += upgrade_amount
 		EUpgrade.RESOURE_GOLD:
-			if upgrade_resoruce_id in SellManager.card_sell_bonus[SellManager.EResource.GOLD]:
-				SellManager.card_sell_bonus[SellManager.EResource.GOLD][upgrade_resoruce_id] += upgrade_amount
-			else :
-				SellManager.card_sell_bonus[SellManager.EResource.GOLD][upgrade_resoruce_id] = upgrade_amount
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_gold += upgrade_amount
 		EUpgrade.RESOURE_YEILD:
-			#TODO:
-			pass
-			
-			
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_piece += upgrade_amount
