@@ -5,6 +5,7 @@ signal selection_change
 signal is_buy(card: Card)
 
 signal card_scaling_up
+signal card_play(_card: Card)
 
 var tween_selected: Tween
 var tween_hover: Tween
@@ -26,7 +27,6 @@ var oscillator_velocity: float = 0.0
 
 var last_pos: Vector2
 var velocity: Vector2
-var in_rotation_play: bool = false
 
 @onready var card_texture : TextureRect = $Card
 
@@ -34,6 +34,8 @@ var card_id : int = 0
 var card_cost : int = 0
 var in_shop : bool = false
 var shop_price : int = 2
+
+var is_disable_hover: bool = false
 
 var is_hover : bool
 var is_selected : bool:
@@ -58,14 +60,15 @@ func bouncing_card() -> void:
 	if tween_bouncing and tween_bouncing.is_running():
 		tween_bouncing.kill()
 	scale = Vector2.ONE
-	tween_bouncing = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
-	tween_bouncing.tween_property(self, "scale", Vector2(1.2, 1.2), 0.2)
-	await tween_bouncing.finished
-	await get_tree().create_timer(0.05).timeout
+	tween_bouncing = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_speed_scale(GameManager.game_speed)
+	tween_bouncing.tween_property(self, "scale", Vector2(1.25, 1.25), 1.2)
+	await get_tree().create_timer(0.6 / GameManager.game_speed).timeout
 	emit_signal("card_scaling_up")
-	await get_tree().create_timer(0.03).timeout
-	tween_bouncing = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
-	tween_bouncing.tween_property(self, "scale", Vector2.ONE, 0.1)
+	card_play.emit(self)
+	await get_tree().create_timer(0.2 / GameManager.game_speed).timeout
+	tween_bouncing.kill()
+	tween_bouncing = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_speed_scale(GameManager.game_speed)
+	tween_bouncing.tween_property(self, "scale", Vector2.ONE, 0.7)
 	pass
 
 func handle_mouse_click(event: InputEvent) -> void:
@@ -109,7 +112,7 @@ func set_card_hand_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x
 		_pos_y = remap(abs(_pos_x - _middle_pos), 0, _middle_pos, 0, 20)
 	if !in_hand:
 		_pos_y = 0
-	change_card_position(Vector2(_pos_x, _pos_y), 0.2)
+	change_card_position(Vector2(_pos_x, _pos_y), 0.2 / GameManager.game_speed)
 	z_index = _card_pos
 
 func set_card_pile_position(_in_hand: int, card_gap:int):
@@ -119,6 +122,7 @@ func set_card_pile_position(_in_hand: int, card_gap:int):
 	z_index = _in_hand
 
 func _on_card_mouse_entered() -> void:
+	if is_disable_hover: return
 	is_hover = true
 	if tween_hover and tween_hover.is_running():
 		tween_hover.kill()
@@ -126,6 +130,7 @@ func _on_card_mouse_entered() -> void:
 	tween_hover.tween_property(self, "scale", Vector2(1.05, 1.05), 0.4)
 
 func _on_card_mouse_exited() -> void:
+	if is_disable_hover: return
 	is_hover = false
 	if tween_rot and tween_rot.is_running():
 		tween_rot.kill()
@@ -150,7 +155,7 @@ func _on_card_gui_input(event: InputEvent) -> void:
 	# TODO: Don't compute rotation when moving the card
 	if is_selected: return
 	if not event is InputEventMouseMotion: return
-	
+	if is_disable_hover: return
 	# Handles rotation effect
 	var mouse_pos: Vector2 = card_texture.get_local_mouse_position()
 	var lerp_val_x: float = remap(mouse_pos.x, 0.0, card_texture.size.x, 0, 1)

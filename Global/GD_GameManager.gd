@@ -97,6 +97,8 @@ var energy_cost_discard: int = 1
 var energy_cost_work: int = 1
 var energy_cost_research: int = 1
 
+var game_speed: float = 1
+
 func start_select_contract() -> void:
 	contract_selection.show()
 	contract_selection.clear_contract()
@@ -143,6 +145,25 @@ func can_sell(selected_card: Array[Card]) -> bool:
 		if card is not ResourceCard:
 			return false
 	return true
+
+func can_add_components(selected_card: Array[Card], resource_components: Array[ResourceComponentItemData]) -> bool:
+	var _li: Array[int] = []
+	for _j in resource_components:
+		_li.append(_j.resource_id)
+	if selected_card.size() <= 0:
+		return false
+	if energy < energy_cost_sell:
+		return false
+	for card in selected_card:
+		if card is not ResourceCard:
+			return false
+		if card.card_id not in _li:
+			return false
+	return true
+
+func can_business_change_resource(business_card_id: int) -> bool:
+	var _data: BusinessCardData = CardManager.card_dict[business_card_id]
+	return _data.resource_yield_list.size() > 1
 
 func can_discard(selected_card: Array[Card]) -> bool:
 	if selected_card.size() <= 0:
