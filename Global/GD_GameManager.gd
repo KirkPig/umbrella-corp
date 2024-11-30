@@ -13,7 +13,11 @@ signal max_hand_change(max_hand:int)
 signal current_discard_energy_change(energy:int)
 signal max_discard_energy_change(energy:int)
 signal current_shop_refresh_change(gold:int)
-signal max_shop_refresh_change(max_hand:int)
+signal max_shop_refresh_change(max_refresh:int)
+signal current_contract_change(max_contract:int)
+signal max_contract_change(max_contract:int)
+
+signal game_end(win:bool)
 
 var current_turn : int:
 	set(value):
@@ -33,12 +37,12 @@ var total_turn : int:
 		
 var current_score : int:
 	set(value):
+		total_score += value - current_score
 		current_score = value
 		current_score_change.emit(value)
 		
 var goal_score : int:
 	set(value):
-		total_score += value - goal_score
 		goal_score = value
 		goal_score_change.emit(value)
 		
@@ -86,6 +90,23 @@ var max_hand : int:
 	set(value):
 		max_hand = value
 		max_hand_change.emit(value)
+
+var current_contract:int = 0: 
+	set(value):
+		current_contract = value
+		if current_contract == max_contract:
+			game_end.emit(true)
+		current_contract_change.emit(value)
+
+var max_contract:int:
+	set(value):
+		max_contract = value
+		max_contract_change.emit(value)
+
+var most_score_contract:int = 0:
+	set(value):
+		if value > most_score_contract:
+			most_score_contract = value
 		
 var selected_contract: ContractData
 var contract_selection: UIContractSelection
@@ -119,13 +140,14 @@ func end_turn():
 	var turn_limit = selected_contract.turn_limit
 	if current_turn == turn_limit:
 		if selected_contract.check_finish_contract(current_score):
+			if current_score > most_score_contract:
+				most_score_contract = current_score
 			current_turn = 0 
 			current_score = 0
 			selected_contract.get_reward()
 			start_select_contract()
-		#TODO: Lose game
 		else:
-			print('fail')
+			game_end.emit(false)
 	else:
 		next_turn()
 	
@@ -147,6 +169,7 @@ func select_contract(_contract: UIContract) -> void:
 	tween.tween_property(_contract, "position", Vector2(10, 10), 0.4 / game_speed)
 	await tween.finished
 	
+	current_contract += 1
 	next_turn()
 
 func can_sell(selected_card: Array[Card]) -> bool:

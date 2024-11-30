@@ -24,6 +24,7 @@ func clear_contract() -> void:
 func _choose_contract(_contract: UIContract):
 	GameManager.select_contract(_contract)
 
+
 func _focus_contract(_contract: UIContract):
 	for _c in contract_list.get_children():
 		if _c is UIContract and _c != _contract:

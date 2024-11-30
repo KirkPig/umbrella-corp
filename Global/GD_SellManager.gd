@@ -23,6 +23,9 @@ var card_sell_bonus :Dictionary = {
 	EResource.GOLD:{},
 }
 
+var sell_history:Dictionary = {}
+
+
 func _ready() -> void:
 	for data_type in EResource:
 		all_bonus[EResource[data_type]] = {}
@@ -45,6 +48,7 @@ func end_turn()-> void:
 func cal_sell_gold(sell_card:Array[Card]):
 	var price  = 0
 	for card : ResourceCard in sell_card:
+		sell_history[card.card_id] = 1 if card.card_id not in sell_history else sell_history[card.card_id] + 1
 		if card.card_id in SellManager.card_sell_bonus[SellManager.EResource.GOLD]:
 			price += SellManager.card_sell_bonus[SellManager.EResource.GOLD][card.card_id]
 		price += card.yield_gold + all_bonus[EResource.GOLD][card.business][EType.ADD]

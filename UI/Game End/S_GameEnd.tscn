@@ -1,0 +1,355 @@
+[gd_scene load_steps=19 format=3 uid="uid://cdo8dx8praujd"]
+
+[ext_resource type="Script" path="res://UI/Game End/GD_GameEnd.gd" id="1_s011a"]
+[ext_resource type="FontFile" uid="uid://c68c8275ueg01" path="res://Assets/Font/SF-Pro-Display-Heavy.otf" id="2_ihnin"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="3_qfxvm"]
+[ext_resource type="Texture2D" uid="uid://c7cig67hklv6p" path="res://Assets/Phone/sellcard.png" id="4_3s8j7"]
+
+[sub_resource type="Theme" id="Theme_8dq5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx0i7"]
+bg_color = Color(0.788235, 0.788235, 0.788235, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="Theme" id="Theme_l7jom"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5jkm"]
+font = ExtResource("2_ihnin")
+font_size = 98
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_tseeu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xob4b"]
+font = ExtResource("3_qfxvm")
+font_size = 48
+font_color = Color(0.466667, 0.286275, 1, 1)
+
+[sub_resource type="Theme" id="Theme_qmlm5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fq8c"]
+font = ExtResource("3_qfxvm")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_fenuc"]
+
+[sub_resource type="Theme" id="Theme_n8qv0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xllsb"]
+bg_color = Color(0.419608, 0.776471, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_s1fwd"]
+font = ExtResource("3_qfxvm")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_v1p4p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8adc7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="SGameEnd" type="CanvasLayer"]
+process_mode = 3
+layer = 4
+visible = false
+script = ExtResource("1_s011a")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+custom_minimum_size = Vector2(1270, 880)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -635.0
+offset_top = -440.0
+offset_right = 635.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8dq5x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx0i7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PanelContainer"]
+layout_mode = 2
+theme = SubResource("Theme_l7jom")
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 72
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="TitleLabel" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "You win...? Congrats!"
+label_settings = SubResource("LabelSettings_f5jkm")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_tseeu")
+theme_override_constants/separation = 32
+
+[node name="Control" type="Control" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -29.0
+offset_right = 102.0
+offset_bottom = 29.0
+grow_vertical = 2
+text = "Total"
+label_settings = SubResource("LabelSettings_xob4b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_qmlm5")
+theme_override_constants/separation = 12
+
+[node name="Container" type="Control" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer/Container"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_3s8j7")
+
+[node name="TotalScoreLabel" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "999,999,999"
+label_settings = SubResource("LabelSettings_1fq8c")
+
+[node name="Control2" type="Control" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -29.0
+offset_right = 102.0
+offset_bottom = 29.0
+grow_vertical = 2
+text = "Most successful contract"
+label_settings = SubResource("LabelSettings_xob4b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_qmlm5")
+theme_override_constants/separation = 12
+
+[node name="Container" type="Control" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control2/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control2/HBoxContainer/Container"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_3s8j7")
+
+[node name="MostScoreLabel" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control2/HBoxContainer"]
+layout_mode = 2
+text = "999,999,999"
+label_settings = SubResource("LabelSettings_1fq8c")
+
+[node name="Control3" type="Control" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -29.0
+offset_right = 102.0
+offset_bottom = 29.0
+grow_vertical = 2
+text = "Most selling resource"
+label_settings = SubResource("LabelSettings_xob4b")
+
+[node name="MostSellContainer" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control3"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_qmlm5")
+theme_override_constants/separation = 12
+
+[node name="Container" type="Control" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control3/MostSellContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="MostSellIcon" type="TextureRect" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control3/MostSellContainer/Container"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_3s8j7")
+
+[node name="MostSellLabel" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control3/MostSellContainer"]
+layout_mode = 2
+text = "99999999"
+label_settings = SubResource("LabelSettings_1fq8c")
+
+[node name="Control4" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fenuc")
+theme_override_constants/separation = 24
+
+[node name="ResourceFoundedLabel" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control4"]
+layout_mode = 2
+text = "Resource founded (17/99)"
+label_settings = SubResource("LabelSettings_xob4b")
+
+[node name="ResourceFoundedContainer" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control4"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme = SubResource("Theme_qmlm5")
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+theme = SubResource("Theme_n8qv0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xllsb")
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/NewGame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "New game"
+label_settings = SubResource("LabelSettings_s1fwd")
+horizontal_alignment = 1
+
+[node name="Control5" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/Control5"]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_v1p4p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8adc7")
+
+[node name="Label2" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/Control5/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -19.5
+offset_right = 75.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit to main menu"
+label_settings = SubResource("LabelSettings_s1fwd")
+horizontal_alignment = 1
+
+[node name="Desktop" type="Button" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/Control5"]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_v1p4p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8adc7")
+
+[node name="Label2" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/Control5/Desktop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -19.5
+offset_right = 75.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit to desktop
+"
+label_settings = SubResource("LabelSettings_s1fwd")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/Control5/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/Control5/Desktop" to="." method="_on_desktop_pressed"]

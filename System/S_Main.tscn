@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=11 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
 [ext_resource type="PackedScene" uid="uid://uc70mvrqrusf" path="res://UI/Contract/S_UI_ContractSelection.tscn" id="7_22o06"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
-[ext_resource type="PackedScene" uid="uid://c6a1y0g401gjq" path="res://S_ScoreBoard.tscn" id="8_8lk2h"]
+[ext_resource type="PackedScene" uid="uid://c6a1y0g401gjq" path="res://UI/Score Board/S_ScoreBoard.tscn" id="8_8lk2h"]
 [ext_resource type="Script" path="res://System/Board/GD_PlayingField.gd" id="9_nrcwl"]
 [ext_resource type="Script" path="res://System/Board/GD_BusinessField.gd" id="10_jfygf"]
+[ext_resource type="PackedScene" uid="uid://cdo8dx8praujd" path="res://UI/Game End/S_GameEnd.tscn" id="10_wqfvh"]
 [ext_resource type="Texture2D" uid="uid://bevpmelaa7v4x" path="res://Assets/UI/Table.png" id="11_7mt5x"]
 [ext_resource type="PackedScene" uid="uid://bisxenor2iny5" path="res://UI/Phone/S_UI_Phone.tscn" id="13_herli"]
 
@@ -78,3 +79,5 @@ offset_top = 79.0
 offset_right = 604.0
 offset_bottom = 79.0
 script = ExtResource("10_jfygf")
+
+[node name="SGameEnd" parent="." instance=ExtResource("10_wqfvh")]

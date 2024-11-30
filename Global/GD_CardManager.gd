@@ -32,7 +32,7 @@ var card_dict: Dictionary = {}
 var business_field: BusinessFieldController
 var hand: HandController:
 	set(value):
-		if hand and hand.hand_selection_change.is_connected(_card_selection_handler):
+		if hand and is_instance_valid(hand) and hand.hand_selection_change.is_connected(_card_selection_handler):
 			hand.hand_selection_change.disconnect(_card_selection_handler)
 		value.hand_selection_change.connect(_card_selection_handler)
 		hand = value
