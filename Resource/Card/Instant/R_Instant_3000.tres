@@ -22,3 +22,6 @@ card_id = 3000
 card_name = "Energy Drink"
 card_texture = SubResource("CompressedTexture2D_vujoi")
 shop_price = 20
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([0, 0])
