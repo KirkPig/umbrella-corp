@@ -65,7 +65,7 @@ func bouncing_card() -> void:
 	await get_tree().create_timer(0.6 / GameManager.game_speed).timeout
 	emit_signal("card_scaling_up")
 	card_play.emit(self)
-	await get_tree().create_timer(0.2 / GameManager.game_speed).timeout
+	await get_tree().create_timer(0.5 / GameManager.game_speed).timeout
 	tween_bouncing.kill()
 	tween_bouncing = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_speed_scale(GameManager.game_speed)
 	tween_bouncing.tween_property(self, "scale", Vector2.ONE, 0.7)

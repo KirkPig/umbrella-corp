@@ -6,7 +6,6 @@ class_name BusinessFieldController
 
 @onready var _template_business_ui = preload("res://UI/Business/S_UI_Business.tscn")
 
-# TODO: added new business
 func add_new_business(_id: int) -> UIBusiness:
 	var _ui: UIBusiness = _template_business_ui.instantiate()
 	add_child(_ui)
@@ -14,7 +13,6 @@ func add_new_business(_id: int) -> UIBusiness:
 	update_position()
 	return _ui
 
-# TODO: max business
 func update_position():
 	var _nodes = self.get_children()
 	var i = 0

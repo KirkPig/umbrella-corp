@@ -90,7 +90,7 @@ func _bouncing_each_card():
 	for _card in card_in_play:
 		_card.bouncing_card()
 		await _card.card_scaling_up
-		await get_tree().create_timer(0.2 / GameManager.game_speed).timeout
+		await get_tree().create_timer(0.5 / GameManager.game_speed).timeout
 	await get_tree().create_timer(0.5 / GameManager.game_speed).timeout
 	emit_signal("_bouncing_done")
 

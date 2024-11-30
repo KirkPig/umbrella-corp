@@ -28,10 +28,6 @@ func selected():
 		return
 	emit_signal("selected_work", self)
 
-# TODO: Resource card pick on yield list
-func gather_resource() -> int:
-	return resource_yield_list[0]
-
 func set_data(data: BusinessCardData):
 	set_base_data(data)
 	max_usage = data.max_usage
