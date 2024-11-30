@@ -129,11 +129,24 @@ func end_turn():
 	else:
 		next_turn()
 	
-func select_contract(contract: ContractData) -> void:
-	selected_contract = contract
-	goal_turn = contract.turn_limit
-	goal_score = contract.score_goal
+func select_contract(_contract: UIContract) -> void:
+	var _level = CardManager.hand.get_parent()
+	selected_contract = _contract.data
+	goal_turn = selected_contract.turn_limit
+	goal_score = selected_contract.score_goal
+	
+	_contract.is_selected = false
+	_contract.is_disable_selection = true
+	var _old_position = _contract.global_position
+	_contract.reparent(_level)
+	_contract.global_position = _old_position
+	
 	contract_selection.hide()
+	await get_tree().create_timer(0.1 / game_speed).timeout
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(_contract, "position", Vector2(10, 10), 0.4 / game_speed)
+	await tween.finished
+	
 	next_turn()
 
 func can_sell(selected_card: Array[Card]) -> bool:

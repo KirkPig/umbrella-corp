@@ -21,8 +21,8 @@ func clear_contract() -> void:
 			item.queue_free()
 
 # Private function
-func _choose_contract(_data: ContractData):
-	GameManager.select_contract(_data)
+func _choose_contract(_contract: UIContract):
+	GameManager.select_contract(_contract)
 
 func _focus_contract(_contract: UIContract):
 	for _c in contract_list.get_children():

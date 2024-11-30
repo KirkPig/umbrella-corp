@@ -14,7 +14,7 @@ enum ERewardBonusResource {
 func can_activate(_resource: int) -> bool:
 	if !super(_resource):
 		return false
-	match ERewardBonusResource:
+	match reward_type:
 		ERewardBonusResource.gold:
 			return true
 		ERewardBonusResource.card:
@@ -22,7 +22,7 @@ func can_activate(_resource: int) -> bool:
 	return true
 
 func activate() -> void:
-	match ERewardBonusResource:
+	match reward_type:
 		ERewardBonusResource.gold:
 			var _range = amount_to - amount_from + 2
 			var _amount = amount_from + (GameManager.rng.randi() % _range)

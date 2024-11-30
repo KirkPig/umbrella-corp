@@ -44,7 +44,7 @@ func action_add_component(business: UIBusiness):
 	CardManager.fill_hand()
 	
 	GameManager.energy -=  GameManager.energy_cost_work
-	#action_list.reset_list()
+	action_list.reset_list()
 	
 	action_done.emit()
 	
@@ -140,7 +140,14 @@ func action_research():
 	for _r in _reward:
 		_w_arr.append(_r.chance)
 	var _w = PackedFloat32Array(_w_arr)
-	_reward[GameManager.rng.rand_weighted(_w)].activate()
+	var _rand_r = _reward[GameManager.rng.rand_weighted(_w)]
+	print(_rand_r.priority, " ",_rand_r.chance)
+	_rand_r.activate()
+	CardManager.played_cards(selected_card)
+	CardManager.fill_hand()
+	GameManager.energy -=  GameManager.energy_cost_work
+	action_list.reset_list()
+	
 	action_done.emit()
 	
 	
