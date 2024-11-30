@@ -6,10 +6,11 @@ class_name BusinessFieldController
 
 @onready var _template_business_ui = preload("res://UI/Business/S_UI_Business.tscn")
 
-func add_new_business(_id: int) -> UIBusiness:
+func add_new_business(_id: int, _res_id: int) -> UIBusiness:
 	var _ui: UIBusiness = _template_business_ui.instantiate()
 	add_child(_ui)
 	_ui.business_card_data = CardManager.card_dict[_id]
+	_ui.current_yield = CardManager.card_dict[_res_id]
 	update_position()
 	return _ui
 
