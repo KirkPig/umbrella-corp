@@ -52,7 +52,7 @@ layer = 2
 
 [node name="ContractSelection" parent="CanvasLayer" instance=ExtResource("7_22o06")]
 
-[node name="SUiPhont" parent="." instance=ExtResource("13_herli")]
+[node name="SUiPhone" parent="." instance=ExtResource("13_herli")]
 
 [node name="SScoreBoard" parent="." instance=ExtResource("8_8lk2h")]
 layout_mode = 0

@@ -1,7 +1,9 @@
 extends Control
 class_name PlayingFieldController
 
+signal selected_resource_done(_card: Card)
 signal playing_cards_done
+signal playing_change_resource_done
 
 signal _card_entered
 signal _bouncing_done
@@ -11,6 +13,20 @@ signal _card_exited
 @export var field_width: float = 1200
 
 var card_in_play: Array[Card]
+
+func playing_change_resource(_res: Array[int]):
+	_res.sort()
+	for _id in _res:
+		_create_local_resource_card(_id)
+		await get_tree().create_timer(0.13 / GameManager.game_speed).timeout
+	return
+
+func finish_playing_change_resource(_exit_global_pos: Vector2):
+	_card_exit(_exit_global_pos)
+	await _card_exited
+	_clear_cards_in_play()
+	card_in_play = []
+	playing_change_resource_done.emit()
 
 func playing_cards(_nodes: Array[Card], _exit_global_pos: Vector2, _destroy: bool):
 	for _node in _nodes:
@@ -28,10 +44,24 @@ func playing_cards(_nodes: Array[Card], _exit_global_pos: Vector2, _destroy: boo
 	if _destroy:
 		_clear_cards_in_play()
 	card_in_play = []
-	emit_signal("playing_cards_done")
+	playing_cards_done.emit()
 	
 func _ready() -> void:
 	ActionManager.playing_field = self
+
+func _create_local_resource_card(_id: int):
+	var _card = CardManager.create_resource_card()
+	_card.is_buy.disconnect(ActionManager.action_buy)
+	add_child(_card)
+	_card.set_data(CardManager.card_dict[_id])
+	_card.in_shop = true
+	_card.global_position = Vector2(2000, global_position.y)
+	_card.is_buy.connect(_selected_resoruce)
+	card_in_play.append(_card)
+	_update_position()
+
+func _selected_resoruce(_card: Card):
+	selected_resource_done.emit(_card)
 
 func _card_exit(_exit_global_pos: Vector2):
 	var _exit_pos = _exit_global_pos - global_position

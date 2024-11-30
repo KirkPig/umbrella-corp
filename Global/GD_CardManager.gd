@@ -118,21 +118,19 @@ func random_shop_card() -> int:
 	
 
 func _ready() -> void:
-	load_cards("res://Resource/Card/Business/", false)
-	load_cards("res://Resource/Card/Resource/", false)
-	load_cards("res://Resource/Card/Worker/", false)
-	load_cards("res://Resource/Card/Instant/", true)
-	load_cards("res://Resource/Card/Upgrade/", false)
+	load_cards("res://Resource/Card/Business/")
+	load_cards("res://Resource/Card/Resource/")
+	load_cards("res://Resource/Card/Worker/")
+	load_cards("res://Resource/Card/Instant/")
+	load_cards("res://Resource/Card/Upgrade/")
 
-func load_cards(_path: String, _is_unlocked: bool) -> void:
+func load_cards(_path: String) -> void:
 	var _card_res = DirAccess.get_files_at(_path)
 	for _files in _card_res:
 		var data: CardData = load(_path + _files)
 		card_dict[data.card_id] = data
 		if data is ResourceCardData:
 			add_upgrade_card_data(data)
-		if _is_unlocked:
-			card_pool.append(data.card_id)
 
 func add_upgrade_card_data(data:ResourceCardData):
 	for i in UpgradeCardData.EUpgradeResource:

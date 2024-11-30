@@ -26,12 +26,13 @@ func _choose_contract(_contract: UIContract):
 
 
 func _focus_contract(_contract: UIContract):
-	for _c in contract_list.get_children():
-		if _c is UIContract and _c != _contract:
+	for _c: UIContract in contract_list.get_children():
+		if _c != _contract:
 			_c.is_selected = false
 
 func _add_contract(_data: ContractData) -> UIContract:
 	var contract: UIContract = template_contract.instantiate()
 	contract_list.add_child(contract)
 	contract.data = _data
+	contract.is_disable_selection = false
 	return contract

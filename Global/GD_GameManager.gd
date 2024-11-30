@@ -107,9 +107,14 @@ var most_score_contract:int = 0:
 	set(value):
 		if value > most_score_contract:
 			most_score_contract = value
-		
+
 var selected_contract: ContractData
+
+# Level user interface
+var scoreboard: Control
+var phone_canvas: CanvasLayer
 var contract_selection: UIContractSelection
+var selected_contract_ui: UIContract
 
 var rng: RandomNumberGenerator
 
@@ -120,7 +125,19 @@ var energy_cost_research: int = 1
 
 var game_speed: float = 1
 
+# TODO: transition show and hide each ui component
+func show_level_ui():
+	scoreboard.show()
+	phone_canvas.show()
+	CardManager.business_field.show()
+
+func hide_level_ui():
+	scoreboard.hide()
+	phone_canvas.hide()
+	CardManager.business_field.hide()
+
 func start_select_contract() -> void:
+	hide_level_ui()
 	contract_selection.show()
 	contract_selection.clear_contract()
 	for i in 3:
@@ -140,11 +157,7 @@ func end_turn():
 	var turn_limit = selected_contract.turn_limit
 	if current_turn == turn_limit:
 		if selected_contract.check_finish_contract(current_score):
-			if current_score > most_score_contract:
-				most_score_contract = current_score
-			current_turn = 0 
-			current_score = 0
-			selected_contract.get_reward()
+			complete_contract()
 			start_select_contract()
 		else:
 			game_end.emit(false)
@@ -163,14 +176,27 @@ func select_contract(_contract: UIContract) -> void:
 	_contract.reparent(_level)
 	_contract.global_position = _old_position
 	
+	contract_selection.clear_contract()
 	contract_selection.hide()
-	await get_tree().create_timer(0.1 / game_speed).timeout
+	await get_tree().create_timer(0.2 / game_speed).timeout
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(_contract, "position", Vector2(10, 10), 0.4 / game_speed)
-	await tween.finished
-	
+	tween.tween_property(_contract, "position", Vector2(10, 10), 0.8 / game_speed)
+	await get_tree().create_timer(0.6 / game_speed).timeout
 	current_contract += 1
+	selected_contract_ui = _contract
+	start_contract()
+
+func start_contract() -> void:
+	show_level_ui()
 	next_turn()
+
+func complete_contract() -> void:
+	if current_score > most_score_contract:
+		most_score_contract = current_score
+	current_turn = 0 
+	current_score = 0
+	selected_contract.get_reward()
+	selected_contract_ui.queue_free() # TODO: complete contract transition
 
 func can_sell(selected_card: Array[Card]) -> bool:
 	if selected_card.size() <= 0:
@@ -197,8 +223,10 @@ func can_add_components(selected_card: Array[Card], resource_components: Array[R
 			return false
 	return true
 
-func can_business_change_resource(business_card_id: int) -> bool:
-	var _data: BusinessCardData = CardManager.card_dict[business_card_id]
+func can_business_change_resource(_business: UIBusiness) -> bool:
+	if ActionManager.is_change_resource: return false
+	if GameManager.gold < _business.change_resource_price: return false
+	var _data: BusinessCardData = _business.business_card_data
 	return _data.resource_yield_list.size() > 1
 
 func can_discard(selected_card: Array[Card]) -> bool:
