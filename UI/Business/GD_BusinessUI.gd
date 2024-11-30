@@ -37,8 +37,6 @@ var business_card_data: BusinessCardData:
 	set(value):
 		label_business_name.text = value.card_name
 		var _id = value.resource_yield_list[0]
-		var _res: ResourceCardData = CardManager.card_dict[_id]
-		current_yield = _res
 		sell_price = value.shop_price / 10 * 8
 		change_resource_price = value.shop_price / 10 * 2
 		business_card_data = value

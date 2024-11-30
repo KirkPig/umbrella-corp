@@ -107,7 +107,7 @@ func action_buy(card: Card)-> bool:
 	card.in_shop = false
 	
 	if card is BusinessCard:
-		CardManager.add_card_to_business_field(card.card_id)
+		CardManager.add_card_to_business_field(card.card_id,card.current_yield_id)
 		card.queue_free() # TODO: make animation buying
 	elif card is UpgradeCard:
 		card.card_data.played()

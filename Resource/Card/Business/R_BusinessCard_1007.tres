@@ -11,3 +11,6 @@ card_id = 1007
 card_name = "Orchard"
 card_texture = ExtResource("1_nwt54")
 shop_price = 55
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

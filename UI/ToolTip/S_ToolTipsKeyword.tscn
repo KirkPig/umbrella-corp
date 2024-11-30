@@ -52,10 +52,10 @@ custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 
 [node name="KeywordIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
-layout_mode = 0
-offset_right = 53.0
-offset_bottom = 52.0
-scale = Vector2(0.5, 0.5)
+layout_mode = 1
+offset_right = 68.0
+offset_bottom = 68.0
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_q2n5s")
 
 [node name="KeywordLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -64,11 +64,11 @@ text = "Labor"
 label_settings = SubResource("LabelSettings_j5oc8")
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
-text = "yield from worker card"
 label_settings = SubResource("LabelSettings_8plcm")
 horizontal_alignment = 2
 
 [node name="SGoldScore" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_w4d8g")]
-visible = false
 layout_mode = 2
+size_flags_horizontal = 8

@@ -33,9 +33,3 @@ func activate() -> void:
 
 func refresh_data():
 	set_base_data(card_data)
-	if len(card_data.keyword_list) > 0:
-		if s_tooltips:
-			s_tooltips.set_keywords(card_data.keyword_list)
-	if card_data.Effect != "":
-		if s_tooltips:
-			s_tooltips.set_effect(card_data.Effect)
