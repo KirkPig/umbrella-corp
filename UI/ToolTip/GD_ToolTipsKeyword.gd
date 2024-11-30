@@ -20,7 +20,7 @@ enum EKeyword{
 
 var resource_id:int = -1
 
-@onready var keyword_icon: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/KeywordIcon
+@onready var keyword_icon: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/Control/KeywordIcon
 @onready var keyword_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/KeywordLabel
 @onready var description_label: Label = $MarginContainer/VBoxContainer/DescriptionLabel
 @onready var s_gold_score: HBoxContainer = $MarginContainer/VBoxContainer/SGoldScore

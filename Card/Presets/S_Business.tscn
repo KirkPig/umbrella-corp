@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0k7l318sse8m"]
+[gd_scene load_steps=6 format=3 uid="uid://b0k7l318sse8m"]
 
 [ext_resource type="Script" path="res://Card/GD_BusinessCard.gd" id="1_b6kww"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_wo584"]
 [ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/BusinessCard/A_BusinessCard_1000.png" id="3_6jrv4"]
+[ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_oojix"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -29,6 +30,19 @@ offset_bottom = 720.0
 scale = Vector2(0.333, 0.333)
 texture = ExtResource("3_6jrv4")
 stretch_mode = 2
+
+[node name="STooltips" parent="Card" instance=ExtResource("4_oojix")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 477.477
+offset_top = -15.015
+offset_right = 477.477
+offset_bottom = -15.015
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.8, 1.8)
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

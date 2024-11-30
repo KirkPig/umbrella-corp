@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://q8iej2pu3w0m"]
+[gd_scene load_steps=6 format=3 uid="uid://q8iej2pu3w0m"]
 
 [ext_resource type="Script" path="res://Card/GD_ResourceCard.gd" id="1_2lajr"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_uqi2t"]
 [ext_resource type="Texture2D" uid="uid://b2kr3bpbr3ua3" path="res://Assets/ResourceCard/A_ResourceCard_2000.png" id="3_0ery7"]
+[ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_kd7ll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mapuj"]
 resource_local_to_scene = true
@@ -28,6 +29,19 @@ offset_bottom = 720.0
 scale = Vector2(0.333, 0.333)
 texture = ExtResource("3_0ery7")
 stretch_mode = 2
+
+[node name="STooltips" parent="Card" instance=ExtResource("4_kd7ll")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 477.477
+offset_top = -15.015
+offset_right = 477.477
+offset_bottom = -15.015
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.8, 1.8)
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]
