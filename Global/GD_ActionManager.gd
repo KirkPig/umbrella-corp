@@ -5,8 +5,6 @@ signal action_done
 var action_list: ActionListController
 var playing_field: PlayingFieldController:
 	set(value):
-		if playing_field:
-			playing_field.selected_resource_done.disconnect(_finish_action_change_resource)
 		value.selected_resource_done.connect(_finish_action_change_resource)
 		playing_field = value
 
@@ -60,9 +58,10 @@ func action_add_component(business: UIBusiness):
 	
 
 func action_discard():
+	var selected_card = CardManager.get_selected_card()
 	CardManager.hand.start_discard_transition()
 	await CardManager.hand.discard_transition_done
-	CardManager.discards(CardManager.get_selected_card())
+	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
 	GameManager.discard_energy -= GameManager.energy_cost_discard
@@ -138,7 +137,6 @@ func _get_valid_research_reward_priority(_data: ResourceCardData, _another_resou
 		for _res in _res_rewards:
 			if _res.can_activate(_another_resource_id):
 				valid = true
-		# TODO: make sure priority always not overflow
 		if valid or _priority >= 3:
 			break
 		_priority += 1

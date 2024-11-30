@@ -53,7 +53,7 @@ func _create_local_resource_card(_id: int):
 	var _card = CardManager.create_resource_card()
 	_card.is_buy.disconnect(ActionManager.action_buy)
 	add_child(_card)
-	_card.set_data(CardManager.card_dict[_id])
+	_card.card_data = CardManager.card_dict[_id]
 	_card.in_shop = true
 	_card.global_position = Vector2(2000, global_position.y)
 	_card.is_buy.connect(_selected_resoruce)
@@ -90,7 +90,7 @@ func _bouncing_each_card():
 	for _card in card_in_play:
 		_card.bouncing_card()
 		await _card.card_scaling_up
-		await get_tree().create_timer(0.2 / GameManager.game_speed).timeout
+		await get_tree().create_timer(0.5 / GameManager.game_speed).timeout
 	await get_tree().create_timer(0.5 / GameManager.game_speed).timeout
 	emit_signal("_bouncing_done")
 

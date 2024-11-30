@@ -51,7 +51,6 @@ var current_yield: ResourceCardData:
 		# Icon
 		icon_yield.texture = value.card_icon
 		# Labor progress bar
-		label_yield.text = str(value.yield_piece) + "x " + value.card_name
 		current_labor = 0
 		labor = value.labor_per_piece
 		# Component bar
@@ -62,28 +61,46 @@ var current_yield: ResourceCardData:
 			component.show()
 		else:
 			component.hide()
-		
+		if current_yield:
+			current_yield.changed.disconnect(refresh_data)
 		current_yield = value
+		refresh_data()
+		value.changed.connect(refresh_data)
+
+func refresh_data():
+	label_yield.text = str(current_yield.yield_piece) + "x " + current_yield.card_name
 
 ## labor state
 var current_labor: int = 0:
 	set(value):
 		# TODO: labor added transition
-		if !can_use_components():
-			return
-		while value >= labor:
-			_yield_resource()
-			value -= labor
-		current_labor = value
-		label_progress.text = str(current_labor) + "/" + str(labor)
+		var _total_time = 0.4 / GameManager.game_speed
 		
-		progress_bar.value = value
+		var _time = 0
+		while value >= labor:
+			_time += 1
+			value -= labor
+		
+		for i in _time:
+			if !can_use_components():
+				value = current_labor
+				break
+			var _tween = create_tween()
+			_tween.tween_property(progress_bar, "value", labor, _total_time / (_time + 1))
+			await _tween.finished
+			_yield_resource()
+			progress_bar.value = 0
+			current_labor = 0
+		
+		var _tween = create_tween()
+		_tween.tween_property(progress_bar, "value", value, _total_time / (_time + 1))
+		await _tween.finished
+		current_labor = value
 var labor: int = 4:
 	set(value):
 		labor = value
-		label_progress.text = str(current_labor) + "/" + str(labor)
-		
 		progress_bar.max_value = value
+		_set_progress(current_labor)
 
 var sell_price: int = 0:
 	set(value):
@@ -92,7 +109,7 @@ var sell_price: int = 0:
 
 var change_resource_price: int = 0:
 	set(value):
-		btn_change_resource.text = "Change resource ($" + str(value) + ")"
+		btn_change_resource.text = "Change products ($" + str(value) + ")"
 		change_resource_price = value
 
 var components: Dictionary
@@ -148,12 +165,19 @@ func can_use_components() -> bool:
 			return false
 	return true
 
+func _set_progress(value):
+	label_progress.text = str(int(value)) + "/" + str(labor)
+
+func _ready() -> void:
+	progress_bar.value_changed.connect(_set_progress)
+
 func _yield_resource():
 	var _n = _use_component()
 	if _n == 0:
 		return
-	var _c: Card = CardManager.add_card_to_deck(current_yield.card_id)
-	CardManager.discard(_c)
+	for i in current_yield.yield_piece:
+		var _c: Card = CardManager.add_card_to_deck(current_yield.card_id)
+		CardManager.discard(_c)
 
 func _use_component() -> int:
 	if !can_use_components():
@@ -195,7 +219,7 @@ func _rotate_velocity(delta: float) -> void:
 func _process(delta: float) -> void:
 	_rotate_velocity(delta)
 
-# TODO: handle the transition when the button is shown/hiden
+# TODO(canceled): handle the transition when the button is shown/hiden
 #@onready var btn_work_last_pos: Vector2 = btn_work.position
 #
 #func _process(delta: float) -> void:

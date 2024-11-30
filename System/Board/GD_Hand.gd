@@ -45,7 +45,7 @@ func get_selected_card() -> Array[Card]:
 	return selected_card
 
 func start_discard_transition():
-	_card_exit(Vector2(-500, global_position.y))
+	_card_exit(Vector2(1583, global_position.y))
 	await _card_discarded
 	discard_transition_done.emit()
 
@@ -60,6 +60,7 @@ func _card_exit(_exit_global_pos: Vector2):
 		_c.reparent(_parent)
 		_c.global_position = _old_pos
 	
+	selected_card.sort_custom(_compare_position)
 	update_position()
 	
 	for i in n:
@@ -80,3 +81,6 @@ func _selection_change_handler():
 
 func _compare_card(a: Card, b: Card) -> bool:
 	return a.card_id < b.card_id
+
+func _compare_position(a: Card, b: Card) -> bool:
+	return a.position.x > b.position.x

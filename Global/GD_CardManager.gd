@@ -240,8 +240,10 @@ func add_card_to_hand(_id: int) -> Card:
 	hand.add_exists(card)
 	return card
 
+# TODO: make business card from shop
 func add_card_to_business_field(_id: int) -> UIBusiness:
-	return business_field.add_new_business(_id)
+	var _bus: BusinessCardData = card_dict[_id]
+	return business_field.add_new_business(_id, _bus.resource_yield_list[0])
 	
 func add_card_to_pool(card_id_list:Array[int]) -> void:
 	for card_id in card_id_list:

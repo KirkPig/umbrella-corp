@@ -5,6 +5,7 @@ extends Control
 @export var start_discard_energy : int = 3
 @export var start_shop_refresh : int = 10
 @export var max_contract : int = 8
+@export var game_speed: int = 4
 
 @export var start_deck: Array[int]
 @export var start_resource_pool: Array[int]
@@ -48,6 +49,8 @@ func set_up_game_manager() -> void:
 	GameManager.max_contract = max_contract
 	
 	GameManager.phone_canvas = s_ui_phone
+	
+	GameManager.game_speed = game_speed
 	
 	GameManager.rng = RandomNumberGenerator.new()
 	GameManager.rng.seed = hash("0")
