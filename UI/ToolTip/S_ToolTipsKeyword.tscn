@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://bnvm8eelhsacc"]
+
+[ext_resource type="Script" path="res://UI/ToolTip/GD_ToolTipsKeyword.gd" id="1_d14k3"]
+[ext_resource type="Texture2D" uid="uid://cexoowloi0nsc" path="res://Assets/Tooltip/Labor.png" id="2_q2n5s"]
+[ext_resource type="PackedScene" uid="uid://b6xsons7vdo51" path="res://UI/ToolTip/S_GoldScore.tscn" id="2_w4d8g"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="3_icpm6"]
+[ext_resource type="FontFile" uid="uid://b44qaa3hcljg3" path="res://Assets/Font/SF-Pro-Rounded-Medium.otf" id="4_8qp60"]
+
+[sub_resource type="Theme" id="Theme_np1lc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvsvh"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_nmejk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5oc8"]
+font = ExtResource("3_icpm6")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8plcm"]
+font = ExtResource("4_8qp60")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[node name="SToolTipsKeyword" type="PanelContainer"]
+theme = SubResource("Theme_np1lc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rvsvh")
+script = ExtResource("1_d14k3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_nmejk")
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="KeywordIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_q2n5s")
+
+[node name="KeywordLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Labor"
+label_settings = SubResource("LabelSettings_j5oc8")
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "yield from worker card"
+label_settings = SubResource("LabelSettings_8plcm")
+horizontal_alignment = 2
+
+[node name="SGoldScore" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_w4d8g")]
+visible = false
+layout_mode = 2
