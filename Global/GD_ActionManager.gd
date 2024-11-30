@@ -60,6 +60,8 @@ func action_add_component(business: UIBusiness):
 	
 
 func action_discard():
+	CardManager.hand.start_discard_transition()
+	await CardManager.hand.discard_transition_done
 	CardManager.discards(CardManager.get_selected_card())
 	CardManager.fill_hand()
 	
