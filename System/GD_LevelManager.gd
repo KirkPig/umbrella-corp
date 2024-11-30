@@ -4,12 +4,15 @@ extends Control
 @export var start_max_hand : int = 5
 @export var start_discard_energy : int = 3
 @export var start_shop_refresh : int = 10
+@export var max_contract : int = 8
 
 @export var start_deck: Array[int]
 @export var start_resource_pool: Array[int]
 @export var start_upgrade_pool: Array[int]
 
 @export var start_business: Array[int]
+
+@onready var s_game_end: CanvasLayer = $SGameEnd
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,10 +24,12 @@ func _process(delta: float) -> void:
 
 func start_game():
 	set_up_game_manager()
+	clear_card_pool()
 	add_card_pool()
 	add_start_deck()
 	add_start_business()
 	GameManager.start_select_contract()
+	s_game_end.start_resource_list = start_resource_pool
 
 func set_up_game_manager() -> void:
 	GameManager.current_turn = 0
@@ -39,9 +44,13 @@ func set_up_game_manager() -> void:
 	GameManager.max_discard_energy = start_discard_energy
 	GameManager.shop_refresh = start_shop_refresh
 	GameManager.max_shop_refresh = start_shop_refresh
+	GameManager.max_contract = max_contract
 	
 	GameManager.rng = RandomNumberGenerator.new()
 	GameManager.rng.seed = hash("0")
+
+func clear_card_pool():
+	CardManager.card_pool = []
 
 func add_card_pool() -> void:
 	for _id in start_resource_pool:
