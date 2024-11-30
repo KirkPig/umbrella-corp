@@ -6,11 +6,12 @@ enum EKeyword{
 	ENERGY,
 	DEMAND,
 	TURN,
-	CARD_TO_HAND,
+	ADD_CARD,
 	INC_PRICE,
 	DEC_PRICE,
 	CHANGE_CARD,
 	DESTROY_CARD,
+	DISCARD,
 	RESTRICT,
 	YEILD,
 	SHOP_REFRESH,
@@ -61,8 +62,8 @@ func set_keyword(keyword:EKeyword) -> void:
 		EKeyword.TURN:
 			keyword_label.text = "Turn"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_increaseturn.png")
-		EKeyword.CARD_TO_HAND:
-			keyword_label.text = "Add card to your hand"
+		EKeyword.ADD_CARD:
+			keyword_label.text = "Add card to your pile"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_increasecard.png")
 		EKeyword.INC_PRICE:
 			keyword_label.text = "Price"
@@ -76,6 +77,9 @@ func set_keyword(keyword:EKeyword) -> void:
 		EKeyword.DESTROY_CARD:
 			keyword_label.text = "Destroy card"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_destroycard.png")
+		EKeyword.DISCARD:
+			keyword_label.text = "Discard card"
+			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_discardcard.png")
 		EKeyword.RESTRICT:
 			keyword_label.text = "Restrict"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_restrictcard.png")
