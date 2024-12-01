@@ -251,7 +251,7 @@ func can_business_change_resource(_business: UIBusiness) -> bool:
 func can_discard(selected_card: Array[Card]) -> bool:
 	if selected_card.size() <= 0:
 		return false
-	if energy < energy_cost_discard:
+	if discard_energy <= 0:
 		return false
 	return true
 

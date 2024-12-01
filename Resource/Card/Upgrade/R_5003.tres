@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="UpgradeCardData" load_steps=3 format=3 uid="uid://b34ijgboaubeu"]
+[gd_resource type="Resource" script_class="UpgradeCardData" load_steps=4 format=3 uid="uid://b34ijgboaubeu"]
 
+[ext_resource type="Texture2D" uid="uid://c8ru07xijo488" path="res://Assets/UpgradeIcon/light.svg" id="1_1bk46"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_UpgradeCard.gd" id="1_su5wt"]
 [ext_resource type="Texture2D" uid="uid://bseb3aqces6mn" path="res://Assets/UpgradeCard/A_UpgradeCard_maxEnergy.png" id="1_tmgpq"]
 
@@ -9,9 +10,10 @@ upgrade_type = 2
 upgrade_resoruce_id = -1
 upgrade_amount = 1
 card_id = 5003
-card_name = ""
+card_name = "Upgrade phone battery"
 card_texture = ExtResource("1_tmgpq")
 shop_price = 10
+card_icon = ExtResource("1_1bk46")
 Effect = "Max energy +1"
 resource_id_list = Array[int]([])
 keyword_list = Array[int]([1])

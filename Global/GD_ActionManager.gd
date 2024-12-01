@@ -1,6 +1,7 @@
 extends Node
 
 signal action_done
+signal reset_action_list
 
 var action_list: ActionListController
 var playing_field: PlayingFieldController:
@@ -14,6 +15,13 @@ var research_reward_summary: UIResearchReward:
 
 var is_change_resource: bool = false
 var _selected_business_ui: UIBusiness
+
+func _ready() -> void:
+	reset_action_list.connect(_update_action_list)
+
+func _update_action_list():
+	action_list.reset_list()
+	CardManager.business_field.update_child_ui()
 
 ## Section: Actions
 func action_work(business: UIBusiness):
@@ -34,9 +42,7 @@ func action_work(business: UIBusiness):
 	CardManager.fill_hand()
 	
 	GameManager.energy -=  GameManager.energy_cost_work
-	
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 
 func action_add_component(business: UIBusiness):
@@ -56,8 +62,7 @@ func action_add_component(business: UIBusiness):
 	
 	GameManager.energy -=  GameManager.energy_cost_work
 	
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 	
 
@@ -70,8 +75,7 @@ func action_discard():
 	
 	GameManager.discard_energy -= GameManager.energy_cost_discard
 	
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 
 func action_sell():
@@ -88,8 +92,7 @@ func action_sell():
 	
 	GameManager.energy = GameManager.energy - GameManager.energy_cost_sell
 	
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 
 func action_sell_business(_ui: UIBusiness):
@@ -99,8 +102,7 @@ func action_sell_business(_ui: UIBusiness):
 	if is_instance_valid(_ui):
 		_ui.queue_free()
 	
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 
 func action_buy(card: Card)-> bool:
@@ -120,8 +122,7 @@ func action_buy(card: Card)-> bool:
 		CardManager.hand.add_exists(card) # TODO: make animation buying
 	
 	CardManager.shop.reset_shop()
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 	
 	return true
@@ -196,8 +197,7 @@ func action_research():
 func _finish_action_research():
 	research_reward_summary.hide()
 	CardManager.fill_hand()
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 	
 func action_activate() -> void:
@@ -211,8 +211,7 @@ func action_activate() -> void:
 	
 	CardManager.fill_hand()
 	
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 
 func action_change_resource(_business: UIBusiness) -> void:
@@ -231,8 +230,7 @@ func _finish_action_change_resource(_card: Card):
 	_selected_business_ui.current_yield = CardManager.card_dict[_card.card_id]
 	is_change_resource = false
 	
-	action_list.reset_list()
-	CardManager.business_field.update_child_ui()
+	_update_action_list()
 	action_done.emit()
 
 func connect_selection(draw_card: Card):
