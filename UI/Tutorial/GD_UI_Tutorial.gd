@@ -58,7 +58,7 @@ var _asset_flow_text: Array[String] = [
 
 var _worker_flow_text: Array[String] = [
 	"As a start of our journey, we only have 10 workers with us right now",
-	"But do not worry. Our asset will be expands."
+	"But do not worry. Our assets will be expands."
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -87,6 +87,10 @@ func play_phone_flow():
 	_play_worker_speech(_asset_flow_text)
 	await _worker_speech_finish
 	$AssetFlow.hide()
+	$CurrentAsset.show()
+	_play_worker_speech(_worker_flow_text)
+	await _worker_speech_finish
+	$CurrentAsset.hide()
 	play_phone_flow_finished.emit()
 
 func _play_worker_speech(_arr: Array[String]):
