@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bisxenor2iny5"]
+[gd_scene load_steps=35 format=3 uid="uid://bisxenor2iny5"]
 
 [ext_resource type="Script" path="res://UI/Phone/GD_phone.gd" id="1_lk1nw"]
 [ext_resource type="Texture2D" uid="uid://dybaqdfpu283c" path="res://Assets/Phone/phoneframe.png" id="1_t4ip5"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dxbll1qq3t35q" path="res://Assets/Phone/refreshnobg.png" id="25_r5ktg"]
 [ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="26_0r2hf"]
 [ext_resource type="Texture2D" uid="uid://bdopnopklnf74" path="res://Assets/Phone/moon.svg" id="26_t8osi"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="27_brhb3"]
 [ext_resource type="AudioStream" uid="uid://bq41abyvxi6dq" path="res://Assets/SFX/SFX_No_Energy.mp3" id="27_mxs6n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5buys"]
@@ -50,6 +51,10 @@ corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_0kjqw"]
+font = ExtResource("27_brhb3")
+font_size = 20
 
 [node name="SUiPhont" type="CanvasLayer"]
 script = ExtResource("1_lk1nw")
@@ -657,9 +662,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qniwt")
 visible = false
 layout_mode = 0
 offset_left = -140.0
-offset_top = 252.0
+offset_top = 250.0
 offset_right = -44.0
-offset_bottom = 348.0
+offset_bottom = 346.0
 texture = ExtResource("26_t8osi")
 expand_mode = 1
 
@@ -671,6 +676,7 @@ offset_top = 400.0
 offset_right = 315.0
 offset_bottom = 423.0
 text = "Sleeping..."
+label_settings = SubResource("LabelSettings_0kjqw")
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
