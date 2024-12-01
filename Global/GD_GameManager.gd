@@ -227,7 +227,14 @@ func can_sell(selected_card: Array[Card]) -> bool:
 			return false
 	return true
 
+func can_sell_business(_business: UIBusiness) -> bool:
+	if ActionManager.is_change_resource: return false
+	if ActionManager.is_currently_on_action: return false
+	return true
+
+
 func can_add_components(selected_card: Array[Card], resource_components: Array[ResourceComponentItemData]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	var _li: Array[int] = []
 	for _j in resource_components:
 		_li.append(_j.resource_id)
@@ -244,11 +251,13 @@ func can_add_components(selected_card: Array[Card], resource_components: Array[R
 
 func can_business_change_resource(_business: UIBusiness) -> bool:
 	if ActionManager.is_change_resource: return false
+	if ActionManager.is_currently_on_action: return false
 	if GameManager.gold < _business.change_resource_price: return false
 	var _data: BusinessCardData = _business.business_card_data
 	return _data.resource_yield_list.size() > 1
 
 func can_discard(selected_card: Array[Card]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	if selected_card.size() <= 0:
 		return false
 	if discard_energy <= 0:
@@ -256,6 +265,7 @@ func can_discard(selected_card: Array[Card]) -> bool:
 	return true
 
 func can_work(selected_card: Array[Card]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	if selected_card.size() <= 0:
 		return false
 	if energy < energy_cost_work:
@@ -266,6 +276,7 @@ func can_work(selected_card: Array[Card]) -> bool:
 	return true
 
 func can_research(selected_card: Array[Card]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	if selected_card.size() != 3:
 		return false
 	if energy < energy_cost_research:
@@ -280,8 +291,7 @@ func can_research(selected_card: Array[Card]) -> bool:
 	return (_resource == 2) and (_worker == 1)
 
 func can_activate(selected_card: Array[Card]) -> bool:
-	print(selected_card)
-	print(selected_card.size())
+	if ActionManager.is_currently_on_action: return false
 	if selected_card.size() != 1:
 		for card in selected_card:
 			if card is InstantCard:
