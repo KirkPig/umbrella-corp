@@ -5,7 +5,7 @@ var times :int
 var times_type:SellManager.ETimesType
 var amount: float
 var resource : SellManager.EResource
-var target: ResourceCardData
+var target: ResourceCardData.EBusiness
 
 func start(_type : SellManager.EType, \
 	_times :int, \

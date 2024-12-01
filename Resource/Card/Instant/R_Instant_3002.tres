@@ -16,8 +16,8 @@ effect_target = 2
 
 [resource]
 script = ExtResource("2_jxew5")
-target_mode = 0
-target_type = 0
+destroy_self = false
+destroy_chance = 0
 effects = Array[ExtResource("1_n2k1g")]([SubResource("Resource_rtl5h")])
 card_id = 3002
 card_name = "Mining Ban"

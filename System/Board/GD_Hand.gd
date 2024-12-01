@@ -19,6 +19,7 @@ func add_exists(node: Card):
 	node.reparent(self)
 	if !node.selection_change.is_connected(_selection_change_handler):
 		node.selection_change.connect(_selection_change_handler)
+	ActionManager.connect_selection(node)
 	update_position()
 	
 func get_all_card() -> Array[Node]:

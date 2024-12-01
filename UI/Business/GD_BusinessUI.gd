@@ -121,10 +121,9 @@ func hide_all_button():
 	btn_sell.hide()
 
 func button_state_checking():
-	btn_sell.show()
-	
 	var selected_cards = CardManager.get_selected_card()
 	var resource_components = current_yield.components
+	btn_sell.visible = GameManager.can_sell_business(self)
 	btn_work.visible = GameManager.can_work(selected_cards) and can_use_components()
 	btn_component.visible = GameManager.can_add_components(selected_cards, resource_components)
 	btn_change_resource.visible = GameManager.can_business_change_resource(self)

@@ -77,12 +77,15 @@ func set_unlock_card(_id: int):
 		_box.bg_color = GameManager.business_color
 	elif _data is InstantCardData:
 		_box.bg_color = GameManager.instant_color
+	elif _data is UpgradeCardData:
+		_box.bg_color = GameManager.upgrade_color
 
 func set_upgrade(_id: int, _amount_from: int, _amount_to: int):
 	card_container.hide()
 	bg.show()
 	var _data: UpgradeCardData = CardManager.card_dict[_id]
 	icon.texture = _data.card_icon
+	_box.bg_color = GameManager.upgrade_color
 	match _data.upgrade_type:
 		UpgradeCardData.EUpgrade.RESOURE_DEMAND:
 			var _res_data: ResourceCardData = CardManager.card_dict[2000 + (_id % 1000)]

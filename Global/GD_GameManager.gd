@@ -94,8 +94,6 @@ var max_hand : int:
 var current_contract:int = 0: 
 	set(value):
 		current_contract = value
-		if current_contract == max_contract:
-			game_end.emit(true)
 		current_contract_change.emit(value)
 
 var max_contract:int:
@@ -153,7 +151,7 @@ func start_select_contract() -> void:
 	contract_selection.show()
 	contract_selection.clear_contract()
 	for i in 3:
-		var _data = ContractManager.get_random_contract_data()
+		var _data = ContractManager.get_random_contract_data(2 ** (current_contract))
 		contract_selection.add_contract(_data)
 
 func next_turn():
@@ -169,6 +167,8 @@ func end_turn():
 	var turn_limit = selected_contract.turn_limit
 	if current_turn == turn_limit:
 		if selected_contract.check_finish_contract(current_score):
+			if current_contract >= max_contract:
+				game_end.emit(true)
 			complete_contract()
 		else:
 			game_end.emit(false)
@@ -227,7 +227,14 @@ func can_sell(selected_card: Array[Card]) -> bool:
 			return false
 	return true
 
+func can_sell_business(_business: UIBusiness) -> bool:
+	if ActionManager.is_change_resource: return false
+	if ActionManager.is_currently_on_action: return false
+	return true
+
+
 func can_add_components(selected_card: Array[Card], resource_components: Array[ResourceComponentItemData]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	var _li: Array[int] = []
 	for _j in resource_components:
 		_li.append(_j.resource_id)
@@ -244,11 +251,13 @@ func can_add_components(selected_card: Array[Card], resource_components: Array[R
 
 func can_business_change_resource(_business: UIBusiness) -> bool:
 	if ActionManager.is_change_resource: return false
+	if ActionManager.is_currently_on_action: return false
 	if GameManager.gold < _business.change_resource_price: return false
 	var _data: BusinessCardData = _business.business_card_data
 	return _data.resource_yield_list.size() > 1
 
 func can_discard(selected_card: Array[Card]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	if selected_card.size() <= 0:
 		return false
 	if discard_energy <= 0:
@@ -256,6 +265,7 @@ func can_discard(selected_card: Array[Card]) -> bool:
 	return true
 
 func can_work(selected_card: Array[Card]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	if selected_card.size() <= 0:
 		return false
 	if energy < energy_cost_work:
@@ -266,6 +276,7 @@ func can_work(selected_card: Array[Card]) -> bool:
 	return true
 
 func can_research(selected_card: Array[Card]) -> bool:
+	if ActionManager.is_currently_on_action: return false
 	if selected_card.size() != 3:
 		return false
 	if energy < energy_cost_research:
@@ -280,6 +291,15 @@ func can_research(selected_card: Array[Card]) -> bool:
 	return (_resource == 2) and (_worker == 1)
 
 func can_activate(selected_card: Array[Card]) -> bool:
+	if ActionManager.is_currently_on_action: return false
+	var cards_in_hand = CardManager.get_all_card(CardManager.ECardLocation.hand)
+	for card in cards_in_hand:
+		if card is InstantCard:
+			card.set_can_activate(false)
+		
 	if selected_card.size() != 1:
 		return false
+		
+	if selected_card[0] is InstantCard:
+		selected_card[0].set_can_activate(true)
 	return selected_card[0] is InstantCard
