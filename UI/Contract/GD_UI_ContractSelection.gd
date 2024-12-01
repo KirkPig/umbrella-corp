@@ -53,7 +53,7 @@ func fill_tutorial_contract() -> void:
 	pass
 
 func fill_random_contract(_n: int) -> void:
-	var _mul = (GameManager.current_contract + 1) ** min(2, GameManager.current_contract)
+	var _mul = (GameManager.current_contract + 1) + (0.2 * GameManager.current_contract)
 	var _arr_data = ContractManager.get_random_contract_data(_n, _mul)
 	for _data in _arr_data:
 		add_contract(_data)
