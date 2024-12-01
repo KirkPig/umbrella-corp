@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=18 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bisxenor2iny5" path="res://UI/Phone/S_UI_Phone.tscn" id="13_herli"]
 [ext_resource type="Shader" path="res://Shader/flash.gdshader" id="13_yd8uj"]
 [ext_resource type="Script" path="res://UI/Field/GD_UI_FlashColor.gd" id="14_xxwhn"]
+[ext_resource type="AudioStream" uid="uid://d3yrl5q5f6j14" path="res://Assets/SFX/BG_music.mp3" id="16_lehfm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ir0yk"]
 resource_local_to_scene = true
@@ -109,3 +110,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_xxwhn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_lehfm")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
