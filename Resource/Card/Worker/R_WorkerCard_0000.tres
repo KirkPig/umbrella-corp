@@ -7,7 +7,11 @@
 script = ExtResource("2_tyvkv")
 base_work_rate = 1
 special_work_rate = {}
-card_name = "Worker"
+research_chance_destroy = 100
 card_id = 0
+card_name = "Worker"
 card_texture = ExtResource("1_5hp3q")
 shop_price = 3
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])
