@@ -9,7 +9,7 @@ class_name InstantEffectCard
 func activate(target:Array[Card]) -> void:
 	var cards:Array[Card] = CardManager.get_all_card(effect_start_location)
 	
-	var picked_cards = []
+	var picked_cards:Array[Card] = []
 	while len(picked_cards) < amount or len(picked_cards) == len(cards):
 		var card = cards[GameManager.rng.randi() % len(cards)]
 		if not picked_cards.has(card):
@@ -17,7 +17,7 @@ func activate(target:Array[Card]) -> void:
 	
 	
 	if creat_copy:
-		var new_card_list = []
+		var new_card_list:Array[Card] = []
 		for card in picked_cards:
 			var new_card = CardManager.add_card_to_hand(card.card_id) 
 			new_card_list.append(new_card)

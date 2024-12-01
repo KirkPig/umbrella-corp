@@ -139,6 +139,7 @@ func _on_energy_change(energy:int) -> void:
 	action_screen.visible = energy > 0
 	out_of_energy_screen.visible = (energy <= 0)
 	if energy ==0 :
+		shop_screen.visible = false
 		audio_stream_player_2.play()
 func _on_gold_change(gold:int) -> void:
 	gold_label.text = "$ "+str(gold)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlcm1w387qi0m"]
+[gd_scene load_steps=12 format=3 uid="uid://dlcm1w387qi0m"]
 
 [ext_resource type="Script" path="res://UI/Phone/Button/Action/GD_ActionListController.gd" id="1_82in7"]
 [ext_resource type="Texture2D" uid="uid://b4wrux3hacggr" path="res://Assets/Phone/phonecall.png" id="2_mfnxu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds4ia7o22b84e" path="res://UI/Phone/Button/Action/S_Discard.tscn" id="6_8ht0y"]
 [ext_resource type="AudioStream" uid="uid://ckknn31ic4ea6" path="res://Assets/SFX/SFX_Call_Action.mp3" id="7_4m8ku"]
 [ext_resource type="AudioStream" uid="uid://cytw0ur41742i" path="res://Assets/SFX/SFX_Card_Sell.wav" id="8_oqgnx"]
+[ext_resource type="AudioStream" uid="uid://cadfyq60o0wkw" path="res://Assets/SFX/SFX_ResearchDone.wav" id="8_vtmom"]
 [ext_resource type="AudioStream" uid="uid://dxvgk4g3tcjo0" path="res://Assets/SFX/SFX_Card_Discard.mp3" id="9_c3fdb"]
 [ext_resource type="AudioStream" uid="uid://dwiipyxpn1f6f" path="res://Assets/SFX/SFX_Card_Draw.wav" id="10_d13j7"]
 
@@ -53,6 +54,11 @@ layout_mode = 2
 
 [node name="ResearchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_4m8ku")
+volume_db = -15.0
+pitch_scale = 0.9
+
+[node name="ResearchDoneAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_vtmom")
 volume_db = -15.0
 pitch_scale = 0.9
 

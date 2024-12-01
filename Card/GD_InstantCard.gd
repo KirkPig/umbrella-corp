@@ -30,6 +30,7 @@ func set_data(data: InstantCardData):
 	
 func activate() -> void:
 	card_data.activate([])
+	control.visible = false
 
 func set_can_activate(can:bool) -> void:
 	control.visible = can
