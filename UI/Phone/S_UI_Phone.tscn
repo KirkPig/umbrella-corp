@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bisxenor2iny5"]
+[gd_scene load_steps=37 format=3 uid="uid://bisxenor2iny5"]
 
 [ext_resource type="Script" path="res://UI/Phone/GD_phone.gd" id="1_lk1nw"]
 [ext_resource type="Texture2D" uid="uid://dybaqdfpu283c" path="res://Assets/Phone/phoneframe.png" id="1_t4ip5"]
@@ -27,8 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://dxbll1qq3t35q" path="res://Assets/Phone/refreshnobg.png" id="25_r5ktg"]
 [ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="26_0r2hf"]
 [ext_resource type="Texture2D" uid="uid://bdopnopklnf74" path="res://Assets/Phone/moon.svg" id="26_t8osi"]
-[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="27_brhb3"]
 [ext_resource type="AudioStream" uid="uid://be8nkny5pqwsj" path="res://Assets/SFX/SFX_Refresh.wav" id="27_2qrd0"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="27_brhb3"]
 [ext_resource type="AudioStream" uid="uid://bq41abyvxi6dq" path="res://Assets/SFX/SFX_No_Energy.mp3" id="27_mxs6n"]
 [ext_resource type="AudioStream" uid="uid://yl3tneo0f1tg" path="res://Assets/SFX/SFX_Buy.wav" id="27_nsybu"]
 
@@ -551,6 +551,14 @@ layout_mode = 2
 text = "Free (10)"
 label_settings = SubResource("LabelSettings_khe3o")
 
+[node name="RefreshShopAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+stream = ExtResource("27_2qrd0")
+volume_db = -10.0
+
+[node name="BuyAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+stream = ExtResource("27_nsybu")
+volume_db = -10.0
+
 [node name="Out of energy" type="TextureRect" parent="Control"]
 visible = false
 z_index = 10
@@ -680,13 +688,6 @@ offset_bottom = 423.0
 text = "Sleeping..."
 label_settings = SubResource("LabelSettings_0kjqw")
 horizontal_alignment = 1
-[node name="RefreshShopAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
-stream = ExtResource("27_2qrd0")
-volume_db = -10.0
-
-[node name="BuyAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
-stream = ExtResource("27_nsybu")
-volume_db = -10.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_0r2hf")
