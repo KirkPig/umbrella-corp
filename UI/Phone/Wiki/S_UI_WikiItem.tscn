@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5aaahd45h3lm"]
+
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="1_of078"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="1_u0bfy"]
+[ext_resource type="Script" path="res://UI/Phone/Wiki/GD_UI_WikiItem.gd" id="1_vn7tt"]
+[ext_resource type="Texture2D" uid="uid://cqn5todbv8gai" path="res://Assets/Tooltip/Price.png" id="3_nsy06"]
+[ext_resource type="Texture2D" uid="uid://4fx8mlet7m55" path="res://Assets/Tooltip/Demand.png" id="4_45hp0"]
+[ext_resource type="Texture2D" uid="uid://ckk2k8d6p8ljh" path="res://Assets/Phone/WalletBlack.png" id="5_xljpk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q1lok"]
+font = ExtResource("1_u0bfy")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[node name="WikiItem" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_vn7tt")
+
+[node name="ResourceLabel" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="ResourceLabel"]
+custom_minimum_size = Vector2(48, 24)
+layout_mode = 2
+texture = ExtResource("1_of078")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="ResourceLabel"]
+layout_mode = 2
+text = "Wheat"
+label_settings = SubResource("LabelSettings_q1lok")
+
+[node name="Value" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Price" type="HBoxContainer" parent="Value"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Value/Price"]
+custom_minimum_size = Vector2(48, 24)
+layout_mode = 2
+texture = ExtResource("3_nsy06")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Value/Price"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_q1lok")
+
+[node name="Demand" type="HBoxContainer" parent="Value"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Value/Demand"]
+custom_minimum_size = Vector2(48, 24)
+layout_mode = 2
+texture = ExtResource("4_45hp0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Value/Demand"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_q1lok")
+
+[node name="Gold" type="HBoxContainer" parent="Value"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Value/Gold"]
+custom_minimum_size = Vector2(48, 24)
+layout_mode = 2
+texture = ExtResource("5_xljpk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Value/Gold"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_q1lok")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2

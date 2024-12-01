@@ -24,6 +24,11 @@ var time:int = 0
 @onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
 
 @onready var black_screen: Panel = $Control/Screen
+
+@onready var _template_wiki_item = preload("res://UI/Phone/Wiki/S_UI_WikiItem.tscn")
+@onready var _wiki_list = $Control/Wiki/VSplitContainer/ScrollContainer/List
+@onready var wiki_screen = $Control/Wiki
+
 var black_screen_value: float = 1:
 	set(value):
 		var _style = black_screen.get_theme_stylebox("panel")
@@ -154,3 +159,31 @@ func _on_close_shop_pressed() -> void:
 	action_screen.visible = true
 	shop_screen.visible = false
 	app_push_sound()
+
+func _clear_wiki():
+	for _node in _wiki_list.get_children():
+		_wiki_list.remove_child(_node)
+		if is_instance_valid(_node):
+			_node.queue_free()
+
+func _load_wiki():
+	var _li: Array[int] = CardManager.get_card_pool(CardManager.ECardType.resource)
+	_li.sort()
+	for _id in _li:
+		var _data = CardManager.card_dict[_id]
+		var _item: UIWikiItem = _template_wiki_item.instantiate()
+		_wiki_list.add_child(_item)
+		_item.data = _data
+
+func _on_view_wiki_button_pressed() -> void:
+	_clear_wiki()
+	_load_wiki()
+	action_screen.visible = false
+	wiki_screen.visible = true
+	pass # Replace with function body.
+
+
+func _on_close_wiki_pressed() -> void:
+	action_screen.visible = true
+	wiki_screen.visible = false
+	pass # Replace with function body.
