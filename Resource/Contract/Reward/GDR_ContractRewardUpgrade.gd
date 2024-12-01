@@ -1,8 +1,9 @@
 extends ContractReward
 class_name ContractRewardUpgrade
 
-@export var reward_upgrade_id_list : Array[int]
+@export var reward_upgrade_id : int
 
-#TODO
 func get_reward() -> void:
-	pass
+	var _data: UpgradeCardData = CardManager.card_dict[reward_upgrade_id]
+	_data.played()
+	# TODO: add reward show

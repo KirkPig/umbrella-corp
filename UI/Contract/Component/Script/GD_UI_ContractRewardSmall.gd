@@ -17,6 +17,7 @@ var contract_reward_data:
 		set_data(value)
 
 func set_data(_data):
+	node_label.show()
 	var _style: StyleBoxFlat = node_panel.get_theme_stylebox("panel")
 	if _data is ContractRewardGold:
 		node_label.text = "$" + str(_data.amount)
@@ -38,3 +39,13 @@ func set_data(_data):
 		var _card_data = CardManager.card_dict[_data.reward_card_id]
 		node_label.text = "x" + str(_data.amount)
 		node_icon.texture = _card_data.card_icon
+	elif _data is ContractRewardUpgrade:
+		var _card_data: UpgradeCardData = CardManager.card_dict[_data.reward_upgrade_id]
+		if _data.reward_upgrade_id < 6000:
+			node_label.hide()
+		else:
+			var _res_id = 2000 + (_data.reward_upgrade_id % 1000)
+			var _res_data: ResourceCardData = CardManager.card_dict[_res_id]
+			node_label.text = _res_data.card_name
+		node_icon.texture = _card_data.card_icon
+		_style.bg_color = GameManager.upgrade_color

@@ -32,13 +32,15 @@ func set_card_reward(_id: int, _amount: int):
 			_c = CardManager.create_business_card()
 		elif _data is InstantCardData:
 			_c = CardManager.create_instant_card()
+		elif _data is UpgradeCardData:
+			_c = CardManager.create_upgrade_card()
 		card_container.add_child(_c)
 		_c.card_data = _data
 	var cards = card_container.get_children()
 	var i = 0
 	cards.sort_custom(_compare_card)
 	for card: Card in cards:
-		card.set_card_hand_position(i, cards.size(), 0, 200, 100, true)
+		card.set_card_hand_position(i, cards.size(), 0, 40, 400, false)
 		i+=1
 
 func set_unlock_business(_id: int):

@@ -135,6 +135,7 @@ var worker_color: Color = Color("B2DEFF")
 var resource_color: Color = Color("FBFEDF")
 var business_color: Color = Color("B8FFAD")
 var instant_color: Color = Color("FFBEBE")
+var upgrade_color: Color = Color("C1A1FF")
 
 # TODO: transition show and hide each ui component
 func show_level_ui():

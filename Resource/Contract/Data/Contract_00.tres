@@ -6,7 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_gmqte"]
 script = ExtResource("3_yjjlt")
-reward_resource = 0
 name = ""
 amount = 50
 
