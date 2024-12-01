@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdo8dx8praujd"]
+[gd_scene load_steps=20 format=3 uid="uid://cdo8dx8praujd"]
 
 [ext_resource type="Script" path="res://UI/Game End/GD_GameEnd.gd" id="1_s011a"]
 [ext_resource type="FontFile" uid="uid://c68c8275ueg01" path="res://Assets/Font/SF-Pro-Display-Heavy.otf" id="2_ihnin"]
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="3_qfxvm"]
 [ext_resource type="Texture2D" uid="uid://c7cig67hklv6p" path="res://Assets/Phone/sellcard.png" id="4_3s8j7"]
+[ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="5_q7jid"]
 
 [sub_resource type="Theme" id="Theme_8dq5x"]
 
@@ -349,6 +350,9 @@ text = "Exit to desktop
 "
 label_settings = SubResource("LabelSettings_s1fwd")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q7jid")
 
 [connection signal="pressed" from="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/Control5/MainMenu" to="." method="_on_main_menu_pressed"]

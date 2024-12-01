@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvuj7oxuaghh7"]
+[gd_scene load_steps=10 format=3 uid="uid://cvuj7oxuaghh7"]
 
 [ext_resource type="Script" path="res://Card/GD_UpgradeResourceCard.gd" id="1_oeh7s"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_e06na"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="4_oumij"]
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="5_5w8ex"]
 [ext_resource type="Shader" path="res://Shader/flash.gdshader" id="6_kj6r6"]
+[ext_resource type="AudioStream" uid="uid://bvit44ex65bi2" path="res://Assets/SFX/SFX_Card_Select.wav" id="7_33s1b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -71,6 +72,9 @@ custom_minimum_size = Vector2(160, 240)
 layout_mode = 0
 offset_right = 160.0
 offset_bottom = 240.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_33s1b")
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

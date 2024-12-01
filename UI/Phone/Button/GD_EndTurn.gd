@@ -1,5 +1,6 @@
 extends Control
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +14,4 @@ func _process(delta: float) -> void:
 
 func _on_view_button_pressed() -> void:
 	GameManager.end_turn()
+	audio_stream_player.play()

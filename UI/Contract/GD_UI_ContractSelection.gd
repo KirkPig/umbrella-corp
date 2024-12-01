@@ -2,6 +2,7 @@ extends Control
 class_name UIContractSelection
 
 @onready var template_contract = preload("res://UI/Contract/Component/Scene/S_UI_Contract.tscn")
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @onready var contract_list = $List
 
@@ -22,6 +23,7 @@ func clear_contract() -> void:
 
 # Private function
 func _choose_contract(_contract: UIContract):
+	audio_stream_player.play()
 	GameManager.select_contract(_contract)
 
 
