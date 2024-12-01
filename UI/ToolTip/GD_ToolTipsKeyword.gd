@@ -6,11 +6,12 @@ enum EKeyword{
 	ENERGY,
 	DEMAND,
 	TURN,
-	CARD_TO_HAND,
+	ADD_CARD,
 	INC_PRICE,
 	DEC_PRICE,
 	CHANGE_CARD,
 	DESTROY_CARD,
+	DISCARD,
 	RESTRICT,
 	YEILD,
 	SHOP_REFRESH,
@@ -28,7 +29,7 @@ var resource_id:int = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	self.size_flags_horizontal = Control.SIZE_SHRINK_END
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,9 +38,10 @@ func _process(delta: float) -> void:
 
 func set_resource(resource_id:int)->void:
 	var card_data :ResourceCardData= CardManager.card_dict[resource_id]
-	keyword_icon.texture = load("res://Assets/Icon/A_ResourceIcon_"+str(resource_id)+".png")
+	keyword_icon.texture = load("res://Assets/IconNoBG/A_ResourceIcon_"+str(resource_id)+".png")
 	keyword_label.text = card_data.card_name
 	description_label.visible = false
+	description_label.text = ""
 	s_gold_score.visible = true
 	s_gold_score.set_resource_data(resource_id)
 	
@@ -61,8 +63,8 @@ func set_keyword(keyword:EKeyword) -> void:
 		EKeyword.TURN:
 			keyword_label.text = "Turn"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_increaseturn.png")
-		EKeyword.CARD_TO_HAND:
-			keyword_label.text = "Add card to your hand"
+		EKeyword.ADD_CARD:
+			keyword_label.text = "Add card to your pile"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_increasecard.png")
 		EKeyword.INC_PRICE:
 			keyword_label.text = "Price"
@@ -76,6 +78,9 @@ func set_keyword(keyword:EKeyword) -> void:
 		EKeyword.DESTROY_CARD:
 			keyword_label.text = "Destroy card"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_destroycard.png")
+		EKeyword.DISCARD:
+			keyword_label.text = "Discard card"
+			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_discardcard.png")
 		EKeyword.RESTRICT:
 			keyword_label.text = "Restrict"
 			keyword_icon.texture = load("res://Assets/InstantEffectIcon/A_restrictcard.png")

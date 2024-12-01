@@ -111,7 +111,7 @@ func action_buy(card: Card)-> bool:
 	card.in_shop = false
 	
 	if card is BusinessCard:
-		CardManager.add_card_to_business_field(card.card_id)
+		CardManager.add_card_to_business_field(card.card_id,card.current_yield_id)
 		card.queue_free() # TODO: make animation buying
 	elif card is UpgradeCard:
 		card.card_data.played()
@@ -204,6 +204,11 @@ func action_activate() -> void:
 	var selected_card: Array[Card] = CardManager.get_selected_card()
 	selected_card[0].activate()
 	CardManager.discards(selected_card)
+	
+	if selected_card[0].card_data.destroy_self:
+		if GameManager.rng.randi() % 100 < selected_card[0].card_data.destroy_chance:
+			selected_card[0].queue_free()
+	
 	CardManager.fill_hand()
 	
 	action_list.reset_list()

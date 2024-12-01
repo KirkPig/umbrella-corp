@@ -9,9 +9,10 @@ extends Control
 
 @export var start_deck: Array[int]
 @export var start_resource_pool: Array[int]
-@export var start_upgrade_pool: Array[int]
+@export var start_upgrade_pool: int
 
 @export var start_business: Array[int]
+@export var start_business_yield: Array[int]
 
 @onready var s_game_end: CanvasLayer = $SGameEnd
 @onready var s_ui_phone: CanvasLayer = $SUiPhone
@@ -74,4 +75,4 @@ func add_start_deck()-> void:
 		
 func add_start_business()-> void:
 	for _id in start_business:
-		CardManager.add_card_to_business_field(_id)
+		CardManager.add_card_to_business_field(_id,2000)

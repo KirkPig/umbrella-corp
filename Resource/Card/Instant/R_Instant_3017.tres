@@ -1,17 +1,28 @@
-[gd_resource type="Resource" script_class="InstantCardData" load_steps=4 format=3 uid="uid://biskfx4x41rse"]
+[gd_resource type="Resource" script_class="InstantCardData" load_steps=6 format=3 uid="uid://biskfx4x41rse"]
 
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantEffect.gd" id="1_x11j5"]
+[ext_resource type="Script" path="res://Resource/Card/InstantEffect/GDR_InstantEffectCard.gd" id="2_1gars"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_InstantCard.gd" id="2_ssg5e"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ckdif"]
 load_path = "res://.godot/imported/A_InstantCard_3017.png-ad3a94f5141d960ec4eb503a44b07055.ctex"
 
+[sub_resource type="Resource" id="Resource_7j5wh"]
+script = ExtResource("2_1gars")
+effect_start_location = 0
+creat_copy = true
+amount = 2
+effect_end_location = 4
+
 [resource]
 script = ExtResource("2_ssg5e")
-target_mode = 0
-target_type = 0
-effects = Array[ExtResource("1_x11j5")]([])
-card_name = "Defective Sales"
+destroy_self = true
+destroy_chance = 50
+effects = Array[ExtResource("1_x11j5")]([SubResource("Resource_7j5wh")])
 card_id = 3017
+card_name = "Defective Sales"
 card_texture = SubResource("CompressedTexture2D_ckdif")
 shop_price = 120
+Effect = "Add 2 random copy of cards in the hand to the discard pile. After used, 1 in 2 destroy this card"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([4, 8])

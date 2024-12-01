@@ -1,7 +1,8 @@
 extends UpgradeCard
 class_name UpgradeResourceCard
 
-@onready var icons:Control = $Icons
+@onready var icons: Control = $Card/Icons
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

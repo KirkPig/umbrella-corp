@@ -41,10 +41,6 @@ func refresh_data():
 	business = card_data.business_id - 1000
 	demand = card_data.yield_demand
 	s_tooltips.set_resource(card_data.card_id)
-	if len(card_data.keyword_list) > 0:
-		s_tooltips.set_keywords(card_data.keyword_list)
-	if card_data.Effect != "":
-		s_tooltips.set_effect(card_data.Effect)
 
 func _on_card_mouse_entered() -> void:
 	super()

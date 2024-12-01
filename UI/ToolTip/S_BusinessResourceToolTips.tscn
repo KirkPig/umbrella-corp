@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv15xvhjfut5n"]
+
+[ext_resource type="Script" path="res://UI/ToolTip/GD_BusinessResourceToolTips.gd" id="1_53a6q"]
+[ext_resource type="Texture2D" uid="uid://cexoowloi0nsc" path="res://Assets/Tooltip/Labor.png" id="1_jvshd"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="2_tyl1m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vyrrb"]
+font = ExtResource("2_tyl1m")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="SBusinessResource" type="Control"]
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 24.0
+script = ExtResource("1_53a6q")
+
+[node name="IconContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(61, 24)
+layout_mode = 0
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="IconContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="KeywordIcon" type="TextureRect" parent="IconContainer/Control"]
+layout_mode = 0
+offset_right = 68.0
+offset_bottom = 68.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_jvshd")
+
+[node name="AmountLabel" type="Label" parent="IconContainer"]
+layout_mode = 2
+text = "x10"
+label_settings = SubResource("LabelSettings_vyrrb")
