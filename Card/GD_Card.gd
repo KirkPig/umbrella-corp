@@ -28,8 +28,15 @@ var oscillator_velocity: float = 0.0
 var last_pos: Vector2
 var velocity: Vector2
 
+var texture_amount: float = 0:
+	set(value):
+		texture_amount = value
+		_set_texture_rect_amount(value)
+
 @onready var card_texture : TextureRect = $Card
 @onready var s_tooltips: Tooptips = $Card/STooltips
+
+@onready var texture_flash_rect: ColorRect = $ColorRect
 
 var card_id : int = 0
 var card_cost : int = 0
@@ -157,6 +164,9 @@ func _on_card_mouse_exited() -> void:
 	
 	if s_tooltips:
 		s_tooltips.visible = false
+
+func _set_texture_rect_amount(_v: float):
+	texture_flash_rect.material.set_shader_parameter("amount", _v)
 
 func _set_card_rotation_effect(x: float, y: float):
 	card_texture.material.set_shader_parameter("x_rot", x)

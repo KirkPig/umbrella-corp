@@ -17,6 +17,8 @@ var is_change_resource: bool = false
 var is_currently_on_action: bool = false
 var _selected_business_ui: UIBusiness
 
+var flash_screen: UIFlashColor
+
 func _ready() -> void:
 	reset_action_list.connect(_update_action_list)
 	action_done.connect(_action_done_reset)
@@ -176,10 +178,6 @@ func action_research():
 	var _w = PackedFloat32Array(_w_arr)
 	var _rand_r = _reward[GameManager.rng.rand_weighted(_w)]
 	
-	CardManager.played_cards(selected_card)
-	CardManager.hand.update_position()
-	GameManager.energy -=  GameManager.energy_cost_work
-	
 	# Calculate chance that _worker is not destroy
 	var _k = [false, true]
 	var _n_w_arr = [_worker.card_data.research_chance_destroy, 100 - _worker.card_data.research_chance_destroy]
@@ -196,9 +194,26 @@ func action_research():
 	if _rand_r is ResearchRewardUnlockResource:
 		_rand_r.reward_bonus_unlock_business_result.connect(research_reward_summary.add_unlock_business)
 		_rand_r.reward_bonus_unlock_resource_result.connect(research_reward_summary.add_unlock_resource)
-	_rand_r.activate()
+	
+	playing_field.playing_research(selected_card)
+	CardManager.hand.update_position()
+	await playing_field.playing_research_done
+	flash_screen.show()
+	var tween: Tween = create_tween()
+	tween.tween_property(flash_screen, "texture_amount", 1, 0.2)
+	await tween.finished
+	tween = create_tween()
+	tween.tween_property(flash_screen, "texture_amount", 0, 0.05)
+	CardManager.played_cards(selected_card)
+	for _c: Card in selected_card:
+		_c.texture_flash_rect.hide()
+	GameManager.energy -=  GameManager.energy_cost_work
+	_rand_r.activate() # Activate reward
+	
 	research_reward_summary.show_research_reward_done.connect(_finish_action_research)
 	research_reward_summary.show()
+	await tween.finished
+	flash_screen.hide()
 	
 func _finish_action_research():
 	research_reward_summary.hide()
