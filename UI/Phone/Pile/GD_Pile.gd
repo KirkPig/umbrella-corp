@@ -3,7 +3,7 @@ extends CanvasLayer
 signal close_view
 
 @export var card_gap: float = 100
-@export var hand_width: float = 1328
+@export var hand_width: float = 1100
 @export var card_icon = preload("res://UI/Phone/Pile/S_CardIcon.tscn")
 @onready var icon_grid = $Panel/Panel/HSplitContainer/LeftControl/VBoxContainer/Control3/GridContainer
 @onready var worker_pile = $Panel/Panel/HSplitContainer/Control/WorkerPile
@@ -52,7 +52,7 @@ func update_position(pile:Control):
 	var i = 0
 	cards.sort_custom(_compare_card)
 	for card: Card in cards:
-		card.set_card_pile_position(i,card_gap)
+		card.set_card_pile_position(i, cards.size(), 0, hand_width, card_gap)
 		i+=1
 
 func _compare_card(a: Card, b: Card) -> bool:
