@@ -94,8 +94,6 @@ var max_hand : int:
 var current_contract:int = 0: 
 	set(value):
 		current_contract = value
-		if current_contract == max_contract:
-			game_end.emit(true)
 		current_contract_change.emit(value)
 
 var max_contract:int:
@@ -153,7 +151,7 @@ func start_select_contract() -> void:
 	contract_selection.show()
 	contract_selection.clear_contract()
 	for i in 3:
-		var _data = ContractManager.get_random_contract_data()
+		var _data = ContractManager.get_random_contract_data(2 ** (current_contract))
 		contract_selection.add_contract(_data)
 
 func next_turn():
@@ -169,6 +167,8 @@ func end_turn():
 	var turn_limit = selected_contract.turn_limit
 	if current_turn == turn_limit:
 		if selected_contract.check_finish_contract(current_score):
+			if current_contract >= max_contract:
+				game_end.emit(true)
 			complete_contract()
 		else:
 			game_end.emit(false)
