@@ -14,6 +14,8 @@ extends Control
 @export var start_business: Array[int]
 @export var start_business_yield: Array[int]
 
+@export var play_tutorial: bool = false
+
 @onready var s_game_end: CanvasLayer = $SGameEnd
 @onready var s_ui_phone: CanvasLayer = $SUiPhone
 
@@ -31,13 +33,18 @@ func start_game():
 	add_card_pool()
 	add_start_deck()
 	add_start_business()
-	GameManager.start_select_contract()
 	s_game_end.start_resource_list = start_resource_pool
+	
+	if play_tutorial:
+		GameManager.start_tutorial()
+	else:
+		GameManager.start_select_contract()
 
 func set_up_game_manager() -> void:
 	GameManager.current_turn = 0
 	GameManager.total_turn = 0
 	GameManager.current_score = 0
+	GameManager.current_contract = 0
 	GameManager.total_score = 0
 	GameManager.gold = 0
 	GameManager.energy = start_energy
@@ -67,6 +74,8 @@ func add_card_pool() -> void:
 	for _id in range(6):
 		CardManager.card_pool.append(_id)
 	for _id in range(3000, 3018):
+		if _id == 3014:
+			continue
 		CardManager.card_pool.append(_id)
 
 func add_start_deck()-> void:

@@ -7,6 +7,15 @@ signal show_contract_reward_done
 @onready var list = $List
 
 @onready var _template_reward_item = preload("res://UI/Component/Scene/S_UI_RewardItem.tscn")
+@onready var _placeholder = $Placeholder
+var _placeholder_visibility: float = 1:
+	set(value):
+		_placeholder.modulate.a = value
+		_placeholder_visibility = value
+var _list_visibility: float = 1:
+	set(value):
+		list.modulate.a = value
+		_list_visibility = value
 
 func clear_reward():
 	for _node in list.get_children():
@@ -47,4 +56,13 @@ func _ready() -> void:
 	GameManager.contract_reward = self
 
 func _on_button_pressed() -> void:
+	_placeholder_visibility = 1
+	_list_visibility = 1
+	var tween: Tween
+	tween = create_tween()
+	tween.tween_property(self, "_placeholder_visibility", 0, 0.5)
+	tween.set_parallel().tween_property(self, "_list_visibility", 0, 0.5)
+	await tween.finished
 	show_contract_reward_done.emit()
+	_placeholder_visibility = 1
+	_list_visibility = 1

@@ -55,3 +55,6 @@ card_name = "Leather"
 card_texture = ExtResource("1_g756d")
 shop_price = 0
 card_icon = ExtResource("1_0o1nq")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

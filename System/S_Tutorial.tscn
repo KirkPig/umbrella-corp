@@ -1,0 +1,110 @@
+[gd_scene load_steps=17 format=3 uid="uid://b10kt14rrhtrt"]
+
+[ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_ic4gn"]
+[ext_resource type="Texture2D" uid="uid://bevpmelaa7v4x" path="res://Assets/UI/Table.png" id="2_bw8jb"]
+[ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_i2dnd"]
+[ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="4_hb46n"]
+[ext_resource type="PackedScene" uid="uid://uc70mvrqrusf" path="res://UI/Contract/S_UI_ContractSelection.tscn" id="5_st14n"]
+[ext_resource type="PackedScene" uid="uid://dy1k6x40mjyna" path="res://UI/Research/S_UI_Research.tscn" id="6_ccf1g"]
+[ext_resource type="PackedScene" uid="uid://dtrhswdi8y1pd" path="res://UI/Contract/S_UI_ContractReward.tscn" id="7_tinnu"]
+[ext_resource type="PackedScene" uid="uid://bisxenor2iny5" path="res://UI/Phone/S_UI_Phone.tscn" id="8_4cpoa"]
+[ext_resource type="PackedScene" uid="uid://b13l5ah147662" path="res://UI/Tutorial/S_UI_Tutorial.tscn" id="8_l2khr"]
+[ext_resource type="PackedScene" uid="uid://c6a1y0g401gjq" path="res://UI/Score Board/S_ScoreBoard.tscn" id="9_ptcpc"]
+[ext_resource type="PackedScene" uid="uid://cdn80jt2r2kqy" path="res://UI/Field/S_UI_PlayingField.tscn" id="10_x81lw"]
+[ext_resource type="PackedScene" uid="uid://7lyyil11rsuo" path="res://UI/Business/S_UI_BusinessField.tscn" id="11_kf81n"]
+[ext_resource type="PackedScene" uid="uid://cdo8dx8praujd" path="res://UI/Game End/S_GameEnd.tscn" id="12_02guf"]
+[ext_resource type="Shader" path="res://Shader/flash.gdshader" id="13_escag"]
+[ext_resource type="Script" path="res://UI/Field/GD_UI_FlashColor.gd" id="14_4dpw1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ir0yk"]
+resource_local_to_scene = true
+shader = ExtResource("13_escag")
+shader_parameter/amount = 0.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ic4gn")
+game_speed = 4
+start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+start_resource_pool = Array[int]([2000, 2004, 2005, 2006, 2008, 2011, 2014])
+start_business = Array[int]([1000])
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bw8jb")
+
+[node name="Hand" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 800.0
+offset_right = 50.0
+offset_bottom = 800.0
+script = ExtResource("3_i2dnd")
+hand_width = 1400.0
+
+[node name="Played" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+script = ExtResource("4_hb46n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ContractSelection" parent="CanvasLayer" instance=ExtResource("5_st14n")]
+visible = false
+
+[node name="ResearchRewardScene" parent="CanvasLayer" instance=ExtResource("6_ccf1g")]
+
+[node name="ContractRewardScene" parent="CanvasLayer" instance=ExtResource("7_tinnu")]
+visible = false
+
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("8_l2khr")]
+
+[node name="SUiPhone" parent="." instance=ExtResource("8_4cpoa")]
+
+[node name="SScoreBoard" parent="." instance=ExtResource("9_ptcpc")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PlayingField" parent="." instance=ExtResource("10_x81lw")]
+offset_left = 100.0
+offset_top = 500.0
+offset_right = 100.0
+offset_bottom = 500.0
+
+[node name="BusinessField" parent="." instance=ExtResource("11_kf81n")]
+offset_left = 500.0
+offset_top = 79.0
+offset_right = 500.0
+offset_bottom = 79.0
+
+[node name="SGameEnd" parent="." instance=ExtResource("12_02guf")]
+
+[node name="FlashLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="FlashLayer"]
+visible = false
+material = SubResource("ShaderMaterial_ir0yk")
+custom_minimum_size = Vector2(160, 240)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_4dpw1")

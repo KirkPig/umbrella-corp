@@ -213,6 +213,7 @@ func action_research():
 	research_reward_summary.show_research_reward_done.connect(_finish_action_research)
 	research_reward_summary.show()
 	await tween.finished
+	action_list.research_done_audio_stream_player.play()
 	flash_screen.hide()
 	
 func _finish_action_research():

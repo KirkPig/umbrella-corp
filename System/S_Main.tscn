@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=17 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtrhswdi8y1pd" path="res://UI/Contract/S_UI_ContractReward.tscn" id="7_l762n"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
 [ext_resource type="PackedScene" uid="uid://c6a1y0g401gjq" path="res://UI/Score Board/S_ScoreBoard.tscn" id="8_8lk2h"]
+[ext_resource type="PackedScene" uid="uid://b13l5ah147662" path="res://UI/Tutorial/S_UI_Tutorial.tscn" id="8_88m8m"]
 [ext_resource type="PackedScene" uid="uid://cdn80jt2r2kqy" path="res://UI/Field/S_UI_PlayingField.tscn" id="10_1if74"]
 [ext_resource type="PackedScene" uid="uid://cdo8dx8praujd" path="res://UI/Game End/S_GameEnd.tscn" id="10_wqfvh"]
 [ext_resource type="Texture2D" uid="uid://bevpmelaa7v4x" path="res://Assets/UI/Table.png" id="11_7mt5x"]
@@ -29,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
+game_speed = 4
 start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 start_resource_pool = Array[int]([2000, 2004, 2005, 2006, 2008, 2011, 2014])
 start_business = Array[int]([1000])
@@ -60,10 +62,14 @@ script = ExtResource("7_v7xax")
 layer = 2
 
 [node name="ContractSelection" parent="CanvasLayer" instance=ExtResource("7_22o06")]
+visible = false
 
 [node name="ResearchRewardScene" parent="CanvasLayer" instance=ExtResource("6_6nugn")]
 
 [node name="ContractRewardScene" parent="CanvasLayer" instance=ExtResource("7_l762n")]
+visible = false
+
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("8_88m8m")]
 visible = false
 
 [node name="SUiPhone" parent="." instance=ExtResource("13_herli")]

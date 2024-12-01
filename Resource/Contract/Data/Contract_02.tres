@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_s0l3r"]
 [ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardRandomCard.gd" id="3_a2nyq"]
 [ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardGold.gd" id="3_qind0"]
+
 [sub_resource type="Resource" id="Resource_6cfks"]
 script = ExtResource("3_qind0")
 name = ""
