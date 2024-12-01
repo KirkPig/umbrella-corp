@@ -48,8 +48,8 @@ func _on_energy_change(energy:int) -> void:
 	energy_progress.value = energy
 	shop_energy_progress.value = energy
 	action_screen.visible = energy > 0
+	out_of_energy_screen.visible = energy ==0
 	if energy ==0 :
-		out_of_energy_screen.visible = true
 		audio_stream_player_2.play()
 func _on_gold_change(gold:int) -> void:
 	gold_label.text = "$ "+str(gold)

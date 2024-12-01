@@ -7,6 +7,7 @@ class_name ActionListController
 @onready var research_audio_stream_player: AudioStreamPlayer = $ResearchAudioStreamPlayer
 @onready var sell_audio_stream_player: AudioStreamPlayer = $SellAudioStreamPlayer
 @onready var discard_audio_stream_player: AudioStreamPlayer = $DiscardAudioStreamPlayer
+@onready var draw_audio_stream_player: AudioStreamPlayer = $DrawAudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
