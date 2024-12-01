@@ -68,6 +68,8 @@ func add_card_pool() -> void:
 	for _id in range(6):
 		CardManager.card_pool.append(_id)
 	for _id in range(3000, 3018):
+		if _id == 3014:
+			continue
 		CardManager.card_pool.append(_id)
 
 func add_start_deck()-> void:
