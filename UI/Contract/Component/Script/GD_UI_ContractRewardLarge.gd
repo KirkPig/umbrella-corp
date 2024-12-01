@@ -41,6 +41,9 @@ func set_data(_data: ContractReward):
 			CardManager.ECardType.instant:
 				node_label.text = str(_data.amount) + " Random instant card"
 				_style.bg_color = GameManager.instant_color
+			CardManager.ECardType.upgrade:
+				node_label.text = str(_data.amount) + " Random upgrade"
+				_style.bg_color = GameManager.upgrade_color
 	elif _data is ContractRewardCard:
 		var _card_data = CardManager.card_dict[_data.reward_card_id]
 		node_label.text = str(_data.amount) + " " + _card_data.card_name

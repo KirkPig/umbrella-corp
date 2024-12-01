@@ -8,12 +8,15 @@ class_name UIRewardItem
 
 @onready var _box: StyleBoxFlat = bg.get_theme_stylebox("panel")
 
-@onready var wallet_icon: Texture2D = load("res://Assets/Phone/walletnobg.png")
+@onready var _icon_wallet: Texture2D = preload("res://Assets/Phone/walletnobg.png")
+@onready var _icon_random: Texture2D = preload("res://Assets/UI/Contract/question_mark.png")
+@onready var _icon_demand: Texture2D = preload("res://Assets/Tooltip/Demand.png")
+@onready var _icon_price: Texture2D = preload("res://Assets/Tooltip/Price.png")
 
 func set_gold_reward(_amount: int):
 	card_container.hide()
 	bg.show()
-	icon.texture = wallet_icon
+	icon.texture = _icon_wallet
 	_box.bg_color = GameManager.wallet_color
 	label.text = "$ " + str(_amount)
 
@@ -75,5 +78,31 @@ func set_unlock_card(_id: int):
 	elif _data is InstantCardData:
 		_box.bg_color = GameManager.instant_color
 
+func set_upgrade(_id: int, _amount_from: int, _amount_to: int):
+	card_container.hide()
+	bg.show()
+	var _data: UpgradeCardData = CardManager.card_dict[_id]
+	icon.texture = _data.card_icon
+	match _data.upgrade_type:
+		UpgradeCardData.EUpgrade.RESOURE_DEMAND:
+			var _res_data: ResourceCardData = CardManager.card_dict[2000 + (_id % 1000)]
+			icon.texture = _icon_demand
+			label.text = "Upgrade " + _res_data.card_name + " demand"
+		UpgradeCardData.EUpgrade.RESOURE_SCORE:
+			var _res_data: ResourceCardData = CardManager.card_dict[2000 + (_id % 1000)]
+			icon.texture = _icon_price
+			label.text = "Upgrade " + _res_data.card_name + " price"
+		UpgradeCardData.EUpgrade.RESOURE_YEILD:
+			var _res_data: ResourceCardData = CardManager.card_dict[2000 + (_id % 1000)]
+			icon.texture = _res_data.card_icon
+			label.text = "Upgrade " + _res_data.card_name + " yield product"
+		UpgradeCardData.EUpgrade.RESOURE_GOLD:
+			var _res_data: ResourceCardData = CardManager.card_dict[2000 + (_id % 1000)]
+			icon.texture = _icon_wallet
+			label.text = "Upgrade " + _res_data.card_name + " swiss money"
+		_:
+			label.text = _data.card_name
+	label.text += "\n(" + str(_amount_from) + " > " + str(_amount_to) + ")"
+	
 func _compare_card(a: Card, b: Card) -> bool:
 	return a.card_id < b.card_id
