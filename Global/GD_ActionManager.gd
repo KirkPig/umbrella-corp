@@ -119,10 +119,9 @@ func action_sell_business(_ui: UIBusiness):
 	action_done.emit()
 
 func action_buy(card: Card)-> bool:
-	is_currently_on_action = true
 	if card.shop_price > GameManager.gold:
 		return false
-	
+	is_currently_on_action = true
 	GameManager.gold = GameManager.gold - card.shop_price
 	card.in_shop = false
 	

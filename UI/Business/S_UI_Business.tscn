@@ -295,14 +295,17 @@ layout_mode = 2
 
 [node name="Container" type="HBoxContainer" parent="Container/Detail/Title"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="Container/Detail/Title/Container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vt6os")
 theme_override_font_sizes/font_size = 36
 text = "Farm"
+autowrap_mode = 2
 
 [node name="Panel" type="Panel" parent="Container/Detail/Title/Container"]
 custom_minimum_size = Vector2(40, 40)
