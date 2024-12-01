@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://lh1fsywke2mu"]
+[gd_scene load_steps=29 format=3 uid="uid://lh1fsywke2mu"]
 
 [ext_resource type="Script" path="res://UI/Business/GD_BusinessUI.gd" id="1_tge38"]
 [ext_resource type="Texture2D" uid="uid://mih5wymxdnlq" path="res://Assets/BusinessIcon/A_BusinessIcon_0000.png" id="2_7oipk"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b4k7h608rbynp" path="res://Assets/UI/Business/labor-icon.svg" id="3_to8dd"]
 [ext_resource type="FontFile" uid="uid://cjgxkmfq6di8l" path="res://Assets/Font/SF-Pro-Rounded-Bold.otf" id="4_qeiud"]
 [ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="5_rlgxi"]
+[ext_resource type="AudioStream" uid="uid://rqalpowti6mg" path="res://Assets/SFX/SFX_business_work.wav" id="9_i1b17"]
+[ext_resource type="AudioStream" uid="uid://hdlthic4dt5s" path="res://Assets/SFX/SFX_Business_Add_Resource.wav" id="10_46wkb"]
+[ext_resource type="AudioStream" uid="uid://ujejll2egyej" path="res://Assets/SFX/SFX_change_resource.wav" id="10_xukol"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vuep"]
 content_margin_left = 8.0
@@ -376,6 +379,15 @@ text = "Component"
 [node name="List" type="VBoxContainer" parent="Container/Detail/Component"]
 layout_mode = 2
 theme_override_constants/separation = 4
+
+[node name="WorkAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_i1b17")
+
+[node name="AddResourceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_46wkb")
+
+[node name="ChangeResourceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xukol")
 
 [connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ButtonGroup/Work" to="." method="_on_work_pressed"]

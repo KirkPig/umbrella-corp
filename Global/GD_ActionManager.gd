@@ -44,7 +44,7 @@ func action_work(business: UIBusiness):
 	await playing_field.playing_cards_done
 	for _card: WorkerCard in selected_card:
 		_card.card_play.disconnect(business.yield_labor)
-	
+
 	CardManager.discards(selected_card)
 	CardManager.fill_hand()
 	
