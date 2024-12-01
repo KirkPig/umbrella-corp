@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://685504p7642x"]
+[gd_scene load_steps=10 format=3 uid="uid://685504p7642x"]
 
 [ext_resource type="Script" path="res://Card/GD_WorkerCard.gd" id="1_xhlpt"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_g04dg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_q3jkq"]
 [ext_resource type="Shader" path="res://Shader/flash.gdshader" id="5_xw5x4"]
 [ext_resource type="AudioStream" uid="uid://bvit44ex65bi2" path="res://Assets/SFX/SFX_Card_Select.wav" id="6_fyurg"]
+[ext_resource type="AudioStream" uid="uid://cgb8emqrush5d" path="res://Assets/SFX/SFX_Card_Bounce.wav" id="7_erj71"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q23vy"]
 resource_local_to_scene = true
@@ -63,6 +64,10 @@ offset_bottom = 240.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fyurg")
+
+[node name="BounceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_erj71")
+volume_db = -15.0
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]
