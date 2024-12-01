@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="ContractData" load_steps=5 format=3 uid="uid://cb5bulwkmu3qg"]
 
 [ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_h0325"]
-[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardRandomCard.gd" id="3_xrr1j"]
+[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardUpgrade.gd" id="2_7vieo"]
 [ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="4_p3fod"]
 
-[sub_resource type="Resource" id="Resource_ea33u"]
-script = ExtResource("3_xrr1j")
-reward_card_type = 5
-name = "Random Upgrade"
-amount = 3
+[sub_resource type="Resource" id="Resource_ay72o"]
+script = ExtResource("2_7vieo")
+reward_upgrade_id = 5003
+name = "Max Energy"
+amount = 2
 
 [resource]
 script = ExtResource("4_p3fod")
@@ -17,4 +17,4 @@ description = "ASD"
 turn_limit = 7
 score_goal = 1000
 reward_text = ""
-reward_list = Array[ExtResource("1_h0325")]([SubResource("Resource_ea33u")])
+reward_list = Array[ExtResource("1_h0325")]([SubResource("Resource_ay72o")])

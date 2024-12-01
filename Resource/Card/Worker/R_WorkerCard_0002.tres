@@ -14,3 +14,6 @@ card_id = 2
 card_name = "Scientist"
 card_texture = SubResource("CompressedTexture2D_lh27j")
 shop_price = 20
+Effect = "If you use this worker to research, 2 in 3 this card go to discard pile"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

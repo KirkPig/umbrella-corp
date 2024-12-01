@@ -12,7 +12,11 @@ special_work_rate = {
 1000: 3,
 1005: 3
 }
+research_chance_destroy = 100
 card_id = 3
 card_name = "Farmer"
 card_texture = SubResource("CompressedTexture2D_lh27j")
 shop_price = 5
+Effect = "3x Labor in Farm, Livestock"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])
