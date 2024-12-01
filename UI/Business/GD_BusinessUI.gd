@@ -3,6 +3,7 @@ class_name UIBusiness
 
 @onready var label_business_name = $Container/Detail/Title/Container/Label
 @onready var icon_yield = $Container/Detail/Title/Container/Panel/Icon
+@onready var business_icon = $Container/Panel/Icon
 
 @onready var label_yield = $Container/Detail/Labor/Progress/Yield
 @onready var label_progress = $Container/Detail/Labor/Progress/Label
@@ -37,12 +38,11 @@ var business_card_data: BusinessCardData:
 	set(value):
 		label_business_name.text = value.card_name
 		var _id = value.resource_yield_list[0]
-		var _res: ResourceCardData = CardManager.card_dict[_id]
-		current_yield = _res
 		sell_price = value.shop_price / 10 * 8
 		change_resource_price = value.shop_price / 10 * 2
 		business_card_data = value
-		
+		if value.card_icon:
+			business_icon.texture = value.card_icon
 		button_state_checking()
 
 ## yield selection

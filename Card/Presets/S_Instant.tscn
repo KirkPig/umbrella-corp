@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctxxqcbcsrgkj"]
+[gd_scene load_steps=8 format=3 uid="uid://dtyesorq77tcq"]
 
 [ext_resource type="Script" path="res://Card/GD_InstantCard.gd" id="1_yotca"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_3dkl3"]
 [ext_resource type="Texture2D" uid="uid://c1wsq8avglckq" path="res://Assets/UpgradeCard/A_UpgradeCard_maxCard.png" id="3_u6f8j"]
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_mmc5s"]
+[ext_resource type="Shader" path="res://Shader/flash.gdshader" id="5_2talh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -14,6 +15,12 @@ shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_keorj"]
+resource_local_to_scene = true
+shader = ExtResource("5_2talh")
+shader_parameter/amount = 0.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
 
 [node name="InstantCard" type="Control"]
 layout_mode = 3
@@ -42,6 +49,14 @@ offset_bottom = -15.015
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(1.8, 1.8)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_keorj")
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 240.0
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

@@ -1,17 +1,13 @@
-[gd_resource type="Resource" script_class="ContractData" load_steps=6 format=3 uid="uid://dbyb02rp5y3y5"]
+[gd_resource type="Resource" script_class="ContractData" load_steps=5 format=3 uid="uid://dbyb02rp5y3y5"]
 
 [ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_87hxe"]
-[ext_resource type="Texture2D" uid="uid://b2ybhgfmiilam" path="res://Assets/Phone/walletnobg.png" id="2_6jk57"]
 [ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardGold.gd" id="3_yjjlt"]
 [ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="6_stds3"]
 
-[sub_resource type="Resource" id="Resource_bolee"]
+[sub_resource type="Resource" id="Resource_gmqte"]
 script = ExtResource("3_yjjlt")
-reward_resource = 2
 name = ""
 amount = 50
-icon = ExtResource("2_6jk57")
-icon_bg_color = Color(0, 0, 0, 1)
 
 [resource]
 script = ExtResource("6_stds3")
@@ -20,4 +16,4 @@ description = "Drill Missile"
 turn_limit = 4
 score_goal = 200
 reward_text = ""
-reward_list = Array[ExtResource("1_87hxe")]([SubResource("Resource_bolee")])
+reward_list = Array[ExtResource("1_87hxe")]([SubResource("Resource_gmqte")])

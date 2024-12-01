@@ -9,6 +9,7 @@ class_name BusinessFieldController
 func add_new_business(_id: int, _res_id: int) -> UIBusiness:
 	var _ui: UIBusiness = _template_business_ui.instantiate()
 	add_child(_ui)
+	_ui.current_yield = CardManager.card_dict[_res_id]
 	_ui.business_card_data = CardManager.card_dict[_id]
 	_ui.current_yield = CardManager.card_dict[_res_id]
 	update_position()

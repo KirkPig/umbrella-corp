@@ -1,9 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0k7l318sse8m"]
+[gd_scene load_steps=12 format=3 uid="uid://cm7jvevay70mp"]
 
 [ext_resource type="Script" path="res://Card/GD_BusinessCard.gd" id="1_b6kww"]
+[ext_resource type="Shader" path="res://Shader/flash.gdshader" id="1_sfdvu"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_wo584"]
 [ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/BusinessCard/A_BusinessCard_1000.png" id="3_6jrv4"]
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_oojix"]
+[ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="5_bm6co"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="6_1wbgf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ock4h"]
+shader = ExtResource("1_sfdvu")
+shader_parameter/amount = 1.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -15,9 +23,24 @@ shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_gjycx"]
+font = ExtResource("6_1wbgf")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfco1"]
+resource_local_to_scene = true
+shader = ExtResource("1_sfdvu")
+shader_parameter/amount = 0.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
+
 [node name="BusinessCard" type="Control"]
+material = SubResource("ShaderMaterial_ock4h")
+custom_minimum_size = Vector2(160, 240)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 240.0
 pivot_offset = Vector2(90, 126)
 script = ExtResource("1_b6kww")
 
@@ -43,6 +66,32 @@ offset_bottom = -15.015
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(1.8, 1.8)
+
+[node name="YieldIcon" type="TextureRect" parent="Card"]
+layout_mode = 0
+offset_left = 342.342
+offset_top = 588.589
+offset_right = 432.342
+offset_bottom = 678.589
+texture = ExtResource("5_bm6co")
+
+[node name="LaborLabel" type="Label" parent="Card"]
+layout_mode = 0
+offset_left = 6.00601
+offset_top = 615.616
+offset_right = 88.006
+offset_bottom = 682.616
+text = "12"
+label_settings = SubResource("LabelSettings_gjycx")
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_rfco1")
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 240.0
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]
