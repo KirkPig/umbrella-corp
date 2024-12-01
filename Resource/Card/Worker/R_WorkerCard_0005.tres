@@ -8,8 +8,17 @@ load_path = "res://.godot/imported/A_WorkerCard_0005.png-e419f615c5a42762273a2f8
 [resource]
 script = ExtResource("1_vtohl")
 base_work_rate = 1
-special_work_rate = {}
-card_name = "Rancher"
+special_work_rate = {
+1000: 2,
+1002: 2,
+1005: 2,
+1006: 2
+}
+research_chance_destroy = 100
 card_id = 5
+card_name = "Rancher"
 card_texture = SubResource("CompressedTexture2D_lh27j")
 shop_price = 8
+Effect = "2x Labor in Farm, Livestock, Forerstry, Plantation"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ContractData" load_steps=5 format=3 uid="uid://bg3sibchnclqv"]
+
+[ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_a2aux"]
+[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardGold.gd" id="2_8mwqj"]
+[ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="4_uia4g"]
+
+[sub_resource type="Resource" id="Resource_paygh"]
+script = ExtResource("2_8mwqj")
+name = "Gold"
+amount = 800
+
+[resource]
+script = ExtResource("4_uia4g")
+name = "Contract K"
+description = "ASD"
+turn_limit = 9
+score_goal = 1300
+reward_text = ""
+reward_list = Array[ExtResource("1_a2aux")]([SubResource("Resource_paygh")])

@@ -43,3 +43,6 @@ card_name = "Orange"
 card_texture = ExtResource("1_70ula")
 shop_price = 0
 card_icon = ExtResource("1_ry8tk")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

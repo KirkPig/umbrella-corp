@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctxxqcbcsrgkj"]
+[gd_scene load_steps=11 format=3 uid="uid://dtyesorq77tcq"]
 
 [ext_resource type="Script" path="res://Card/GD_InstantCard.gd" id="1_yotca"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_3dkl3"]
-[ext_resource type="Texture2D" uid="uid://c1wsq8avglckq" path="res://Assets/UpgradeCard/A_UpgradeCard_maxCard.png" id="3_u6f8j"]
+[ext_resource type="Texture2D" uid="uid://bv3m4cs4f8mue" path="res://Assets/InstantCard/A_InstantCard_3000.png" id="3_8yc04"]
+[ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_mmc5s"]
+[ext_resource type="Shader" path="res://Shader/flash.gdshader" id="5_2talh"]
+[ext_resource type="PackedScene" uid="uid://d2mlhd7olsx15" path="res://UI/Btn/S_InstantActivate.tscn" id="5_30fa2"]
+[ext_resource type="AudioStream" uid="uid://bvit44ex65bi2" path="res://Assets/SFX/SFX_Card_Select.wav" id="7_7cm0i"]
+[ext_resource type="AudioStream" uid="uid://cgb8emqrush5d" path="res://Assets/SFX/SFX_Card_Bounce.wav" id="8_iba8r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -13,6 +18,12 @@ shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_keorj"]
+resource_local_to_scene = true
+shader = ExtResource("5_2talh")
+shader_parameter/amount = 0.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
 
 [node name="InstantCard" type="Control"]
 layout_mode = 3
@@ -26,9 +37,50 @@ layout_mode = 0
 offset_right = 480.0
 offset_bottom = 720.0
 scale = Vector2(0.333, 0.333)
-texture = ExtResource("3_u6f8j")
+texture = ExtResource("3_8yc04")
 stretch_mode = 2
+
+[node name="STooltips" parent="Card" instance=ExtResource("4_mmc5s")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 477.477
+offset_top = -15.015
+offset_right = 477.477
+offset_bottom = -15.015
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.8, 1.8)
+
+[node name="Control" parent="Card" instance=ExtResource("5_30fa2")]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_top = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 1
+scale = Vector2(3, 3)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_keorj")
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 240.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7cm0i")
+
+[node name="BounceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_iba8r")
+volume_db = -15.0
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]
 [connection signal="mouse_exited" from="Card" to="." method="_on_card_mouse_exited"]
+[connection signal="activate_instant" from="Card/Control" to="." method="_on_control_activate_instant"]

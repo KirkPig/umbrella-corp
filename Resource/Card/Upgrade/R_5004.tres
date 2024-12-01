@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="UpgradeCardData" load_steps=3 format=3 uid="uid://bx1lh80rbucrl"]
+[gd_resource type="Resource" script_class="UpgradeCardData" load_steps=4 format=3 uid="uid://bx1lh80rbucrl"]
 
 [ext_resource type="Texture2D" uid="uid://bjg2ynbiavkxu" path="res://Assets/UpgradeCard/A_UpgradeCard_maxDiscard.png" id="1_0ls0s"]
+[ext_resource type="Texture2D" uid="uid://g5l1q12dvwbf" path="res://Assets/UpgradeIcon/trash.svg" id="1_3aek6"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_UpgradeCard.gd" id="1_p6np3"]
 
 [resource]
@@ -8,7 +9,11 @@ script = ExtResource("1_p6np3")
 upgrade_type = 3
 upgrade_resoruce_id = -1
 upgrade_amount = 1
-card_name = ""
 card_id = 5004
+card_name = "Upgrade discard time"
 card_texture = ExtResource("1_0ls0s")
 shop_price = 10
+card_icon = ExtResource("1_3aek6")
+Effect = "Max discard +1"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([14])

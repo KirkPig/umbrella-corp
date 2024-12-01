@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ResourceCardData" load_steps=14 format=3 uid="uid://rtficy7jqt0p"]
+[gd_resource type="Resource" script_class="ResourceCardData" load_steps=15 format=3 uid="uid://rtficy7jqt0p"]
 
 [ext_resource type="Texture2D" uid="uid://7x63mmmv0vn4" path="res://Assets/IconNoBG/A_ResourceIcon_2028.png" id="1_7h3j4"]
 [ext_resource type="Texture2D" uid="uid://bco5m1aj0njrd" path="res://Assets/ResourceCard/A_ResourceCard_2028.png" id="1_dk3iy"]
@@ -7,6 +7,11 @@
 [ext_resource type="Script" path="res://Resource/Card/GDR_ResourceCard.gd" id="4_wi054"]
 [ext_resource type="Script" path="res://Resource/Research/Reward/GDR_ResearchRewardUnlockResource.gd" id="5_35nq3"]
 [ext_resource type="Resource" uid="uid://p1qp0710qdc8" path="res://Resource/Research/Reward/gold.tres" id="6_ncp4l"]
+
+[sub_resource type="Resource" id="Resource_c6xwq"]
+script = ExtResource("2_jw6ok")
+resource_id = 2000
+amount = 1
 
 [sub_resource type="Resource" id="Resource_bhwfe"]
 script = ExtResource("5_35nq3")
@@ -58,7 +63,7 @@ yield_demand = 1
 labor_per_piece = 1
 yield_gold = 7
 yield_piece = 1
-components = Array[ExtResource("2_jw6ok")]([])
+components = Array[ExtResource("2_jw6ok")]([SubResource("Resource_c6xwq")])
 research_yield = Array[ExtResource("3_6gikt")]([SubResource("Resource_bhwfe"), ExtResource("6_ncp4l"), SubResource("Resource_jkyi4"), SubResource("Resource_uej5f"), SubResource("Resource_lideu"), SubResource("Resource_idtl4"), SubResource("Resource_c8tmc")])
 upgrade_yield_amount = 1
 upgrade_yield_gold = 10
@@ -71,3 +76,6 @@ card_name = "Flour"
 card_texture = ExtResource("1_dk3iy")
 shop_price = 0
 card_icon = ExtResource("1_7h3j4")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://cccfor5437kmi"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=4 format=3 uid="uid://cccfor5437kmi"]
 
+[ext_resource type="Texture2D" uid="uid://cb615wu6koggm" path="res://Assets/BusinessIcon/A_BusinessIcon_0002.png" id="1_0mjm0"]
 [ext_resource type="Texture2D" uid="uid://de4k4f71x3i7w" path="res://Assets/BusinessCard/A_BusinessCard_1002.png" id="1_sxo2r"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="7_14dl4"]
 
@@ -11,3 +12,7 @@ card_id = 1002
 card_name = "Forest"
 card_texture = ExtResource("1_sxo2r")
 shop_price = 40
+card_icon = ExtResource("1_0mjm0")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

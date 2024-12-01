@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgsraw84xrhf7"]
+[gd_scene load_steps=11 format=3 uid="uid://dgsraw84xrhf7"]
 
 [ext_resource type="Script" path="res://Card/GD_UpgradeResourceCard.gd" id="1_dm264"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_xk3p0"]
 [ext_resource type="Texture2D" uid="uid://jb004ywnebgp" path="res://Assets/UpgradeCard/A_UpgradeCard_yield.png" id="3_shsje"]
 [ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="4_olcfa"]
+[ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="5_nybyi"]
+[ext_resource type="Shader" path="res://Shader/flash.gdshader" id="6_jfa0l"]
+[ext_resource type="AudioStream" uid="uid://bvit44ex65bi2" path="res://Assets/SFX/SFX_Card_Select.wav" id="7_u8jey"]
+[ext_resource type="AudioStream" uid="uid://cgb8emqrush5d" path="res://Assets/SFX/SFX_Card_Bounce.wav" id="8_e1rjl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -14,6 +18,12 @@ shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clqia"]
+resource_local_to_scene = true
+shader = ExtResource("6_jfa0l")
+shader_parameter/amount = 0.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
 
 [node name="UpgradeCard" type="Control"]
 layout_mode = 3
@@ -30,19 +40,46 @@ scale = Vector2(0.333, 0.333)
 texture = ExtResource("3_shsje")
 stretch_mode = 2
 
-[node name="Icons" type="Control" parent="."]
+[node name="STooltips" parent="Card" instance=ExtResource("5_nybyi")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 477.477
+offset_top = -15.015
+offset_right = 477.477
+offset_bottom = -15.015
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.8, 1.8)
+
+[node name="Icons" type="Control" parent="Card"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Icons"]
+[node name="TextureRect" type="TextureRect" parent="Card/Icons"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 100.0
-offset_right = 154.0
-offset_bottom = 190.0
-scale = Vector2(0.35, 0.35)
+offset_left = 195.195
+offset_top = 294.294
+offset_right = 285.195
+offset_bottom = 384.294
 texture = ExtResource("4_olcfa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_clqia")
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 240.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_u8jey")
+
+[node name="BounceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_e1rjl")
+volume_db = -15.0
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

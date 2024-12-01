@@ -16,10 +16,13 @@ effect_target = 1
 
 [resource]
 script = ExtResource("1_ggbrk")
-target_mode = 0
-target_type = 0
+destroy_self = false
+destroy_chance = 0
 effects = Array[ExtResource("1_lq3ko")]([SubResource("Resource_suv5g")])
-card_name = "Overconsumption"
 card_id = 3001
+card_name = "Overconsumption"
 card_texture = ExtResource("1_a1cr8")
 shop_price = 30
+Effect = "Next resource selling, the price +20 to each resource from farm"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([5])

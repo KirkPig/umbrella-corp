@@ -5,6 +5,7 @@ extends Control
 @onready var deck_card = %DeckCard
 
 @onready var deck_view = $SDeckPile
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var card_number : int  = 0 :
 	set(value):
@@ -26,8 +27,10 @@ func _on_closed_button_pressed() -> void:
 	deck_view.visible = false
 	for card in deck_view.get_all_card():
 		card.reparent(deck_card)
+	audio_stream_player.play()
 
 
 func _on_view_button_pressed() -> void:
 	deck_view.visible = true
 	deck_view.move_card_to_pile(deck_card.get_children())
+	audio_stream_player.play()

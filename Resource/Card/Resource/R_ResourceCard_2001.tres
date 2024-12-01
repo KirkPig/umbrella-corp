@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_k1ms5"]
 script = ExtResource("4_pv85b")
-unlocked_resource_id = 2001
+unlocked_resource_id = 2002
 need_resource = -1
 priority = 0
 chance = 100
@@ -42,8 +42,17 @@ yield_gold = 4
 yield_piece = 1
 components = Array[ExtResource("2_b7jui")]([])
 research_yield = Array[ExtResource("3_0cbo2")]([SubResource("Resource_k1ms5"), SubResource("Resource_3wenx"), SubResource("Resource_xbard")])
+upgrade_yield_amount = 1
+upgrade_yield_gold = 10
+upgrade_price_amount = 10
+upgrade_price_gold = 10
+upgrade_demand_amount = 1
+upgrade_demand_gold = 10
 card_id = 2001
 card_name = "Corn"
 card_texture = ExtResource("2_6v088")
 shop_price = 0
 card_icon = ExtResource("1_fli0q")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

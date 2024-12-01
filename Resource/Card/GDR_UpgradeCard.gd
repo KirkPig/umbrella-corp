@@ -24,6 +24,31 @@ enum EUpgrade{
 @export var upgrade_resoruce_icon : Texture2D
 @export var upgrade_amount : int
 
+func current_state() -> int:
+	match upgrade_type:
+		EUpgrade.HAND:
+			return GameManager.max_hand
+		EUpgrade.SHOP:
+			return GameManager.max_shop_refresh
+		EUpgrade.MAX_ENERGY:
+			return GameManager.max_energy * 25
+		EUpgrade.MAX_DISCARD:
+			return GameManager.max_discard_energy
+		EUpgrade.RESOURE_DEMAND:
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			return _data.yield_demand
+		EUpgrade.RESOURE_SCORE:
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			return _data.yield_price
+		EUpgrade.RESOURE_GOLD:
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			return _data.yield_gold
+		EUpgrade.RESOURE_YEILD:
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			return _data.yield_piece
+		_:
+			return 0
+
 func played() -> void:
 	match upgrade_type:
 		EUpgrade.HAND:
@@ -36,22 +61,14 @@ func played() -> void:
 		EUpgrade.MAX_DISCARD:
 			GameManager.max_discard_energy += 1
 		EUpgrade.RESOURE_DEMAND:
-			if upgrade_resoruce_id in SellManager.card_sell_bonus[SellManager.EResource.DEMAND]:
-				SellManager.card_sell_bonus[SellManager.EResource.DEMAND][upgrade_resoruce_id] += upgrade_amount
-			else :
-				SellManager.card_sell_bonus[SellManager.EResource.DEMAND][upgrade_resoruce_id] = upgrade_amount
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_demand += upgrade_amount
 		EUpgrade.RESOURE_SCORE:
-			if upgrade_resoruce_id in SellManager.card_sell_bonus[SellManager.EResource.SCORE]:
-				SellManager.card_sell_bonus[SellManager.EResource.SCORE][upgrade_resoruce_id] += upgrade_amount
-			else :
-				SellManager.card_sell_bonus[SellManager.EResource.SCORE][upgrade_resoruce_id] = upgrade_amount
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_price += upgrade_amount
 		EUpgrade.RESOURE_GOLD:
-			if upgrade_resoruce_id in SellManager.card_sell_bonus[SellManager.EResource.GOLD]:
-				SellManager.card_sell_bonus[SellManager.EResource.GOLD][upgrade_resoruce_id] += upgrade_amount
-			else :
-				SellManager.card_sell_bonus[SellManager.EResource.GOLD][upgrade_resoruce_id] = upgrade_amount
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_gold += upgrade_amount
 		EUpgrade.RESOURE_YEILD:
-			#TODO:
-			pass
-			
-			
+			var _data: ResourceCardData = CardManager.card_dict[upgrade_resoruce_id]
+			_data.yield_piece += upgrade_amount

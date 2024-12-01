@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2mlhd7olsx15"]
+
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="1_qadfa"]
+[ext_resource type="Script" path="res://UI/Btn/GD_InstantActivate.gd" id="1_s5urg"]
+
+[sub_resource type="Theme" id="Theme_kpnt2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1w58"]
+bg_color = Color(0.411765, 0.627451, 0.909804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_jny68"]
+font = ExtResource("1_qadfa")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5urg")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_kpnt2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w1w58")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -10.0
+offset_right = 14.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use"
+label_settings = SubResource("LabelSettings_jny68")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

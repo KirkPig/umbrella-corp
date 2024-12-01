@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ContractData" load_steps=8 format=3 uid="uid://t1t2qkbkcrtk"]
+
+[ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_gv83r"]
+[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardGold.gd" id="2_d0inb"]
+[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardRandomCard.gd" id="3_kl8yg"]
+[ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="4_ygsqq"]
+
+[sub_resource type="Resource" id="Resource_1dplo"]
+script = ExtResource("2_d0inb")
+name = "Gold"
+amount = 150
+
+[sub_resource type="Resource" id="Resource_g0ptj"]
+script = ExtResource("3_kl8yg")
+reward_card_type = 1
+name = "Random Worker"
+amount = 2
+
+[sub_resource type="Resource" id="Resource_krm7t"]
+script = ExtResource("3_kl8yg")
+reward_card_type = 5
+name = "Random Upgrade"
+amount = 1
+
+[resource]
+script = ExtResource("4_ygsqq")
+name = "Contract G"
+description = "ASD"
+turn_limit = 6
+score_goal = 750
+reward_text = ""
+reward_list = Array[ExtResource("1_gv83r")]([SubResource("Resource_1dplo"), SubResource("Resource_g0ptj"), SubResource("Resource_krm7t")])

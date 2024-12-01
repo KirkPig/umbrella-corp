@@ -11,14 +11,17 @@ load_path = "res://.godot/imported/A_InstantCard_3000.png-4f1191aee7f8e25e4df5cb
 script = ExtResource("3_500ha")
 effect_type = 0
 effect_resource = 1
-amount = 0
+amount = 2
 
 [resource]
 script = ExtResource("1_wuwa2")
-target_mode = 0
-target_type = 0
+destroy_self = false
+destroy_chance = 0
 effects = Array[ExtResource("1_v76uh")]([SubResource("Resource_elw0n")])
 card_id = 3000
 card_name = "Energy Drink"
 card_texture = SubResource("CompressedTexture2D_vujoi")
 shop_price = 20
+Effect = "Energy +2 this turn"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([1])

@@ -3,6 +3,7 @@ class_name UIBusiness
 
 @onready var label_business_name = $Container/Detail/Title/Container/Label
 @onready var icon_yield = $Container/Detail/Title/Container/Panel/Icon
+@onready var business_icon = $Container/Panel/Icon
 
 @onready var label_yield = $Container/Detail/Labor/Progress/Yield
 @onready var label_progress = $Container/Detail/Labor/Progress/Label
@@ -23,6 +24,12 @@ class_name UIBusiness
 @export var damp: float = 20.0
 @export var velocity_multiplier: float = 10.0
 
+@onready var work_audio_stream_player: AudioStreamPlayer = $WorkAudioStreamPlayer
+@onready var add_resource_audio_stream_player: AudioStreamPlayer = $AddResourceAudioStreamPlayer
+@onready var change_resource_audio_stream_player: AudioStreamPlayer = $ChangeResourceAudioStreamPlayer
+
+var CENTER_POS = Vector2(210, 141)
+
 var tween_moving: Tween
 
 var displacement: float = 0.0 
@@ -31,17 +38,15 @@ var oscillator_velocity: float = 0.0
 var last_pos: Vector2
 var velocity: Vector2
 
-# TODO: sell business
-# TODO: handle when business data is changed
 var business_card_data: BusinessCardData:
 	set(value):
 		label_business_name.text = value.card_name
 		var _id = value.resource_yield_list[0]
-		var _res: ResourceCardData = CardManager.card_dict[_id]
-		current_yield = _res
 		sell_price = value.shop_price / 10 * 8
+		change_resource_price = value.shop_price / 10 * 2
 		business_card_data = value
-		
+		if value.card_icon:
+			business_icon.texture = value.card_icon
 		button_state_checking()
 
 ## yield selection
@@ -50,7 +55,6 @@ var current_yield: ResourceCardData:
 		# Icon
 		icon_yield.texture = value.card_icon
 		# Labor progress bar
-		label_yield.text = str(value.yield_piece) + "x " + value.card_name
 		current_labor = 0
 		labor = value.labor_per_piece
 		# Component bar
@@ -61,32 +65,56 @@ var current_yield: ResourceCardData:
 			component.show()
 		else:
 			component.hide()
-		
+		if current_yield:
+			current_yield.changed.disconnect(refresh_data)
 		current_yield = value
+		refresh_data()
+		value.changed.connect(refresh_data)
+
+func refresh_data():
+	label_yield.text = str(current_yield.yield_piece) + "x " + current_yield.card_name
 
 ## labor state
 var current_labor: int = 0:
 	set(value):
-		if !can_use_components():
-			return
-		while value >= labor:
-			_yield_resource()
-			value -= labor
-		current_labor = value
-		label_progress.text = str(current_labor) + "/" + str(labor)
+		# TODO: labor added transition
+		var _total_time = 0.4 / GameManager.game_speed
 		
-		progress_bar.value = value
+		var _time = 0
+		while value >= labor:
+			_time += 1
+			value -= labor
+		
+		for i in _time:
+			if !can_use_components():
+				value = current_labor
+				break
+			var _tween = create_tween()
+			_tween.tween_property(progress_bar, "value", labor, _total_time / (_time + 1))
+			await _tween.finished
+			_yield_resource()
+			progress_bar.value = 0
+			current_labor = 0
+		
+		var _tween = create_tween()
+		_tween.tween_property(progress_bar, "value", value, _total_time / (_time + 1))
+		await _tween.finished
+		current_labor = value
 var labor: int = 4:
 	set(value):
 		labor = value
-		label_progress.text = str(current_labor) + "/" + str(labor)
-		
 		progress_bar.max_value = value
+		_set_progress(current_labor)
 
 var sell_price: int = 0:
 	set(value):
 		btn_sell.text = "Sell ($" + str(value) + ")"
 		sell_price = value
+
+var change_resource_price: int = 0:
+	set(value):
+		btn_change_resource.text = "Change products ($" + str(value) + ")"
+		change_resource_price = value
 
 var components: Dictionary
 
@@ -97,18 +125,17 @@ func hide_all_button():
 	btn_sell.hide()
 
 func button_state_checking():
-	btn_sell.show()
-	
 	var selected_cards = CardManager.get_selected_card()
 	var resource_components = current_yield.components
+	btn_sell.visible = GameManager.can_sell_business(self)
 	btn_work.visible = GameManager.can_work(selected_cards) and can_use_components()
 	btn_component.visible = GameManager.can_add_components(selected_cards, resource_components)
-	btn_change_resource.visible = GameManager.can_business_change_resource(business_card_data.card_id)
+	btn_change_resource.visible = GameManager.can_business_change_resource(self)
 	
 func change_position(_pos: Vector2, _time: float):
 	if tween_moving and tween_moving.is_running():
 		tween_moving.kill()
-	tween_moving = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.NOTIFICATION_PREDELETE)
+	tween_moving = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween_moving.tween_property(self, "position", _pos, _time)
 
 func set_ui_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x: float, _card_min_x: float, in_hand: bool):
@@ -141,12 +168,19 @@ func can_use_components() -> bool:
 			return false
 	return true
 
+func _set_progress(value):
+	label_progress.text = str(int(value)) + "/" + str(labor)
+
+func _ready() -> void:
+	progress_bar.value_changed.connect(_set_progress)
+
 func _yield_resource():
 	var _n = _use_component()
 	if _n == 0:
 		return
-	var _c: Card = CardManager.add_card_to_deck(current_yield.card_id)
-	CardManager.discard(_c)
+	for i in current_yield.yield_piece:
+		var _c: Card = CardManager.add_card_to_deck(current_yield.card_id)
+		CardManager.discard(_c)
 
 func _use_component() -> int:
 	if !can_use_components():
@@ -188,7 +222,7 @@ func _rotate_velocity(delta: float) -> void:
 func _process(delta: float) -> void:
 	_rotate_velocity(delta)
 
-# TODO: handle the transition when the button is shown/hiden
+# TODO(canceled): handle the transition when the button is shown/hiden
 #@onready var btn_work_last_pos: Vector2 = btn_work.position
 #
 #func _process(delta: float) -> void:
@@ -219,13 +253,16 @@ func _on_sell_pressed() -> void:
 
 func _on_work_pressed() -> void:
 	ActionManager.action_work(self)
-	pass # Replace with function body.
+	work_audio_stream_player.play()
 
 
 func _on_component_pressed() -> void:
 	ActionManager.action_add_component(self)
+	add_resource_audio_stream_player.play()
 	pass # Replace with function body.
 
 
 func _on_change_resource_pressed() -> void:
+	ActionManager.action_change_resource(self)
+	change_resource_audio_stream_player.play()
 	pass # Replace with function body.

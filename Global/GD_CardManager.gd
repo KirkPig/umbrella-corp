@@ -32,7 +32,7 @@ var card_dict: Dictionary = {}
 var business_field: BusinessFieldController
 var hand: HandController:
 	set(value):
-		if hand and hand.hand_selection_change.is_connected(_card_selection_handler):
+		if hand and is_instance_valid(hand) and hand.hand_selection_change.is_connected(_card_selection_handler):
 			hand.hand_selection_change.disconnect(_card_selection_handler)
 		value.hand_selection_change.connect(_card_selection_handler)
 		hand = value
@@ -51,19 +51,23 @@ var shop_card_type_chance = {
 	ECardType.upgrade: 10,
 }
 
-func unlock_resource(_id: int):
+func unlock_resource(_id: int) -> Array[int]:
+	var _arr: Array[int] = [-1, -1]
 	var _res_data: ResourceCardData = card_dict[_id]
 	var _bus_data: BusinessCardData = card_dict[_res_data.business_id]
 	if _bus_data.card_id not in card_pool:
 		card_pool.append(_bus_data.card_id)
+		_arr[0] = _bus_data.card_id
 	if _res_data.card_id not in card_pool:
+		_arr[1] = _res_data.card_id
 		card_pool.append(_res_data.card_id)
 		card_pool.append(_res_data.card_id+4000)
 		card_pool.append(_res_data.card_id+5000)
 		card_pool.append(_res_data.card_id+6000)
 	if _res_data.card_id not in _bus_data.resource_yield_list:
 		_bus_data.resource_yield_list.append(_res_data.card_id)
-	pass
+	
+	return _arr
 
 func get_card_pool(_type: ECardType) -> Array[int]:
 	var from: int
@@ -118,21 +122,19 @@ func random_shop_card() -> int:
 	
 
 func _ready() -> void:
-	load_cards("res://Resource/Card/Business/", false)
-	load_cards("res://Resource/Card/Resource/", false)
-	load_cards("res://Resource/Card/Worker/", false)
-	load_cards("res://Resource/Card/Instant/", true)
-	load_cards("res://Resource/Card/Upgrade/", false)
+	load_cards("res://Resource/Card/Business/")
+	load_cards("res://Resource/Card/Resource/")
+	load_cards("res://Resource/Card/Worker/")
+	load_cards("res://Resource/Card/Instant/")
+	load_cards("res://Resource/Card/Upgrade/")
 
-func load_cards(_path: String, _is_unlocked: bool) -> void:
+func load_cards(_path: String) -> void:
 	var _card_res = DirAccess.get_files_at(_path)
 	for _files in _card_res:
 		var data: CardData = load(_path + _files)
 		card_dict[data.card_id] = data
 		if data is ResourceCardData:
 			add_upgrade_card_data(data)
-		if _is_unlocked:
-			card_pool.append(data.card_id)
 
 func add_upgrade_card_data(data:ResourceCardData):
 	for i in UpgradeCardData.EUpgradeResource:
@@ -242,8 +244,8 @@ func add_card_to_hand(_id: int) -> Card:
 	hand.add_exists(card)
 	return card
 
-func add_card_to_business_field(_id: int) -> UIBusiness:
-	return business_field.add_new_business(_id)
+func add_card_to_business_field(_id: int,resource_id:int) -> UIBusiness:
+	return business_field.add_new_business(_id, resource_id)
 	
 func add_card_to_pool(card_id_list:Array[int]) -> void:
 	for card_id in card_id_list:
@@ -260,10 +262,13 @@ func draw() -> bool:
 	return true
 
 func fill_hand():
+	if hand.get_children().size() < GameManager.max_hand and deck.get_children().size()>0:
+		ActionManager.action_list.draw_audio_stream_player.play(0.63)
 	while true:
 		var hand_cards = hand.get_children()
-		if hand_cards.size() >= GameManager.max_hand : break
+		if hand_cards.size() >= GameManager.max_hand: break
 		if !draw(): break
+	
 
 func reset_hand():
 	for card in hand.get_children():
@@ -301,6 +306,7 @@ func next_turn():
 	reset_deck()
 	fill_hand()
 	shop.reset_shop()
+	ActionManager.action_list.reset_list()
 
 func get_all_card(location: ECardLocation) -> Array[Card]:
 	var cards:Array[Card] = []

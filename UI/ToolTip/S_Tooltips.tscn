@@ -1,0 +1,253 @@
+[gd_scene load_steps=16 format=3 uid="uid://dxvhtp6xfwkyw"]
+
+[ext_resource type="Script" path="res://UI/ToolTip/GD_Tooltips.gd" id="1_hg2wv"]
+[ext_resource type="Texture2D" uid="uid://cexoowloi0nsc" path="res://Assets/Tooltip/Labor.png" id="2_f2vxg"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="3_ny4u2"]
+[ext_resource type="Texture2D" uid="uid://cqn5todbv8gai" path="res://Assets/Tooltip/Price.png" id="4_t1sx8"]
+[ext_resource type="Texture2D" uid="uid://4fx8mlet7m55" path="res://Assets/Tooltip/Demand.png" id="5_u3u1l"]
+[ext_resource type="Texture2D" uid="uid://ckk2k8d6p8ljh" path="res://Assets/Phone/WalletBlack.png" id="6_8fvmm"]
+[ext_resource type="Texture2D" uid="uid://r5pjoya1i5f7" path="res://Assets/IconNoBG/A_ResourceIcon_2000.png" id="7_bq60c"]
+[ext_resource type="Texture2D" uid="uid://bb1soasm8giov" path="res://Assets/Tooltip/Arrow.png" id="7_c4r36"]
+[ext_resource type="Texture2D" uid="uid://eko31eg3t3uu" path="res://Assets/Tooltip/Yield.png" id="8_bqtjc"]
+
+[sub_resource type="Theme" id="Theme_effyc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6d8s"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[sub_resource type="Theme" id="Theme_0j7ry"]
+
+[sub_resource type="Theme" id="Theme_ihope"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4pug"]
+font = ExtResource("3_ny4u2")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_buvti"]
+font = ExtResource("3_ny4u2")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="STooltips" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hg2wv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="KeywordContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(260, 64)
+layout_mode = 2
+theme = SubResource("Theme_effyc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_c6d8s")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = SubResource("Theme_0j7ry")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ihope")
+theme_override_constants/separation = 16
+
+[node name="LaborContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LaborContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="KeywordIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LaborContainer/Control"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f2vxg")
+
+[node name="LaborLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LaborContainer"]
+layout_mode = 2
+text = "x10"
+label_settings = SubResource("LabelSettings_p4pug")
+
+[node name="ResourceContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="PriceIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer/Control"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_t1sx8")
+
+[node name="PriceLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_p4pug")
+
+[node name="Control2" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="DemandIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer/Control2"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_u3u1l")
+
+[node name="DemandLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_p4pug")
+
+[node name="Control3" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="GoldIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer/Control3"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_8fvmm")
+
+[node name="GoldLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_p4pug")
+
+[node name="UpgradeResourceContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Control4" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="ResourceIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control4"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("7_bq60c")
+
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer"]
+visible = false
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="PriceIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_t1sx8")
+
+[node name="Control2" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer"]
+visible = false
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="DemandIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control2"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_u3u1l")
+
+[node name="Control3" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer"]
+visible = false
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="GoldIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control3"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_8fvmm")
+
+[node name="Control5" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer"]
+visible = false
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="YieldIcon" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control5"]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_bqtjc")
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_p4pug")
+
+[node name="EffectContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="EffectLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EffectContainer"]
+custom_minimum_size = Vector2(155, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "3x Labor in Farm, Livestock"
+label_settings = SubResource("LabelSettings_buvti")
+autowrap_mode = 3
+
+[node name="BusinessCostContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_c4r36")
+stretch_mode = 2
+
+[node name="BusinessCostYeildContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4

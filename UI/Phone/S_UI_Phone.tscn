@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bisxenor2iny5"]
+[gd_scene load_steps=39 format=3 uid="uid://bisxenor2iny5"]
 
 [ext_resource type="Script" path="res://UI/Phone/GD_phone.gd" id="1_lk1nw"]
 [ext_resource type="Texture2D" uid="uid://dybaqdfpu283c" path="res://Assets/Phone/phoneframe.png" id="1_t4ip5"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://qlptp7of8ifh" path="res://UI/Phone/Button/Shop/S_Shop.tscn" id="8_tlx3m"]
 [ext_resource type="LabelSettings" uid="uid://bo44cfxqlqyrj" path="res://UI/Phone/MoneyFontSetting.tres" id="9_bn4da"]
 [ext_resource type="PackedScene" uid="uid://bvft4vbbbwl0u" path="res://UI/Phone/Button/S_EndTurn.tscn" id="9_lku81"]
+[ext_resource type="LabelSettings" uid="uid://d3bit3qtq3v0r" path="res://UI/Phone/Button/ButtonFontSetting.tres" id="13_0bkja"]
 [ext_resource type="Texture2D" uid="uid://dffxit0f4kjkm" path="res://Assets/Phone/phonenobatttery.png" id="13_ofx7v"]
 [ext_resource type="Texture2D" uid="uid://31qbnfv7c16f" path="res://Assets/Phone/phoneframewhite.png" id="17_r8gh7"]
 [ext_resource type="Texture2D" uid="uid://btw6n386dx7q7" path="res://Assets/Phone/back.png" id="18_qpv4y"]
@@ -25,6 +26,13 @@
 [ext_resource type="Texture2D" uid="uid://c8nf0ryhi0fir" path="res://Assets/Phone/goldbg.png" id="23_w4am7"]
 [ext_resource type="Texture2D" uid="uid://cr1a0fsy37el0" path="res://Assets/Phone/bluebg.png" id="24_81r17"]
 [ext_resource type="Texture2D" uid="uid://dxbll1qq3t35q" path="res://Assets/Phone/refreshnobg.png" id="25_r5ktg"]
+[ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="26_0r2hf"]
+[ext_resource type="Texture2D" uid="uid://bdopnopklnf74" path="res://Assets/Phone/moon.svg" id="26_t8osi"]
+[ext_resource type="AudioStream" uid="uid://be8nkny5pqwsj" path="res://Assets/SFX/SFX_Refresh.wav" id="27_2qrd0"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="27_brhb3"]
+[ext_resource type="AudioStream" uid="uid://bq41abyvxi6dq" path="res://Assets/SFX/SFX_No_Energy.mp3" id="27_mxs6n"]
+[ext_resource type="AudioStream" uid="uid://yl3tneo0f1tg" path="res://Assets/SFX/SFX_Buy.wav" id="27_nsybu"]
+[ext_resource type="Texture2D" uid="uid://bwfvg3m6o55f8" path="res://Assets/Phone/Wiki.svg" id="30_3437n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5buys"]
 font = ExtResource("19_643q4")
@@ -39,6 +47,18 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_khe3o"]
 font = ExtResource("19_643q4")
 font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qniwt"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_0kjqw"]
+font = ExtResource("27_brhb3")
+font_size = 20
 
 [node name="SUiPhont" type="CanvasLayer"]
 script = ExtResource("1_lk1nw")
@@ -246,6 +266,43 @@ grow_vertical = 2
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
+[node name="Wiki" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control2/Wiki"]
+anchors_preset = 0
+offset_left = -65.0
+offset_top = -65.0
+offset_right = -65.0
+offset_bottom = -65.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control2/Wiki/Control"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 188.0
+
+[node name="ViewButton" type="TextureButton" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control2/Wiki/Control/VSplitContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("30_3437n")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control2/Wiki/Control/VSplitContainer"]
+layout_mode = 2
+text = "Wiki"
+label_settings = ExtResource("13_0bkja")
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/TextureRect/VSplitContainer/HSplitContainer2/Control2/Wiki"]
+stream = ExtResource("26_0r2hf")
+
 [node name="Control3" type="Control" parent="Control/TextureRect/VSplitContainer/HSplitContainer2"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
@@ -302,99 +359,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 
-[node name="Our of energy" type="TextureRect" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -646.0
-offset_top = -1381.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(586, 1481)
-texture = ExtResource("13_ofx7v")
-
-[node name="VSplitContainer" type="Control" parent="Control/Our of energy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Data" type="Control" parent="Control/Our of energy/VSplitContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-anchors_preset = 0
-offset_right = 646.0
-offset_bottom = 100.0
-
-[node name="Time Label" type="Label" parent="Control/Our of energy/VSplitContainer/Data"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -44.0
-offset_right = 156.0
-grow_vertical = 0
-text = "00:00"
-label_settings = ExtResource("3_yinhk")
-
-[node name="HSplitContainer2" type="HBoxContainer" parent="Control/Our of energy/VSplitContainer"]
-custom_minimum_size = Vector2(0, 220)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -738.0
-offset_right = -6.0
-offset_bottom = -518.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Control" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(100, 200)
-layout_mode = 2
-
-[node name="Control3" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="Setting" parent="Control/Our of energy/VSplitContainer/HSplitContainer2/Control3" instance=ExtResource("8_gjytp")]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="Control2" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="End" parent="Control/Our of energy/VSplitContainer/HSplitContainer2/Control2" instance=ExtResource("9_lku81")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control4" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(100, 200)
-layout_mode = 2
-
 [node name="Shop" type="TextureRect" parent="Control"]
 visible = false
 z_index = 4
+clip_contents = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -410,6 +378,7 @@ pivot_offset = Vector2(586, 1481)
 texture = ExtResource("17_r8gh7")
 
 [node name="VSplitContainer" type="Control" parent="Control/Shop"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -553,7 +522,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(150, 250)
 layout_mode = 2
 anchors_preset = 0
-offset_right = 150.0
+offset_left = 17.0
+offset_right = 167.0
 offset_bottom = 250.0
 scale = Vector2(1.2, 1.2)
 
@@ -620,8 +590,290 @@ layout_mode = 2
 text = "Free (10)"
 label_settings = SubResource("LabelSettings_khe3o")
 
+[node name="RefreshShopAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+stream = ExtResource("27_2qrd0")
+volume_db = -10.0
+
+[node name="BuyAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+stream = ExtResource("27_nsybu")
+volume_db = -10.0
+
+[node name="Out of energy" type="TextureRect" parent="Control"]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -646.0
+offset_top = -1381.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(586, 1481)
+texture = ExtResource("13_ofx7v")
+
+[node name="VSplitContainer" type="Control" parent="Control/Out of energy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Data" type="Control" parent="Control/Out of energy/VSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 646.0
+offset_bottom = 100.0
+
+[node name="Time Label" type="Label" parent="Control/Out of energy/VSplitContainer/Data"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -44.0
+offset_right = 156.0
+grow_vertical = 0
+text = "00:00"
+label_settings = ExtResource("3_yinhk")
+
+[node name="HSplitContainer2" type="HBoxContainer" parent="Control/Out of energy/VSplitContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -738.0
+offset_right = -6.0
+offset_bottom = -518.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Setting" parent="Control/Out of energy/VSplitContainer/HSplitContainer2/Control3" instance=ExtResource("8_gjytp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Control2" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="End" parent="Control/Out of energy/VSplitContainer/HSplitContainer2/Control2" instance=ExtResource("9_lku81")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control4" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="Screen" type="Panel" parent="Control"]
+visible = false
+z_index = 100
+clip_contents = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -640.0
+offset_right = -37.0
+offset_bottom = 43.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qniwt")
+
+[node name="Moon" type="TextureRect" parent="Control/Screen"]
+visible = false
+layout_mode = 0
+offset_left = -140.0
+offset_top = 250.0
+offset_right = -44.0
+offset_bottom = 346.0
+texture = ExtResource("26_t8osi")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/Screen"]
+visible = false
+custom_minimum_size = Vector2(315, 0)
+layout_mode = 0
+offset_top = 400.0
+offset_right = 315.0
+offset_bottom = 423.0
+text = "Sleeping..."
+label_settings = SubResource("LabelSettings_0kjqw")
+horizontal_alignment = 1
+
+[node name="Wiki" type="TextureRect" parent="Control"]
+visible = false
+z_index = 4
+clip_contents = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -646.0
+offset_top = -1381.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(586, 1481)
+texture = ExtResource("17_r8gh7")
+
+[node name="VSplitContainer" type="Control" parent="Control/Wiki"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Data" type="Control" parent="Control/Wiki/VSplitContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 646.0
+offset_bottom = 100.0
+
+[node name="Time Label" type="Label" parent="Control/Wiki/VSplitContainer/Data"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -44.0
+offset_right = 156.0
+grow_vertical = 0
+text = "00:00"
+label_settings = ExtResource("3_yinhk")
+
+[node name="Control" type="Control" parent="Control/Wiki/VSplitContainer/Data"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Energy" type="Label" parent="Control/Wiki/VSplitContainer/Data/Control"]
+layout_mode = 1
+offset_left = -246.0
+offset_top = -43.0
+offset_right = -150.0
+offset_bottom = 1.0
+text = "75%
+"
+label_settings = ExtResource("3_yinhk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Wiki/VSplitContainer/Data/Control"]
+layout_mode = 0
+offset_left = -176.0
+offset_top = -35.0
+offset_right = -136.0
+offset_bottom = 5.0
+max_value = 4.0
+value = 3.0
+texture_over = ExtResource("4_k4qrl")
+texture_progress = ExtResource("5_3ghh6")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="Control/Wiki/VSplitContainer/Data/Control"]
+layout_mode = 1
+offset_left = -108.0
+offset_top = -35.0
+offset_right = -87.0
+offset_bottom = -22.0
+scale = Vector2(2, 2)
+max_value = 4.0
+value = 4.0
+texture_progress = ExtResource("5_2u0bw")
+
+[node name="Control" type="Control" parent="Control/Wiki/VSplitContainer"]
+anchors_preset = 0
+offset_left = 54.0
+offset_top = 143.0
+offset_right = 94.0
+offset_bottom = 183.0
+
+[node name="CloseWiki" type="TextureButton" parent="Control/Wiki/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 6.0
+offset_right = 116.0
+offset_bottom = 54.0
+texture_normal = ExtResource("18_qpv4y")
+
+[node name="Label" type="Label" parent="Control/Wiki/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 58.0
+offset_right = 422.0
+offset_bottom = 155.0
+text = "Wiki"
+label_settings = SubResource("LabelSettings_5buys")
+horizontal_alignment = 1
+
+[node name="WikiImage" type="TextureRect" parent="Control/Wiki/VSplitContainer/Control"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 52.0
+offset_right = 556.0
+offset_bottom = 180.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_3437n")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Wiki/VSplitContainer"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 323.0
+offset_right = 596.0
+offset_bottom = 1249.0
+
+[node name="List" type="VBoxContainer" parent="Control/Wiki/VSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_0r2hf")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_mxs6n")
+volume_db = -10.0
+
 [connection signal="timeout" from="Control/TextureRect/VSplitContainer/Data/Time Label/Timer" to="." method="_on_timer_timeout"]
 [connection signal="shop_btn_pressed" from="Control/TextureRect/VSplitContainer/HSplitContainer2/Control/Shop" to="." method="_on_shop_shop_btn_pressed"]
+[connection signal="pressed" from="Control/TextureRect/VSplitContainer/HSplitContainer2/Control2/Wiki/Control/VSplitContainer/ViewButton" to="." method="_on_view_wiki_button_pressed"]
 [connection signal="pressed" from="Control/Shop/VSplitContainer/Control/CloseShop" to="." method="_on_close_shop_pressed"]
 [connection signal="pressed" from="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control/BuyButton" to="Control/Shop/VSplitContainer/Control2/VBoxContainer" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="Control/Shop/VSplitContainer/Control2/VBoxContainer/Control2/ResetButton2" to="Control/Shop/VSplitContainer/Control2/VBoxContainer" method="_on_reset_button_2_pressed"]
+[connection signal="pressed" from="Control/Wiki/VSplitContainer/Control/CloseWiki" to="." method="_on_close_wiki_pressed"]

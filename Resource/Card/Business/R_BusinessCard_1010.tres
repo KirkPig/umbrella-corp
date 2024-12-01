@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://4xy5gqr0q8ty"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=4 format=3 uid="uid://4xy5gqr0q8ty"]
 
+[ext_resource type="Texture2D" uid="uid://ciav10630bxvl" path="res://Assets/BusinessIcon/A_BusinessIcon_0010.png" id="1_6kagf"]
 [ext_resource type="Texture2D" uid="uid://dxqln8g8n6yde" path="res://Assets/BusinessCard/A_BusinessCard_1010.png" id="1_qge4i"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_0vue8"]
 
@@ -11,3 +12,7 @@ card_id = 1010
 card_name = "Chemical Factory"
 card_texture = ExtResource("1_qge4i")
 shop_price = 250
+card_icon = ExtResource("1_6kagf")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])
