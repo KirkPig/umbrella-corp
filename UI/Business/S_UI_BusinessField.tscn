@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://7lyyil11rsuo"]
+
+[ext_resource type="Script" path="res://System/Board/GD_BusinessField.gd" id="1_ks0pb"]
+[ext_resource type="FontFile" uid="uid://cen2dqunilgq8" path="res://Assets/Font/SF-Pro-Rounded-Heavy.otf" id="2_hhdyc"]
+
+[node name="BusinessField" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ks0pb")
+
+[node name="List" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Left" type="Button" parent="."]
+layout_mode = 0
+offset_left = -60.0
+offset_top = 120.0
+offset_right = -20.0
+offset_bottom = 177.0
+theme_override_colors/font_hover_color = Color(0.20871, 0.20871, 0.20871, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.400698, 0.400698, 0.400698, 1)
+theme_override_fonts/font = ExtResource("2_hhdyc")
+theme_override_font_sizes/font_size = 40
+text = "<"
+flat = true
+
+[node name="Right" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 120.0
+offset_right = 1320.0
+offset_bottom = 177.0
+theme_override_colors/font_hover_color = Color(0.140447, 0.140447, 0.140447, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.470076, 0.470076, 0.470076, 1)
+theme_override_fonts/font = ExtResource("2_hhdyc")
+theme_override_font_sizes/font_size = 40
+text = ">"
+flat = true
+
+[connection signal="pressed" from="Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Right" to="." method="_on_right_pressed"]
