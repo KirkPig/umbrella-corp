@@ -89,6 +89,7 @@ horizontal_alignment = 2
 visible = false
 material = SubResource("ShaderMaterial_rfco1")
 custom_minimum_size = Vector2(160, 240)
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 240.0
 
