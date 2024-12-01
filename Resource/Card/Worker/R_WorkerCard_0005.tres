@@ -14,7 +14,11 @@ special_work_rate = {
 1005: 2,
 1006: 2
 }
+research_chance_destroy = 100
 card_id = 5
 card_name = "Rancher"
 card_texture = SubResource("CompressedTexture2D_lh27j")
 shop_price = 8
+Effect = "2x Labor in Farm, Livestock, Forerstry, Plantation"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

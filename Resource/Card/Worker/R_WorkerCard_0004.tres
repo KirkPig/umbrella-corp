@@ -3,16 +3,20 @@
 [ext_resource type="Script" path="res://Resource/Card/GDR_WorkerCard.gd" id="1_mckp3"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lh27j"]
-load_path = "res://.godot/imported/A_WorkerCard_0002.png-ad75a5d2421394de728169360b4f93ed.ctex"
+load_path = "res://.godot/imported/A_WorkerCard_0004.png-f3941d52da1a1f6c3e77cb1ac4e2f9e1.ctex"
 
 [resource]
 script = ExtResource("1_mckp3")
-base_work_rate = 0
+base_work_rate = 1
 special_work_rate = {
-1001: 2,
-1003: 2
+1001: 3,
+1003: 3
 }
+research_chance_destroy = 100
 card_id = 4
-card_name = "Top Class"
+card_name = "Miner"
 card_texture = SubResource("CompressedTexture2D_lh27j")
 shop_price = 20
+Effect = "3x Labor in Mine, Sand field"
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

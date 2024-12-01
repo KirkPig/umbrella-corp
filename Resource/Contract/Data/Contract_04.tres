@@ -9,11 +9,10 @@ script = ExtResource("3_gcs6d")
 reward_card_type = 1
 name = "Random Worker"
 amount = 3
-icon_bg_color = Color(0, 0, 0, 1)
 
 [resource]
 script = ExtResource("4_tp7fg")
-name = "Contract E"
+name = "Contract D"
 description = "ASD"
 turn_limit = 4
 score_goal = 400

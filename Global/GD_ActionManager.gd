@@ -14,21 +14,27 @@ var research_reward_summary: UIResearchReward:
 		research_reward_summary = value
 
 var is_change_resource: bool = false
+var is_currently_on_action: bool = false
 var _selected_business_ui: UIBusiness
 
 func _ready() -> void:
 	reset_action_list.connect(_update_action_list)
+	action_done.connect(_action_done_reset)
 
 func _update_action_list():
 	action_list.reset_list()
 	CardManager.business_field.update_child_ui()
+
+func _action_done_reset():
+	is_currently_on_action = false
 
 ## Section: Actions
 func action_work(business: UIBusiness):
 	var selected_card = CardManager.get_selected_card()
 	if !GameManager.can_work(selected_card):
 		return
-		
+	is_currently_on_action = true
+	_update_action_list()
 	# TODO: Change to check rate
 	for _card: WorkerCard in selected_card:
 		_card.card_play.connect(business.yield_labor)
@@ -49,7 +55,8 @@ func action_add_component(business: UIBusiness):
 	var selected_card = CardManager.get_selected_card()
 	if !GameManager.can_add_components(selected_card, business.current_yield.components):
 		return
-	
+	is_currently_on_action = true
+	_update_action_list()
 	for _card: ResourceCard in selected_card:
 		_card.card_play.connect(business.added_component)
 	playing_field.playing_cards(selected_card, Vector2(-300, 500), false)
@@ -68,6 +75,8 @@ func action_add_component(business: UIBusiness):
 
 func action_discard():
 	var selected_card = CardManager.get_selected_card()
+	is_currently_on_action = true
+	_update_action_list()
 	CardManager.hand.start_discard_transition()
 	await CardManager.hand.discard_transition_done
 	CardManager.discards(selected_card)
@@ -81,6 +90,8 @@ func action_discard():
 func action_sell():
 	var selected_card: Array[Card] = CardManager.get_selected_card()
 	
+	is_currently_on_action = true
+	_update_action_list()
 	# TODO: show each price and demand in phone screen
 	playing_field.playing_cards(selected_card, Vector2(-300, playing_field.global_position.y), false)
 	CardManager.hand.update_position()
@@ -96,6 +107,8 @@ func action_sell():
 	action_done.emit()
 
 func action_sell_business(_ui: UIBusiness):
+	is_currently_on_action = true
+	_update_action_list()
 	# TODO: check on the sell business
 	GameManager.gold += _ui.sell_price
 	CardManager.business_field.remove_child(_ui)
@@ -106,6 +119,7 @@ func action_sell_business(_ui: UIBusiness):
 	action_done.emit()
 
 func action_buy(card: Card)-> bool:
+	is_currently_on_action = true
 	if card.shop_price > GameManager.gold:
 		return false
 	
@@ -152,6 +166,8 @@ func action_research():
 	if !GameManager.can_research(selected_card):
 		return
 	
+	is_currently_on_action = true
+	_update_action_list()
 	var _worker: WorkerCard
 	var _res_card_data: Array[ResourceCardData]
 	for card: Card in selected_card:
@@ -202,6 +218,9 @@ func _finish_action_research():
 	
 func action_activate() -> void:
 	var selected_card: Array[Card] = CardManager.get_selected_card()
+	
+	is_currently_on_action = true
+	_update_action_list()
 	selected_card[0].activate()
 	CardManager.discards(selected_card)
 	
@@ -217,6 +236,9 @@ func action_activate() -> void:
 func action_change_resource(_business: UIBusiness) -> void:
 	if !GameManager.can_business_change_resource(_business): return
 	if is_change_resource: return
+	
+	is_currently_on_action = true
+	_update_action_list()
 	var _li = _business.business_card_data.resource_yield_list
 	playing_field.playing_change_resource(_li)
 	GameManager.gold -= _business.change_resource_price
