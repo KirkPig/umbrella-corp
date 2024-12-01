@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bisxenor2iny5"]
+[gd_scene load_steps=33 format=3 uid="uid://bisxenor2iny5"]
 
 [ext_resource type="Script" path="res://UI/Phone/GD_phone.gd" id="1_lk1nw"]
 [ext_resource type="Texture2D" uid="uid://dybaqdfpu283c" path="res://Assets/Phone/phoneframe.png" id="1_t4ip5"]
@@ -26,7 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://cr1a0fsy37el0" path="res://Assets/Phone/bluebg.png" id="24_81r17"]
 [ext_resource type="Texture2D" uid="uid://dxbll1qq3t35q" path="res://Assets/Phone/refreshnobg.png" id="25_r5ktg"]
 [ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="26_0r2hf"]
+[ext_resource type="AudioStream" uid="uid://be8nkny5pqwsj" path="res://Assets/SFX/SFX_Refresh.wav" id="27_2qrd0"]
 [ext_resource type="AudioStream" uid="uid://bq41abyvxi6dq" path="res://Assets/SFX/SFX_No_Energy.mp3" id="27_mxs6n"]
+[ext_resource type="AudioStream" uid="uid://yl3tneo0f1tg" path="res://Assets/SFX/SFX_Buy.wav" id="27_nsybu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5buys"]
 font = ExtResource("19_643q4")
@@ -622,6 +624,14 @@ texture = ExtResource("25_r5ktg")
 layout_mode = 2
 text = "Free (10)"
 label_settings = SubResource("LabelSettings_khe3o")
+
+[node name="RefreshShopAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+stream = ExtResource("27_2qrd0")
+volume_db = -10.0
+
+[node name="BuyAudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Shop/VSplitContainer/Control2/VBoxContainer"]
+stream = ExtResource("27_nsybu")
+volume_db = -10.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_0r2hf")

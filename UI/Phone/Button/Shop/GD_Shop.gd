@@ -4,6 +4,10 @@ class_name ShopController
 @onready var card_node = $Control3/ShopController
 @onready var card_price_label = $Control/BuyButton/Label
 @onready var shop_refresh_label = $Control2/ResetButton2/Control/Label
+
+@onready var refresh_shop_audio_stream_player: AudioStreamPlayer = $RefreshShopAudioStreamPlayer
+@onready var buy_audio_stream_player: AudioStreamPlayer = $BuyAudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	CardManager.shop = self
@@ -38,10 +42,12 @@ func _on_shop_refresh_change(value:int) -> void:
 func _on_buy_button_pressed() -> void:
 	var card_list = card_node.get_children()
 	if ActionManager.action_buy(card_list[0]):
+		buy_audio_stream_player.play()
 		reset_shop()
 
 
 func _on_reset_button_2_pressed() -> void:
 	if GameManager.shop_refresh > 0:
 		GameManager.shop_refresh -= 1
+		refresh_shop_audio_stream_player.play()
 		reset_shop()
