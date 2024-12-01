@@ -5,12 +5,15 @@ class_name ContractRewardRandomCard
 
 func get_reward() -> void:
 	var _dict: Dictionary
+	var _old: Dictionary
 	for i in amount:
 		var _id = CardManager.random_card_pool(reward_card_type)
 		if reward_card_type == CardManager.ECardType.business:
 			CardManager.add_card_to_field(_id)
 		elif reward_card_type == CardManager.ECardType.upgrade:
 			var _data: UpgradeCardData = CardManager.card_dict[_id]
+			if _id not in _old:
+				_old[_id] = _data.current_state()
 			_data.played()
 		else:
 			CardManager.add_card_to_deck(_id)
@@ -21,5 +24,9 @@ func get_reward() -> void:
 			_dict[_id] += 1
 	
 	for _id in _dict:
-		GameManager.contract_reward.add_card_reward(_id, _dict[_id])
+		if _id >= 4000:
+			var _data: UpgradeCardData = CardManager.card_dict[_id]
+			GameManager.contract_reward.add_upgrade(_id, _old[_id], _data.current_state())
+		else:
+			GameManager.contract_reward.add_card_reward(_id, _dict[_id])
 	pass

@@ -7,6 +7,8 @@ class_name UIContractRewardSmall
 
 @onready var _icon_wallet: Texture2D = preload("res://Assets/Phone/walletnobg.png")
 @onready var _icon_random: Texture2D = preload("res://Assets/UI/Contract/question_mark.png")
+@onready var _icon_demand: Texture2D = preload("res://Assets/Tooltip/Demand.png")
+@onready var _icon_price: Texture2D = preload("res://Assets/Tooltip/Price.png")
 
 var contract_reward_data:
 	set(value):
@@ -35,17 +37,28 @@ func set_data(_data):
 				_style.bg_color = GameManager.resource_color
 			CardManager.ECardType.instant:
 				_style.bg_color = GameManager.instant_color
+			CardManager.ECardType.upgrade:
+				_style.bg_color = GameManager.upgrade_color
 	elif _data is ContractRewardCard:
 		var _card_data = CardManager.card_dict[_data.reward_card_id]
 		node_label.text = "x" + str(_data.amount)
 		node_icon.texture = _card_data.card_icon
 	elif _data is ContractRewardUpgrade:
 		var _card_data: UpgradeCardData = CardManager.card_dict[_data.reward_upgrade_id]
+		node_icon.texture = _card_data.card_icon
+		_style.bg_color = GameManager.upgrade_color
 		if _data.reward_upgrade_id < 6000:
 			node_label.hide()
 		else:
 			var _res_id = 2000 + (_data.reward_upgrade_id % 1000)
 			var _res_data: ResourceCardData = CardManager.card_dict[_res_id]
 			node_label.text = _res_data.card_name
-		node_icon.texture = _card_data.card_icon
-		_style.bg_color = GameManager.upgrade_color
+			match _card_data.upgrade_type:
+				UpgradeCardData.EUpgrade.RESOURE_DEMAND:
+					node_icon.texture = _icon_demand
+				UpgradeCardData.EUpgrade.RESOURE_SCORE:
+					node_icon.texture = _icon_price
+				UpgradeCardData.EUpgrade.RESOURE_GOLD:
+					node_icon.texture = _icon_wallet
+				UpgradeCardData.EUpgrade.RESOURE_YEILD:
+					node_icon.texture = _res_data.card_icon
