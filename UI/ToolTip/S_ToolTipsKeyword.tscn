@@ -70,5 +70,6 @@ label_settings = SubResource("LabelSettings_8plcm")
 horizontal_alignment = 2
 
 [node name="SGoldScore" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_w4d8g")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8

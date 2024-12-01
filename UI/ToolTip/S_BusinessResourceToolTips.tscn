@@ -18,6 +18,7 @@ script = ExtResource("1_53a6q")
 
 [node name="IconContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(61, 24)
+layout_mode = 0
 size_flags_horizontal = 4
 
 [node name="Control" type="Control" parent="IconContainer"]

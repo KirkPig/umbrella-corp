@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cik66dgxaidri"]
+[gd_scene load_steps=9 format=3 uid="uid://cik66dgxaidri"]
 
 [ext_resource type="Script" path="res://Card/GD_UpgradeResourceCard.gd" id="1_mckw1"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_regfc"]
 [ext_resource type="Texture2D" uid="uid://b3c0c85x7swd" path="res://Assets/UpgradeCard/A_UpgradeCard_demand.png" id="3_5w2l4"]
 [ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="4_xytfl"]
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="5_56w3f"]
+[ext_resource type="Shader" path="res://Shader/flash.gdshader" id="6_l1ovq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -15,6 +16,12 @@ shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hi88o"]
+resource_local_to_scene = true
+shader = ExtResource("6_l1ovq")
+shader_parameter/amount = 0.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
 
 [node name="UpgradeCard" type="Control"]
 layout_mode = 3
@@ -44,37 +51,41 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(1.8, 1.8)
 
-[node name="Icons" type="Control" parent="."]
+[node name="Icons" type="Control" parent="Card"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Icons"]
+[node name="TextureRect" type="TextureRect" parent="Card/Icons"]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 101.0
-offset_right = 169.0
-offset_bottom = 191.0
-scale = Vector2(0.35, 0.35)
+offset_left = 246.246
+offset_top = 306.306
+offset_right = 336.246
+offset_bottom = 396.306
 texture = ExtResource("4_xytfl")
 
-[node name="TextureRect2" type="TextureRect" parent="Icons"]
+[node name="TextureRect2" type="TextureRect" parent="Card/Icons"]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 141.0
-offset_right = 150.0
-offset_bottom = 231.0
-scale = Vector2(0.35, 0.35)
+offset_left = 180.18
+offset_top = 426.426
+offset_right = 270.18
+offset_bottom = 516.426
 texture = ExtResource("4_xytfl")
 
-[node name="TextureRect3" type="TextureRect" parent="Icons"]
+[node name="TextureRect3" type="TextureRect" parent="Card/Icons"]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 141.0
-offset_right = 190.0
-offset_bottom = 231.0
-scale = Vector2(0.35, 0.35)
+offset_left = 303.303
+offset_top = 426.426
+offset_right = 393.303
+offset_bottom = 516.426
 texture = ExtResource("4_xytfl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_hi88o")
+custom_minimum_size = Vector2(160, 240)
+offset_right = 160.0
+offset_bottom = 240.0
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

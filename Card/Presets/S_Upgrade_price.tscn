@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvuj7oxuaghh7"]
+[gd_scene load_steps=9 format=3 uid="uid://cvuj7oxuaghh7"]
 
 [ext_resource type="Script" path="res://Card/GD_UpgradeResourceCard.gd" id="1_oeh7s"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_e06na"]
 [ext_resource type="Texture2D" uid="uid://bnk7eph0wdf7t" path="res://Assets/UpgradeCard/A_UpgradeCard_price.png" id="3_hd73s"]
 [ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="4_oumij"]
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="5_5w8ex"]
+[ext_resource type="Shader" path="res://Shader/flash.gdshader" id="6_kj6r6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa7br"]
 resource_local_to_scene = true
@@ -15,6 +16,12 @@ shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dil0q"]
+resource_local_to_scene = true
+shader = ExtResource("6_kj6r6")
+shader_parameter/amount = 0.0
+shader_parameter/effect_color = Color(1, 1, 1, 1)
 
 [node name="UpgradeCard" type="Control"]
 layout_mode = 3
@@ -44,19 +51,25 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(1.8, 1.8)
 
-[node name="Icons" type="Control" parent="."]
+[node name="Icons" type="Control" parent="Card"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Icons"]
+[node name="TextureRect" type="TextureRect" parent="Card/Icons"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 92.0
-offset_right = 123.0
-offset_bottom = 182.0
-scale = Vector2(0.35, 0.35)
+offset_left = 102.102
+offset_top = 285.285
+offset_right = 192.102
+offset_bottom = 375.285
 texture = ExtResource("4_oumij")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_dil0q")
+custom_minimum_size = Vector2(160, 240)
+offset_right = 160.0
+offset_bottom = 240.0
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]
