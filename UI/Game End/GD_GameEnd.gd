@@ -47,7 +47,7 @@ func add_most_sell_resource():
 func add_founded_resource():
 	var founded_amount:int = 0
 	for card_id in CardManager.card_pool:
-		if card_id >=2000 and card_id < 3000 and card_id not in start_resource_list:
+		if card_id >=2000 and card_id < 3000:
 			var tr = TextureRect.new()
 			tr.texture = load("res://Assets/Icon/A_ResourceIcon_"+str(card_id)+".png")
 			resource_founded_container.add_child(tr)
