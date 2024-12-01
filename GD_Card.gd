@@ -36,6 +36,7 @@ var texture_amount: float = 0:
 @onready var card_texture : TextureRect = $Card
 @onready var s_tooltips: Tooptips = $Card/STooltips
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var bounce_audio_stream_player: AudioStreamPlayer = $BounceAudioStreamPlayer
 
 
 @onready var texture_flash_rect: ColorRect = $ColorRect
@@ -69,6 +70,7 @@ func _process(delta: float) -> void:
 func bouncing_card() -> void:
 	if tween_bouncing and tween_bouncing.is_running():
 		tween_bouncing.kill()
+	bounce_audio_stream_player.play()
 	scale = Vector2.ONE
 	tween_bouncing = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_speed_scale(GameManager.game_speed)
 	tween_bouncing.tween_property(self, "scale", Vector2(1.25, 1.25), 1.2)
