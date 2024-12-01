@@ -120,7 +120,7 @@ func action_buy(card: Card)-> bool:
 		card.queue_free() # TODO: make animation buying
 	else:
 		CardManager.hand.add_exists(card) # TODO: make animation buying
-	
+		
 	CardManager.shop.reset_shop()
 	_update_action_list()
 	action_done.emit()

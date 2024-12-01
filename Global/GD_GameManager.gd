@@ -280,13 +280,14 @@ func can_research(selected_card: Array[Card]) -> bool:
 	return (_resource == 2) and (_worker == 1)
 
 func can_activate(selected_card: Array[Card]) -> bool:
-	print(selected_card)
-	print(selected_card.size())
+	var cards_in_hand = CardManager.get_all_card(CardManager.ECardLocation.hand)
+	for card in cards_in_hand:
+		if card is InstantCard:
+			card.set_can_activate(false)
+		
 	if selected_card.size() != 1:
-		for card in selected_card:
-			if card is InstantCard:
-				card.set_can_activate(false)
 		return false
+		
 	if selected_card[0] is InstantCard:
 		selected_card[0].set_can_activate(true)
 	return selected_card[0] is InstantCard
