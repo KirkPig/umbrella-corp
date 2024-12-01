@@ -12,7 +12,7 @@ func load_icons(id: int,amount:int) -> void:
 	if id >= 2000 and id < 3000:
 		icon_texture = load("res://Assets/Icon/A_ResourceIcon_"+str(id)+".png")
 	if id >= 3000 and id < 4000:
-		icon_texture = load("res://Assets/InstantCard/A_InstantCard_"+str(id)+".png")
+		icon_texture = load("res://Assets/InstantIcon/A_InstantIcon_"+str(id)+".png")
 	if id < 1000:
 		icon_texture = load("res://Assets/WorkerIcon/A_WorkerIcon_"+str(10000+id).substr(1, 4)+".png")
 	icon_rec.texture = icon_texture
