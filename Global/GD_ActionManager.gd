@@ -7,7 +7,7 @@ var playing_field: PlayingFieldController:
 	set(value):
 		value.selected_resource_done.connect(_finish_action_change_resource)
 		playing_field = value
-var research_reward_summary: UIResearch:
+var research_reward_summary: UIResearchReward:
 	set(value):
 		value.show_research_reward_done.connect(_finish_action_research)
 		research_reward_summary = value

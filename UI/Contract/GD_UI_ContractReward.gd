@@ -1,7 +1,7 @@
 extends Control
-class_name UIResearchReward
+class_name UIContractReward
 
-signal show_research_reward_done
+signal show_contract_reward_done
 
 @onready var background = $Background
 @onready var list = $List
@@ -40,8 +40,7 @@ func _create_blank_research_reward() -> UIRewardItem:
 	return _ui
 
 func _ready() -> void:
-	ActionManager.research_reward_summary = self
-
+	GameManager.contract_reward = self
 
 func _on_button_pressed() -> void:
-	show_research_reward_done.emit()
+	show_contract_reward_done.emit()

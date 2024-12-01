@@ -108,13 +108,17 @@ var most_score_contract:int = 0:
 		if value > most_score_contract:
 			most_score_contract = value
 
-var selected_contract: ContractData
-
 # Level user interface
 var scoreboard: Control
 var phone_canvas: CanvasLayer
+
+var selected_contract: ContractData
 var contract_selection: UIContractSelection
 var selected_contract_ui: UIContract
+var contract_reward: UIContractReward:
+	set(value):
+		value.show_contract_reward_done.connect(_finish_complete_contract)
+		contract_reward = value
 
 var rng: RandomNumberGenerator
 
@@ -124,6 +128,13 @@ var energy_cost_work: int = 1
 var energy_cost_research: int = 1
 
 var game_speed: float = 1
+
+# Color code
+var wallet_color: Color = Color("000000")
+var worker_color: Color = Color("B2DEFF")
+var resource_color: Color = Color("FBFEDF")
+var business_color: Color = Color("B8FFAD")
+var instant_color: Color = Color("FFBEBE")
 
 # TODO: transition show and hide each ui component
 func show_level_ui():
@@ -158,7 +169,6 @@ func end_turn():
 	if current_turn == turn_limit:
 		if selected_contract.check_finish_contract(current_score):
 			complete_contract()
-			start_select_contract()
 		else:
 			game_end.emit(false)
 	else:
@@ -195,8 +205,16 @@ func complete_contract() -> void:
 		most_score_contract = current_score
 	current_turn = 0 
 	current_score = 0
-	selected_contract.get_reward()
 	selected_contract_ui.queue_free() # TODO: complete contract transition
+	
+	contract_reward.clear_reward()
+	hide_level_ui()
+	contract_reward.show()
+	selected_contract.get_reward()
+
+func _finish_complete_contract() -> void:
+	contract_reward.hide()
+	start_select_contract()
 
 func can_sell(selected_card: Array[Card]) -> bool:
 	if selected_card.size() <= 0:
