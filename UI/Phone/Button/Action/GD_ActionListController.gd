@@ -14,15 +14,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func update_list(selected_card: Array[Card] ):
+func update_list(selected_card: Array[Card]):
 	btn_sell.visible = GameManager.can_sell(selected_card)
 	btn_research.visible = GameManager.can_research(selected_card)
 	btn_discard.visible = GameManager.can_discard(selected_card)
 	$Control.visible = GameManager.can_sell(selected_card) or GameManager.can_research(selected_card) or GameManager.can_discard(selected_card)
 	
 func reset_list():
-	update_list([])
-
+	var selected_cards = CardManager.get_selected_card()
+	update_list(selected_cards)
 	
 func _on_sell_button_pressed() -> void:
 	ActionManager.action_sell()
