@@ -3,7 +3,7 @@ extends Control
 @export var start_energy : int = 3
 @export var start_max_hand : int = 5
 @export var start_discard_energy : int = 3
-@export var start_shop_refresh : int = 10
+@export var start_shop_refresh : int = 1000000
 @export var max_contract : int = 8
 @export var game_speed: int = 1
 
@@ -39,7 +39,7 @@ func set_up_game_manager() -> void:
 	GameManager.total_turn = 0
 	GameManager.current_score = 0
 	GameManager.total_score = 0
-	GameManager.gold = 0
+	GameManager.gold = 1000000
 	GameManager.energy = start_energy
 	GameManager.max_energy = start_energy
 	GameManager.max_hand = start_max_hand

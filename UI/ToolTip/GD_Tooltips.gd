@@ -5,6 +5,7 @@ class_name Tooptips
 @onready var labor_container: HBoxContainer = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LaborContainer
 @onready var resource_container: HBoxContainer = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer
 @onready var effect_container: HBoxContainer = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EffectContainer
+@onready var upgrade_resource_container: HBoxContainer = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer
 
 @onready var business_cost_container: HBoxContainer = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BusinessCostContainer
 @onready var texture_rect: TextureRect = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TextureRect
@@ -15,6 +16,15 @@ class_name Tooptips
 @onready var demand_label: Label = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer/DemandLabel
 @onready var gold_label: Label = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResourceContainer/GoldLabel
 @onready var effect_label: Label = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EffectContainer/EffectLabel
+
+@onready var resource_icon: TextureRect = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control4/ResourceIcon
+@onready var price_control: Control = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control
+@onready var demand_control: Control = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control2
+@onready var gold_control: Control = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control3
+@onready var yield_control: Control = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/Control5
+@onready var amount_label: Label = $HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/UpgradeResourceContainer/AmountLabel
+
+
 
 var resource_keyword_dict :Dictionary ={}
 
@@ -96,3 +106,16 @@ func set_keywors_resource(resource_id:int):
 	else:
 		resource_keyword_dict[resource_id].set_resource(resource_id)
 			
+func set_upgrade_resource(resource_id:int,type:UpgradeCardData.EUpgradeResource,amount:int)-> void:
+	set_keywors_resource(resource_id)
+	resource_icon.texture = load("res://Assets/IconNoBG/A_ResourceIcon_"+str(resource_id)+".png")
+	match type:
+		UpgradeCardData.EUpgradeResource.RESOURE_DEMAND:
+			demand_control.visible = true
+		UpgradeCardData.EUpgradeResource.RESOURE_SCORE:
+			price_control.visible = true
+		UpgradeCardData.EUpgradeResource.RESOURE_YEILD:
+			yield_control.visible = true
+	amount_label.text = "+"+str(amount)
+	
+	upgrade_resource_container.visible =true

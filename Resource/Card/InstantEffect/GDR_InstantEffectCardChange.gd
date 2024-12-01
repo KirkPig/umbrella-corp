@@ -14,8 +14,8 @@ enum ECardChange{
 func activate(target:Array[Card]) -> void:
 	var cards:Array[Card] = CardManager.get_all_card(effect_location)
 	
-	var picked_cards = []
-	var new_cards_list = []
+	var picked_cards:Array[Card] = []
+	var new_cards_list:Array[Card] = []
 	
 	for card in cards:
 		if len(picked_cards) == amount:

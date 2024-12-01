@@ -16,8 +16,8 @@ effect_target = 1
 
 [resource]
 script = ExtResource("1_ggbrk")
-target_mode = 0
-target_type = 0
+destroy_self = false
+destroy_chance = 0
 effects = Array[ExtResource("1_lq3ko")]([SubResource("Resource_suv5g")])
 card_id = 3001
 card_name = "Overconsumption"
