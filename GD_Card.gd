@@ -35,6 +35,8 @@ var texture_amount: float = 0:
 
 @onready var card_texture : TextureRect = $Card
 @onready var s_tooltips: Tooptips = $Card/STooltips
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 @onready var texture_flash_rect: ColorRect = $ColorRect
 
@@ -93,6 +95,7 @@ func selected():
 		return
 	is_selected = !is_selected
 	emit_signal("selection_change")
+	audio_stream_player.play()
 
 func set_base_data(data: CardData):
 	card_id = data.card_id

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm7jvevay70mp"]
+[gd_scene load_steps=13 format=3 uid="uid://cm7jvevay70mp"]
 
 [ext_resource type="Script" path="res://Card/GD_BusinessCard.gd" id="1_b6kww"]
 [ext_resource type="Shader" path="res://Shader/flash.gdshader" id="1_sfdvu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_oojix"]
 [ext_resource type="Texture2D" uid="uid://j6ffi5mer5b3" path="res://Assets/Icon/A_ResourceIcon_2000.png" id="5_bm6co"]
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="6_1wbgf"]
+[ext_resource type="AudioStream" uid="uid://bvit44ex65bi2" path="res://Assets/SFX/SFX_Card_Select.wav" id="8_ljv3r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ock4h"]
 shader = ExtResource("1_sfdvu")
@@ -92,6 +93,9 @@ custom_minimum_size = Vector2(160, 240)
 layout_mode = 0
 offset_right = 160.0
 offset_bottom = 240.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ljv3r")
 
 [connection signal="gui_input" from="Card" to="." method="_on_card_gui_input"]
 [connection signal="mouse_entered" from="Card" to="." method="_on_card_mouse_entered"]

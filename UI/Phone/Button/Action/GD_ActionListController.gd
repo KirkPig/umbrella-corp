@@ -4,6 +4,10 @@ class_name ActionListController
 @onready var btn_sell = $SSell
 @onready var btn_research = $SResearch
 @onready var btn_discard = $SDiscard
+@onready var research_audio_stream_player: AudioStreamPlayer = $ResearchAudioStreamPlayer
+@onready var sell_audio_stream_player: AudioStreamPlayer = $SellAudioStreamPlayer
+@onready var discard_audio_stream_player: AudioStreamPlayer = $DiscardAudioStreamPlayer
+@onready var draw_audio_stream_player: AudioStreamPlayer = $DrawAudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,9 +30,12 @@ func reset_list():
 	
 func _on_sell_button_pressed() -> void:
 	ActionManager.action_sell()
+	sell_audio_stream_player.play()
 
 func _on_research_button_pressed() -> void:
 	ActionManager.action_research()
+	research_audio_stream_player.play()
 
 func _on_discard_button_pressed() -> void:
 	ActionManager.action_discard()
+	discard_audio_stream_player.play()
