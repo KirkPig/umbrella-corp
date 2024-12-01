@@ -18,7 +18,6 @@ var time:int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.current_energy_change.connect(_on_energy_change)
-	GameManager.max_energy_change.connect(_on_max_energy_change)
 	GameManager.gold_change.connect(_on_gold_change)
 
 
@@ -37,9 +36,6 @@ func _on_timer_timeout() -> void:
 	shop_time_label.text = str(hour) + ":" + minute + ":" + sec \
 					if hour > 0 else minute + ":" + sec
 
-func _on_max_energy_change(max_energy:int) -> void:
-	pass
-
 func _on_energy_change(energy:int) -> void:
 	energy_label.text = str(energy*25) + "%"
 	shop_energy_label.text = str(energy*25) + "%"
@@ -51,10 +47,6 @@ func _on_energy_change(energy:int) -> void:
 func _on_gold_change(gold:int) -> void:
 	gold_label.text = "$ "+str(gold)
 	gold_shop_label.text = "$ "+str(gold)
-	
-func close_shop()->void:
-	pass
-
 
 func _on_shop_shop_btn_pressed() -> void:
 	action_screen.visible = false
@@ -64,7 +56,3 @@ func _on_shop_shop_btn_pressed() -> void:
 func _on_close_shop_pressed() -> void:
 	action_screen.visible = true
 	shop_screen.visible = false
-
-
-func _on_buy_button_pressed() -> void:
-	pass # Replace with function body.

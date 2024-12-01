@@ -8,7 +8,6 @@ class_name ActionListController
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ActionManager.action_list = self
-	print(btn_research.global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -18,6 +17,7 @@ func update_list(selected_card: Array[Card]):
 	btn_sell.visible = GameManager.can_sell(selected_card)
 	btn_research.visible = GameManager.can_research(selected_card)
 	btn_discard.visible = GameManager.can_discard(selected_card)
+	GameManager.can_activate(selected_card)
 	$Control.visible = GameManager.can_sell(selected_card) or GameManager.can_research(selected_card) or GameManager.can_discard(selected_card)
 	
 func reset_list():
