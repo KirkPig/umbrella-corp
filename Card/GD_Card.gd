@@ -116,9 +116,15 @@ func set_card_hand_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x
 	change_card_position(Vector2(_pos_x, _pos_y), 0.2 / GameManager.game_speed)
 	z_index = _card_pos
 
-func set_card_pile_position(_in_hand: int, card_gap:int):
-	var _pos_x: float = _in_hand * card_gap
-	var _pos_y: float = 0
+func set_card_pile_position(_card_pos: int, _in_hand: int, _min_x: float, _max_x: float, _card_min_x: float):
+	var _pos_x: float
+	var _pos_y: float
+	if _in_hand == 1:
+		_pos_x = 0
+		_pos_y = 0
+	else:
+		_pos_x = remap(_card_pos, 0, _in_hand - 1, 0, min(_max_x, _card_min_x * (_in_hand - 1)))
+		_pos_y = 0
 	change_card_position(Vector2(_pos_x, _pos_y), 0.2)
 	z_index = _in_hand
 
