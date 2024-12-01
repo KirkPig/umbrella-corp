@@ -7,24 +7,20 @@
 
 [sub_resource type="Resource" id="Resource_1dplo"]
 script = ExtResource("2_d0inb")
-reward_resource = 0
 name = "Gold"
 amount = 150
-icon_bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_g0ptj"]
 script = ExtResource("3_kl8yg")
 reward_card_type = 1
 name = "Random Worker"
 amount = 2
-icon_bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_krm7t"]
 script = ExtResource("3_kl8yg")
 reward_card_type = 5
 name = "Random Upgrade"
 amount = 1
-icon_bg_color = Color(0, 0, 0, 1)
 
 [resource]
 script = ExtResource("4_ygsqq")

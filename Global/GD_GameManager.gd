@@ -150,9 +150,7 @@ func start_select_contract() -> void:
 	hide_level_ui()
 	contract_selection.show()
 	contract_selection.clear_contract()
-	for i in 3:
-		var _data = ContractManager.get_random_contract_data(2 ** (current_contract))
-		contract_selection.add_contract(_data)
+	contract_selection.fill_random_contract(3)
 
 func next_turn():
 	current_turn += 1

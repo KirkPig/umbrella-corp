@@ -32,7 +32,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_buvti"]
 font = ExtResource("3_ny4u2")
-font_size = 14
+font_size = 20
 font_color = Color(0, 0, 0, 1)
 
 [node name="STooltips" type="Control"]
@@ -225,12 +225,6 @@ label_settings = SubResource("LabelSettings_p4pug")
 [node name="EffectContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EffectContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Effect:"
-label_settings = SubResource("LabelSettings_buvti")
 
 [node name="EffectLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EffectContainer"]
 custom_minimum_size = Vector2(155, 0)

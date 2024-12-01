@@ -38,6 +38,7 @@ func set_up_game_manager() -> void:
 	GameManager.current_turn = 0
 	GameManager.total_turn = 0
 	GameManager.current_score = 0
+	GameManager.current_contract = 0
 	GameManager.total_score = 0
 	GameManager.gold = 0
 	GameManager.energy = start_energy
