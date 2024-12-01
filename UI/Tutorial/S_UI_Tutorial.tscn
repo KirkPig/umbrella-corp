@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://b13l5ah147662"]
+
+[ext_resource type="Script" path="res://UI/Tutorial/GD_UI_Tutorial.gd" id="1_t406d"]
+[ext_resource type="Texture2D" uid="uid://dpjns1n8pfl2l" path="res://Assets/WorkerIcon/A_WorkerIcon_0000.png" id="2_015rj"]
+[ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="3_ho4vg"]
+[ext_resource type="Script" path="res://UI/Tutorial/GD_UI_TextSpeech.gd" id="4_wxd5i"]
+[ext_resource type="PackedScene" uid="uid://685504p7642x" path="res://Card/Presets/S_Worker.tscn" id="5_ttskb"]
+[ext_resource type="PackedScene" uid="uid://q8iej2pu3w0m" path="res://Card/Presets/S_Resource.tscn" id="6_xhv1f"]
+[ext_resource type="PackedScene" uid="uid://dtyesorq77tcq" path="res://Card/Presets/S_Instant.tscn" id="7_da5p4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxngg"]
+bg_color = Color(0, 0, 0, 0.74902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlixw"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcwv6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_ncvyk"]
+font = ExtResource("3_ho4vg")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_bthlq"]
+font = ExtResource("3_ho4vg")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t406d")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxngg")
+
+[node name="AssetFlow" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="AssetFlow"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 400.0
+offset_right = 860.0
+offset_bottom = 640.0
+
+[node name="WorkerCard" parent="AssetFlow/Container" instance=ExtResource("5_ttskb")]
+layout_mode = 2
+
+[node name="Container2" type="VBoxContainer" parent="AssetFlow"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 400.0
+offset_right = 940.0
+offset_bottom = 440.0
+
+[node name="ResourceCard" parent="AssetFlow/Container2" instance=ExtResource("6_xhv1f")]
+layout_mode = 2
+
+[node name="Container3" type="VBoxContainer" parent="AssetFlow"]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 400.0
+offset_right = 1140.0
+offset_bottom = 440.0
+
+[node name="InstantCard" parent="AssetFlow/Container3" instance=ExtResource("7_da5p4")]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="AssetFlow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tlixw")
+
+[node name="CurrentAsset" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="CurrentAsset"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 400.0
+offset_right = 1060.0
+offset_bottom = 640.0
+
+[node name="WorkerCard" parent="CurrentAsset/Container" instance=ExtResource("5_ttskb")]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CurrentAsset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tlixw")
+
+[node name="Worker" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 0
+offset_left = 1632.0
+offset_top = 786.0
+offset_right = 1888.0
+offset_bottom = 1042.0
+texture = ExtResource("2_015rj")
+expand_mode = 1
+
+[node name="Continue" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bubble" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 792.0
+offset_right = 1617.0
+offset_bottom = 942.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dcwv6")
+
+[node name="ContinueText" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1211.0
+offset_top = 952.0
+offset_right = 1611.0
+offset_bottom = 977.0
+text = "Press anywhare to continue..."
+label_settings = SubResource("LabelSettings_ncvyk")
+horizontal_alignment = 2
+
+[node name="TextSpeech" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 77.0
+offset_top = 809.0
+offset_right = 1601.0
+offset_bottom = 834.0
+text = "Text speech here...."
+label_settings = SubResource("LabelSettings_bthlq")
+horizontal_alignment = 2
+autowrap_mode = 2
+script = ExtResource("4_wxd5i")
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

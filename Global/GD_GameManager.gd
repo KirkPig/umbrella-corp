@@ -110,6 +110,8 @@ var most_score_contract:int = 0:
 var scoreboard: Control
 var phone_canvas: UIPhone
 
+var tutorial_screen: UITutorial
+
 var selected_contract: ContractData
 var contract_selection: UIContractSelection
 var selected_contract_ui: UIContract
@@ -135,6 +137,22 @@ var business_color: Color = Color("B8FFAD")
 var instant_color: Color = Color("FFBEBE")
 var upgrade_color: Color = Color("C1A1FF")
 
+var is_tutorial: bool = false
+
+func start_tutorial():
+	is_tutorial = true
+	hide_level_ui()
+	tutorial_screen.show()
+	tutorial_screen.play_start_up()
+	await tutorial_screen.start_up_finished
+	contract_selection.show()
+	contract_selection.clear_contract()
+	contract_selection.fill_tutorial_contract()
+	contract_selection.start_select_contract()
+	await contract_selection.select_contract_ready
+	tutorial_screen.play_contract()
+	await tutorial_screen.start_up_finished
+
 # TODO: transition show and hide each ui component
 func show_level_ui():
 	scoreboard.show()
@@ -152,6 +170,7 @@ func start_select_contract() -> void:
 	contract_selection.show()
 	contract_selection.clear_contract()
 	contract_selection.fill_random_contract(3)
+	contract_selection.start_select_contract()
 
 func next_turn():
 	current_turn += 1
@@ -196,11 +215,23 @@ func select_contract(_contract: UIContract) -> void:
 	await get_tree().create_timer(0.6 / game_speed).timeout
 	current_contract += 1
 	selected_contract_ui = _contract
-	start_contract()
+	if is_tutorial:
+		start_tutorial_contract()
+	else:
+		start_contract()
 
 func start_contract() -> void:
 	show_level_ui()
 	next_turn()
+
+func start_tutorial_contract() -> void:
+	tutorial_screen.play_phone_give()
+	await tutorial_screen.phone_give_finished
+	phone_canvas.show()
+	phone_canvas.start_up()
+	await phone_canvas.start_up_done
+	tutorial_screen.play_phone_flow()
+	await tutorial_screen.play_phone_flow_finished
 
 func complete_contract() -> void:
 	if current_score > most_score_contract:

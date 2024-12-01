@@ -19,3 +19,11 @@ func _load_all_contract(_multiply: int) -> Array[ContractData]:
 		_data.score_goal = _data.score_goal * _multiply
 		_arr.append(_data)
 	return _arr
+
+func load_tutorial_contract() -> Array[ContractData]:
+	var _arr: Array[ContractData] = []
+	var resource_file = DirAccess.get_files_at("res://Resource/Contract/Tutorial/")
+	for _res in resource_file:
+		var _data: ContractData = load("res://Resource/Contract/Tutorial/" + _res)
+		_arr.append(_data)
+	return _arr

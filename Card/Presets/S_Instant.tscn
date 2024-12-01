@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Card/GD_InstantCard.gd" id="1_yotca"]
 [ext_resource type="Shader" path="res://Shader/fake_3d.gdshader" id="2_3dkl3"]
-[ext_resource type="Texture2D" uid="uid://c1wsq8avglckq" path="res://Assets/UpgradeCard/A_UpgradeCard_maxCard.png" id="3_u6f8j"]
+[ext_resource type="Texture2D" uid="uid://bv3m4cs4f8mue" path="res://Assets/InstantCard/A_InstantCard_3000.png" id="3_8yc04"]
 [ext_resource type="PackedScene" uid="uid://dxvhtp6xfwkyw" path="res://UI/ToolTip/S_Tooltips.tscn" id="4_mmc5s"]
 [ext_resource type="Shader" path="res://Shader/flash.gdshader" id="5_2talh"]
 [ext_resource type="PackedScene" uid="uid://d2mlhd7olsx15" path="res://UI/Btn/S_InstantActivate.tscn" id="5_30fa2"]
@@ -37,7 +37,7 @@ layout_mode = 0
 offset_right = 480.0
 offset_bottom = 720.0
 scale = Vector2(0.333, 0.333)
-texture = ExtResource("3_u6f8j")
+texture = ExtResource("3_8yc04")
 stretch_mode = 2
 
 [node name="STooltips" parent="Card" instance=ExtResource("4_mmc5s")]
