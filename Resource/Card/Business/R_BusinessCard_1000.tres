@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://ceikwd005j6vh"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=4 format=3 uid="uid://ceikwd005j6vh"]
 
+[ext_resource type="Texture2D" uid="uid://mih5wymxdnlq" path="res://Assets/BusinessIcon/A_BusinessIcon_0000.png" id="1_iprm0"]
 [ext_resource type="Texture2D" uid="uid://cbueoycu12p3s" path="res://Assets/BusinessCard/A_BusinessCard_1000.png" id="1_sauxl"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_lc3g2"]
 
@@ -11,6 +12,7 @@ card_id = 1000
 card_name = "Farm"
 card_texture = ExtResource("1_sauxl")
 shop_price = 50
+card_icon = ExtResource("1_iprm0")
 Effect = ""
 resource_id_list = Array[int]([])
 keyword_list = Array[int]([])

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://dcopuiyhiu6mq"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=4 format=3 uid="uid://dcopuiyhiu6mq"]
 
+[ext_resource type="Texture2D" uid="uid://ce00lo1fxp1oj" path="res://Assets/BusinessIcon/A_BusinessIcon_0004.png" id="1_mobsa"]
 [ext_resource type="Texture2D" uid="uid://di6b0bdpa4p3s" path="res://Assets/BusinessCard/A_BusinessCard_1004.png" id="1_r5bic"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_4kfah"]
 
@@ -11,3 +12,7 @@ card_id = 1004
 card_name = "Oil Rig"
 card_texture = ExtResource("1_r5bic")
 shop_price = 100
+card_icon = ExtResource("1_mobsa")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

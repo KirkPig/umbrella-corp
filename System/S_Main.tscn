@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8np1rp7n5p17"]
+[gd_scene load_steps=13 format=3 uid="uid://c8np1rp7n5p17"]
 
 [ext_resource type="Script" path="res://System/GD_LevelManager.gd" id="1_jfe42"]
 [ext_resource type="Script" path="res://System/Board/GD_Hand.gd" id="3_4qhri"]
+[ext_resource type="PackedScene" uid="uid://dy1k6x40mjyna" path="res://UI/Research/S_UI_Research.tscn" id="6_6nugn"]
 [ext_resource type="PackedScene" uid="uid://uc70mvrqrusf" path="res://UI/Contract/S_UI_ContractSelection.tscn" id="7_22o06"]
+[ext_resource type="PackedScene" uid="uid://dtrhswdi8y1pd" path="res://UI/Contract/S_UI_ContractReward.tscn" id="7_l762n"]
 [ext_resource type="Script" path="res://System/Board/GD_Played.gd" id="7_v7xax"]
 [ext_resource type="PackedScene" uid="uid://c6a1y0g401gjq" path="res://UI/Score Board/S_ScoreBoard.tscn" id="8_8lk2h"]
 [ext_resource type="Script" path="res://System/Board/GD_PlayingField.gd" id="9_nrcwl"]
@@ -19,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
+game_speed = 4
 start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 start_resource_pool = Array[int]([2000, 2004, 2005, 2006, 2008, 2011, 2014])
 start_business = Array[int]([1000])
@@ -50,6 +53,11 @@ script = ExtResource("7_v7xax")
 layer = 2
 
 [node name="ContractSelection" parent="CanvasLayer" instance=ExtResource("7_22o06")]
+
+[node name="ResearchRewardScene" parent="CanvasLayer" instance=ExtResource("6_6nugn")]
+
+[node name="ContractRewardScene" parent="CanvasLayer" instance=ExtResource("7_l762n")]
+visible = false
 
 [node name="SUiPhone" parent="." instance=ExtResource("13_herli")]
 

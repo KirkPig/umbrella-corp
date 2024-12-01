@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://dw586f6m7sq5"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=4 format=3 uid="uid://dw586f6m7sq5"]
 
+[ext_resource type="Texture2D" uid="uid://bn3cn3xj03cfm" path="res://Assets/BusinessIcon/A_BusinessIcon_0007.png" id="1_4c4ye"]
 [ext_resource type="Texture2D" uid="uid://wvknv5bjsm5v" path="res://Assets/BusinessCard/A_BusinessCard_1007.png" id="1_nwt54"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_sjgmj"]
 
@@ -11,6 +12,7 @@ card_id = 1007
 card_name = "Orchard"
 card_texture = ExtResource("1_nwt54")
 shop_price = 55
+card_icon = ExtResource("1_4c4ye")
 Effect = ""
 resource_id_list = Array[int]([])
 keyword_list = Array[int]([])

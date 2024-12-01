@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ContractData" load_steps=5 format=3 uid="uid://bi2273mfttnk5"]
+
+[ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_yj8pj"]
+[ext_resource type="Script" path="res://Resource/Contract/Reward/GDR_ContractRewardRandomCard.gd" id="2_1seiw"]
+[ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="3_cdvw7"]
+
+[sub_resource type="Resource" id="Resource_gafpc"]
+script = ExtResource("2_1seiw")
+reward_card_type = 1
+name = "Random Worker"
+amount = 3
+icon_bg_color = Color(0, 0, 0, 1)
+
+[resource]
+script = ExtResource("3_cdvw7")
+name = "Contract E"
+description = "ASD"
+turn_limit = 4
+score_goal = 400
+reward_text = ""
+reward_list = Array[ExtResource("1_yj8pj")]([SubResource("Resource_gafpc")])

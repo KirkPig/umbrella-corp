@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://ovx52a7obygy"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=4 format=3 uid="uid://ovx52a7obygy"]
 
+[ext_resource type="Texture2D" uid="uid://dva4p3040jd6" path="res://Assets/BusinessIcon/A_BusinessIcon_0008.png" id="1_3fimp"]
 [ext_resource type="Texture2D" uid="uid://dh68pgpwx4i2e" path="res://Assets/BusinessCard/A_BusinessCard_1008.png" id="1_5t25w"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_24hiv"]
 
@@ -11,3 +12,7 @@ card_id = 1008
 card_name = "Bakery"
 card_texture = ExtResource("1_5t25w")
 shop_price = 55
+card_icon = ExtResource("1_3fimp")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])

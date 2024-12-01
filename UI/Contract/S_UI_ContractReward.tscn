@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtrhswdi8y1pd"]
+
+[ext_resource type="Texture2D" uid="uid://dbiisc0j6qalv" path="res://Assets/UI/Contract/file.svg" id="1_2jucr"]
+[ext_resource type="Script" path="res://UI/Contract/GD_UI_ContractReward.gd" id="1_pibci"]
+[ext_resource type="FontFile" uid="uid://c7igk6hta7uoj" path="res://Assets/Font/SF-Pro-Display-Regular.otf" id="3_hn7ne"]
+[ext_resource type="FontFile" uid="uid://cpexbtghs4w0n" path="res://Assets/Font/SF-Pro-Display-Black.otf" id="4_c6g20"]
+[ext_resource type="FontFile" uid="uid://cjgthoenerhdb" path="res://Assets/Font/SF-Pro-Text-Semibold.otf" id="5_08d41"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6lag"]
+bg_color = Color(0, 0, 0, 0.74902)
+
+[node name="ContractRewardScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pibci")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y6lag")
+
+[node name="Placeholder" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -286.0
+offset_top = 200.0
+offset_right = 286.0
+offset_bottom = 296.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Placeholder"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_2jucr")
+expand_mode = 1
+
+[node name="Labels" type="HBoxContainer" parent="Placeholder"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label" type="Label" parent="Placeholder/Labels"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_hn7ne")
+theme_override_font_sizes/font_size = 60
+text = "Contract"
+
+[node name="Label2" type="Label" parent="Placeholder/Labels"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("4_c6g20")
+theme_override_font_sizes/font_size = 60
+text = "completed"
+
+[node name="List" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.5
+offset_top = 850.0
+offset_right = 114.5
+offset_bottom = 873.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_08d41")
+theme_override_font_sizes/font_size = 18
+text = "Press anywhere to continue..."
+horizontal_alignment = 1
+
+[node name="Button" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

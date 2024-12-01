@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="BusinessCardData" load_steps=3 format=3 uid="uid://dcj1xgns54w6n"]
+[gd_resource type="Resource" script_class="BusinessCardData" load_steps=4 format=3 uid="uid://dcj1xgns54w6n"]
 
 [ext_resource type="Texture2D" uid="uid://dc2n1fh3ypfvj" path="res://Assets/BusinessCard/A_BusinessCard_1013.png" id="1_83fwt"]
+[ext_resource type="Texture2D" uid="uid://c05klg0s7u6r3" path="res://Assets/BusinessIcon/A_BusinessIcon_0013.png" id="1_re6bc"]
 [ext_resource type="Script" path="res://Resource/Card/GDR_BusinessCard.gd" id="2_h2gw3"]
 
 [resource]
@@ -11,3 +12,7 @@ card_id = 1013
 card_name = "Carpentry"
 card_texture = ExtResource("1_83fwt")
 shop_price = 210
+card_icon = ExtResource("1_re6bc")
+Effect = ""
+resource_id_list = Array[int]([])
+keyword_list = Array[int]([])
