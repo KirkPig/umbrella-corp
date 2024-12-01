@@ -53,7 +53,7 @@ func set_up_game_manager() -> void:
 	GameManager.game_speed = game_speed
 	
 	GameManager.rng = RandomNumberGenerator.new()
-	GameManager.rng.seed = hash("0")
+	#GameManager.rng.seed = hash("0")
 
 func clear_card_pool():
 	CardManager.card_pool = []

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ContractData" load_steps=3 format=3 uid="uid://drd1iqbtcvwav"]
+
+[ext_resource type="Script" path="res://Resource/Contract/GDR_ContractReward.gd" id="1_4tkhs"]
+[ext_resource type="Script" path="res://Resource/Contract/GDR_Contract.gd" id="4_aef0s"]
+
+[resource]
+script = ExtResource("4_aef0s")
+name = "Contract H"
+description = "ASD"
+turn_limit = 6
+score_goal = 850
+reward_text = ""
+reward_list = Array[ExtResource("1_4tkhs")]([])
