@@ -27,6 +27,7 @@ func _update_action_list():
 
 func _action_done_reset():
 	is_currently_on_action = false
+	_update_action_list()
 
 ## Section: Actions
 func action_work(business: UIBusiness):
@@ -48,7 +49,6 @@ func action_work(business: UIBusiness):
 	CardManager.fill_hand()
 	
 	GameManager.energy -=  GameManager.energy_cost_work
-	_update_action_list()
 	action_done.emit()
 
 func action_add_component(business: UIBusiness):
@@ -68,8 +68,6 @@ func action_add_component(business: UIBusiness):
 	CardManager.fill_hand()
 	
 	GameManager.energy -=  GameManager.energy_cost_work
-	
-	_update_action_list()
 	action_done.emit()
 	
 
@@ -83,8 +81,6 @@ func action_discard():
 	CardManager.fill_hand()
 	
 	GameManager.discard_energy -= GameManager.energy_cost_discard
-	
-	_update_action_list()
 	action_done.emit()
 
 func action_sell():
@@ -102,8 +98,6 @@ func action_sell():
 	CardManager.fill_hand()
 	
 	GameManager.energy = GameManager.energy - GameManager.energy_cost_sell
-	
-	_update_action_list()
 	action_done.emit()
 
 func action_sell_business(_ui: UIBusiness):
@@ -114,8 +108,6 @@ func action_sell_business(_ui: UIBusiness):
 	CardManager.business_field.remove_child(_ui)
 	if is_instance_valid(_ui):
 		_ui.queue_free()
-	
-	_update_action_list()
 	action_done.emit()
 
 func action_buy(card: Card)-> bool:
@@ -135,7 +127,6 @@ func action_buy(card: Card)-> bool:
 		CardManager.hand.add_exists(card) # TODO: make animation buying
 		
 	CardManager.shop.reset_shop()
-	_update_action_list()
 	action_done.emit()
 	
 	return true
@@ -212,7 +203,6 @@ func action_research():
 func _finish_action_research():
 	research_reward_summary.hide()
 	CardManager.fill_hand()
-	_update_action_list()
 	action_done.emit()
 	
 func action_activate() -> void:
@@ -228,8 +218,6 @@ func action_activate() -> void:
 			selected_card[0].queue_free()
 	
 	CardManager.fill_hand()
-	
-	_update_action_list()
 	action_done.emit()
 
 func action_change_resource(_business: UIBusiness) -> void:
@@ -250,8 +238,6 @@ func _finish_action_change_resource(_card: Card):
 	await playing_field.playing_change_resource_done
 	_selected_business_ui.current_yield = CardManager.card_dict[_card.card_id]
 	is_change_resource = false
-	
-	_update_action_list()
 	action_done.emit()
 
 func connect_selection(draw_card: Card):
