@@ -108,7 +108,7 @@ var most_score_contract:int = 0:
 
 # Level user interface
 var scoreboard: Control
-var phone_canvas: CanvasLayer
+var phone_canvas: UIPhone
 
 var selected_contract: ContractData
 var contract_selection: UIContractSelection
@@ -139,6 +139,7 @@ var upgrade_color: Color = Color("C1A1FF")
 func show_level_ui():
 	scoreboard.show()
 	phone_canvas.show()
+	phone_canvas.start_up()
 	CardManager.business_field.show()
 
 func hide_level_ui():
@@ -171,6 +172,8 @@ func end_turn():
 		else:
 			game_end.emit(false)
 	else:
+		phone_canvas.play_sleeping()
+		await phone_canvas.play_sleeping_done
 		next_turn()
 	
 func select_contract(_contract: UIContract) -> void:

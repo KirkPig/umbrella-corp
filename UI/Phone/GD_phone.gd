@@ -1,4 +1,8 @@
 extends CanvasLayer
+class_name UIPhone
+
+signal start_up_done
+signal play_sleeping_done
 
 var time:int = 0
 @onready var time_label = $"Control/TextureRect/VSplitContainer/Data/Time Label"
@@ -9,7 +13,7 @@ var time:int = 0
 @onready var shop_energy_progress = $Control/Shop/VSplitContainer/Data/Control/TextureProgressBar
 
 @onready var action_screen = $Control/TextureRect
-@onready var out_of_energy_screen = $"Control/Our of energy"
+@onready var out_of_energy_screen = $"Control/Out of energy"
 @onready var shop_screen = $Control/Shop
 
 @onready var gold_panel = $Control/TextureRect/VSplitContainer/money/PanelContainer
@@ -18,6 +22,91 @@ var time:int = 0
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
+
+@onready var black_screen: Panel = $Control/Screen
+var black_screen_value: float = 1:
+	set(value):
+		var _style = black_screen.get_theme_stylebox("panel")
+		_style.bg_color.a = value
+		black_screen_value = value
+
+@onready var _screen_label: Label = $Control/Screen/Label
+@onready var _moon: TextureRect = $Control/Screen/Moon
+var _label_visibility: float = 1:
+	set(value):
+		_screen_label.modulate.a = value
+		_label_visibility = value
+var _moon_pos_x: float = 0:
+	set(value):
+		_moon.position.x = value
+		_moon_pos_x = value
+var _moon_pos_y: float = 0:
+	set(value):
+		_moon.position.y = value
+		_moon_pos_y = value
+
+
+func start_up():
+	black_screen_value = 1
+	black_screen.show()
+	var tween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "black_screen_value", 0, 0.5)
+	await tween.finished
+	black_screen.hide()
+	start_up_done.emit()
+
+func play_sleeping():
+	
+	black_screen_value = 0
+	black_screen.show()
+	
+	var tween: Tween
+	
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "black_screen_value", 1, 0.2)
+	await tween.finished
+	
+	shop_screen.hide()
+	out_of_energy_screen.hide()
+	
+	var _tween_label_visibility: Tween
+	var _tween_moon_pos_x: Tween
+	var _tween_moon_pos_y: Tween
+	
+	_label_visibility = 0
+	_moon_pos_x = 350
+	_moon_pos_y = 250
+	
+	_screen_label.show()
+	_moon.show()
+	
+	_tween_label_visibility = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	_tween_label_visibility.tween_property(self, "_label_visibility", 1, 0.5 / GameManager.game_speed)
+	_tween_moon_pos_x = create_tween()
+	_tween_moon_pos_x.tween_property(self, "_moon_pos_x", -140, 4 / GameManager.game_speed)
+	_tween_moon_pos_y = create_tween()
+	_tween_moon_pos_y.tween_property(self, "_moon_pos_y", 150, 2 / GameManager.game_speed)
+	
+	await _tween_moon_pos_y.finished
+	
+	_tween_moon_pos_y = create_tween()
+	_tween_moon_pos_y.tween_property(self, "_moon_pos_y", 250, 2 / GameManager.game_speed)
+	
+	await get_tree().create_timer(1.5 / GameManager.game_speed)
+	_tween_label_visibility = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	_tween_label_visibility.tween_property(self, "_label_visibility", 0, 0.5 / GameManager.game_speed)
+	
+	await _tween_moon_pos_x.finished
+	
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "black_screen_value", 0, 0.2)
+	await tween.finished
+	
+	_screen_label.hide()
+	_moon.hide()
+	black_screen.hide()
+	play_sleeping_done.emit()
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,7 +137,7 @@ func _on_energy_change(energy:int) -> void:
 	energy_progress.value = energy
 	shop_energy_progress.value = energy
 	action_screen.visible = energy > 0
-	out_of_energy_screen.visible = energy ==0
+	out_of_energy_screen.visible = (energy <= 0)
 	if energy ==0 :
 		audio_stream_player_2.play()
 func _on_gold_change(gold:int) -> void:

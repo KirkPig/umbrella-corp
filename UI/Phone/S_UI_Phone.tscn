@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bisxenor2iny5"]
+[gd_scene load_steps=33 format=3 uid="uid://bisxenor2iny5"]
 
 [ext_resource type="Script" path="res://UI/Phone/GD_phone.gd" id="1_lk1nw"]
 [ext_resource type="Texture2D" uid="uid://dybaqdfpu283c" path="res://Assets/Phone/phoneframe.png" id="1_t4ip5"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cr1a0fsy37el0" path="res://Assets/Phone/bluebg.png" id="24_81r17"]
 [ext_resource type="Texture2D" uid="uid://dxbll1qq3t35q" path="res://Assets/Phone/refreshnobg.png" id="25_r5ktg"]
 [ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="26_0r2hf"]
+[ext_resource type="Texture2D" uid="uid://bdopnopklnf74" path="res://Assets/Phone/moon.svg" id="26_t8osi"]
 [ext_resource type="AudioStream" uid="uid://bq41abyvxi6dq" path="res://Assets/SFX/SFX_No_Energy.mp3" id="27_mxs6n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5buys"]
@@ -41,6 +42,14 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_khe3o"]
 font = ExtResource("19_643q4")
 font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qniwt"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [node name="SUiPhont" type="CanvasLayer"]
 script = ExtResource("1_lk1nw")
@@ -304,99 +313,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 
-[node name="Our of energy" type="TextureRect" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -646.0
-offset_top = -1381.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(586, 1481)
-texture = ExtResource("13_ofx7v")
-
-[node name="VSplitContainer" type="Control" parent="Control/Our of energy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Data" type="Control" parent="Control/Our of energy/VSplitContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-anchors_preset = 0
-offset_right = 646.0
-offset_bottom = 100.0
-
-[node name="Time Label" type="Label" parent="Control/Our of energy/VSplitContainer/Data"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -44.0
-offset_right = 156.0
-grow_vertical = 0
-text = "00:00"
-label_settings = ExtResource("3_yinhk")
-
-[node name="HSplitContainer2" type="HBoxContainer" parent="Control/Our of energy/VSplitContainer"]
-custom_minimum_size = Vector2(0, 220)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -738.0
-offset_right = -6.0
-offset_bottom = -518.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Control" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(100, 200)
-layout_mode = 2
-
-[node name="Control3" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="Setting" parent="Control/Our of energy/VSplitContainer/HSplitContainer2/Control3" instance=ExtResource("8_gjytp")]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="Control2" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="End" parent="Control/Our of energy/VSplitContainer/HSplitContainer2/Control2" instance=ExtResource("9_lku81")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control4" type="Control" parent="Control/Our of energy/VSplitContainer/HSplitContainer2"]
-custom_minimum_size = Vector2(100, 200)
-layout_mode = 2
-
 [node name="Shop" type="TextureRect" parent="Control"]
 visible = false
 z_index = 4
+clip_contents = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -412,6 +332,7 @@ pivot_offset = Vector2(586, 1481)
 texture = ExtResource("17_r8gh7")
 
 [node name="VSplitContainer" type="Control" parent="Control/Shop"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -622,6 +543,135 @@ texture = ExtResource("25_r5ktg")
 layout_mode = 2
 text = "Free (10)"
 label_settings = SubResource("LabelSettings_khe3o")
+
+[node name="Out of energy" type="TextureRect" parent="Control"]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -646.0
+offset_top = -1381.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(586, 1481)
+texture = ExtResource("13_ofx7v")
+
+[node name="VSplitContainer" type="Control" parent="Control/Out of energy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Data" type="Control" parent="Control/Out of energy/VSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 646.0
+offset_bottom = 100.0
+
+[node name="Time Label" type="Label" parent="Control/Out of energy/VSplitContainer/Data"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -44.0
+offset_right = 156.0
+grow_vertical = 0
+text = "00:00"
+label_settings = ExtResource("3_yinhk")
+
+[node name="HSplitContainer2" type="HBoxContainer" parent="Control/Out of energy/VSplitContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -738.0
+offset_right = -6.0
+offset_bottom = -518.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Setting" parent="Control/Out of energy/VSplitContainer/HSplitContainer2/Control3" instance=ExtResource("8_gjytp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Control2" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="End" parent="Control/Out of energy/VSplitContainer/HSplitContainer2/Control2" instance=ExtResource("9_lku81")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control4" type="Control" parent="Control/Out of energy/VSplitContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="Screen" type="Panel" parent="Control"]
+z_index = 100
+clip_contents = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -640.0
+offset_right = -37.0
+offset_bottom = 43.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qniwt")
+
+[node name="Moon" type="TextureRect" parent="Control/Screen"]
+visible = false
+layout_mode = 0
+offset_left = -140.0
+offset_top = 252.0
+offset_right = -44.0
+offset_bottom = 348.0
+texture = ExtResource("26_t8osi")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/Screen"]
+visible = false
+custom_minimum_size = Vector2(315, 0)
+layout_mode = 0
+offset_top = 400.0
+offset_right = 315.0
+offset_bottom = 423.0
+text = "Sleeping..."
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_0r2hf")
