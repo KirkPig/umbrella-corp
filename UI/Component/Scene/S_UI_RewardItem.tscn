@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="3_vsvtr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar6id"]
+resource_local_to_scene = true
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 14
 corner_radius_top_right = 14
@@ -15,10 +16,6 @@ corner_radius_bottom_left = 14
 custom_minimum_size = Vector2(200, 0)
 theme_override_constants/separation = 20
 script = ExtResource("1_tdxnv")
-worker_color = Color(0.698039, 0.870588, 1, 1)
-resource_color = Color(0.984314, 0.996078, 0.87451, 1)
-business_color = Color(0.721569, 1, 0.678431, 1)
-instant_color = Color(1, 0.745098, 0.745098, 1)
 
 [node name="CardContainer" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 240)

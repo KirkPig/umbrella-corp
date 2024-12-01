@@ -18,7 +18,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ir0yk"]
 resource_local_to_scene = true
 shader = ExtResource("13_yd8uj")
-shader_parameter/amount = 0.0
+shader_parameter/amount = 1.0
 shader_parameter/effect_color = Color(1, 1, 1, 1)
 
 [node name="Game" type="Control"]
@@ -29,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe42")
+game_speed = 4
 start_deck = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 start_resource_pool = Array[int]([2000, 2004, 2005, 2006, 2008, 2011, 2014])
 start_business = Array[int]([1000])
@@ -90,13 +91,10 @@ offset_bottom = 79.0
 
 [node name="SGameEnd" parent="." instance=ExtResource("10_wqfvh")]
 
-[node name="FlashLayer" type="CanvasLayer" parent="."]
-layer = 3
-
-[node name="ColorRect" type="ColorRect" parent="FlashLayer"]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ir0yk")
 custom_minimum_size = Vector2(160, 240)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

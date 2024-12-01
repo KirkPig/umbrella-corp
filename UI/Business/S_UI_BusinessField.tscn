@@ -23,7 +23,7 @@ theme_override_colors/font_hover_color = Color(0.20871, 0.20871, 0.20871, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_pressed_color = Color(0.400698, 0.400698, 0.400698, 1)
 theme_override_fonts/font = ExtResource("2_hhdyc")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 64
 text = "<"
 flat = true
 
@@ -37,7 +37,7 @@ theme_override_colors/font_hover_color = Color(0.140447, 0.140447, 0.140447, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_pressed_color = Color(0.470076, 0.470076, 0.470076, 1)
 theme_override_fonts/font = ExtResource("2_hhdyc")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 64
 text = ">"
 flat = true
 

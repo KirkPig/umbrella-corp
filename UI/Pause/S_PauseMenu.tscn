@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctruwb84p47pj"]
+[gd_scene load_steps=9 format=3 uid="uid://ctruwb84p47pj"]
 
 [ext_resource type="FontFile" uid="uid://c6plh0y06it7h" path="res://Assets/Font/SF-Pro-Rounded-Semibold.otf" id="1_vnxdk"]
 [ext_resource type="Script" path="res://UI/Pause/GD_PauseMenu.gd" id="1_vud8f"]
+[ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="3_ftdpi"]
 
 [sub_resource type="Theme" id="Theme_wag3i"]
 
@@ -174,6 +175,9 @@ label_settings = SubResource("LabelSettings_pslm7")
 [node name="Control6" type="Control" parent="PanelContainer2/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ftdpi")
 
 [connection signal="pressed" from="PanelContainer2/PanelContainer/VBoxContainer/Control2/UnPauseButton" to="." method="_on_un_pause_button_pressed"]
 [connection signal="pressed" from="PanelContainer2/PanelContainer/VBoxContainer/Control3/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

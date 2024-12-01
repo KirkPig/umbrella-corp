@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://uc70mvrqrusf"]
+[gd_scene load_steps=7 format=3 uid="uid://uc70mvrqrusf"]
 
 [ext_resource type="Script" path="res://UI/Contract/GD_UI_ContractSelection.gd" id="1_sx83x"]
+[ext_resource type="AudioStream" uid="uid://du8fbo7hdumjl" path="res://Assets/SFX/SFX_Select_Contract.wav" id="5_733tl"]
 [ext_resource type="Texture2D" uid="uid://by3pgvubcgv8b" path="res://Assets/UI/Contract/umbrella.svg" id="5_qen4l"]
 [ext_resource type="FontFile" uid="uid://c7igk6hta7uoj" path="res://Assets/Font/SF-Pro-Display-Regular.otf" id="6_q505p"]
 [ext_resource type="FontFile" uid="uid://cpexbtghs4w0n" path="res://Assets/Font/SF-Pro-Display-Black.otf" id="7_704pi"]
@@ -75,3 +76,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 64
 alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_733tl")

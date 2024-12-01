@@ -262,10 +262,13 @@ func draw() -> bool:
 	return true
 
 func fill_hand():
+	if hand.get_children().size() < GameManager.max_hand and deck.get_children().size()>0:
+		ActionManager.action_list.draw_audio_stream_player.play(0.63)
 	while true:
 		var hand_cards = hand.get_children()
-		if hand_cards.size() >= GameManager.max_hand : break
+		if hand_cards.size() >= GameManager.max_hand: break
 		if !draw(): break
+	
 
 func reset_hand():
 	for card in hand.get_children():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://n6pbyf35d50p"]
+[gd_scene load_steps=9 format=3 uid="uid://n6pbyf35d50p"]
 
 [ext_resource type="Script" path="res://UI/Phone/Button/GD_Deck.gd" id="1_wmmir"]
 [ext_resource type="Texture2D" uid="uid://dhrjjnkragqjg" path="res://Assets/Phone/currentpile.png" id="2_iaxsm"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://dwmn8b6v7534y" path="res://UI/Phone/NotiFontSetting.tres" id="3_xj7f2"]
 [ext_resource type="StyleBox" uid="uid://rq4cp7w0v2fx" path="res://UI/Phone/theme/panel/noti_panel.stylebox" id="4_brxpt"]
 [ext_resource type="PackedScene" uid="uid://donmta1ldnate" path="res://UI/Phone/Pile/S_DeckPile.tscn" id="7_ia2nl"]
+[ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="8_b1f82"]
 
 [node name="Deck" type="Control"]
 layout_mode = 3
@@ -109,6 +110,9 @@ grow_vertical = 2
 
 [node name="SDeckPile" parent="." instance=ExtResource("7_ia2nl")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_b1f82")
 
 [connection signal="pressed" from="Control/VSplitContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="child_order_changed" from="DeckCard" to="." method="_on_deck_card_child_order_changed"]

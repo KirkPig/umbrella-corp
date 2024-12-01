@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qlptp7of8ifh"]
+[gd_scene load_steps=5 format=3 uid="uid://qlptp7of8ifh"]
 
 [ext_resource type="Script" path="res://UI/Phone/Button/Shop/GD_ShopBtn.gd" id="1_e3h6n"]
 [ext_resource type="Texture2D" uid="uid://cksvevd2nskkd" path="res://Assets/Phone/shop.png" id="2_xuojp"]
 [ext_resource type="LabelSettings" uid="uid://d3bit3qtq3v0r" path="res://UI/Phone/Button/ButtonFontSetting.tres" id="3_yx3b2"]
+[ext_resource type="AudioStream" uid="uid://mtqo5ke6b3gm" path="res://Assets/SFX/SFX_App_Open.mp3" id="4_xl6sf"]
 
 [node name="ShopBtn" type="Control"]
 layout_mode = 3
@@ -30,5 +31,8 @@ layout_mode = 2
 text = "Shop"
 label_settings = ExtResource("3_yx3b2")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xl6sf")
 
 [connection signal="pressed" from="Control/VSplitContainer/ViewButton" to="." method="_on_view_button_pressed"]

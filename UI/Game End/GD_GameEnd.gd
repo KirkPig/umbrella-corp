@@ -9,6 +9,8 @@ extends CanvasLayer
 @onready var resource_founded_label: Label = $Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control4/ResourceFoundedLabel
 @onready var resource_founded_container: HBoxContainer = $Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control4/ResourceFoundedContainer
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 var start_resource_list : Array[int] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,10 +56,12 @@ func add_founded_resource():
 	
 func _on_new_game_pressed() -> void:
 	get_tree().paused = false
+	audio_stream_player.play()
 	get_tree().reload_current_scene()
 
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
+	audio_stream_player.play()
 	get_tree().change_scene_to_file("res://System/Main Menu/S_Main_Menu.tscn")
 
 func _on_desktop_pressed() -> void:

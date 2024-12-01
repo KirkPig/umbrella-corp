@@ -15,11 +15,17 @@ var time:int = 0
 @onready var gold_panel = $Control/TextureRect/VSplitContainer/money/PanelContainer
 @onready var gold_label = $Control/TextureRect/VSplitContainer/money/PanelContainer/HSplitContainer/MarginContainer/Label
 @onready var gold_shop_label = $Control/Shop/VSplitContainer/Control/MoneyLabel
+
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.current_energy_change.connect(_on_energy_change)
 	GameManager.gold_change.connect(_on_gold_change)
 
+func app_push_sound() -> void:
+	audio_stream_player.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,8 +48,9 @@ func _on_energy_change(energy:int) -> void:
 	energy_progress.value = energy
 	shop_energy_progress.value = energy
 	action_screen.visible = energy > 0
-	out_of_energy_screen.visible = energy ==0 
-
+	out_of_energy_screen.visible = energy ==0
+	if energy ==0 :
+		audio_stream_player_2.play()
 func _on_gold_change(gold:int) -> void:
 	gold_label.text = "$ "+str(gold)
 	gold_shop_label.text = "$ "+str(gold)
@@ -51,8 +58,9 @@ func _on_gold_change(gold:int) -> void:
 func _on_shop_shop_btn_pressed() -> void:
 	action_screen.visible = false
 	shop_screen.visible = true
-
+	app_push_sound()
 
 func _on_close_shop_pressed() -> void:
 	action_screen.visible = true
 	shop_screen.visible = false
+	app_push_sound()

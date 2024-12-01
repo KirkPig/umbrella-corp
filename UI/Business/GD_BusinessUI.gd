@@ -24,6 +24,10 @@ class_name UIBusiness
 @export var damp: float = 20.0
 @export var velocity_multiplier: float = 10.0
 
+@onready var work_audio_stream_player: AudioStreamPlayer = $WorkAudioStreamPlayer
+@onready var add_resource_audio_stream_player: AudioStreamPlayer = $AddResourceAudioStreamPlayer
+@onready var change_resource_audio_stream_player: AudioStreamPlayer = $ChangeResourceAudioStreamPlayer
+
 var CENTER_POS = Vector2(210, 141)
 
 var tween_moving: Tween
@@ -249,14 +253,16 @@ func _on_sell_pressed() -> void:
 
 func _on_work_pressed() -> void:
 	ActionManager.action_work(self)
-	pass # Replace with function body.
+	work_audio_stream_player.play()
 
 
 func _on_component_pressed() -> void:
 	ActionManager.action_add_component(self)
+	add_resource_audio_stream_player.play()
 	pass # Replace with function body.
 
 
 func _on_change_resource_pressed() -> void:
 	ActionManager.action_change_resource(self)
+	change_resource_audio_stream_player.play()
 	pass # Replace with function body.
